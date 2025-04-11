@@ -1,0 +1,187 @@
+:root {
+  --club-primary: #1d3557; /* Deep navy blue */
+  --club-secondary: #f1faee; /* Off white */
+  --club-accent: #e63946; /* Bold red as accent */
+  --club-highlight: #457b9d; /* Medium blue */
+  --text-light: #ffffff;
+  --text-dark: #1a1a1a;
+  --debate-shadow: 0 8px 30px rgba(29, 53, 87, 0.15);
+  --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --navbar-height: 80px;
+  --footer-height: 400px;
+}
+
+.club-page {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--club-secondary);
+  color: var(--text-dark);
+  font-family: "Montserrat", sans-serif;
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  position: relative;
+}
+
+/* Header Section */
+.club-header {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, var(--club-primary), var(--club-highlight));
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--debate-shadow);
+}
+
+.club-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/pattern-dots.png');
+  opacity: 0.1;
+}
+
+.club-title {
+  color: var(--text-light);
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.club-description {
+  color: var(--text-light);
+  font-size: 1.4rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Content Sections */
+.club-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.section-card {
+  background: var(--text-light);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: var(--debate-shadow);
+  transition: var(--transition-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(29, 53, 87, 0.2);
+}
+
+.section-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--club-accent);
+}
+
+.section-card h2 {
+  color: var(--club-primary);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-card h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--club-accent);
+}
+
+.section-card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Social Links */
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-btn,
+.website-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--club-primary);
+  color: var(--club-primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: var(--transition-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn:hover,
+.website-btn:hover {
+  background: var(--club-primary);
+  color: var(--text-light);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(29, 53, 87, 0.3);
+}
+
+.social-btn svg,
+.website-btn svg {
+  transition: var(--transition-standard);
+}
+
+.social-btn:hover svg,
+.website-btn:hover svg {
+  transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .club-header {
+    padding: 3rem 1rem;
+  }
+  
+  .club-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-card {
+    padding: 2rem;
+  }
+}
+
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap");

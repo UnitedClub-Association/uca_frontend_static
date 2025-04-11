@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-H2YV0FNQ9X");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery - United Club Association</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
+    
+    <!-- Include centralized fonts -->
+    <script src="/js/include-fonts.js" defer></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/gallery.css" />
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons" defer></script>
+  </head>
+  <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navbar will be inserted here by include-navbar.js -->
+    <script src="/js/include-navbar.js" defer></script>
+    
+    <main id="main-content">
+      <header>
+        <h1>Gallery</h1>
+      </header>
+      <section class="gallery">
+        <figure>
+          <img src="/images/gallery/1.jpg" alt="Gallery image 1" />
+        </figure>
+        <figure>
+          <img src="/images/gallery/2.jpg" alt="Gallery image 2" />
+        </figure>
+        <figure>
+          <img src="/images/gallery/3.jpg" alt="Gallery image 3" />
+        </figure>
+        <figure>
+          <img src="/images/gallery/4.jpg" alt="Gallery image 4" />
+        </figure>
+        <figure>
+          <img src="/images/gallery/5.jpg" alt="Gallery image 5" />
+        </figure>
+        <figure>
+          <img src="/images/gallery/6.jpg" alt="Gallery image 6" />
+        </figure>
+      </section>
+    </main>
+    
+    <!-- Footer will be inserted here by include-footer.js -->
+    <script src="/js/include-footer.js" defer></script>
+    
+    <!-- Initialize Feather Icons -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        if (typeof feather !== "undefined") {
+          feather.replace({
+            "aria-hidden": "true"
+          });
+        } else {
+          console.error("Feather Icons library failed to load.");
+        }
+      });
+    </script>
+  </body>
+</html>
