@@ -21,29 +21,23 @@
     <title>অক্ষরে একুশ</title>
     <link rel="stylesheet" href="/event-css/okkhore-ekush.css" />
   </head>
-  <body style="background-image: url('/images/abstract-green-red-art.jpg');">
+  <body class="okkhore-body">
     <h1 class="headline">
-      <span style="color: #cc0000">অক্ষরে</span>
-      <span style="color: #6aa84f">একুশ</span>
+      <span class="text-red">অক্ষরে</span>
+      <span class="text-green">একুশ</span>
     </h1>
     <p class="description">
-      <span style="color: #e06666">একুশে ফেব্রুয়ারি,</span>
-      <span style="color: #6aa84f"
-        >আন্তর্জাতিক মাতৃভাষা দিবস। এই দিনে ভাষা আন্দোলনকারীরা বাংলা ভাষাকে
+      <span class="text-light-red">একুশে ফেব্রুয়ারি,</span>
+      <span class="text-green">আন্তর্জাতিক মাতৃভাষা দিবস। এই দিনে ভাষা আন্দোলনকারীরা বাংলা ভাষাকে
         রাষ্ট্রভাষা করার দাবিতে আন্দোলন করেছিলেন। ভাষা শহীদদের এই মহান উৎসর্গের
         কারণে আজ আমরা বাংলায় কথা বলি, বাংলায় হাসি, বাংলায় কাঁদি, মনের ভাব
         প্রকাশ করতে বাংলা ব্যবহার করি। "অক্ষরে একুশ" হলো ভাষা শহীদদের সম্মানে
         আয়োজিত একটি ইভেন্ট। বাংলা ভাষাকে স্থির ছবির মাধ্যমে, বাংলা অক্ষরের
         মাধ্যমে লিখে ভাষার প্রতি আপনার ভালোবাসা প্রকাশ করতে ইভেন্টে যোগ দিন,
-        দেখিয়ে দিন আপনার ভাষার প্রতি ভালোবাসা ও শ্রদ্ধা!</span
-      >
+        দেখিয়ে দিন আপনার ভাষার প্রতি ভালোবাসা ও শ্রদ্ধা!</span>
     </p>
     <div class="buttons">
-      <a
-        href="#"
-        class="c-button c-button--gooey"
-        style="border-color: #e06666; --blob-color: #e06666"
-      >
+      <a href="#" class="c-button c-button--gooey c-button--red">
         ফটোগ্রাফি কনটেস্ট
         <div class="c-button__blobs">
           <div></div>
@@ -51,11 +45,7 @@
           <div></div>
         </div>
       </a>
-      <a
-        href="#"
-        class="c-button c-button--gooey"
-        style="border-color: #6aa84f; --blob-color: #6aa84f"
-      >
+      <a href="#" class="c-button c-button--gooey c-button--green">
         কুইজ প্রতিযোগিতা
         <div class="c-button__blobs">
           <div></div>
@@ -63,11 +53,7 @@
           <div></div>
         </div>
       </a>
-      <a
-        href="#"
-        class="c-button c-button--gooey"
-        style="border-color: #cc0000; --blob-color: #cc0000"
-      >
+      <a href="#" class="c-button c-button--gooey c-button--dark-red">
         রচনা প্রতিযোগিতা
         <div class="c-button__blobs">
           <div></div>
@@ -78,7 +64,7 @@
     </div>
 
     <!-- SVG Filter for Gooey Effect -->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden-svg"></svg>
       <defs>
         <filter id="goo">
           <feGaussianBlur
