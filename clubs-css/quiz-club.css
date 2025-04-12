@@ -149,7 +149,10 @@
 
 .question-card:hover {
   transform: translateY(-10px);
+  /* From: */
   box-shadow: 0 15px 35px rgba(44, 62, 80, 0.2);
+  /* To: */
+  box-shadow: 0 15px 35px rgba(44, 62, 80, 20%);
 }
 
 .card-header {

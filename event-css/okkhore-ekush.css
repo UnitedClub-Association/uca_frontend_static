@@ -62,10 +62,14 @@ body {
   filter: url(#goo);
   overflow: hidden;
   position: absolute;
+  /* From: */
   top: 0;
-  left: 0;
-  bottom: -3px;
   right: -1px;
+  bottom: 0;
+  left: 0;
+  
+  /* To: */
+  inset: 0 -1px 0 0;
   z-index: -1;
 }
 

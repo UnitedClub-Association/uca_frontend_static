@@ -135,7 +135,7 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgb(0 0 0 / 20%);
   position: relative;
   overflow: hidden;
   z-index: 1;

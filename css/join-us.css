@@ -448,7 +448,11 @@ body {
   }
 }
 
+/* From: */
 @media (max-width: 480px) {
+
+/* To: */
+@media (width <= 480px) {
   .join-hero {
     height: 25vh;
   }
