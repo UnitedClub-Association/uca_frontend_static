@@ -9,16 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/html/fonts.html")
     .then((response) => response.text())
     .then((data) => {
-      // Create a temporary element to sanitize the content
-      const sanitizer = new DOMParser();
-      const doc = sanitizer.parseFromString(data, 'text/html');
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
       
-      // Clear the existing content safely
+      // Clear existing content safely
       while (fontPlaceholder.firstChild) {
         fontPlaceholder.removeChild(fontPlaceholder.firstChild);
       }
       
-      // Append the sanitized content
+      // Only process and append link elements for fonts
       const linkElements = doc.getElementsByTagName('link');
       Array.from(linkElements).forEach(link => {
         if (link.rel === 'stylesheet' && link.href) {

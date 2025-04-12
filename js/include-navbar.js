@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/html/navbar.html")
     .then((response) => response.text())
     .then((data) => {
-      // Parse the HTML safely
       const parser = new DOMParser();
       const doc = parser.parseFromString(data, 'text/html');
       
@@ -17,18 +16,31 @@ document.addEventListener("DOMContentLoaded", function () {
         navbarPlaceholder.removeChild(navbarPlaceholder.firstChild);
       }
       
-      // Safely transfer the navbar content
-      const navbarContent = doc.querySelector('.navbar');
-      if (navbarContent) {
-        // Create a new navbar element
-        const safeNavbar = document.createElement('nav');
-        safeNavbar.className = 'navbar';
+      // Create and append navbar elements safely
+      const navContent = doc.querySelector('nav');
+      if (navContent) {
+        const safeNav = document.createElement('nav');
+        safeNav.className = navContent.className;
         
-        // Safely append the cleaned content
-        navbarPlaceholder.appendChild(safeNavbar);
+        // Transfer nav items safely
+        Array.from(navContent.children).forEach(child => {
+          const safeChild = document.createElement(child.tagName.toLowerCase());
+          
+          // Copy safe attributes
+          for (const attr of child.attributes) {
+            if (['class', 'id', 'href', 'role', 'aria-label'].includes(attr.name)) {
+              safeChild.setAttribute(attr.name, attr.value);
+            }
+          }
+          
+          safeChild.textContent = child.textContent;
+          safeNav.appendChild(safeChild);
+        });
+        
+        navbarPlaceholder.appendChild(safeNav);
       }
   
-      // Create and append logo elements safely
+      // Create and append logo elements (existing code remains the same)
       const logoContainer = document.createElement("a");
       logoContainer.href = "/index.html";
       logoContainer.classList.add("logo-container");
