@@ -1,47 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const footerPlaceholder = document.createElement("div");
-  footerPlaceholder.id = "footer-placeholder";
-  document.body.appendChild(footerPlaceholder);
-
-  fetch("/components/footer.html")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.text();
-    })
-    .then((data) => {
-      // Parse the HTML safely
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, 'text/html');
+fetch("/html/footer.html")
+  .then((response) => response.text())
+  .then((data) => {
+    // Parse HTML safely using DOMParser
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data, 'text/html');
+    
+    // Clear existing content safely
+    while (footerPlaceholder.firstChild) {
+      footerPlaceholder.removeChild(footerPlaceholder.firstChild);
+    }
+    
+    // Safely transfer the footer content
+    const footerContent = doc.querySelector('footer');
+    if (footerContent) {
+      // Create new elements for each footer section
+      const safeFooter = document.createElement('footer');
+      safeFooter.className = footerContent.className;
       
-      // Clear existing content safely
-      while (footerPlaceholder.firstChild) {
-        footerPlaceholder.removeChild(footerPlaceholder.firstChild);
-      }
-      
-      // Get the footer content and safely transfer it
-      const footerContent = doc.body.children;
-      Array.from(footerContent).forEach(element => {
-        const safeElement = document.createElement(element.tagName);
+      // Transfer content safely using DOM methods
+      Array.from(footerContent.children).forEach(child => {
+        const safeChild = document.createElement(child.tagName.toLowerCase());
+        
         // Copy safe attributes
-        Array.from(element.attributes).forEach(attr => {
-          if (attr.name.startsWith('data-') || ['id', 'class'].includes(attr.name)) {
-            safeElement.setAttribute(attr.name, attr.value);
+        for (const attr of child.attributes) {
+          if (attr.name === 'class' || attr.name === 'id' || attr.name.startsWith('data-')) {
+            safeChild.setAttribute(attr.name, attr.value);
           }
-        });
-        safeElement.textContent = element.textContent;
-        footerPlaceholder.appendChild(safeElement);
+        }
+        
+        // Set text content safely
+        safeChild.textContent = child.textContent;
+        safeFooter.appendChild(safeChild);
       });
+      
+      footerPlaceholder.appendChild(safeFooter);
+    }
 
-      // Load footer.js script safely
-      const script = document.createElement("script");
-      script.src = "/js/footer.js";
-      script.onload = () => console.log("footer.js loaded successfully.");
-      script.onerror = () => console.error("Error loading footer.js.");
-      document.head.appendChild(script);
-    })
-    .catch((error) => {
-      console.error("Error loading footer:", error);
-    });
-});
+    // Load footer.js safely
+    const script = document.createElement('script');
+    script.src = '/js/footer.js';
+    script.onload = () => console.log('footer.js loaded successfully');
+    script.onerror = () => console.error('Error loading footer.js');
+    document.head.appendChild(script);
+  })
+  .catch(error => {
+    console.error('Error loading footer:', error);
+  });
