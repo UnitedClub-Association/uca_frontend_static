@@ -39,7 +39,13 @@
     <!-- Initialize Icons -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        feather.replace();
+        if (typeof feather !== "undefined") {
+          feather.replace({
+            "aria-hidden": "true"
+          });
+        } else {
+          console.error("Feather Icons library failed to load.");
+        }
       });
     </script>
   </head>
