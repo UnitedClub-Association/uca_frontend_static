@@ -62,14 +62,10 @@ body {
   filter: url(#goo);
   overflow: hidden;
   position: absolute;
-  /* From: */
   top: 0;
-  right: -1px;
-  bottom: 0;
   left: 0;
-  
-  /* To: */
-  inset: 0 -1px 0 0;
+  bottom: -3px;
+  right: -1px;
   z-index: -1;
 }
 
@@ -104,44 +100,4 @@ body {
 
 .c-button--gooey:hover .c-button__blobs div {
   transform: scale(1.4) translateY(0) translateZ(0);
-}
-
-
-/* Add these new styles to your existing CSS file */
-:root {
-  --color-red: #cc0000;
-  --color-light-red: #e06666;
-  --color-green: #6aa84f;
-}
-
-.okkhore-body {
-  background-image: url('/images/abstract-green-red-art.jpg');
-}
-
-.text-red {
-  color: var(--color-red);
-}
-
-.text-light-red {
-  color: var(--color-light-red);
-}
-
-.text-green {
-  color: var(--color-green);
-}
-
-/* Button variants */
-.c-button--red {
-  border-color: var(--color-light-red);
-  --blob-color: var(--color-light-red);
-}
-
-.c-button--green {
-  border-color: var(--color-green);
-  --blob-color: var(--color-green);
-}
-
-.c-button--dark-red {
-  border-color: var(--color-red);
-  --blob-color: var(--color-red);
 }

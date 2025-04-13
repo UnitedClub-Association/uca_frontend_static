@@ -6,29 +6,23 @@ document.addEventListener("DOMContentLoaded", function () {
   document.head.appendChild(fontPlaceholder); // Insert into the <head>
 
   // Fetch the font HTML
-  fetch("/html/fonts.html")
-    .then((response) => response.text())
-    .then((data) => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, 'text/html');
-      
-      // Clear existing content safely
-      while (fontPlaceholder.firstChild) {
-        fontPlaceholder.removeChild(fontPlaceholder.firstChild);
+  fetch("/components/font.html") // Use relative path
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`);
       }
-      
-      // Only process and append link elements for fonts
-      const linkElements = doc.getElementsByTagName('link');
-      Array.from(linkElements).forEach(link => {
-        if (link.rel === 'stylesheet' && link.href) {
-          const safeLink = document.createElement('link');
-          safeLink.rel = 'stylesheet';
-          safeLink.href = link.href;
-          fontPlaceholder.appendChild(safeLink);
-        }
-      });
+      return response.text();
+    })
+    .then((data) => {
+      // Insert the font HTML into the placeholder
+      fontPlaceholder.innerHTML = data;
     })
     .catch((error) => {
-      console.error('Error loading fonts:', error);
+      console.error("Error loading fonts:", error);
+      // Add fallback font loading if needed
+      const fallbackLink = document.createElement("link");
+      fallbackLink.rel = "stylesheet";
+      fallbackLink.href = "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap";
+      document.head.appendChild(fallbackLink);
     });
 });

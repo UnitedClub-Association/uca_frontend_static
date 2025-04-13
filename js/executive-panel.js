@@ -18,17 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
  * relative to the council term (Oct 10, 2024 - Dec 31, 2025)
  */
 function calculateTimelineProgress() {
+  // Council start and end dates
   const startDate = new Date('2024-10-10');
   const endDate = new Date('2025-12-31');
-  const currentDate = new Date();
   
-  // Calculate progress percentage using actual current date
+  // For demo purposes, use March 15, 2025 as the current date
+  // In production, use the actual current date
+  const demoDate = new Date('2025-03-15');
+  const currentDate = new Date(); // Actual current date (unused in demo)
+  
+  // Calculate progress percentage
   const totalDuration = endDate - startDate;
-  const elapsedDuration = currentDate - startDate;
+  const elapsedDuration = demoDate - startDate;
   const progressPercentage = Math.min(100, Math.max(0, (elapsedDuration / totalDuration) * 100));
   
+  // Update progress bar width
   const progressBar = document.getElementById('timeline-progress');
   if (progressBar) {
+    // Delay to allow for animation
     setTimeout(() => {
       progressBar.style.width = `${progressPercentage}%`;
     }, 300);
