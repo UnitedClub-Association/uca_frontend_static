@@ -12,13 +12,21 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="United Club Association - A vibrant community of university clubs and activities"
+    />
+    <meta name="theme-color" content="#6366f1" />
     <title>United Club Association</title>
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="js/include-fonts.js" as="script" />
+    <link rel="preload" href="/images/UCA_Home_Page_Pic.jpg" as="image" />
 
     <!-- Include centralized fonts -->
     <script src="js/include-fonts.js" defer></script>
@@ -31,8 +39,12 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
 
-    <!-- Feather Icons -->
+    <!-- Modern Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <!-- Add AOS library for scroll animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
   </head>
   <body>
     <!-- Navbar will be inserted here by include-navbar.js -->
@@ -46,7 +58,7 @@
         <div class="light-beam"></div>
         <div class="light-beam"></div>
       </div>
-      <div class="hero-content">
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
         <h1 id="hero-heading">United Club Association</h1>
         <p class="hero-subtitle">Uniting Passions, Creating Connections</p>
         <a
@@ -86,24 +98,24 @@
     <section class="about" aria-labelledby="about-heading">
       <div class="about-container">
         <div class="about-content">
-          <div class="about-text">
+          <div class="about-text" data-aos="fade-up" data-aos-duration="800">
             <h2 id="about-heading">About UCA</h2>
             <p class="about-description">
               The United Club Association (UCA) manages and supports the clubs
-              of University Laboratory School and College, building a vibrant
-              community of activities.
+              of University Laboratory School and College, fostering a vibrant
+              community of diverse activities.
             </p>
             <div class="about-stats">
-              <div class="stat-item">
-                <span class="stat-number">9</span>
+              <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                <span class="stat-number" data-count="9">0</span>
                 <span class="stat-label">Active Clubs</span>
               </div>
-              <div class="stat-item">
-                <span class="stat-number">100+</span>
+              <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                <span class="stat-number" data-count="100">0</span>
                 <span class="stat-label">Members</span>
               </div>
-              <div class="stat-item">
-                <span class="stat-number">5+</span>
+              <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                <span class="stat-number" data-count="5">0</span>
                 <span class="stat-label">Events</span>
               </div>
             </div>
@@ -123,9 +135,14 @@
       class="clubs"
       aria-labelledby="featured-clubs-heading"
     >
-      <h2 id="featured-clubs-heading">Featured Clubs</h2>
+      <h2 id="featured-clubs-heading" data-aos="fade-up">Featured Clubs</h2>
       <div class="club-grid">
-        <a href="clubs/sports-club.html" class="club-card">
+        <a
+          href="clubs/sports-club.html"
+          class="club-card"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <div class="wave"></div>
           <div class="wave"></div>
           <div class="wave"></div>
@@ -138,7 +155,12 @@
             <h3>Sports Club</h3>
           </div>
         </a>
-        <a href="clubs/quiz-club.html" class="club-card">
+        <a
+          href="clubs/quiz-club.html"
+          class="club-card"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <div class="wave"></div>
           <div class="wave"></div>
           <div class="wave"></div>
@@ -151,7 +173,12 @@
             <h3>Quiz Club</h3>
           </div>
         </a>
-        <a href="clubs/photography-club.html" class="club-card">
+        <a
+          href="clubs/photography-club.html"
+          class="club-card"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <div class="wave"></div>
           <div class="wave"></div>
           <div class="wave"></div>
@@ -169,10 +196,10 @@
 
     <!-- Featured Events Section -->
     <section class="events" aria-labelledby="featured-events-heading">
-      <h2 id="featured-events-heading">Featured Events</h2>
+      <h2 id="featured-events-heading" data-aos="fade-up">Featured Events</h2>
       <div class="event-grid">
         <!-- Event Card 1: SnapFest -->
-        <article class="event-card">
+        <article class="event-card" data-aos="fade-up" data-aos-delay="100">
           <div class="event-date">
             <span class="month">Nov</span>
             <span class="day">18</span>
@@ -182,6 +209,7 @@
             <img
               src="images/Snapfest_Event_Pic.jpg"
               alt="SnapFest: A photography event showcasing prize-winning pictures"
+              loading="lazy"
             />
           </div>
           <div class="event-content">
@@ -196,26 +224,12 @@
             </p>
             <a href="events/snapfest.html" class="read-more">
               Read more <span class="sr-only">about SnapFest</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                width="16"
-                height="16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <i data-feather="arrow-right" class="icon"></i>
             </a>
           </div>
         </article>
-
         <!-- Event Card 2: TriQuest -->
-        <article class="event-card">
+        <article class="event-card" data-aos="fade-up" data-aos-delay="200">
           <div class="event-date">
             <span class="month">Dec</span>
             <span class="day">2</span>
@@ -225,6 +239,7 @@
             <img
               src="images/TriQuest- Battle_of_Knowledge.jpg"
               alt="TriQuest: A quiz competition"
+              loading="lazy"
             />
           </div>
           <div class="event-content">
@@ -239,26 +254,12 @@
             </p>
             <a href="events/triquest.html" class="read-more">
               Read more <span class="sr-only">about TriQuest</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                width="16"
-                height="16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <i data-feather="arrow-right" class="icon"></i>
             </a>
           </div>
         </article>
-
         <!-- Event Card 3: Okkhore Ekush -->
-        <article class="event-card">
+        <article class="event-card" data-aos="fade-up" data-aos-delay="300">
           <div class="event-date">
             <span class="month">Feb</span>
             <span class="day">21</span>
@@ -268,6 +269,7 @@
             <img
               src="images/okkhore-ekush.png"
               alt="অক্ষরে একুশ - Language Day Celebration"
+              loading="lazy"
             />
           </div>
           <div class="event-content">
@@ -282,18 +284,7 @@
             </p>
             <a href="events/okkhore-ekush.html" class="read-more">
               Read more <span class="sr-only">about Okkhore Ekush</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <i data-feather="arrow-right" class="icon"></i>
             </a>
           </div>
         </article>
@@ -303,16 +294,54 @@
     <!-- Footer will be inserted here by include-footer.js -->
     <script src="js/include-footer.js" defer></script>
 
-    <!-- Initialize Feather Icons -->
+    <!-- Initialize Feather Icons and AOS -->
     <script>
-      // Check if feather is defined before initializing
-      if (typeof feather !== "undefined") {
-        feather.replace({
-          "aria-hidden": "true", // Improve accessibility by hiding icons from screen readers
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100,
         });
-      } else {
-        console.error("Feather Icons library is not loaded.");
-      }
+
+        // Initialize Feather Icons
+        if (typeof feather !== "undefined") {
+          feather.replace({
+            "aria-hidden": "true",
+          });
+        }
+
+        // Animate statistics numbers
+        const stats = document.querySelectorAll(".stat-number");
+        stats.forEach((stat) => {
+          const target = parseInt(stat.getAttribute("data-count"));
+          let count = 0;
+          const duration = 2000; // 2 seconds
+          const increment = target / (duration / 16); // 60fps
+
+          const updateCount = () => {
+            if (count < target) {
+              count += increment;
+              stat.textContent = Math.ceil(count) + (target >= 100 ? "+" : "");
+              requestAnimationFrame(updateCount);
+            } else {
+              stat.textContent = target + (target >= 100 ? "+" : "");
+            }
+          };
+
+          // Start animation when element is in view
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                updateCount();
+                observer.unobserve(entry.target);
+              }
+            });
+          });
+
+          observer.observe(stat);
+        });
+      });
     </script>
   </body>
 </html>

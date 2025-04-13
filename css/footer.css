@@ -1,173 +1,288 @@
-/* footer.css */
+/* footer.css - Updated design */
 html {
   height: 100%;
   scroll-behavior: smooth;
 }
+
 body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
   margin: 0;
 }
+
 main {
   flex: 1 0 auto;
 }
+
 footer {
   flex-shrink: 0;
-  background-color: #1a2639; /* Dark blue shade */
-  color: #e0e0e0;
-  font-family: "Open Sans", Arial, sans-serif;
-  padding: 3rem 2rem;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #1a1e2e; /* Darker background with blue tint */
+  color: #e0e6ed; /* Soft white text */
+  font-family: "Poppins", sans-serif;
+  padding: 3rem 0;
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Add subtle pattern overlay */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(126, 87, 194, 0.05) 2px, transparent 2px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px; /* Add padding for mobile */
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
+
 .footer-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem; /* Increased spacing */
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(58, 74, 107, 0.3); /* More subtle border */
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(126, 87, 194, 0.2);
 }
+
 .footer-logo {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
+
 .footer-logo img {
-  height: 80px; /* Slightly larger logo */
-  margin-right: 1.5rem;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
+  height: 70px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
-.footer-logo img:hover {
-  transform: scale(1.05); /* Subtle hover effect */
+
+.footer-logo:hover img {
+  transform: rotate(5deg) scale(1.05);
 }
+
 .footer-branding h2 {
   margin: 0;
   font-size: 2rem;
-  color: #fff;
+  background: linear-gradient(90deg, #7e57c2, #b085f5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
+
 .footer-branding p {
   margin: 0;
-  font-size: 1rem;
-  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #a0aec0;
   font-weight: 300;
+  letter-spacing: 0.5px;
 }
+
 .footer-tagline {
-  font-size: 1.2rem;
-  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
   font-weight: 300;
-  color: #e0e0e0;
-  opacity: 0.8;
+  color: #a0aec0;
+  max-width: 300px;
+  text-align: right;
+  line-height: 1.5;
 }
-/* From: */
-/* Some previous rule */
+
+/* Grid layout for footer content */
 .footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
+
 .footer-section {
-  min-width: unset; /* Remove min-width constraint */
+  display: flex;
+  flex-direction: column;
 }
+
 .footer-section h4 {
-  color: #fff;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
+  color: #b085f5;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   position: relative;
+  padding-bottom: 0.75rem;
 }
+
 .footer-section h4::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px;
-  width: 60px;
+  bottom: 0;
+  width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #0edb86, #0edb8660);
+  background: linear-gradient(90deg, #7e57c2, #b085f5);
+  border-radius: 3px;
 }
+
 .footer-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
+
 .footer-section li {
-  margin-bottom: 1rem;
   transition: transform 0.2s ease;
 }
+
 .footer-section li:hover {
   transform: translateX(5px);
 }
+
 .footer-section a {
-  color: #e0e0e0;
+  color: #e0e6ed;
   text-decoration: none;
-  transition: color 0.3s ease;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  position: relative;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.footer-section a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 2px;
-  background-color: #0edb86; /* Green underline color */
-  transition: width 0.3s ease;
+
+.footer-section a::before {
+  content: "→";
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
 }
+
 .footer-section a:hover {
-  color: #0edb86; /* Accent color on hover */
+  color: #b085f5;
 }
-.footer-section a:hover::after {
-  width: 100%; /* Full width on hover */
+
+.footer-section a:hover::before {
+  opacity: 1;
+  transform: translateX(-4px);
 }
+
+/* Clubs grid layout */
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.clubs-grid li {
+  margin-bottom: 0;
+}
+
+.clubs-grid a {
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+}
+
 .footer-bottom {
   text-align: center;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid #3a4a6b;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(126, 87, 194, 0.2);
   font-size: 0.9rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  opacity: 0.8;
+  color: #a0aec0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(126, 87, 194, 0.1);
+  color: #b085f5;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: rgba(126, 87, 194, 0.8);
+  color: white;
+  transform: translateY(-3px);
+}
+
 /* Responsive Design */
-@media (width <= 768px) {
-  footer {
-    padding: 2rem 1rem;
-  }
+@media (max-width: 768px) {
   .footer-top {
-    margin-bottom: 2rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-tagline {
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .footer-section h4 {
     text-align: center;
   }
-  .footer-logo {
-    flex-direction: column;
-    gap: 1rem;
+  
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .footer-logo img {
-    margin-right: 0;
+  
+  .footer-section ul {
+    align-items: center;
   }
+  
+  .clubs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-section li:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .clubs-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .footer-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  .footer-section {
-    text-align: center;
-  }
-  .footer-section li:hover {
-    transform: none; /* Disable hover effect on mobile */
-  }
 }
-/* Add animation for content loading */
-@keyframes fadeIn {
+
+/* Animation for footer sections */
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -177,10 +292,11 @@ footer {
     transform: translateY(0);
   }
 }
+
 .footer-section {
-  animation: fadeIn 0.5s ease forwards;
+  animation: fadeInUp 0.5s ease forwards;
 }
-/* Stagger animation for footer sections */
+
 .footer-section:nth-child(1) {
   animation-delay: 0.1s;
 }

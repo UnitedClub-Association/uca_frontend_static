@@ -62,3 +62,23 @@ function displayRandomClubs() {
 
 // Call the function when the page loads
 window.onload = displayRandomClubs;
+
+// footer.js - Simplified version
+document.addEventListener("DOMContentLoaded", function() {
+  // Initialize any interactive elements in the footer
+  const footerLinks = document.querySelectorAll("footer a");
+  
+  // Add subtle hover animation to links
+  footerLinks.forEach(link => {
+    link.addEventListener("mouseenter", function() {
+      this.style.transition = "all 0.3s ease";
+    });
+  });
+  
+  // Add current year to copyright text
+  const copyrightYear = document.querySelector(".footer-bottom p");
+  if (copyrightYear) {
+    const currentYear = new Date().getFullYear();
+    copyrightYear.innerHTML = copyrightYear.innerHTML.replace("2025", currentYear);
+  }
+});

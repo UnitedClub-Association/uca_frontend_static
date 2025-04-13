@@ -1,12 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
+// Set a flag to prevent multiple initializations
+window.navbarInitialized = true;
+
+function initializeNavbar() {
   const navbarToggle = document.querySelector(".navbar__toggle");
   const navbarMenu = document.querySelector(".navbar__menu");
   const dropdowns = document.querySelectorAll(".dropdown");
   const navbar = document.querySelector(".navbar");
 
+  if (!navbarToggle || !navbarMenu || !navbar) {
+    console.error("Navbar elements not found");
+    return;
+  }
+
   // Toggle menu visibility with animation
-  navbarToggle?.addEventListener("click", function () {
+  navbarToggle.addEventListener("click", function (e) {
+    e.stopPropagation();
     navbarMenu.classList.toggle("active");
+    navbarToggle.classList.toggle("active");
     document.body.classList.toggle("menu-open");
   });
 
@@ -15,7 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const link = dropdown.querySelector(".navbar__link");
     const menu = dropdown.querySelector(".dropdown__menu");
 
-    link?.addEventListener("click", function (e) {
+    if (!link || !menu) return;
+
+    link.addEventListener("click", function (e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         e.stopPropagation();
@@ -25,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (other !== dropdown) {
             other.classList.remove("active");
             const otherMenu = other.querySelector(".dropdown__menu");
-            otherMenu.style.height = "0";
+            if (otherMenu) otherMenu.style.height = "0";
           }
         });
 
@@ -49,13 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isClickInside && navbarMenu.classList.contains("active")) {
       navbarMenu.classList.remove("active");
+      navbarToggle.classList.remove("active");
       document.body.classList.remove("menu-open");
 
       // Close all dropdowns
       dropdowns.forEach((dropdown) => {
         dropdown.classList.remove("active");
         const menu = dropdown.querySelector(".dropdown__menu");
-        menu.style.height = "0";
+        if (menu) menu.style.height = "0";
       });
     }
   });
@@ -67,11 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
     resizeTimer = setTimeout(() => {
       if (window.innerWidth > 768) {
         navbarMenu.classList.remove("active");
+        navbarToggle.classList.remove("active");
         document.body.classList.remove("menu-open");
         dropdowns.forEach((dropdown) => {
           dropdown.classList.remove("active");
           const menu = dropdown.querySelector(".dropdown__menu");
-          menu.style.height = "";
+          if (menu) menu.style.height = "";
         });
       }
     }, 250);
@@ -92,4 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lastScroll = currentScroll;
   });
-});
+}
+
+// Initialize navbar when DOM is loaded or when script is executed after DOM is already loaded
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeNavbar);
+} else {
+  initializeNavbar();
+}

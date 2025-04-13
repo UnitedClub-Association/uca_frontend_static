@@ -1,20 +1,28 @@
 /* Enhanced Navbar Variables */
+/* Enhanced Navbar Variables */
 :root {
-  --primary: #a89525;
-  --primary-light: #c4b04c;
-  --primary-gradient: linear-gradient(135deg, #a89525, #d4c052);
-  --text: #ffffff;
-  --text-muted: rgba(255, 255, 255, 0.8);
-  --background: rgba(46, 53, 52, 0.95);
-  --background-light: rgba(46, 53, 52, 0.85);
+  --primary: #7e57c2; /* Rich purple - vibrant but easy on eyes */
+  --primary-light: #b085f5; /* Lighter purple */
+  --primary-gradient: linear-gradient(135deg, #7e57c2, #b085f5);
+  --text: #f0f4f8; /* Soft white text for better contrast */
+  --text-muted: rgba(240, 244, 248, 0.8);
+  --background: rgba(
+    28,
+    32,
+    38,
+    0.95
+  ); /* Dark background with slight blue tint */
+  --background-light: rgba(28, 32, 38, 0.85);
   --spacer: 1rem;
   --link-height: calc(var(--spacer) * 3.5);
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --navbar-height-desktop: 6rem;
   --navbar-height-mobile: 4.5rem;
-  --dropdown-shadow: 0 8px 30px rgb(0 0 0 / 15%);
-  --navbar-glow: 0 0 15px rgb(168 149 37 / 30%);
+  --dropdown-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  --navbar-glow: 0 0 15px rgba(126, 87, 194, 0.4);
 }
+
+/* The rest of the navbar.css remains the same */
 
 /* Enhanced Navbar Base Styles */
 .navbar {
@@ -227,10 +235,6 @@
 .dropdown__menu a:hover {
   color: var(--text);
   padding-left: 2rem;
-}
-
-.dropdown__menu a:hover::before {
-  width: 100%;
 }
 
 .dropdown__menu a:hover::before {

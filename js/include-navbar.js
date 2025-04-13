@@ -49,28 +49,18 @@ document.addEventListener("DOMContentLoaded", function () {
         navbar.prepend(logoContainer);
       }
 
-      // Re-attach event listeners for the hamburger menu and dropdowns
-      const burger = document.querySelector(".navbar__toggle");
-      const navLinks = document.querySelector(".navbar__menu");
-      if (burger && navLinks) {
-        burger.addEventListener("click", function () {
-          navLinks.classList.toggle("active");
-        });
-      }
-
-      // Close menu when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !burger.contains(event.target) &&
-          !navLinks.contains(event.target)
-        ) {
-          navLinks.classList.remove("active");
-        }
-      });
-
       // Initialize Feather Icons
       if (window.feather) {
         feather.replace();
+      }
+
+      // Load and initialize navbar.js
+      if (!window.navbarInitialized) {
+        const script = document.createElement("script");
+        script.src = "/js/navbar.js";
+        script.onload = () => console.log("navbar.js loaded successfully");
+        script.onerror = () => console.error("Error loading navbar.js");
+        document.head.appendChild(script);
       }
     })
     .catch((error) => {
