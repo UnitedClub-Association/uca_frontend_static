@@ -1,47 +1,30 @@
-/* Root Variables - Modern Color Palette */
+/* Root Variables */
 :root {
   /* Primary Brand Colors */
-  --primary-color: #6366f1; /* Modern Indigo */
-  --secondary-color: #0f172a; /* Slate Dark */
-
+  --primary-color: #ffd700; /* Gold - Used for highlights and CTAs */
+  --secondary-color: #1d4d4f; /* Dark forest-sea - Used for backgrounds and accents */
   /* Background Colors */
-  --background-light: #f8fafc; /* Slate 50 */
-  --background-dark: #1e293b; /* Slate 800 */
-
+  --background-light: #59a9ce; /* Light blue - Used for lighter sections */
+  --background-dark: #689eb8; /* Darker blue - Used for darker sections */
   /* Text Colors */
-  --text-light: #f1f5f9; /* Slate 100 */
-  --text-dark: #0f172a; /* Slate 900 */
-  --text-medium: #94a3b8; /* Slate 400 */
-
-  /* Accent Colors */
-  --accent-1: #818cf8; /* Indigo 400 */
-  --accent-2: #4f46e5; /* Indigo 600 */
-  --accent-3: #c7d2fe; /* Indigo 200 */
-
+  --text-light: #ffffff; /* White - Used for light text on dark backgrounds */
+  --text-dark: #042c29; /* Dark text - Used for dark text on light backgrounds */
+  --text-medium: #cedbea; /* Medium contrast text - Used for secondary text */
   /* Event Card Color */
-  --event-card: rgba(255, 255, 255, 0.05);
-
+  --event-card: #227c80; /* Dark forest-sea - Used for event cards */
   /* Transition */
-  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
+  --transition: all 0.3s ease; /* Smooth transition for animations */
   /* Shadows */
-  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --hover-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
   /* Gradients */
-  --hero-gradient: linear-gradient(
-    to bottom,
-    rgba(15, 23, 42, 0.8),
-    rgba(15, 23, 42, 0.6)
-  );
-  --about-gradient: linear-gradient(135deg, #4f46e5, #6366f1);
-  --clubs-gradient: linear-gradient(135deg, #6366f1, #818cf8);
-  --events-gradient: linear-gradient(135deg, #818cf8, #c7d2fe);
+  --hero-gradient: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  --about-gradient: linear-gradient(135deg, #283c86, #3b5f9b);
+  --clubs-gradient: linear-gradient(135deg, #3b5f9b, #3e8d6b);
+  --events-gradient: linear-gradient(135deg, #3e8d6b, #45a247);
 }
 
-/* Hero Section - Modern Updates */
+/* Hero Section */
 .hero {
   background-image: url("/images/UCA_Home_Page_Pic.jpg");
   background-size: cover;
@@ -62,12 +45,10 @@
   position: absolute;
   inset: 0;
   background: var(--hero-gradient);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
   z-index: 1;
 }
 
-/* Light Beam Animation - Modernized */
+/* Animated Background */
 .animated-bg {
   position: absolute;
   inset: 0;
@@ -77,17 +58,17 @@
 
 .light-beam {
   position: absolute;
-  width: 150px;
-  height: 250vh;
+  width: 100px;
+  height: 200vh;
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(99, 102, 241, 0.15),
+    rgba(255, 255, 255, 0.15),
     transparent
   );
-  filter: blur(15px);
-  animation: beam-animation 8s infinite;
   transform: rotate(45deg);
+  filter: blur(8px);
+  animation: beam-animation 8s infinite;
 }
 
 .light-beam:nth-child(1) {
@@ -122,7 +103,7 @@
   }
 }
 
-/* Hero Content - Modern Typography */
+/* Hero Content */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -130,15 +111,9 @@
   padding: 0 2rem;
 }
 
+/* Reducing sizes while keeping design intact */
 .hero-content h1 {
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  background: linear-gradient(to right, var(--text-light), var(--accent-3));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: clamp(2rem, 6vw, 4.5rem);
   margin-bottom: 1rem;
 }
 
@@ -147,21 +122,23 @@
   margin-bottom: 2rem;
 }
 
-/* Modern Button Design */
+/* Adding the explore clubs button design */
 .explore-clubs-button {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
-  background: var(--accent-1);
-  color: var(--text-light);
-  padding: 1.2rem 2.8rem;
+  background: var(--primary-color);
+  color: var(--text-dark);
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  border-radius: 100px;
-  box-shadow: var(--card-shadow);
-  transition: var(--transition);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 .explore-clubs-button::before {
@@ -171,15 +148,16 @@
   left: 0;
   width: 0;
   height: 100%;
-  background: var(--accent-2);
+  background: var(--secondary-color);
   transition: width 0.3s ease;
   z-index: -1;
-  border-radius: 100px;
+  border-radius: 50px;
 }
 
 .explore-clubs-button:hover {
+  color: var(--text-light);
   transform: translateY(-3px);
-  box-shadow: var(--hover-shadow);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .explore-clubs-button:hover::before {
@@ -194,7 +172,158 @@
   transform: translateX(5px);
 }
 
-/* About Section - Modern Glass Effect */
+.about {
+  padding: 4rem 2rem;
+}
+
+.about h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 1.5rem;
+}
+
+.about h2::after {
+  width: 60px;
+  height: 2px;
+  bottom: -8px;
+}
+
+.about-description {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  margin-bottom: 2.5rem;
+}
+
+.stat-item {
+  padding: 1.5rem;
+  min-width: 150px;
+}
+
+.stat-number {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin-bottom: 0.6rem;
+}
+
+.stat-label {
+  font-size: clamp(0.8rem, 1.8vw, 1rem);
+}
+
+.shape-circle:nth-child(1) {
+  width: 250px;
+  height: 250px;
+}
+
+.shape-circle:nth-child(2) {
+  width: 150px;
+  height: 150px;
+}
+
+.shape-circle:nth-child(3) {
+  width: 120px;
+  height: 120px;
+}
+
+.clubs {
+  padding: 4rem 2rem;
+}
+
+.clubs h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 2rem;
+}
+
+.clubs h2::after {
+  width: 60px;
+  height: 2px;
+  bottom: -8px;
+}
+
+.club-card {
+  width: 280px;
+  height: 360px;
+}
+
+.club-info {
+  padding: 2rem;
+}
+
+.club-info h3 {
+  font-size: 1.5rem;
+}
+
+.events {
+  padding: 4rem 2rem;
+}
+
+.events h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 2.5rem;
+}
+
+.event-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.event-date {
+  padding: 8px;
+  top: 15px;
+  right: 15px;
+}
+
+.event-date .month {
+  font-size: 0.7rem;
+}
+
+.event-date .day {
+  font-size: 1.3rem;
+}
+
+.event-date .year {
+  font-size: 0.7rem;
+}
+
+.event-image {
+  height: 180px;
+}
+
+.event-content {
+  padding: 1.5rem;
+}
+
+.event-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.event-card p {
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.tag {
+  padding: 3px 10px;
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 3.5rem 1.5rem;
+  }
+  
+  .clubs {
+    padding: 3.5rem 1.5rem;
+  }
+  
+  .events {
+    padding: 3.5rem 1.5rem;
+  }
+  
+  .stat-item {
+    padding: 1.2rem;
+    min-width: 140px;
+  }
+}
+
+/* About Section */
 .about {
   padding: 6rem 2rem;
   background: var(--about-gradient);
@@ -267,27 +396,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
+  padding: 2rem;
+  background: rgb(255 255 255 / 15%);
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   min-width: 180px;
 }
 
 .stat-item:hover {
   transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .stat-number {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  background: linear-gradient(45deg, var(--accent-3), var(--text-light));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  color: var(--primary-color);
   margin-bottom: 0.8rem;
 }
 
@@ -298,6 +425,82 @@
   letter-spacing: 1.5px;
 }
 
+/* Animated Background Shapes */
+.about-shape {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.shape-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  opacity: 0.1;
+  animation: floatAnimation 20s infinite linear;
+}
+
+.shape-circle:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  right: -150px;
+  animation-duration: 25s;
+}
+
+.shape-circle:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  left: -100px;
+  animation-duration: 30s;
+}
+
+.shape-circle:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  animation-duration: 35s;
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(180deg) translate(50px, 50px);
+  }
+  100% {
+    transform: rotate(360deg) translate(0, 0);
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 5rem 1.5rem;
+  }
+  
+  .about-stats {
+    gap: 2rem;
+  }
+
+  .stat-item {
+    padding: 1.5rem;
+    min-width: 160px;
+  }
+
+  .shape-circle {
+    opacity: 0.05;
+  }
+}
+
 /* Clubs Section */
 .clubs {
   padding: 6rem 2rem;
@@ -306,6 +509,38 @@
   background: var(--clubs-gradient);
   color: var(--text-light);
   position: relative;
+}
+
+.clubs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--about-gradient-end), transparent);
+  z-index: 1;
+}
+
+.clubs h2 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  margin-bottom: 3rem;
+  color: var(--text-light);
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+}
+
+.clubs h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
 }
 
 .club-grid {
@@ -355,6 +590,19 @@
   );
   border-radius: 40%;
   animation: wave 55s infinite linear;
+}
+
+.club-card .wave:nth-child(2),
+.club-card .wave:nth-child(3) {
+  top: 210px;
+}
+
+.club-card .wave:nth-child(2) {
+  animation-duration: 50s;
+}
+
+.club-card .wave:nth-child(3) {
+  animation-duration: 45s;
 }
 
 .club-card img {
@@ -427,7 +675,7 @@
 /* Events Section */
 .events {
   padding: 6rem 2rem;
-  background: var(--events-gradient);
+  background-image: linear-gradient(90deg, #3e8d6b, #45a247);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: var(--text-light);
@@ -435,6 +683,7 @@
   overflow: hidden;
 }
 
+/* Animated Background */
 .events::before,
 .events::after {
   content: "";
@@ -482,7 +731,20 @@
   }
 }
 
+/* Rest of the existing event styles */
+.events h2 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 4rem;
+  color: var(--text-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
 .event-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 3rem;
@@ -490,31 +752,22 @@
   margin: 0 auto;
 }
 
+/* Event Card Styling */
 .event-card {
   position: relative;
-  background: var(--event-card);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  overflow: hidden;
-  transition: var(--transition);
-}
-
-.event-card:hover {
-  transform: translateY(-10px);
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .event-date {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: var(--accent-1);
-  color: var(--text-light);
-  border-radius: 12px;
+  background: var(--primary-color);
   padding: 10px;
+  border-radius: 12px;
   text-align: center;
   z-index: 2;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -525,17 +778,21 @@
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
+  color: var(--secondary-color);
 }
 
 .event-date .day {
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--secondary-color);
+  line-height: 1;
 }
 
 .event-date .year {
   display: block;
   font-size: 0.8rem;
+  color: var(--secondary-color);
   opacity: 0.8;
 }
 
@@ -568,15 +825,10 @@
   display: inline-block;
   padding: 4px 12px;
   margin-right: 8px;
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   font-size: 0.8rem;
-  color: var(--accent-3);
-  transition: var(--transition);
-}
-
-.tag:hover {
-  background: rgba(99, 102, 241, 0.2);
+  color: var(--text-light);
 }
 
 .event-card h3 {
@@ -591,31 +843,14 @@
   line-height: 1.6;
 }
 
+/* Preserve the original read-more hover effect */
 .read-more {
   display: inline-flex;
   align-items: center;
-  color: var(--accent-3);
+  color: var(--primary-color);
   text-decoration: none;
   gap: 8px;
-  font-weight: 600;
-  position: relative;
-  padding-bottom: 4px;
-  transition: var(--transition);
-}
-
-.read-more::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-1);
-  transition: width 0.3s ease;
-}
-
-.read-more:hover::after {
-  width: 100%;
+  transition: all 0.3s ease;
 }
 
 .read-more .icon {
@@ -624,42 +859,38 @@
   transition: transform 0.3s ease;
 }
 
+.read-more:hover {
+  color: var(--text-light);
+}
+
 .read-more:hover .icon {
   transform: translateX(5px);
 }
 
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media screen and (max-width: 768px) {
-  .hero-content {
-    padding: 0 1.5rem;
+  .events {
+    padding: 4rem 1rem;
   }
 
-  .stat-item {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.05);
+  .event-grid {
+    gap: 2rem;
   }
 
-  .event-card {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+  .event-date {
+    top: 15px;
+    right: 15px;
   }
 }
 
-/* Print Styles */
-@media print {
-  :root {
-    --text-dark: #000000;
-    --text-medium: #666666;
-  }
-
-  .hero {
-    height: auto;
-    min-height: 50vh;
-  }
-
-  .animated-bg,
-  .light-beam {
-    display: none;
-  }
+/* Screen Reader Only Text */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0, 0, 0, 0); /* Legacy support for older browsers */
+  clip-path: inset(50%); /* Modern approach for clipping content */
+  height: 1px; /* Minimal height to satisfy screen readers */
+  width: 1px; /* Minimal width to satisfy screen readers */
+  margin: -1px; /* Remove from document flow */
+  overflow: hidden; /* Hide overflowing content */
+  position: absolute; /* Take out of normal document flow */
+  white-space: nowrap; /* Prevent line breaks */
 }

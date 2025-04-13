@@ -19,14 +19,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="United Club Association - A vibrant community of university clubs and activities"
+      content="United Club Association - A vibrant community of university clubs and activities at University Laboratory School and College"
     />
-    <meta name="theme-color" content="#6366f1" />
-    <title>United Club Association</title>
+    <!-- Theme color with fallback -->
+    <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: dark)" />
+    <!-- Add Open Graph tags for better social sharing -->
+    <meta property="og:title" content="United Club Association" />
+    <meta
+      property="og:description"
+      content="A vibrant community of university clubs and activities at University Laboratory School and College"
+    />
+    <meta property="og:image" content="/images/UCA_Home_Page_Pic.jpg" />
+    <meta property="og:type" content="website" />
+    <title>United Club Association | University Laboratory School and College</title>
 
     <!-- Preload Critical Assets -->
     <link rel="preload" href="js/include-fonts.js" as="script" />
+    <link rel="preconnect" href="https://unpkg.com" />
     <link rel="preload" href="/images/UCA_Home_Page_Pic.jpg" as="image" />
+    <link rel="preload" href="css/index.css" as="style" />
 
     <!-- Include centralized fonts -->
     <script src="js/include-fonts.js" defer></script>
@@ -38,6 +50,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
+    <link rel="apple-touch-icon" href="/images/DU_Logo.png" />
 
     <!-- Modern Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
@@ -45,263 +58,274 @@
     <!-- Add AOS library for scroll animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+
+    <!-- Progressive Enhancement - Load polyfills only if needed -->
+    <script>
+      if (!('IntersectionObserver' in window)) {
+        document.write('<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"><\/script>');
+      }
+    </script>
   </head>
   <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
     <script src="js/include-navbar.js" defer></script>
 
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-overlay"></div>
-      <div class="animated-bg">
-        <div class="light-beam"></div>
-        <div class="light-beam"></div>
-        <div class="light-beam"></div>
-      </div>
-      <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-        <h1 id="hero-heading">United Club Association</h1>
-        <p class="hero-subtitle">Uniting Passions, Creating Connections</p>
-        <a
-          href="clubs/clubs.html"
-          class="explore-clubs-button"
-          aria-label="Explore all UCA clubs"
-        >
-          Explore Clubs
-          <svg
-            class="button-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-overlay"></div>
+        <div class="animated-bg">
+          <div class="light-beam"></div>
+          <div class="light-beam"></div>
+          <div class="light-beam"></div>
+        </div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+          <h1 id="hero-heading">United Club Association</h1>
+          <p class="hero-subtitle">Uniting Passions, Creating Connections</p>
+          <a
+            href="clubs/clubs.html"
+            class="explore-clubs-button"
+            aria-label="Explore all UCA clubs"
           >
-            <path
-              d="M13.75 6.75L19.25 12L13.75 17.25"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M19 12H4.75"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </a>
-      </div>
-    </section>
+            Explore Clubs
+            <svg
+              class="button-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+            >
+              <path
+                d="M13.75 6.75L19.25 12L13.75 17.25"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19 12H4.75"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </section>
 
-    <!-- About Section -->
-    <section class="about" aria-labelledby="about-heading">
-      <div class="about-container">
-        <div class="about-content">
-          <div class="about-text" data-aos="fade-up" data-aos-duration="800">
-            <h2 id="about-heading">About UCA</h2>
-            <p class="about-description">
-              The United Club Association (UCA) manages and supports the clubs
-              of University Laboratory School and College, fostering a vibrant
-              community of diverse activities.
-            </p>
-            <div class="about-stats">
-              <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                <span class="stat-number" data-count="9">0</span>
-                <span class="stat-label">Active Clubs</span>
-              </div>
-              <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                <span class="stat-number" data-count="100">0</span>
-                <span class="stat-label">Members</span>
-              </div>
-              <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
-                <span class="stat-number" data-count="5">0</span>
-                <span class="stat-label">Events</span>
+      <!-- About Section -->
+      <section class="about" aria-labelledby="about-heading">
+        <div class="about-container">
+          <div class="about-content">
+            <div class="about-text" data-aos="fade-up" data-aos-duration="800">
+              <h2 id="about-heading">About UCA</h2>
+              <p class="about-description">
+                The United Club Association (UCA) manages and supports the clubs
+                of University Laboratory School and College, fostering a vibrant
+                community of diverse activities.
+              </p>
+              <div class="about-stats">
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                  <span class="stat-number" data-count="9">0</span>
+                  <span class="stat-label">Active Clubs</span>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                  <span class="stat-number" data-count="100">0</span>
+                  <span class="stat-label">Members</span>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                  <span class="stat-number" data-count="5">0</span>
+                  <span class="stat-label">Events</span>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="about-shape">
+            <div class="shape-circle"></div>
+            <div class="shape-circle"></div>
+            <div class="shape-circle"></div>
           </div>
         </div>
-        <div class="about-shape">
-          <div class="shape-circle"></div>
-          <div class="shape-circle"></div>
-          <div class="shape-circle"></div>
+      </section>
+
+      <!-- Featured Clubs Section -->
+      <section
+        id="featured-clubs"
+        class="clubs"
+        aria-labelledby="featured-clubs-heading"
+      >
+        <h2 id="featured-clubs-heading" data-aos="fade-up">Featured Clubs</h2>
+        <div class="club-grid">
+          <a
+            href="clubs/sports-club.html"
+            class="club-card"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="wave"></div>
+            <img
+              src="images/sports-club.jpg"
+              alt="A group of students playing soccer"
+              loading="lazy"
+            />
+            <div class="club-info">
+              <h3>Sports Club</h3>
+            </div>
+          </a>
+          <a
+            href="clubs/quiz-club.html"
+            class="club-card"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="wave"></div>
+            <img
+              src="images/quiz-club.jpg"
+              alt="Students participating in a quiz competition"
+              loading="lazy"
+            />
+            <div class="club-info">
+              <h3>Quiz Club</h3>
+            </div>
+          </a>
+          <a
+            href="clubs/photography-club.html"
+            class="club-card"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="wave"></div>
+            <img
+              src="images/photography-club.jpg"
+              alt="A student taking photos with a DSLR camera"
+              loading="lazy"
+            />
+            <div class="club-info">
+              <h3>Photography Club</h3>
+            </div>
+          </a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Featured Clubs Section -->
-    <section
-      id="featured-clubs"
-      class="clubs"
-      aria-labelledby="featured-clubs-heading"
-    >
-      <h2 id="featured-clubs-heading" data-aos="fade-up">Featured Clubs</h2>
-      <div class="club-grid">
-        <a
-          href="clubs/sports-club.html"
-          class="club-card"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          <div class="wave"></div>
-          <div class="wave"></div>
-          <div class="wave"></div>
-          <img
-            src="images/sports-club.jpg"
-            alt="A group of students playing soccer"
-            loading="lazy"
-          />
-          <div class="club-info">
-            <h3>Sports Club</h3>
-          </div>
-        </a>
-        <a
-          href="clubs/quiz-club.html"
-          class="club-card"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <div class="wave"></div>
-          <div class="wave"></div>
-          <div class="wave"></div>
-          <img
-            src="images/quiz-club.jpg"
-            alt="Students participating in a quiz competition"
-            loading="lazy"
-          />
-          <div class="club-info">
-            <h3>Quiz Club</h3>
-          </div>
-        </a>
-        <a
-          href="clubs/photography-club.html"
-          class="club-card"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          <div class="wave"></div>
-          <div class="wave"></div>
-          <div class="wave"></div>
-          <img
-            src="images/photography-club.jpg"
-            alt="A student taking photos with a DSLR camera"
-            loading="lazy"
-          />
-          <div class="club-info">
-            <h3>Photography Club</h3>
-          </div>
-        </a>
-      </div>
-    </section>
+      <!-- Featured Events Section -->
+      <section class="events" aria-labelledby="featured-events-heading">
+        <h2 id="featured-events-heading" data-aos="fade-up">Featured Events</h2>
+        <div class="event-grid">
+          <!-- Event Card 1: SnapFest -->
+          <article class="event-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="event-date">
+              <span class="month">Nov</span>
+              <span class="day">18</span>
+              <span class="year">2024</span>
+            </div>
+            <div class="event-image">
+              <img
+                src="images/Snapfest_Event_Pic.jpg"
+                alt="SnapFest: A photography event showcasing prize-winning pictures"
+                loading="lazy"
+              />
+            </div>
+            <div class="event-content">
+              <div class="event-tags">
+                <span class="tag">Photography</span>
+                <span class="tag">Exhibition</span>
+              </div>
+              <h3>SnapFest</h3>
+              <p>
+                Hosted by University Laboratory Photography Club, featuring the
+                best pictures from the Prize Giving Ceremony at TSC.
+              </p>
+              <a href="events/snapfest.html" class="read-more">
+                Read more <span class="sr-only">about SnapFest</span>
+                <i data-feather="arrow-right" class="icon"></i>
+              </a>
+            </div>
+          </article>
+          <!-- Event Card 2: TriQuest -->
+          <article class="event-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="event-date">
+              <span class="month">Dec</span>
+              <span class="day">2</span>
+              <span class="year">2024</span>
+            </div>
+            <div class="event-image">
+              <img
+                src="images/TriQuest- Battle_of_Knowledge.jpg"
+                alt="TriQuest: A quiz competition"
+                loading="lazy"
+              />
+            </div>
+            <div class="event-content">
+              <div class="event-tags">
+                <span class="tag">Quiz</span>
+                <span class="tag">Competition</span>
+              </div>
+              <h3>TriQuest</h3>
+              <p>
+                A quiz competition hosted by Quiz Club, Science Club, and
+                Language Club.
+              </p>
+              <a href="events/triquest.html" class="read-more">
+                Read more <span class="sr-only">about TriQuest</span>
+                <i data-feather="arrow-right" class="icon"></i>
+              </a>
+            </div>
+          </article>
+          <!-- Event Card 3: Okkhore Ekush -->
+          <article class="event-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="event-date">
+              <span class="month">Feb</span>
+              <span class="day">21</span>
+              <span class="year">2025</span>
+            </div>
+            <div class="event-image">
+              <img
+                src="images/okkhore-ekush.png"
+                alt="অক্ষরে একুশ - Language Day Celebration"
+                loading="lazy"
+              />
+            </div>
+            <div class="event-content">
+              <div class="event-tags">
+                <span class="tag">Cultural</span>
+                <span class="tag">Language Day</span>
+              </div>
+              <h3>অক্ষরে একুশ</h3>
+              <p>
+                ULLC, ULIC, ও ULPC কর্তৃক আয়োজিত ভাষা ও সংস্কৃতির প্রতি শ্রদ্ধা
+                জানানো একটি বিশেষ অনুষ্ঠান।
+              </p>
+              <a href="events/okkhore-ekush.html" class="read-more">
+                Read more <span class="sr-only">about Okkhore Ekush</span>
+                <i data-feather="arrow-right" class="icon"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
 
-    <!-- Featured Events Section -->
-    <section class="events" aria-labelledby="featured-events-heading">
-      <h2 id="featured-events-heading" data-aos="fade-up">Featured Events</h2>
-      <div class="event-grid">
-        <!-- Event Card 1: SnapFest -->
-        <article class="event-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="event-date">
-            <span class="month">Nov</span>
-            <span class="day">18</span>
-            <span class="year">2024</span>
-          </div>
-          <div class="event-image">
-            <img
-              src="images/Snapfest_Event_Pic.jpg"
-              alt="SnapFest: A photography event showcasing prize-winning pictures"
-              loading="lazy"
-            />
-          </div>
-          <div class="event-content">
-            <div class="event-tags">
-              <span class="tag">Photography</span>
-              <span class="tag">Exhibition</span>
-            </div>
-            <h3>SnapFest</h3>
-            <p>
-              Hosted by University Laboratory Photography Club, featuring the
-              best pictures from the Prize Giving Ceremony at TSC.
-            </p>
-            <a href="events/snapfest.html" class="read-more">
-              Read more <span class="sr-only">about SnapFest</span>
-              <i data-feather="arrow-right" class="icon"></i>
-            </a>
-          </div>
-        </article>
-        <!-- Event Card 2: TriQuest -->
-        <article class="event-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="event-date">
-            <span class="month">Dec</span>
-            <span class="day">2</span>
-            <span class="year">2024</span>
-          </div>
-          <div class="event-image">
-            <img
-              src="images/TriQuest- Battle_of_Knowledge.jpg"
-              alt="TriQuest: A quiz competition"
-              loading="lazy"
-            />
-          </div>
-          <div class="event-content">
-            <div class="event-tags">
-              <span class="tag">Quiz</span>
-              <span class="tag">Competition</span>
-            </div>
-            <h3>TriQuest</h3>
-            <p>
-              A quiz competition hosted by Quiz Club, Science Club, and Language
-              Club.
-            </p>
-            <a href="events/triquest.html" class="read-more">
-              Read more <span class="sr-only">about TriQuest</span>
-              <i data-feather="arrow-right" class="icon"></i>
-            </a>
-          </div>
-        </article>
-        <!-- Event Card 3: Okkhore Ekush -->
-        <article class="event-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="event-date">
-            <span class="month">Feb</span>
-            <span class="day">21</span>
-            <span class="year">2025</span>
-          </div>
-          <div class="event-image">
-            <img
-              src="images/okkhore-ekush.png"
-              alt="অক্ষরে একুশ - Language Day Celebration"
-              loading="lazy"
-            />
-          </div>
-          <div class="event-content">
-            <div class="event-tags">
-              <span class="tag">Cultural</span>
-              <span class="tag">Language Day</span>
-            </div>
-            <h3>অক্ষরে একুশ</h3>
-            <p>
-              ULLC, ULIC, ও ULPC কর্তৃক আয়োজিত ভাষা ও সংস্কৃতির প্রতি শ্রদ্ধা
-              জানানো একটি বিশেষ অনুষ্ঠান।
-            </p>
-            <a href="events/okkhore-ekush.html" class="read-more">
-              Read more <span class="sr-only">about Okkhore Ekush</span>
-              <i data-feather="arrow-right" class="icon"></i>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Footer will be inserted here by include-footer.js -->
+    <!-- Footer -->
     <script src="js/include-footer.js" defer></script>
 
     <!-- Initialize Feather Icons and AOS -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Initialize AOS
+        // Initialize AOS with reduced motion preference check
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        );
+
         AOS.init({
-          duration: 800,
+          duration: prefersReducedMotion.matches ? 0 : 800,
           once: true,
           offset: 100,
+          disable: prefersReducedMotion.matches,
         });
 
         // Initialize Feather Icons
@@ -311,36 +335,40 @@
           });
         }
 
-        // Animate statistics numbers
+        // Animate statistics numbers with IntersectionObserver
         const stats = document.querySelectorAll(".stat-number");
-        stats.forEach((stat) => {
-          const target = parseInt(stat.getAttribute("data-count"));
-          let count = 0;
-          const duration = 2000; // 2 seconds
-          const increment = target / (duration / 16); // 60fps
-
-          const updateCount = () => {
-            if (count < target) {
-              count += increment;
-              stat.textContent = Math.ceil(count) + (target >= 100 ? "+" : "");
-              requestAnimationFrame(updateCount);
-            } else {
-              stat.textContent = target + (target >= 100 ? "+" : "");
-            }
-          };
-
-          // Start animation when element is in view
-          const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(
+          (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
+              if (entry.isIntersecting && !prefersReducedMotion.matches) {
+                const stat = entry.target;
+                const target = parseInt(stat.getAttribute("data-count"));
+                let count = 0;
+                const duration = 2000;
+                const increment = target / (duration / 16);
+
+                const updateCount = () => {
+                  if (count < target) {
+                    count += increment;
+                    stat.textContent =
+                      Math.ceil(count) + (target >= 100 ? "+" : "");
+                    requestAnimationFrame(updateCount);
+                  } else {
+                    stat.textContent = target + (target >= 100 ? "+" : "");
+                  }
+                };
+
                 updateCount();
                 observer.unobserve(entry.target);
               }
             });
-          });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
 
-          observer.observe(stat);
-        });
+        stats.forEach((stat) => observer.observe(stat));
       });
     </script>
   </body>
