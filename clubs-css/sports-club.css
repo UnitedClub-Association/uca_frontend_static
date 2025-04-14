@@ -1,11 +1,11 @@
 :root {
-  --club-primary: #1e3a8a; /* Navy blue */
+  --club-primary: #2a4da0; /* Slightly lighter navy blue to match logo */
   --club-secondary: #f8fafc; /* Light silver */
   --club-accent: #ef4444; /* Energetic red */
   --club-highlight: #2563eb; /* Bright blue */
   --text-light: #ffffff;
   --text-dark: #1a1a1a;
-  --sports-shadow: 0 8px 30px rgba(30, 58, 138, 0.15);
+  --sports-shadow: 0 8px 30px rgba(42, 77, 160, 0.15);
   --navbar-height: 80px;
   --footer-height: 400px;
   --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -28,7 +28,7 @@
 .club-header {
   text-align: center;
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, var(--club-primary), #1e40af);
+  background: linear-gradient(135deg, var(--club-primary), #2a4da0);
   position: relative;
   border-radius: 12px;
   margin-bottom: 3rem;
@@ -57,6 +57,27 @@
     );
   background-size: 100px 100px, 100% 100%, 100% 100%;
   opacity: 0.2;
+}
+
+/* Logo styling */
+.club-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.club-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--club-secondary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.club-logo:hover {
+  transform: scale(1.05);
 }
 
 .club-title {
@@ -173,14 +194,14 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: rgba(30, 58, 138, 0.05);
+  background: rgba(42, 77, 160, 0.05);
   border-radius: 8px;
   transition: var(--transition-standard);
   border-left: 3px solid var(--club-primary);
 }
 
 .feature-list li:hover {
-  background: rgba(30, 58, 138, 0.1);
+  background: rgba(42, 77, 160, 0.1);
   transform: translateX(5px);
 }
 
@@ -310,6 +331,11 @@
 
   .club-title {
     font-size: 2.8rem;
+  }
+
+  .club-logo {
+    width: 120px;
+    height: 120px;
   }
 
   .feature-list {

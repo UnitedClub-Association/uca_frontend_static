@@ -18,87 +18,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Debate Club - United Club Association</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
-    
+
     <script src="/js/include-fonts.js"></script>
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/clubs-css/debate-club.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://unpkg.com/feather-icons" defer></script>
   </head>
   <body>
-    <!-- Navbar -->
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar will be inserted here by include-navbar.js -->
     <script src="/js/include-navbar.js"></script>
 
-    <main class="club-page">
+    <main class="club-page" id="main-content">
       <header class="club-header">
+        <div class="debate-bubbles" aria-hidden="true">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+        <!-- Update the src attribute to point to the correct image path -->
+        <img
+          src="/images/debate-club.jpg"
+          alt="Debate Club Logo"
+          class="club-logo"
+        />
         <h1 class="club-title">Debate Club</h1>
         <p class="club-description">
-          Fostering critical thinking, eloquence, and persuasive communication through the art of debate
+          <strong>THINK • SPEAK • PERSUADE</strong>
+          Developing critical thinking and public speaking skills through
+          structured debate
         </p>
       </header>
 
       <section class="club-content">
         <div class="section-card about-section">
-          <h2>About Our Club</h2>
+          <h2><i data-feather="award"></i> About Our Club</h2>
           <p>
-            The University Laboratory Debate Club is a dynamic community dedicated to the art of persuasive speaking and logical reasoning. We provide a platform for students to develop critical thinking skills, build confidence in public speaking, and engage with contemporary issues through structured debates.
+            The Debate Club provides a platform for students to develop critical
+            thinking skills and build confidence in public speaking. We focus on
+            learning the fundamentals of argumentation and respectful discourse.
           </p>
           <p>
-            Our members participate in various debate formats including Parliamentary, Lincoln-Douglas, and Model UN, gaining valuable experience that extends beyond the classroom. Whether you're a seasoned debater or just curious about the activity, we welcome all students interested in honing their argumentative skills.
+            Our members practice various debate formats and discuss contemporary
+            issues in a supportive environment. Whether you're experienced or
+            just starting out, we welcome all students interested in improving
+            their communication skills.
           </p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <i data-feather="users" class="feature-icon"></i>
+              <span class="feature-text"
+                >Bi-weekly meetings on Mondays at 6:30 PM in the Student
+                Union</span
+              >
+            </li>
+            <li class="feature-item">
+              <i data-feather="book" class="feature-icon"></i>
+              <span class="feature-text"
+                >Learn different debate formats and techniques</span
+              >
+            </li>
+            <li class="feature-item">
+              <i data-feather="message-circle" class="feature-icon"></i>
+              <span class="feature-text"
+                >Practice in a supportive, constructive environment</span
+              >
+            </li>
+            <li class="feature-item">
+              <i data-feather="award" class="feature-icon"></i>
+              <span class="feature-text"
+                >Participate in inter-university debate competitions</span
+              >
+            </li>
+          </ul>
         </div>
 
-        <div class="section-card connect-section">
-          <h2>Connect With Us</h2>
+        <div class="connect-section">
+          <h2><i data-feather="link"></i> Connect With Us</h2>
           <p>
-            Join our vibrant community of debaters and critical thinkers. Follow us on social media to stay updated on upcoming debates, workshops, and competitions.
+            Interested in joining or have questions? Reach out through our
+            social channels or email us directly.
           </p>
           <div class="social-links">
             <a
-              href="https://sites.google.com/view/uldc"
-              class="website-btn"
+              href="mailto:debate@university.edu"
+              class="contact-btn"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i data-feather="globe"></i>
-              <span>Official Website</span>
+              <i data-feather="mail"></i>
+              <span>Email Us</span>
             </a>
             <a
-              href="https://www.facebook.com/uldc.fb"
+              href="https://www.facebook.com/university.debate"
               class="social-btn"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i data-feather="facebook"></i>
-              <span>Follow on Facebook</span>
+              <span>Facebook</span>
             </a>
             <a
-              href="https://www.instagram.com/uldc.ig"
+              href="https://www.instagram.com/university_debate"
               class="social-btn"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i data-feather="instagram"></i>
-              <span>Follow on Instagram</span>
+              <span>Instagram</span>
             </a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer will be inserted here by include-footer.js -->
     <script src="/js/include-footer.js"></script>
 
     <!-- Initialize Icons -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         if (typeof feather !== "undefined") {
           feather.replace({
-            "aria-hidden": "true"
+            "aria-hidden": "true",
           });
         } else {
           console.error("Feather Icons library failed to load.");
