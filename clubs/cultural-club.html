@@ -18,10 +18,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cultural Club - United Club Association</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
-    
+
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -31,17 +31,26 @@
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/clubs-css/cultural-club.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://unpkg.com/feather-icons" defer></script>
   </head>
   <body>
-    <!-- Navbar -->
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar will be inserted here by include-navbar.js -->
     <script src="/js/include-navbar.js"></script>
 
     <main class="club-page" id="main-content">
       <header class="club-header" role="banner">
+        <img
+          src="/images/cultural-club.jpg"
+          alt="Cultural Club Logo"
+          class="club-logo"
+        />
         <h1 class="club-title">Cultural Club</h1>
         <p class="club-description">
-          Celebrate diversity through art, music, and cultural performances.
+          <strong>CELEBRATE • CREATE • CONNECT</strong>
+          Celebrating diversity through art, music, and cultural performances.
           Experience the richness of different traditions and express your
           creativity.
         </p>
@@ -49,20 +58,62 @@
 
       <section class="club-content">
         <div class="about-section">
-          <h2><i data-feather="users"></i> About Us</h2>
+          <h2><i data-feather="users"></i> About Our Club</h2>
           <p>
             The University Laboratory Cultural Club is a vibrant community
             dedicated to celebrating the diverse cultural heritage of our
-            students. We organize cultural events, performances, art
-            exhibitions, and workshops that showcase traditional and
-            contemporary artistic expressions. Our club provides a platform for
-            students to explore their creative talents and share their cultural
-            backgrounds with the wider community.
+            students. We provide a platform for cultural exchange, artistic
+            expression, and community building through various events and
+            activities.
           </p>
+          <p>
+            Our mission is to foster understanding and appreciation of different
+            cultures, traditions, and art forms. Through our events, we aim to
+            create an inclusive environment where students can share their
+            cultural backgrounds and learn from one another.
+          </p>
+
+          <ul class="feature-list">
+            <li class="feature-item">
+              <i data-feather="calendar" class="feature-icon"></i>
+              <span class="feature-text">
+                Regular cultural festivals and celebrations throughout the year
+              </span>
+            </li>
+            <li class="feature-item">
+              <i data-feather="music" class="feature-icon"></i>
+              <span class="feature-text">
+                Music and dance performances showcasing diverse traditions
+              </span>
+            </li>
+            <li class="feature-item">
+              <i data-feather="edit" class="feature-icon"></i>
+              <span class="feature-text">
+                Art exhibitions and workshops for creative expression
+              </span>
+            </li>
+            <li class="feature-item">
+              <i data-feather="globe" class="feature-icon"></i>
+              <span class="feature-text">
+                Cultural exchange programs and international collaborations
+              </span>
+            </li>
+            <li class="feature-item">
+              <i data-feather="coffee" class="feature-icon"></i>
+              <span class="feature-text">
+                Social gatherings and community-building activities
+              </span>
+            </li>
+          </ul>
         </div>
 
         <div class="connect-section">
           <h2><i data-feather="link"></i> Connect With Us</h2>
+          <p>
+            Join our diverse community and be part of exciting cultural events
+            and activities. Follow us on social media to stay updated on
+            upcoming events and opportunities.
+          </p>
           <div class="social-links">
             <a
               href="https://sites.google.com/view/ulcc"
@@ -73,37 +124,42 @@
               <i data-feather="globe"></i>
               <span>Official Website</span>
             </a>
-            <div class="social-links">
-              <a
-                href="https://www.facebook.com/ulcc.fb"
-                class="social-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i data-feather="facebook"></i>
-                <span>Follow on Facebook</span>
-              </a>
-              <a
-                href="https://www.instagram.com/ulcc.ig"
-                class="social-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i data-feather="instagram"></i>
-                <span>Follow on Instagram</span>
-              </a>
-            </div>
+            <a
+              href="https://www.facebook.com/ulcc.fb"
+              class="social-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i data-feather="facebook"></i>
+              <span>Facebook</span>
+            </a>
+            <a
+              href="https://www.instagram.com/ulcc.ig"
+              class="social-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i data-feather="instagram"></i>
+              <span>Instagram</span>
+            </a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer will be inserted here by include-footer.js -->
     <script src="/js/include-footer.js"></script>
 
     <!-- Initialize Icons -->
     <script>
-      feather.replace();
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof feather !== "undefined") {
+          feather.replace({
+            "stroke-width": 2,
+            color: "#8e44ad",
+          });
+        }
+      });
     </script>
   </body>
 </html>

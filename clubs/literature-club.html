@@ -56,15 +56,25 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navbar will be inserted here by include-navbar.js -->
-    <div id="navbar-placeholder"></div>
 
     <main class="club-page" id="main-content">
       <div class="book-spine-decoration" aria-hidden="true"></div>
 
       <header class="club-header" role="banner">
+        <div class="floating-pages" aria-hidden="true">
+          <div class="floating-page"></div>
+          <div class="floating-page"></div>
+          <div class="floating-page"></div>
+          <div class="floating-page"></div>
+          <div class="floating-page"></div>
+        </div>
         <div class="header-content">
-          <div class="club-logo">
-            <img src="/images/clubs/literature-club.jpg" alt="Literature Club Logo" />
+          <div class="club-logo-container">
+            <img
+              src="/images/literature-club.jpg"
+              alt="Literature Club Logo"
+              class="club-logo"
+            />
           </div>
           <h1 class="club-title">Literature Club</h1>
           <p class="club-description">
@@ -79,80 +89,55 @@
 
       <section class="club-content">
         <div class="literature-card book-style">
+          <div class="ink-splatter top-right" aria-hidden="true"></div>
+          <div class="ink-splatter bottom-left" aria-hidden="true"></div>
           <div class="card-header">
-            <h2><i data-feather="book-open"></i> About Our Club</h2>
+            <h2><i data-feather="book-open"></i> About Our Literary Journey</h2>
           </div>
           <div class="card-content">
             <p class="first-letter">
-              Welcome to the Literature Club, a sanctuary for book lovers and
-              aspiring writers. We celebrate the written word in all its forms,
-              from classic novels to contemporary poetry. Join us in exploring
-              the boundless realms of literature through book discussions,
-              creative writing workshops, poetry readings, and our cozy literary
-              cafés.
+              Welcome to the Literature Club, where words dance across pages and imagination knows no bounds. 
+              We are a passionate community of readers, writers, and dreamers dedicated to exploring the vast 
+              landscapes of literary expression—from the timeless classics of Shakespeare and Austen to the 
+              contemporary voices reshaping our understanding of narrative and verse.
             </p>
             <p>
-              Join the Literature Club and embark on a journey of discovery.
+              Our gatherings celebrate the written word in all its forms: spirited book discussions that 
+              delve into layered meanings, creative writing workshops that nurture budding authors, poetry 
+              readings that breathe life into carefully crafted verses, and cozy literary cafés where ideas 
+              flow as freely as tea and coffee.
             </p>
-          </div>
-        </div>
-
-        <div class="literature-card book-style">
-          <div class="card-header">
-            <h2><i data-feather="calendar"></i> Upcoming Events</h2>
-          </div>
-          <div class="card-content">
-            <div class="event-item">
-              <div class="event-date">
-                <span class="month">Oct</span>
-                <span class="day">15</span>
-              </div>
-              <div class="event-details">
-                <h3>Poetry Reading Night</h3>
-                <p>Join us for an evening of poetry and prose as members share their original works.</p>
-                <div class="event-meta">
-                  <i data-feather="map-pin"></i> Library Reading Room
-                </div>
-              </div>
-            </div>
-            <div class="event-item">
-              <div class="event-date">
-                <span class="month">Nov</span>
-                <span class="day">5</span>
-              </div>
-              <div class="event-details">
-                <h3>Book Discussion: "The Great Gatsby"</h3>
-                <p>Explore the themes and symbolism in F. Scott Fitzgerald's classic novel.</p>
-                <div class="event-meta">
-                  <i data-feather="map-pin"></i> English Department Lounge
-                </div>
-              </div>
-            </div>
+            <p>
+              Whether you find solace in dog-eared paperbacks, inspiration in experimental prose, or 
+              connection through shared stories, our club offers a sanctuary where literary passion thrives. 
+              Join us as we turn pages together, exploring both the hallowed halls of canonical literature 
+              and the exciting frontiers of emerging voices.
+            </p>
           </div>
         </div>
 
         <div class="connect-section manuscript-style">
           <h2><i data-feather="book"></i> Join Our Literary Circle</h2>
           <p class="connect-intro">
-            Connect with fellow book lovers, share your literary journey, and
-            stay updated on our upcoming reading sessions and poetry nights.
+            "In the world of books, we find companions for a lifetime. Connect with fellow bibliophiles, 
+            share your literary journey, and immerse yourself in our community of words and wonder."
           </p>
           <div class="social-grid">
             <a href="#" class="social-item">
               <i data-feather="globe"></i>
-              <span>Official Website</span>
+              <span>Literary Portal</span>
             </a>
             <a href="#" class="social-item">
               <i data-feather="instagram"></i>
-              <span>Instagram</span>
+              <span>Visual Verses</span>
             </a>
             <a href="#" class="social-item">
               <i data-feather="facebook"></i>
-              <span>Facebook</span>
+              <span>Chapter Updates</span>
             </a>
             <a href="mailto:literature@ulsc.edu" class="social-item">
               <i data-feather="mail"></i>
-              <span>Contact Us</span>
+              <span>Pen Pals</span>
             </a>
           </div>
         </div>
@@ -160,7 +145,6 @@
     </main>
 
     <!-- Footer will be inserted here by include-footer.js -->
-    <div id="footer-placeholder"></div>
 
     <!-- Initialize Feather Icons -->
     <script>

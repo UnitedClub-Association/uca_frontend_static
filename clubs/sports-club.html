@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/clubs-css/sports-club.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto+Condensed:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <script src="/js/include-fonts.js" defer></script>
@@ -39,7 +39,10 @@
     <!-- Initialize Icons -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        feather.replace();
+        feather.replace({
+          'stroke-width': 2.5,
+          'color': '#e53e3e'
+        });
       });
     </script>
   </head>
@@ -51,14 +54,26 @@
 
     <main class="club-page" id="main-content">
       <header class="club-header" role="banner">
-        <div class="club-logo-container">
-          <img src="/images/sports-club.jpg" alt="Sports Club Logo" class="club-logo">
+        <!-- Animated sports equipment background -->
+        <div class="sports-equipment" aria-hidden="true">
+          <div class="equipment basketball"></div>
+          <div class="equipment football"></div>
+          <div class="equipment tennis"></div>
+          <div class="equipment cricket"></div>
         </div>
+        
+        <div class="club-logo-container">
+          <div class="logo-3d-container">
+            <div class="club-logo">
+              <div class="logo-shine"></div>
+            </div>
+          </div>
+        </div>
+        
         <h1 class="club-title">Sports Club</h1>
         <p class="club-description">
           <strong>PLAY • COMPETE • EXCEL</strong>
-          Fostering athletic excellence and team spirit through competitive
-          sports
+          Fostering athletic excellence and team spirit through competitive sports
         </p>
       </header>
 
