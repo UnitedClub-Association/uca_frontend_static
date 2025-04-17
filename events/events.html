@@ -1,92 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag("js", new Date());
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events - United Club Association</title>
+    <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="/js/include-fonts.js"></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/events.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://unpkg.com/feather-icons" defer></script>
   </head>
   <body>
+    <!-- Removed skip link -->
+
     <script src="/js/include-navbar.js"></script>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Events</h1>
-      </div>
-    </section>
+    <main id="main-content">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-content">
+          <!-- Changed title from "Campus Events" to just "Events" -->
+          <h1 id="page-title">Events</h1>
+          <p>
+            Discover exciting activities, workshops, and gatherings hosted by
+            our diverse student clubs
+          </p>
+        </div>
+      </section>
 
-    <section class="featured-events">
-      <h2>Featured Events</h2>
-      <div class="articles">
-        <article>
-          <div class="article-wrapper">
-            <figure>
-              <img src="/images/Snapfest_Event_Pic.jpg" alt="SnapFest" />
-            </figure>
-            <div class="article-body">
-              <h2>SnapFest</h2>
-              <p>Hosted by ULPC, featuring the best pictures from the Prize Giving Ceremony at TSC.</p>
-              <a href="/events/snapfest.html" class="details-btn">Details</a>
-            </div>
+      <section class="section featured-events">
+        <div class="section-inner">
+          <div class="section-header">
+            <h2 class="section-title">Featured Events</h2>
           </div>
-        </article>
 
-        <article>
-          <div class="article-wrapper">
-            <figure>
-              <img src="/images/TriQuest- Battle_of_Knowledge.jpg" alt="TriQuest" />
-            </figure>
-            <div class="article-body">
-              <h2>TriQuest</h2>
-              <p>A quiz competition hosted by Quiz Club, Science Club, and Language Club.</p>
-              <a href="/events/triquest.html" class="details-btn">Details</a>
-            </div>
+          <div class="articles">
+            <article>
+              <div class="article-wrapper">
+                <figure>
+                  <div class="event-date">November 17 2024</div>
+                  <img
+                    src="/images/Snapfest_Event_Pic.jpg"
+                    alt="SnapFest Photography Exhibition"
+                  />
+                </figure>
+                <div class="article-body">
+                  <h2>SnapFest Photography Exhibition</h2>
+                  <!-- Removed location and time tags -->
+                  <p>
+                    Immerse yourself in visual storytelling at our annual
+                    photography exhibition. Featuring award-winning captures
+                    from the Prize Giving Ceremony and beyond, this event
+                    celebrates artistic expression through the lens.
+                  </p>
+                  <a href="/events/snapfest.html" class="details-btn">
+                    View Details <i data-feather="arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article>
+              <div class="article-wrapper">
+                <figure>
+                  <div class="event-date">December 2, 2024</div>
+                  <img
+                    src="/images/TriQuest- Battle_of_Knowledge.jpg"
+                    alt="TriQuest: Battle of Knowledge"
+                  />
+                </figure>
+                <div class="article-body">
+                  <h2>TriQuest: Battle of Knowledge</h2>
+                  <!-- Removed location and time tags -->
+                  <p>
+                    Challenge your intellect in this collaborative quiz
+                    competition hosted by the Quiz Club, Science Club, and
+                    Language Club. Test your knowledge across various
+                    disciplines and compete for exciting prizes.
+                  </p>
+                  <a href="/events/triquest.html" class="details-btn">
+                    View Details <i data-feather="arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article>
+              <div class="article-wrapper">
+                <figure>
+                  <div class="event-date">February 21, 2025</div>
+                  <img
+                    src="/images/okkhore-ekush.png"
+                    alt="অক্ষরে একুশ - Language Day Celebration"
+                  />
+                </figure>
+                <div class="article-body">
+                  <h2>অক্ষরে একুশ - Language Day</h2>
+                  <!-- Removed location and time tags -->
+                  <p>
+                    Join us for a special commemoration of International Mother
+                    Language Day. This collaborative event by the Language,
+                    Literature, and Photography clubs honors our linguistic
+                    heritage through performances and exhibitions.
+                  </p>
+                  <a href="/events/okkhore-ekush.html" class="details-btn">
+                    View Details <i data-feather="arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
+        </div>
+      </section>
 
-        <article>
-          <div class="article-wrapper">
-            <figure>
-              <img src="/images/okkhore-ekush.png" alt="অক্ষরে একুশ" />
-            </figure>
-            <div class="article-body">
-              <h2>অক্ষরে একুশ</h2>
-              <p>ULLC, ULIC, ও ULPC কর্তৃক আয়োজিত ভাষা ও সংস্কৃতির প্রতি শ্রদ্ধা জানানো একটি বিশেষ অনুষ্ঠান।</p>
-              <a href="/events/okkhore-ekush.html" class="details-btn">Details</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
+      <section class="all-events-cta">
+        <div class="cta-content">
+          <h2>Explore Our Complete Event Calendar</h2>
+          <p>
+            Discover all upcoming and past events organized by our diverse clubs
+            and associations throughout the academic year
+          </p>
+          <a href="/events/all-events.html" class="cta-button">
+            View All Events <i data-feather="arrow-right"></i>
+          </a>
+        </div>
+      </section>
 
-    <section class="all-events-cta">
-      <div class="cta-content">
-        <h2>View All Events</h2>
-        <a href="/events/all-events.html" class="cta-button">Explore More</a>
-      </div>
-    </section>
-
-    <section class="join-club-cta">
-      <div class="cta-content">
-        <h2>Not in a club?</h2>
-        <a href="/contact/join-us.html" class="cta-button">Join a Club</a>
-      </div>
-    </section>
+      <section class="join-club-cta">
+        <div class="cta-content">
+          <h2>Be Part of Something Extraordinary</h2>
+          <p>
+            Join one of our student clubs to participate in exciting events,
+            develop new skills, and connect with like-minded peers
+          </p>
+          <a href="/contact/join-us.html" class="cta-button">
+            Join a Club <i data-feather="user-plus"></i>
+          </a>
+        </div>
+      </section>
+    </main>
 
     <script src="/js/include-footer.js"></script>
     <script>
-      feather.replace();
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof feather !== "undefined") {
+          feather.replace({
+            "stroke-width": 2,
+            color: "currentColor",
+            size: 18,
+          });
+        }
+      });
     </script>
   </body>
 </html>

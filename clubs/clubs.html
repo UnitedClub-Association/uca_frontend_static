@@ -31,336 +31,603 @@
     <!-- Navbar -->
     <script src="/js/include-navbar.js"></script>
 
+    <!-- Hero Section -->
+    <section class="clubs-hero">
+      <div class="hero-content">
+        <h1>Our Vibrant Clubs</h1>
+        <p>Discover communities where passion meets purpose</p>
+      </div>
+    </section>
+
     <!-- Clubs Section -->
     <section class="clubs">
       <h2>Explore Our Clubs</h2>
+      <div class="clubs-filter">
+        <button class="filter-btn active" data-filter="all">All Clubs</button>
+        <button class="filter-btn" data-filter="academic">Academic</button>
+        <button class="filter-btn" data-filter="cultural">Cultural</button>
+        <button class="filter-btn" data-filter="sports">Sports</button>
+      </div>
+
       <div class="container">
         <!-- Debate Club -->
-        <div class="card" data-club="debate" style="--i: 1">
-          <div
-            class="pic"
-            style="background-image: url('/images/debate-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Debate Club</h2>
-            <p>
-              Master the art of persuasion and critical thinking through
-              competitive debates.
-            </p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/uldc.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/uldc.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/uldc"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="debate"
+          data-category="academic"
+          style="--i: 1"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/debate-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Debate Club</h2>
+                <span class="club-tag">Academic</span>
+              </div>
+              <p>
+                Master the art of persuasion and critical thinking through
+                competitive debates.
+              </p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/uldc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/uldc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/uldc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/debate-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/debate-club.html" class="details-btn">Details</a>
           </div>
         </div>
 
         <!-- Photography Club -->
-        <div class="card" data-club="photography" style="--i: 2">
-          <div
-            class="pic"
-            style="background-image: url('/images/photography-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Photography Club</h2>
-            <p>
-              Capture moments and tell stories through the lens of creativity.
-            </p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ulpc.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ulpc.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ulpc"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="photography"
+          data-category="cultural"
+          style="--i: 2"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/photography-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Photography Club</h2>
+                <span class="club-tag">Cultural</span>
+              </div>
+              <p>
+                Capture moments and tell stories through the art of photography.
+              </p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ulpc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ulpc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ulpc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/photography-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/photography-club.html" class="details-btn"
-              >Details</a
-            >
           </div>
         </div>
 
         <!-- Sports Club -->
-        <div class="card" data-club="sports" style="--i: 3">
-          <div
-            class="pic"
-            style="background-image: url('/images/sports-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Sports Club</h2>
-            <p>
-              Embrace athleticism and team spirit through various sporting
-              activities.
-            </p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ulsc.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ulsc.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ulsc"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="sports"
+          data-category="sports"
+          style="--i: 3"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/sports-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Sports Club</h2>
+                <span class="club-tag">Sports</span>
+              </div>
+              <p>
+                Develop athletic skills and team spirit through various sports
+                activities.
+              </p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ulsc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ulsc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ulsc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/sports-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/sports-club.html" class="details-btn">Details</a>
           </div>
         </div>
 
         <!-- Quiz Club -->
-        <div class="card" data-club="quiz" style="--i: 4">
-          <div
-            class="pic"
-            style="background-image: url('/images/quiz-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Quiz Club</h2>
-            <p>
-              Challenge your knowledge and compete in exciting quiz
-              competitions.
-            </p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ulqc.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ulqc.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ulqc"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="quiz"
+          data-category="academic"
+          style="--i: 4"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/quiz-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Quiz Club</h2>
+                <span class="club-tag">Academic</span>
+              </div>
+              <p>
+                Test your knowledge and learn new facts through exciting quiz
+                competitions.
+              </p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ulqc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ulqc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ulqc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/quiz-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/quiz-club.html" class="details-btn">Details</a>
           </div>
         </div>
 
         <!-- Science Club -->
-        <div class="card" data-club="science" style="--i: 5">
-          <div
-            class="pic"
-            style="background-image: url('/images/science-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Science Club</h2>
-            <p>
-              Explore the wonders of science through experiments and research.
-            </p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ulscc.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ulscc.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ulscc"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="science"
+          data-category="academic"
+          style="--i: 5"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/science-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Science Club</h2>
+                <span class="club-tag">Academic</span>
+              </div>
+              <p>
+                Explore the wonders of science through experiments and research.
+              </p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ulscc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ulscc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ulscc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/science-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/science-club.html" class="details-btn">Details</a>
           </div>
         </div>
 
         <!-- ICT Club -->
-        <div class="card" data-club="ict" style="--i: 6">
-          <div
-            class="pic"
-            style="background-image: url('/images/ict-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>ICT Club</h2>
-            <p>Dive into the world of technology and digital innovation.</p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ulic.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ulic.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ulict"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="ict"
+          data-category="academic"
+          style="--i: 6"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/ict-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>ICT Club</h2>
+                <span class="club-tag">Academic</span>
+              </div>
+              <p>Dive into the world of technology and digital innovation.</p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ulic.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ulic.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ulict"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/ict-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/ict-club.html" class="details-btn">Details</a>
           </div>
         </div>
 
         <!-- Literature Club -->
-        <div class="card" data-club="literature" style="--i: 7">
-          <div
-            class="pic"
-            style="background-image: url('/images/literature-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Literature Club</h2>
-            <p>
-              Discover the beauty of words through reading and creative writing.
-            </p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ullc.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ullc.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ullc"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="literature"
+          data-category="cultural"
+          style="--i: 7"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/literature-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Literature Club</h2>
+                <span class="club-tag">Cultural</span>
+              </div>
+              <p>Explore the world of books, poetry, and creative writing.</p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ullc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ullc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ullc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/literature-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/literature-club.html" class="details-btn"
-              >Details</a
-            >
           </div>
         </div>
 
         <!-- Cultural Club -->
-        <div class="card" data-club="cultural" style="--i: 8">
-          <div
-            class="pic"
-            style="background-image: url('/images/cultural-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Cultural Club</h2>
-            <p>
-              Celebrate diversity through art, music, and cultural performances.
-            </p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ulcc.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ulcc.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ulcc"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="cultural"
+          data-category="cultural"
+          style="--i: 8"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/cultural-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Cultural Club</h2>
+                <span class="club-tag">Cultural</span>
+              </div>
+              <p>
+                Celebrate diversity through art, music, and cultural
+                performances.
+              </p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ulcc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ulcc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ulcc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/cultural-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/cultural-club.html" class="details-btn">Details</a>
           </div>
         </div>
 
         <!-- Language Club -->
-        <div class="card" data-club="language" style="--i: 9">
-          <div
-            class="pic"
-            style="background-image: url('/images/language-club.jpg')"
-          ></div>
-          <div class="card-content">
-            <h2>Language Club</h2>
-            <p>Learn and practice new languages in an engaging environment.</p>
-            <div class="social">
-              <a
-                href="https://www.facebook.com/ullc2.fb"
-                class="social-btn"
-                aria-label="Facebook"
-                ><i data-feather="facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/ullc2.ig"
-                class="social-btn"
-                aria-label="Instagram"
-                ><i data-feather="instagram"></i
-              ></a>
-              <a
-                href="https://sites.google.com/view/ullc2"
-                class="social-btn"
-                aria-label="Website"
-                ><i data-feather="globe"></i
-              ></a>
+        <div
+          class="card"
+          data-club="language"
+          data-category="academic"
+          style="--i: 9"
+        >
+          <div class="card-inner">
+            <div
+              class="pic"
+              style="background-image: url('/images/language-club.jpg')"
+            ></div>
+            <div class="card-content">
+              <div class="card-header">
+                <h2>Language Club</h2>
+                <span class="club-tag">Academic</span>
+              </div>
+              <p>
+                Learn and practice different languages in a supportive
+                environment.
+              </p>
+              <div class="card-footer">
+                <div class="social">
+                  <a
+                    rel="noopener"
+                    href="https://www.facebook.com/ullc.fb"
+                    class="social-btn"
+                    aria-label="Facebook"
+                    target="_blank"
+                    ><i data-feather="facebook"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://www.instagram.com/ullc.ig"
+                    class="social-btn"
+                    aria-label="Instagram"
+                    target="_blank"
+                    ><i data-feather="instagram"></i
+                  ></a>
+                  <a
+                    rel="noopener"
+                    href="https://sites.google.com/view/ullc"
+                    class="social-btn"
+                    aria-label="Website"
+                    target="_blank"
+                    ><i data-feather="globe"></i
+                  ></a>
+                </div>
+                <a href="/clubs/language-club.html" class="details-btn">
+                  <span>Details</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="/clubs/language-club.html" class="details-btn">Details</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Join a Club CTA Section -->
+    <section class="join-cta">
+      <div class="cta-content">
+        <h2>Find Your Community</h2>
+        <p>
+          Ready to explore your interests and develop new skills? Join one of
+          our clubs today!
+        </p>
+        <a href="/contact/join-us.html" class="cta-button">Join a Club</a>
       </div>
     </section>
 
     <!-- Footer -->
     <script src="/js/include-footer.js"></script>
 
-    <!-- Initialize Icons -->
     <script>
-      feather.replace();
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".card");
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Remove active class from all buttons
+            filterBtns.forEach((b) => b.classList.remove("active"));
+
+            // Add active class to clicked button
+            btn.classList.add("active");
+
+            const filter = btn.getAttribute("data-filter");
+
+            // Show/hide cards based on filter
+            cards.forEach((card) => {
+              if (
+                filter === "all" ||
+                card.getAttribute("data-category") === filter
+              ) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+
+        // Apply club-specific colors
+        document.querySelectorAll(".card").forEach((card) => {
+          const clubType = card.getAttribute("data-club");
+          if (clubType) {
+            // This ensures the CSS variables are properly applied
+            card.style.setProperty(
+              "--club-color",
+              `var(--${clubType}-primary, var(--accent-color))`
+            );
+          }
+        });
+
+        // Card hover effects
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            card.classList.add("hover");
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.classList.remove("hover");
+          });
+        });
+      });
     </script>
   </body>
 </html>

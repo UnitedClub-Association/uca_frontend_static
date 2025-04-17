@@ -45,18 +45,15 @@
     <script src="/js/executive-panel.js" defer></script>
   </head>
   <body>
-    <!-- Skip to main content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <!-- Navbar will be inserted here by include-navbar.js -->
 
     <main id="main-content">
       <!-- Hero Section -->
-      <section class="hero">
+      <section class="executives-hero">
         <div class="hero-content">
           <h1>UCA Executive Panel</h1>
           <p class="hero-subtitle">
-            Led by the presidents of all clubs since October 10, 2024
+            Uniting club leadership since October 10, 2024
           </p>
           <div class="timeline-indicator">
             <div class="timeline-bar">
@@ -73,308 +70,304 @@
 
       <!-- Current Council Section -->
       <section class="executives">
-        <div class="container">
-          <h2>Current Council (2024-2025)</h2>
-          <p class="section-description">
-            Our inaugural council consists of the founding club presidents who
-            collaborate to lead the United Club Association. The current term
-            runs from October 10, 2024 to December 31, 2025.
-          </p>
+        <h2>Current Council (2024-2025)</h2>
+        <p class="section-description">
+          Our inaugural council comprises the founding club presidents who
+          collaboratively steer the United Club Association. Together, they establish
+          the foundation for a vibrant and inclusive club ecosystem that will benefit
+          generations of students to come.
+        </p>
 
-          <div class="council-structure">
-            <div class="structure-card">
-              <div class="structure-icon">
-                <i data-feather="users"></i>
+        <div class="executives-filter">
+          <button class="filter-btn active" data-filter="all">All Executives</button>
+          <button class="filter-btn" data-filter="academic">Academic Clubs</button>
+          <button class="filter-btn" data-filter="cultural">Cultural Clubs</button>
+          <button class="filter-btn" data-filter="sports">Sports Clubs</button>
+        </div>
+
+        <div class="council-structure">
+          <div class="structure-card">
+            <div class="structure-icon">
+              <i data-feather="users"></i>
+            </div>
+            <h3>UCA Governance Structure</h3>
+            <ul class="structure-list">
+              <li>
+                <strong>Digital Initiatives:</strong> Coordinated by ICT Club President
+              </li>
+              <li>
+                <strong>Campus Activities:</strong> Collaborative leadership by
+                all Club Presidents
+              </li>
+              <li>
+                <strong>Current Term:</strong> Inaugural council serving until December 31,
+                2025
+              </li>
+              <li>
+                <strong>Succession Planning:</strong> Annual transitions every January
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- ICT Club President - UCA Online Lead -->
+          <div class="executive-card" data-category="academic" data-club="ict" style="--i: 1">
+            <div class="card-inner">
+              <div class="role-badge">UCA Digital Lead</div>
+              <div class="pic" style="background-image: url('/images/executives/ict-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Sazidur Rahman</h3>
+                  <span class="club-tag">ICT Club</span>
+                </div>
+                <p>
+                  As a founding executive, Sazidur spearheads UCA's digital transformation initiatives,
+                  establishing the association's online presence and implementing technological solutions
+                  that connect our diverse club community.
+                </p>
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/ict-club.html" class="social-btn" aria-label="Visit ICT Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/ict-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
+                </div>
               </div>
-              <h3>UCA Structure</h3>
-              <ul class="structure-list">
-                <li>
-                  <strong>Online Activities:</strong> Led by ICT Club President
-                </li>
-                <li>
-                  <strong>Offline Activities:</strong> Collaborative effort by
-                  all Club Presidents
-                </li>
-                <li>
-                  <strong>Council Term:</strong> Current term ends December 31,
-                  2025
-                </li>
-                <li>
-                  <strong>Future Terms:</strong> January 1 to December 31
-                  annually
-                </li>
-              </ul>
             </div>
           </div>
 
-          <div class="executive-grid">
-            <!-- ICT Club President - UCA Online Lead -->
-            <div class="executive-card featured">
-              <div class="role-badge">UCA Online Lead</div>
-              <div class="executive-image">
-                <img
-                  src="/images/executives/ict-president.jpg"
-                  alt="ICT Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Sazidur Rahman</h3>
-                <span class="position">President, ICT Club</span>
+          <!-- Sports Club President -->
+          <div class="executive-card" data-category="sports" data-club="sports" style="--i: 2">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/sports-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Arafat Azim Antu</h3>
+                  <span class="club-tag">Sports Club</span>
+                </div>
                 <p>
-                  Founding executive responsible for leading UCA's online
-                  activities and digital presence.
+                  A founding executive who champions physical wellness and team building through
+                  coordinated sporting events, fostering a culture of healthy competition and
+                  camaraderie across campus.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/ict-club.html"
-                    class="club-link"
-                    aria-label="Visit ICT Club"
-                    ><i data-feather="external-link"></i> ICT Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/sports-club.html" class="social-btn" aria-label="Visit Sports Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/sports-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Sports Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/sports-president.jpg"
-                  alt="Sports Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Arafat Azim Antu</h3>
-                <span class="position">President, Sports Club</span>
+          <!-- Debate Club President -->
+          <div class="executive-card" data-category="academic" data-club="debate" style="--i: 3">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/debate-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Tahmid Hasan</h3>
+                  <span class="club-tag">Debate Club</span>
+                </div>
                 <p>
-                  Founding executive coordinating physical activities and sports
-                  events across the university.
+                  A founding executive who excels in strategic communication and governance,
+                  ensuring that UCA's administrative framework supports effective collaboration
+                  between all member clubs.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/sports-club.html"
-                    class="club-link"
-                    aria-label="Visit Sports Club"
-                    ><i data-feather="external-link"></i> Sports Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/debate-club.html" class="social-btn" aria-label="Visit Debate Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/debate-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Debate Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/debate-president.jpg"
-                  alt="Debate Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Tahmid Hasan</h3>
-                <span class="position">President, Debate Club</span>
+          <!-- Literature Club President -->
+          <div class="executive-card" data-category="cultural" data-club="literature" style="--i: 4">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/literature-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Nafisa Rahman</h3>
+                  <span class="club-tag">Literature Club</span>
+                </div>
                 <p>
-                  Founding executive managing communications and administrative
-                  tasks for the association.
+                  A founding executive with exceptional interpersonal skills who facilitates
+                  cross-club collaborations, enriching the university experience through
+                  literary and cultural integration.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/debate-club.html"
-                    class="club-link"
-                    aria-label="Visit Debate Club"
-                    ><i data-feather="external-link"></i> Debate Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/literature-club.html" class="social-btn" aria-label="Visit Literature Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/literature-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Literature Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/literature-president.jpg"
-                  alt="Literature Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Nafisa Rahman</h3>
-                <span class="position">President, Literature Club</span>
+          <!-- Language Club President -->
+          <div class="executive-card" data-category="academic" data-club="language" style="--i: 5">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/language-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Rafiuddin Rafiu</h3>
+                  <span class="club-tag">Language Club</span>
+                </div>
                 <p>
-                  Founding executive facilitating collaboration between
-                  different clubs and their activities.
+                  A founding executive who champions linguistic diversity and cultural
+                  appreciation, creating inclusive spaces for students to explore and
+                  celebrate our rich heritage through language.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/literature-club.html"
-                    class="club-link"
-                    aria-label="Visit Literature Club"
-                    ><i data-feather="external-link"></i> Literature Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/language-club.html" class="social-btn" aria-label="Visit Language Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/language-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Language Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/language-president.jpg"
-                  alt="Language Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Rafiuddin Rafiu</h3>
-                <span class="position">President, Language Club</span>
+          <!-- Science Club President -->
+          <div class="executive-card" data-category="academic" data-club="science" style="--i: 6">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/science-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>MD. Rumman</h3>
+                  <span class="club-tag">Science Club</span>
+                </div>
                 <p>
-                  Founding executive bringing linguistic diversity and cultural
-                  exchange to UCA activities.
+                  A founding executive who promotes scientific inquiry and innovation,
+                  creating opportunities for students to explore STEM fields through
+                  hands-on research and collaborative projects.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/language-club.html"
-                    class="club-link"
-                    aria-label="Visit Language Club"
-                    ><i data-feather="external-link"></i> Language Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/science-club.html" class="social-btn" aria-label="Visit Science Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/science-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Science Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/science-president.jpg"
-                  alt="Science Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>MD. Rumman</h3>
-                <span class="position">President, Science Club</span>
+          <!-- Photography Club President -->
+          <div class="executive-card" data-category="cultural" data-club="photography" style="--i: 7">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/photography-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Mahidul Islam Ahnaf</h3>
+                  <span class="club-tag">Photography Club</span>
+                </div>
                 <p>
-                  Founding executive bringing scientific innovation and research
-                  opportunities to the university community.
+                  A founding executive who cultivates visual storytelling excellence,
+                  documenting UCA's journey and creating platforms for students to
+                  express their creativity through the lens.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/science-club.html"
-                    class="club-link"
-                    aria-label="Visit Science Club"
-                    ><i data-feather="external-link"></i> Science Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/photography-club.html" class="social-btn" aria-label="Visit Photography Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/photography-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Photography Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/photography-president.jpg"
-                  alt="Photography Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Mahidul Islam Ahnaf</h3>
-                <span class="position">President, Photography Club</span>
+          <!-- Quiz Club President -->
+          <div class="executive-card" data-category="academic" data-club="quiz" style="--i: 8">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/quiz-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Sheikh Abdullah Rafayel</h3>
+                  <span class="club-tag">Quiz Club</span>
+                </div>
                 <p>
-                  Founding executive documenting UCA's journey and promoting
-                  visual storytelling across clubs.
+                  A founding executive who fosters intellectual curiosity and academic excellence,
+                  creating engaging knowledge-sharing platforms that connect students across
+                  diverse disciplines.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/photography-club.html"
-                    class="club-link"
-                    aria-label="Visit Photography Club"
-                    ><i data-feather="external-link"></i> Photography Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/quiz-club.html" class="social-btn" aria-label="Visit Quiz Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/quiz-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Quiz Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/quiz-president.jpg"
-                  alt="Quiz Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Sheikh Abdullah Rafayel</h3>
-                <span class="position">President, Quiz Club</span>
-                <p>
-                  Founding executive promoting knowledge-sharing and
-                  intellectual competitions within UCA.
-                </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/quiz-club.html"
-                    class="club-link"
-                    aria-label="Visit Quiz Club"
-                    ><i data-feather="external-link"></i> Quiz Club</a
-                  >
+          <!-- Cultural Club President -->
+          <div class="executive-card" data-category="cultural" data-club="cultural" style="--i: 9">
+            <div class="card-inner">
+              <div class="pic" style="background-image: url('/images/executives/cultural-president.jpg')"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <h3>Tasnim Ahmed</h3>
+                  <span class="club-tag">Cultural Club</span>
                 </div>
-              </div>
-            </div>
-
-            <!-- Cultural Club President -->
-            <div class="executive-card">
-              <div class="executive-image">
-                <img
-                  src="/images/executives/cultural-president.jpg"
-                  alt="Cultural Club President"
-                />
-              </div>
-              <div class="executive-info">
-                <h3>Tasnim Ahmed</h3>
-                <span class="position">President, Cultural Club</span>
                 <p>
-                  Founding executive promoting cultural activities and artistic
-                  expression across the university.
+                  A founding executive who celebrates our rich cultural heritage,
+                  creating immersive experiences that showcase artistic expression
+                  and traditional values across the university community.
                 </p>
-                <div class="social-links">
-                  <a href="#" aria-label="Email"><i data-feather="mail"></i></a>
-                  <a href="#" aria-label="LinkedIn"
-                    ><i data-feather="linkedin"></i
-                  ></a>
-                  <a
-                    href="/clubs/cultural-club.html"
-                    class="club-link"
-                    aria-label="Visit Cultural Club"
-                    ><i data-feather="external-link"></i> Cultural Club</a
-                  >
+                <div class="card-footer">
+                  <div class="social">
+                    <a href="/clubs/cultural-club.html" class="social-btn" aria-label="Visit Cultural Club">
+                      <i data-feather="external-link"></i>
+                    </a>
+                  </div>
+                  <a href="/clubs/cultural-club.html" class="details-btn">
+                    <span>Club Details</span>
+                    <i data-feather="arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -387,9 +380,9 @@
         <div class="container">
           <h2>Future Councils</h2>
           <p class="section-description">
-            Starting January 1, 2026, new councils will be formed annually with
-            presidents from each club. Elections for club presidents take place
-            at the end of each year.
+            The UCA has established a sustainable leadership transition model to ensure
+            continuity and innovation. Each new council builds upon the foundation laid
+            by its predecessors while bringing fresh perspectives to our growing community.
           </p>
 
           <div class="timeline">
@@ -398,9 +391,15 @@
               <div class="timeline-content">
                 <h3>Inaugural Council</h3>
                 <p>
-                  Founding executives establishing UCA's foundation and initial
-                  club activities.
+                  Our founding executives are establishing UCA's organizational framework,
+                  creating sustainable processes, and launching signature initiatives that
+                  will define our association's identity.
                 </p>
+                <ul class="milestone-list">
+                  <li>Establishment of digital infrastructure and online presence</li>
+                  <li>Development of inter-club collaboration framework</li>
+                  <li>Launch of inaugural cross-club events and initiatives</li>
+                </ul>
               </div>
             </div>
             <div class="timeline-item">
@@ -408,9 +407,15 @@
               <div class="timeline-content">
                 <h3>Second Council</h3>
                 <p>
-                  New leadership continuing to build on the established
-                  foundation.
+                  The second generation of leadership will expand UCA's reach and impact,
+                  strengthening existing programs while introducing innovative approaches
+                  to student engagement.
                 </p>
+                <ul class="milestone-list">
+                  <li>Expansion of club membership and diversity</li>
+                  <li>Enhancement of signature events based on first-year feedback</li>
+                  <li>Development of alumni engagement initiatives</li>
+                </ul>
               </div>
             </div>
             <div class="timeline-item">
@@ -418,9 +423,15 @@
               <div class="timeline-content">
                 <h3>Third Council</h3>
                 <p>
-                  Further expanding UCA's reach and impact across the
-                  university.
+                  Building on a solid foundation, the third council will focus on
+                  sustainability and broader impact, establishing UCA as an integral
+                  part of university culture and student life.
                 </p>
+                <ul class="milestone-list">
+                  <li>Implementation of long-term sustainability measures</li>
+                  <li>Expansion of community outreach and social impact initiatives</li>
+                  <li>Development of leadership training programs for future councils</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -428,13 +439,14 @@
       </section>
 
       <!-- Join the Team Section -->
-      <section class="join-team">
-        <div class="container">
+      <section class="join-cta">
+        <div class="cta-content">
           <h2>Become a Club Member</h2>
           <p>
-            Interested in being a member?
-            Join one of our vibrant clubs and become part of our growing community. Experience leadership opportunities, skill development, and meaningful connections with fellow students.
-          </p>
+            Join one of our vibrant clubs to develop valuable skills, build meaningful
+            connections, and contribute to our university's dynamic community. Each club
+            offers unique opportunities for personal and professional growth in a
+            supportive environment.
           </p>
           <a href="/contact/join-us.html" class="cta-button">Learn More</a>
         </div>

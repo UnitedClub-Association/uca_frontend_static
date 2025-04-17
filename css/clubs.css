@@ -1,365 +1,657 @@
-/* Root Variables */
 :root {
-  /* Base colors */
-  --background: #f0f2f5;
-  --text-dark: #1a1a1a;
-  --text-light: #ffffff;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Club-specific colors */
-  --debate-color: #e63946; /* Bold red */
-  --photography-color: #457b9d; /* Ocean blue */
-  --sports-color: #2a9d8f; /* Teal */
-  --quiz-color: #9b5de5; /* Purple */
-  --science-color: #00b4d8; /* Bright blue */
-  --ict-color: #3a0ca3; /* Deep purple */
-  --literature-color: #bc6c25; /* Warm brown */
-  --cultural-color: #ff006e; /* Pink */
-  --language-color: #fb8500; /* Orange */
+  --primary-color: #006a4e; /* UCA Green */
+  --secondary-color: #f8c300; /* UCA Gold */
+  --accent-color: #2c3e50; /* Dark Blue */
+  --light-color: #ffffff;
+  --dark-color: #333333;
+  --gray-color: #f5f5f5;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --border-radius: 12px;
 }
 
-/* General Styles */
+/* Club-specific colors */
+:root {
+  /* Debate: royal purple + charcoal black + light gold */
+  --debate-primary: #5d3891;
+  --debate-secondary: #2a2a2a;
+  --debate-accent: #d4af37;
+  
+  /* Photography: black and brown */
+  --photo-primary: #1e1e1e;
+  --photo-secondary: #8b5a2b;
+  --photo-accent: #a67c52;
+  
+  /* Sports: keep as is */
+  --sports-primary: #1a365d;
+  --sports-secondary: #f0f4f8;
+  --sports-accent: #e53e3e;
+  
+  /* Quiz: light purple + black + yellow */
+  --quiz-primary: #9370db;
+  --quiz-secondary: #1a1a1a;
+  --quiz-accent: #f1c40f;
+  
+  /* Science: dark silver (close to gray) + black */
+  --science-primary: #708090;
+  --science-secondary: #1c1c1c;
+  --science-accent: #a9a9a9;
+  
+  /* ICT: shiny gold + royal purple */
+  --ict-primary: #d4af37;
+  --ict-secondary: #4b0082;
+  --ict-accent: #b8860b;
+  
+  /* Literature: slightly different from science */
+  --lit-primary: #607d8b;
+  --lit-secondary: #212121;
+  --lit-accent: #90a4ae;
+  
+  /* Cultural: creating a vibrant scheme */
+  --cultural-primary: #8e44ad;
+  --cultural-secondary: #f39c12;
+  --cultural-accent: #2ecc71;
+  
+  /* Language: off-white + darker than blue (navy/sky mix) */
+  --language-primary: #f5f5f5;
+  --language-secondary: #34495e;
+  --language-accent: #5d8aa8;
+}
+
 body {
-  background: var(--background);
-  font-family: "Poppins", sans-serif;
-  color: var(--text-dark);
-  line-height: 1.6;
-  position: relative;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    45deg,
-    rgba(238, 238, 238, 0.5) 25%,
-    rgba(245, 245, 245, 0.5) 25%,
-    rgba(245, 245, 245, 0.5) 50%,
-    rgba(238, 238, 238, 0.5) 50%,
-    rgba(238, 238, 238, 0.5) 75%,
-    rgba(245, 245, 245, 0.5) 75%,
-    rgba(245, 245, 245, 0.5) 100%
-  );
-  background-size: 100px 100px;
-  animation: backgroundMove 30s linear infinite;
-  z-index: -1;
-}
-
-@keyframes backgroundMove {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 100px 100px;
-  }
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: var(--dark-color);
 }
 
 /* Hero Section */
-.hero {
-  background: linear-gradient(120deg, var(--primary-color), #1d4ed8);
-  padding: 8rem 2rem;
+.clubs-hero {
+  background: linear-gradient(rgba(0, 106, 78, 0.8), rgba(0, 106, 78, 0.9)), url('/images/clubs-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--light-color);
   text-align: center;
-  color: var(--text-light);
+  padding: 100px 20px;
+  margin-bottom: 50px;
 }
 
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero h1 {
+.hero-content h1 {
   font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease;
 }
 
-.hero p {
-  font-size: 1.25rem;
-  opacity: 0.9;
+.hero-content p {
+  font-size: 1.2rem;
   max-width: 600px;
   margin: 0 auto;
+  animation: fadeInUp 1s ease;
 }
 
 /* Clubs Section */
 .clubs {
-  padding: 4rem 2rem;
+  padding: 50px 20px;
+  text-align: center;
 }
 
 .clubs h2 {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 4rem;
-  color: var(--text-dark);
-  font-weight: 700;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
 }
 
-/* Fix Grid Layout */
+.clubs h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--secondary-color);
+  border-radius: 2px;
+}
+
+/* Filter Buttons */
+.clubs-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--primary-color);
+  color: var(--light-color);
+}
+
+/* Cards Container */
 .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
   max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Fixed to exactly 3 columns */
-  gap: 2.5rem;
-  padding: 0 2rem;
+  padding: 20px;
 }
 
-/* Ensure consistent card sizing */
+/* Card Styling */
 .card {
-  width: 100%;
-  min-width: 300px;
-  background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: var(--transition);
   position: relative;
-  height: fit-content; /* Ensure consistent height */
+  background: var(--light-color);
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--i) * 0.1s);
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.6s ease-out forwards;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 100%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: transform 0.6s;
-  transform: translateX(-100%);
 }
 
-.card:hover::before {
-  transform: translateX(100%);
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s;
 }
 
-.card-content {
-  padding: 2rem;
-  color: var(--card-text);
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.8),
-    rgba(0, 0, 0, 0.6) 50%,
-    transparent
-  );
+.card:hover .card-inner {
+  transform: translateY(-5px);
 }
 
-.card h2 {
-  color: var(--card-accent);
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgb(0 0 0 / 30%);
-  font-weight: 700;
-}
-
-.card p {
-  color: var(--card-text);
-  opacity: 1;
-  line-height: 1.6;
-  font-size: 1.1rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Club-specific colors and gradients with better contrast */
+/* Club-specific styling */
 .card[data-club="debate"] {
-  --card-bg: linear-gradient(135deg, #2a1650, #4b0082);
-  --card-accent: #ffd700;
-  --card-text: #e0e0e0;
-  box-shadow: 0 8px 32px rgba(75, 0, 130, 0.2);
-  border: 1px solid rgba(255, 215, 0, 0.15);
+  --club-color: var(--debate-primary);
+  border-top: 4px solid var(--debate-primary);
 }
 
 .card[data-club="photography"] {
-  --card-bg: linear-gradient(135deg, #4a3121, #1a1a1a);
-  --card-accent: #d4a574; /* Lighter brown */
-  --card-text: #f5f5f5;
-  box-shadow: 0 8px 32px rgba(62, 39, 35, 0.2);
+  --club-color: var(--photo-primary);
+  border-top: 4px solid var(--photo-secondary);
 }
 
 .card[data-club="sports"] {
-  --card-bg: linear-gradient(135deg, #1a237e, #000033); /* Deeper navy */
-  --card-accent: #e0e0e0;
-  --card-text: #ffffff;
-  box-shadow: 0 8px 32px rgba(0, 0, 128, 0.2);
+  --club-color: var(--sports-primary);
+  border-top: 4px solid var(--sports-primary);
 }
 
 .card[data-club="quiz"] {
-  --card-bg: linear-gradient(135deg, #000000, #1a1a1a);
-  --card-accent: #ffd700;
-  --card-text: #ffffff;
-  box-shadow: 0 8px 32px rgb(0 0 0 / 80%),
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  --club-color: var(--quiz-primary);
+  border-top: 4px solid var(--quiz-accent);
 }
 
 .card[data-club="science"] {
-  --card-bg: linear-gradient(135deg, #1a1a1a, #2c3e50);
-  --card-accent: #e0e0e0; /* Brighter silver */
-  --card-text: #ffffff;
-  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.2);
+  --club-color: var(--science-primary);
+  border-top: 4px solid var(--science-primary);
 }
 
 .card[data-club="ict"] {
-  --card-bg: linear-gradient(135deg, #4b0082, #2a1650);
-  --card-accent: #ffd700;
-  --card-text: #f5f5f5;
-  box-shadow: 0 8px 32px rgba(75, 0, 130, 0.2);
-  border: 1px solid rgba(255, 215, 0, 0.15);
+  --club-color: var(--ict-primary);
+  border-top: 4px solid var(--ict-secondary);
 }
 
 .card[data-club="literature"] {
-  --card-bg: linear-gradient(135deg, #1a1a1a, #2a1650);
-  --card-accent: #ffd700;
-  --card-text: #f5f5f5;
-  box-shadow: 0 8px 32px rgba(44, 40, 35, 0.2);
+  --club-color: var(--lit-primary);
+  border-top: 4px solid var(--lit-secondary);
 }
 
 .card[data-club="cultural"] {
-  --card-bg: linear-gradient(
-    135deg,
-    #40b5ad,
-    #ff9ecd
-  ); /* Stronger teal to pink */
-  --card-accent: #b37f7f;
-  --card-text: #ecbfbf;
-  box-shadow: 0 8px 32px rgba(178, 223, 219, 0.2);
+  --club-color: var(--cultural-primary);
+  border-top: 4px solid var(--cultural-secondary);
 }
 
 .card[data-club="language"] {
-  --card-bg: linear-gradient(135deg, #1a1a1a, #234b7c); /* Deeper blue */
-  --card-accent: #ffffff;
-  --card-text: #f5f5f5;
-  /* From: */
-  box-shadow: 0 8px 32px rgba(30, 63, 102, 0.2);
-  /* To: */
-  box-shadow: 0 8px 32px rgb(62 39 35 / 20%);
+  --club-color: var(--language-secondary);
+  border-top: 4px solid var(--language-accent);
 }
 
 .pic {
-  height: 220px; /* Fixed height for all images */
+  height: 200px;
   background-size: cover;
   background-position: center;
   position: relative;
-  overflow: hidden;
 }
 
 .pic::after {
-  content: "";
+  content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7));
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
 }
 
-/* Social Links */
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--club-color, var(--accent-color));
+}
+
+/* Club-specific tag colors */
+.card[data-club="debate"] .club-tag {
+  background: var(--debate-accent);
+  color: var(--debate-secondary);
+}
+
+.card[data-club="photography"] .club-tag {
+  background: var(--photo-secondary);
+  color: var(--light-color);
+}
+
+.card[data-club="sports"] .club-tag {
+  background: var(--sports-accent);
+  color: var(--light-color);
+}
+
+.card[data-club="quiz"] .club-tag {
+  background: var(--quiz-accent);
+  color: var(--quiz-secondary);
+}
+
+.card[data-club="science"] .club-tag {
+  background: var(--science-accent);
+  color: var(--science-secondary);
+}
+
+.card[data-club="ict"] .club-tag {
+  background: var(--ict-primary);
+  color: var(--ict-secondary);
+}
+
+.card[data-club="literature"] .club-tag {
+  background: var(--lit-accent);
+  color: var(--lit-secondary);
+}
+
+.card[data-club="cultural"] .club-tag {
+  background: var(--cultural-secondary);
+  color: var(--light-color);
+}
+
+.card[data-club="language"] .club-tag {
+  background: var(--language-accent);
+  color: var(--light-color);
+}
+
+.club-tag {
+  background: var(--club-color, var(--secondary-color));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card-content p {
+  flex-grow: 1;
+  margin: 0 0 20px;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
 .social {
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 10px;
+}
+
+/* Club-specific social button styling */
+.card[data-club="debate"] .social-btn {
+  color: var(--debate-primary);
+}
+
+.card[data-club="debate"] .social-btn:hover {
+  background: var(--debate-primary);
+}
+
+.card[data-club="photography"] .social-btn {
+  color: var(--photo-secondary);
+}
+
+.card[data-club="photography"] .social-btn:hover {
+  background: var(--photo-secondary);
+}
+
+.card[data-club="sports"] .social-btn {
+  color: var(--sports-primary);
+}
+
+.card[data-club="sports"] .social-btn:hover {
+  background: var(--sports-primary);
+}
+
+.card[data-club="quiz"] .social-btn {
+  color: var(--quiz-primary);
+}
+
+.card[data-club="quiz"] .social-btn:hover {
+  background: var(--quiz-primary);
+}
+
+.card[data-club="science"] .social-btn {
+  color: var(--science-primary);
+}
+
+.card[data-club="science"] .social-btn:hover {
+  background: var(--science-primary);
+}
+
+.card[data-club="ict"] .social-btn {
+  color: var(--ict-secondary);
+}
+
+.card[data-club="ict"] .social-btn:hover {
+  background: var(--ict-secondary);
+}
+
+.card[data-club="literature"] .social-btn {
+  color: var(--lit-primary);
+}
+
+.card[data-club="literature"] .social-btn:hover {
+  background: var(--lit-primary);
+}
+
+.card[data-club="cultural"] .social-btn {
+  color: var(--cultural-primary);
+}
+
+.card[data-club="cultural"] .social-btn:hover {
+  background: var(--cultural-primary);
+}
+
+.card[data-club="language"] .social-btn {
+  color: var(--language-secondary);
+}
+
+.card[data-club="language"] .social-btn:hover {
+  background: var(--language-secondary);
 }
 
 .social-btn {
-  width: 40px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  color: var(--card-accent);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  background: var(--gray-color);
+  color: var(--club-color, var(--accent-color));
   transition: var(--transition);
 }
 
 .social-btn:hover {
-  background: var(--card-accent);
-  color: var(--card-bg);
+  background: var(--club-color, var(--primary-color));
+  color: var(--light-color);
   transform: translateY(-3px);
 }
 
-/* Details Button */
+/* Club-specific details button styling */
+.card[data-club="debate"] .details-btn {
+  background: var(--debate-primary);
+}
+
+.card[data-club="debate"] .details-btn:hover {
+  background: var(--debate-secondary);
+}
+
+.card[data-club="photography"] .details-btn {
+  background: var(--photo-secondary);
+}
+
+.card[data-club="photography"] .details-btn:hover {
+  background: var(--photo-primary);
+}
+
+.card[data-club="sports"] .details-btn {
+  background: var(--sports-primary);
+}
+
+.card[data-club="sports"] .details-btn:hover {
+  background: var(--sports-accent);
+}
+
+.card[data-club="quiz"] .details-btn {
+  background: var(--quiz-primary);
+}
+
+.card[data-club="quiz"] .details-btn:hover {
+  background: var(--quiz-secondary);
+}
+
+.card[data-club="science"] .details-btn {
+  background: var(--science-primary);
+}
+
+.card[data-club="science"] .details-btn:hover {
+  background: var(--science-secondary);
+}
+
+.card[data-club="ict"] .details-btn {
+  background: var(--ict-secondary);
+}
+
+.card[data-club="ict"] .details-btn:hover {
+  background: var(--ict-primary);
+}
+
+.card[data-club="literature"] .details-btn {
+  background: var(--lit-primary);
+}
+
+.card[data-club="literature"] .details-btn:hover {
+  background: var(--lit-secondary);
+}
+
+.card[data-club="cultural"] .details-btn {
+  background: var(--cultural-primary);
+}
+
+.card[data-club="cultural"] .details-btn:hover {
+  background: var(--cultural-secondary);
+}
+
+.card[data-club="language"] .details-btn {
+  background: var(--language-secondary);
+}
+
+.card[data-club="language"] .details-btn:hover {
+  background: var(--language-accent);
+}
+
 .details-btn {
-  display: inline-block;
-  padding: 0.875rem 2rem;
-  margin-top: 1.5rem;
-  color: var(--card-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--club-color, var(--primary-color));
+  color: var(--light-color);
+  padding: 8px 16px;
+  border-radius: 30px;
   text-decoration: none;
-  border: 2px solid var(--card-accent);
-  border-radius: 50px;
   font-weight: 600;
-  letter-spacing: 0.5px;
   transition: var(--transition);
-  background: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
 }
 
 .details-btn:hover {
-  background: var(--card-accent);
-  color: var(--card-bg);
-  transform: translateY(-3px);
+  filter: brightness(1.1);
+  transform: translateX(5px);
+}
+
+.details-btn i {
+  transition: transform 0.3s ease;
+}
+
+.details-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Join CTA Section */
+.join-cta {
+  background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('/images/join-cta-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--light-color);
+  text-align: center;
+  padding: 80px 20px;
+  margin-top: 50px;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--secondary-color);
+  color: var(--dark-color);
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.cta-button:hover {
+  background: var(--light-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations */
-@keyframes fadeUp {
-  0% {
+@keyframes fadeIn {
+  from {
     opacity: 0;
     transform: translateY(20px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.card {
-  animation-delay: calc(var(--i) * 0.1s);
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .clubs-hero {
+    padding: 70px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .clubs h2 {
+    font-size: 2rem;
+  }
+  
+  .clubs-filter {
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
   .container {
     grid-template-columns: 1fr;
-    padding: 0 1rem;
   }
-
-  .card {
-    min-width: unset;
+  
+  .clubs-filter {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
-
-  .clubs {
-    padding: 3rem 1rem;
-  }
-
-  .clubs h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+  
+  .filter-btn {
+    width: 80%;
   }
 }

@@ -42,8 +42,7 @@
     <script src="https://unpkg.com/feather-icons" defer></script>
   </head>
   <body>
-    <!-- Skip to main content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Removed skip link -->
 
     <!-- Navbar will be inserted here by include-navbar.js -->
     <script src="/js/include-navbar.js" defer></script>
@@ -154,10 +153,10 @@
       document.addEventListener("DOMContentLoaded", function() {
         if (typeof feather !== "undefined") {
           feather.replace({
-            "aria-hidden": "true"
+            'stroke-width': 2,
+            'color': 'currentColor',
+            'size': 24
           });
-        } else {
-          console.error("Feather Icons library failed to load.");
         }
       });
     </script>
