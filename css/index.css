@@ -41,22 +41,6 @@ body {
   background: var(--background-dark);
 }
 
-/* Skip Link */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--primary-color);
-  color: var(--text-dark);
-  padding: 0.5rem 1rem;
-  z-index: 1000;
-  transition: top 0.3s ease;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
 /* Hero Section */
 .hero {
   background: url("/images/UCA_Home_Page_Pic.jpg") center/cover no-repeat;
