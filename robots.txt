@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow temporary files and development directories
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /.trunk/
+Disallow: /config/
+
+# Point to sitemap
+Sitemap: https://unitedclubassociation.netlify.app/sitemap.xml
