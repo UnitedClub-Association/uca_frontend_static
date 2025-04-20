@@ -151,44 +151,15 @@ body {
   display: block;
 }
 
-/* Form Styles */
+/* Enhanced Form Styling */
 .join-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--join-space-md);
-}
-
-.form-row {
-  display: flex;
-  gap: var(--join-space-md);
-}
-
-.form-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin-bottom: var(--join-space-xs);
-  font-weight: 500;
-  color: var(--join-text-dark);
-}
-
-.form-group input,
-.form-group select {
-  padding: 0.75rem;
-  border: 1px solid var(--join-input-border);
-  border-radius: 8px;
-  font-size: 1rem;
+  position: relative;
   transition: var(--join-transition);
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--join-input-focus);
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+.form-group {
+  margin-bottom: var(--join-space-lg);
+  position: relative;
 }
 
 .form-group.disabled {
@@ -201,90 +172,86 @@ body {
   cursor: not-allowed;
 }
 
-/* Required field indicator */
-/* Tooltip styles */
-.required {
-  color: var(--join-error);
-  margin-left: 2px;
-  position: relative;
-  cursor: help;
-}
-
-.tooltip {
-  visibility: hidden;
-  width: 160px;
-  background-color: var(--join-text-dark);
-  color: var(--join-text-light);
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-weight: normal;
-  font-size: 0.8rem;
-  pointer-events: none;
-}
-
-.tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--join-text-dark) transparent transparent transparent;
-}
-
-.required:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Show tooltip on error */
-.error-message:not(:empty) + .required .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Error message styling */
-.error-message {
-  color: var(--join-error);
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
-  min-height: 1.2rem;
-}
-
-/* Form message styling */
-.form-message {
-  margin-top: var(--join-space-md);
-  padding: var(--join-space-sm);
-  border-radius: 8px;
-  text-align: center;
+.form-group label {
+  display: block;
+  margin-bottom: var(--join-space-xs);
   font-weight: 500;
-  min-height: 2.5rem;
+  color: var(--join-text-dark);
+  transition: var(--join-transition);
 }
 
-.form-message.success {
-  background-color: rgba(56, 161, 105, 0.1);
-  color: var(--join-success);
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--join-input-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: var(--join-transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-.form-message.error {
-  background-color: rgba(229, 62, 62, 0.1);
-  color: var(--join-error);
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--join-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  outline: none;
 }
 
-/* Radio and Checkbox Styles */
+/* Floating label effect */
+.form-group input:focus + label,
+.form-group select:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group select:not([value=""]):not([value="default"]) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  transform: translateY(-25px) scale(0.85);
+  color: var(--join-primary);
+}
+
+/* Phone field styling */
+.phone-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--join-input-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: var(--join-transition);
+}
+
+.phone-field:focus-within {
+  border-color: var(--join-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.country-code {
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  color: var(--join-text-dark);
+  border-right: 1px solid var(--join-input-border);
+  font-weight: 500;
+}
+
+.phone-field input {
+  border: none;
+  box-shadow: none;
+}
+
+.phone-field input:focus {
+  box-shadow: none;
+}
+
+/* Radio and Checkbox styling */
 .radio-group,
 .checkbox-group {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--join-space-md);
+  margin-top: var(--join-space-xs);
 }
 
 .radio-label,
@@ -292,63 +259,42 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .radio-label input,
 .checkbox-label input {
-  margin-right: var(--join-space-sm);
+  width: auto;
+  margin-right: var(--join-space-xs);
+  accent-color: var(--join-primary);
 }
 
-.checkbox-group {
-  align-items: center;
-}
-
-.checkbox-label a {
-  color: var(--join-primary);
-  text-decoration: none;
-}
-
-.checkbox-label a:hover {
-  text-decoration: underline;
-}
-
-.forgot-password {
-  margin-left: auto;
-  color: var(--join-primary);
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
-/* Password Field */
+/* Password field styling */
 .password-field {
   position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.password-field input {
-  width: 100%;
-  padding-right: 40px;
 }
 
 .toggle-password {
   position: absolute;
-  right: 10px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
+  color: var(--join-neutral);
   cursor: pointer;
-  color: var(--join-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--join-transition);
 }
 
 .toggle-password:hover {
-  color: var(--join-text-dark);
+  color: var(--join-primary);
 }
 
-/* Password Strength Meter */
+/* Password strength meter */
 .password-strength {
   margin-top: var(--join-space-xs);
 }
@@ -357,29 +303,30 @@ body {
   height: 4px;
   background-color: #e2e8f0;
   border-radius: 2px;
+  overflow: hidden;
   margin-bottom: var(--join-space-xs);
 }
 
 .strength-meter-fill {
   height: 100%;
-  border-radius: 2px;
   width: 0;
+  border-radius: 2px;
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 .strength-meter-fill.weak {
+  width: 33.33%;
   background-color: var(--join-error);
-  width: 25%;
 }
 
 .strength-meter-fill.medium {
+  width: 66.66%;
   background-color: var(--join-warning);
-  width: 50%;
 }
 
 .strength-meter-fill.strong {
-  background-color: var(--join-success);
   width: 100%;
+  background-color: var(--join-success);
 }
 
 .strength-text {
@@ -387,31 +334,13 @@ body {
   color: var(--join-text-muted);
 }
 
-/* Phone Field */
-.phone-field {
-  display: flex;
-  align-items: center;
-}
-
-.country-code {
-  background-color: #f1f5f9;
-  padding: 0.75rem;
-  border: 1px solid var(--join-input-border);
-  border-right: none;
-  border-radius: 8px 0 0 8px;
-  color: var(--join-text-dark);
-  font-weight: 500;
-}
-
-.phone-field input {
-  border-radius: 0 8px 8px 0;
-  flex: 1;
-}
-
-/* Submit Button */
+/* Submit button styling */
 .submit-btn {
-  margin-top: var(--join-space-md);
-  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 24px;
   background: var(--join-primary-gradient);
   color: var(--join-text-light);
   border: none;
@@ -419,51 +348,701 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: var(--join-transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.15);
+}
+
+.submit-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
 }
 
 .submit-btn:hover {
-  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.25);
 }
 
-.submit-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+.submit-btn:hover::before {
+  left: 100%;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .form-row {
-    flex-direction: column;
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.15);
+}
+
+/* Error message styling */
+.error-message {
+  display: block;
+  color: var(--join-error);
+  font-size: 0.85rem;
+  margin-top: var(--join-space-xs);
+  transition: var(--join-transition);
+}
+
+/* Form message styling */
+.form-message {
+  margin-top: var(--join-space-md);
+  padding: var(--join-space-md);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--join-transition);
+}
+
+.form-message.error {
+  background-color: rgba(229, 62, 62, 0.1);
+  color: var(--join-error);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-message.success {
+  background-color: rgba(56, 161, 105, 0.1);
+  color: var(--join-success);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-message.info {
+  background-color: rgba(66, 153, 225, 0.1);
+  color: var(--join-primary);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Institution field */
+#other-institution-field {
+  display: none;
+  transition: all 0.3s ease;
+  margin-top: var(--join-space-md);
+}
+
+#other-institution-field.visible {
+  display: block;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced form styling */
+.join-form {
+  position: relative;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: var(--join-card-border-radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: var(--join-space-md);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--join-input-border);
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.1);
+  border-color: var(--join-primary);
+}
+
+/* Improved button styling */
+.submit-btn {
+  background: var(--join-primary-gradient);
+  color: var(--join-text-light);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Enhanced radio and checkbox styling */
+.radio-label,
+.checkbox-label {
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin-right: 8px;
+}
+
+.radio-label:hover,
+.checkbox-label:hover {
+  background-color: rgba(74, 144, 226, 0.05);
+}
+
+.radio-label input:checked + span,
+.checkbox-label input:checked + span {
+  color: var(--join-primary);
+  font-weight: 500;
+}
+
+/* Fix for the disabled class field */
+.form-group.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.form-group.disabled::after {
+  content: "(Not applicable for teachers)";
+  display: block;
+  font-size: 0.8rem;
+  color: var(--join-text-muted);
+  margin-top: 4px;
+}
+
+/* OTP modal improvements */
+.otp-modal-content {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.otp-input {
+  width: 50px;
+  height: 60px;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid var(--join-input-border);
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.otp-input:focus {
+  border-color: var(--join-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(74, 144, 226, 0.15);
+}
+
+/* Tabs styling improvement */
+/* Fix for any stray tag elements */
+.tag {
+  display: none; /* Hide any stray tags */
+}
+
+/* Make sure the tabs are properly styled */
+.tabs {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+  overflow: hidden; /* Prevent any child elements from overflowing */
+}
+
+.tab-btn {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.tab-btn.active {
+  background: var(--join-primary-gradient);
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+}
+
+.otp-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.otp-input {
+  width: 50px;
+  height: 60px;
+  border: 1px solid var(--join-input-border);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: var(--join-transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.otp-input:focus {
+  border-color: var(--join-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  outline: none;
+}
+
+.otp-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.text-btn {
+  background: none;
+  border: none;
+  color: var(--join-primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  transition: var(--join-transition);
+}
+
+.text-btn:hover {
+  color: var(--join-secondary);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .tab-content {
     padding: var(--join-space-lg);
   }
-  
-  .tabs {
-    width: 90%;
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row .form-group {
+    width: 100%;
+  }
+
+  .otp-input {
+    width: 40px;
+    height: 50px;
+    font-size: 1.2rem;
   }
 }
 
-@media (max-width: 480px) {
-  .join-hero {
-    height: 25vh;
+/* OTP Modal Fixes */
+.otp-modal {
+  /* Ensure OTP Modal is hidden by default */
+  .otp-modal {
+    display: none; /* Start hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
-  
-  .tab-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+
+  .otp-modal.active {
+    display: flex; /* Show when active */
+    opacity: 1;
   }
-  
-  .phone-field {
-    flex-wrap: wrap;
+
+  .otp-modal-content {
+    /* ... existing styles ... */
+    transform: scale(0.95); /* Start slightly smaller */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
   }
-  
-  .country-code {
-    width: 60px;
+
+  .otp-modal.active .otp-modal-content {
+    transform: scale(1); /* Scale to full size when active */
+    opacity: 1;
+  }
+
+  /* Ensure Institution field is hidden by default */
+  #other-institution-field {
+    display: none; /* Keep hidden by default */
+    transition: all 0.3s ease;
+    margin-top: var(--join-space-md);
+    /* Remove animation properties here, JS will handle display */
+  }
+
+  /* Fix for the disabled class field */
+  .form-group.disabled {
+    opacity: 0.5; /* Slightly more faded */
+    pointer-events: none; /* Prevent interaction */
+  }
+
+  .form-group.disabled label {
+    color: var(--join-text-muted);
+  }
+
+  .form-group.disabled select {
+    background-color: #e9ecef; /* Standard disabled background */
+    cursor: not-allowed;
+  }
+
+  .form-group.disabled::after {
+    content: "(Not applicable for teachers)";
+    display: block;
+    font-size: 0.8rem;
+    color: var(--join-text-muted);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Remove duplicate submit-btn styling if present */
+  /* Ensure only one definition exists for .submit-btn */
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--join-primary-gradient);
+    color: var(--join-text-light);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--join-transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.15);
+  }
+
+  .submit-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.25);
+  }
+
+  .submit-btn:hover::before {
+    left: 100%;
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.15);
+  }
+
+  /* Error message styling */
+  .error-message {
+    display: block;
+    color: var(--join-error);
+    font-size: 0.85rem;
+    margin-top: var(--join-space-xs);
+    transition: var(--join-transition);
+  }
+
+  /* Form message styling */
+  .form-message {
+    margin-top: var(--join-space-md);
+    padding: var(--join-space-md);
+    border-radius: 8px;
+    font-size: 0.95rem;
     text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--join-transition);
+  }
+
+  .form-message.error {
+    background-color: rgba(229, 62, 62, 0.1);
+    color: var(--join-error);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .form-message.success {
+    background-color: rgba(56, 161, 105, 0.1);
+    color: var(--join-success);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .form-message.info {
+    background-color: rgba(66, 153, 225, 0.1);
+    color: var(--join-primary);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Institution field */
+  #other-institution-field {
+    display: none;
+    transition: all 0.3s ease;
+    margin-top: var(--join-space-md);
+  }
+
+  #other-institution-field.visible {
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced form styling */
+  .join-form {
+    position: relative;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: var(--join-card-border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: var(--join-space-md);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background-color: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--join-input-border);
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.1);
+    border-color: var(--join-primary);
+  }
+
+  /* Improved button styling */
+  .submit-btn {
+    background: var(--join-primary-gradient);
+    color: var(--join-text-light);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+  }
+
+  .submit-btn:active {
+    transform: translateY(-1px);
+  }
+
+  /* Enhanced radio and checkbox styling */
+  .radio-label,
+  .checkbox-label {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+  }
+
+  .radio-label:hover,
+  .checkbox-label:hover {
+    background-color: rgba(74, 144, 226, 0.05);
+  }
+
+  .radio-label input:checked + span,
+  .checkbox-label input:checked + span {
+    color: var(--join-primary);
+    font-weight: 500;
+  }
+
+  /* Fix for the disabled class field */
+  .form-group.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .form-group.disabled::after {
+    content: "(Not applicable for teachers)";
+    display: block;
+    font-size: 0.8rem;
+    color: var(--join-text-muted);
+    margin-top: 4px;
+  }
+
+  /* OTP modal improvements */
+  .otp-modal-content {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+
+  .otp-input {
+    width: 50px;
+    height: 60px;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--join-input-border);
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .otp-input:focus {
+    border-color: var(--join-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(74, 144, 226, 0.15);
+  }
+
+  /* Tabs styling improvement */
+  /* Fix for any stray tag elements */
+  .tag {
+    display: none; /* Hide any stray tags */
+  }
+
+  /* Make sure the tabs are properly styled */
+  .tabs {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Prevent any child elements from overflowing */
+  }
+
+  .tab-btn {
+    position: relative;
+    z-index: 2;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .tab-btn.active {
+    background: var(--join-primary-gradient);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+  }
+
+  .otp-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .otp-input {
+    width: 50px;
+    height: 60px;
+    border: 1px solid var(--join-input-border);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: var(--join-transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  }
+
+  .otp-input:focus {
+    border-color: var(--join-primary);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    outline: none;
+  }
+
+  .otp-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .text-btn {
+    background: none;
+    border: none;
+    color: var(--join-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    transition: var(--join-transition);
+  }
+
+  .text-btn:hover {
+    color: var(--join-secondary);
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .tab-content {
+      padding: var(--join-space-lg);
+    }
+
+    .form-row {
+      flex-direction: column;
+    }
+
+    .form-row .form-group {
+      width: 100%;
+    }
+
+    .otp-input {
+      width: 40px;
+      height: 50px;
+      font-size: 1.2rem;
+    }
   }
 }

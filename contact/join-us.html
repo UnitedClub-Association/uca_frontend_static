@@ -71,7 +71,7 @@
           </div>
 
           <div class="tab-content active" id="register-tab">
-            <form id="registration-form" class="join-form">
+            <form id="registration-form" class="join-form" novalidate> <!-- Added novalidate to rely on JS validation -->
               <div class="form-row">
                 <div class="form-group">
                   <label for="firstName"
@@ -87,6 +87,14 @@
                   <input type="text" id="lastName" name="lastName" required />
                   <span class="error-message" id="lastName-error"></span>
                 </div>
+              </div>
+
+              <div class="form-group">
+                <label for="username"
+                  >Username <span class="required">*</span></label
+                >
+                <input type="text" id="username" name="username" required />
+                <span class="error-message" id="username-error"></span>
               </div>
 
               <div class="form-group">
@@ -195,6 +203,40 @@
                 </div>
               </div>
 
+              <!-- Add School/College selection -->
+              <div class="form-group">
+                <label>School/College <span class="required">*</span></label>
+                <div class="radio-group">
+                  <label class="radio-label">
+                    <input
+                      type="radio"
+                      name="institution-type"
+                      value="ulsc"
+                      checked
+                      id="institution-ulsc"
+                    />
+                    <span>University Laboratory School and College</span>
+                  </label>
+                  <label class="radio-label">
+                    <input
+                      type="radio"
+                      name="institution-type"
+                      value="other"
+                      id="institution-other"
+                    />
+                    <span>Other</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Add institution name field - Ensure style="display: none;" is present -->
+              <div class="form-group" id="other-institution-field" style="display: none;">
+                <label for="institution-name">School/College Name <span class="required">*</span></label>
+                <input type="text" id="institution-name" name="institution-name" placeholder="Enter your school/college name" />
+                <span class="error-message" id="institution-name-error"></span>
+              </div>
+
+              <!-- Class field - Ensure id="class-field" is present -->
               <div class="form-group" id="class-field">
                 <label for="class">Class <span class="required">*</span></label>
                 <select id="class" name="class" required>
@@ -227,14 +269,20 @@
             </form>
           </div>
 
+          <!-- Login form update -->
           <div class="tab-content" id="login-tab">
-            <form id="login-form" class="join-form">
+            <form id="login-form" class="join-form" novalidate> <!-- Added novalidate -->
               <div class="form-group">
-                <label for="login-email"
-                  >E-Mail <span class="required">*</span></label
+                <label for="login-identifier"
+                  >Username or E-Mail <span class="required">*</span></label
                 >
-                <input type="email" id="login-email" name="email" required />
-                <span class="error-message" id="login-email-error"></span>
+                <input
+                  type="text"
+                  id="login-identifier"
+                  name="identifier"
+                  required
+                />
+                <span class="error-message" id="login-identifier-error"></span>
               </div>
 
               <div class="form-group">
@@ -271,6 +319,38 @@
               <div class="form-message" id="login-message"></div>
             </form>
           </div>
+
+          <!-- Add OTP verification modal - Ensure id="otp-modal" is present -->
+          <div class="otp-modal" id="otp-modal">
+            <div class="otp-modal-content">
+              <h3>Verification Required</h3>
+              <p>
+                We've sent a verification code to your email. Please enter it
+                below to continue.
+              </p>
+
+              <div class="otp-container">
+                <!-- OTP Inputs -->
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 1" placeholder="0" title="Enter first digit of OTP" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 2" placeholder="0" title="Enter second digit of OTP" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 3" placeholder="0" title="Enter third digit of OTP" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 4" placeholder="0" title="Enter fourth digit of OTP" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 5" placeholder="0" title="Enter fifth digit of OTP" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 6" placeholder="0" title="Enter sixth digit of OTP" />
+              </div>
+
+              <div class="otp-actions">
+                <button type="button" id="verify-otp-btn" class="submit-btn">
+                  Verify
+                </button>
+                <button type="button" id="resend-otp-btn" class="text-btn">
+                  Resend Code
+                </button>
+              </div>
+
+              <div class="form-message" id="otp-message"></div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -278,12 +358,13 @@
     <!-- Footer will be inserted here by include-footer.js -->
     <script src="/js/include-footer.js" defer></script>
 
-    <!-- Add this before the closing </body> tag -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.4/dist/umd/supabase.min.js"></script>
+    <!-- Initialize Feather Icons after the DOM is ready -->
     <script>
-      // Check if Supabase is loaded
-      console.log("Supabase loaded:", typeof supabase !== "undefined");
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+          feather.replace({ 'aria-hidden': 'true' });
+        }
+      });
     </script>
-    <script type="module" src="/js/join-us.js"></script>
   </body>
 </html>
