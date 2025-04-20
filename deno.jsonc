@@ -1,0 +1,9 @@
+{
+  "lint": {
+    "enabled": true
+  },
+  "fmt": {
+    "enabled": true
+  }
+  // Add other Deno configurations here if needed later
+}
