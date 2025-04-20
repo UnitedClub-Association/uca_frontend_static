@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to show OTP modal
   function showOtpModal(email, action, userData = null) {
+    console.log(`[Debug] showOtpModal called for action: ${action}, email: ${email}`); // <<< ADD THIS LINE
     if (!otpModal || !otpMessage || !otpInputs.length) {
         console.error("OTP Modal elements not found. Cannot show modal.");
         // Display error to user if appropriate
@@ -276,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
       otpMessage.textContent = `New verification code sent to ${emailForResend}!`;
       otpMessage.className = 'form-message info';
       // In a real app, trigger backend to send new OTP
-      // sendOtpEmail(emailForResend, currentOtp);
+      // sendOtpEmail(emailForResend, currentOtp); // <<< Actual sending is commented out
       otpInputs.forEach(input => input.value = '');
       otpInputs[0].focus();
     });
@@ -288,8 +289,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Complete registration after OTP verification
   async function completeRegistration(userData) {
+    // Select the message element inside the function for robustness
+    const registrationMessage = document.getElementById("register-message");
     if (!registrationMessage) {
-        console.error("Registration message element not found.");
+        console.error("Registration message element not found inside completeRegistration.");
         return;
     }
     try {
@@ -332,8 +335,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     } catch (error) {
       console.error("Error during registration completion:", error);
-      registrationMessage.textContent = "Registration failed: " + (error.message || "Unknown error");
-      registrationMessage.className = "form-message error";
+      // Ensure message element is still valid before using
+      const regMsg = document.getElementById("register-message");
+      if (regMsg) {
+          regMsg.textContent = "Registration failed: " + (error.message || "Unknown error");
+          regMsg.className = "form-message error";
+      }
     }
   }
 
@@ -390,8 +397,10 @@ document.addEventListener("DOMContentLoaded", function () {
     registrationForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       console.log("Registration form submitted");
+      // Select the message element inside the handler
+      const registrationMessage = document.getElementById("register-message");
       if (!registrationMessage) {
-          console.error("Registration message element not found.");
+          console.error("Registration message element not found inside submit handler.");
           return;
       }
       registrationMessage.textContent = ""; // Clear previous messages
@@ -532,11 +541,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } catch (error) {
           console.error("Error checking existing user:", error);
+          // Use the locally selected registrationMessage
           registrationMessage.textContent = "Registration failed: " + (error.message || "Could not check user details.");
           registrationMessage.className = "form-message error";
         }
       } else {
           console.log("Registration form is invalid.");
+          // Use the locally selected registrationMessage
           registrationMessage.textContent = "Please fix the errors above.";
           registrationMessage.className = "form-message error";
       }
@@ -652,7 +663,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (tabBtns.length && tabContents.length) {
       tabBtns.forEach((btn) => {
         btn.addEventListener("click", function () {
-          // Remove active class from all buttons and content
+          // Remove active class from all buttons and contents
           tabBtns.forEach((b) => b.classList.remove("active"));
           tabContents.forEach((c) => c.classList.remove("active"));
 
@@ -673,29 +684,78 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- Password Toggle Visibility ---
   const togglePasswordBtns = document.querySelectorAll(".toggle-password");
+  console.log(`[Debug] Found ${togglePasswordBtns.length} toggle password buttons.`); // Debug log
 
   if (togglePasswordBtns.length) {
       togglePasswordBtns.forEach(btn => {
           btn.addEventListener('click', function() {
-              const passwordInput = this.previousElementSibling; // Assumes button is immediately after input
-              const icon = this.querySelector('i');
+              console.log("[Debug] Toggle password button clicked:", this); // Log the button itself
 
-              if (passwordInput && icon) {
+              // Find the wrapper div containing the input and button
+              const wrapper = this.closest('.password-input-wrapper');
+              if (!wrapper) {
+                  console.error("[Debug] Could not find parent '.password-input-wrapper'. Button's parent:", this.parentElement); // Log parent if wrapper not found
+                  return;
+              }
+              console.log("[Debug] Found wrapper:", wrapper); // Log the found wrapper
+
+              // Find the input field within the wrapper
+              const passwordInput = wrapper.querySelector('input');
+              // Find the icon SVG within the button (this) - Feather replaces <i> with <svg>
+              const iconSvg = this.querySelector('svg'); // <<< MODIFIED SELECTOR
+
+              // Log results of querySelectors
+              console.log("[Debug] passwordInput found:", passwordInput);
+              console.log("[Debug] iconSvg found:", iconSvg); // <<< UPDATED LOG VARIABLE NAME
+
+              if (passwordInput && iconSvg) { // <<< CHECK iconSvg INSTEAD OF icon
+                  console.log(`[Debug] Input ID: ${passwordInput.id}, current type: ${passwordInput.type}`); // Debug log
+                  // Toggle the input type
                   if (passwordInput.type === 'password') {
                       passwordInput.type = 'text';
-                      icon.setAttribute('data-feather', 'eye-off');
+                      // Update the icon using feather.replace() on a temporary element
+                      // Create a temporary i tag with the new icon name
+                      const tempIcon = document.createElement('i');
+                      tempIcon.setAttribute('data-feather', 'eye-off');
+                      // Replace the current SVG with the new one generated by Feather
+                      this.innerHTML = ''; // Clear the button's content
+                      this.appendChild(tempIcon); // Add the temporary icon
+                      if (typeof feather !== 'undefined') {
+                          feather.replace({ 'aria-hidden': 'true' }); // Replace icons within the button context
+                      }
+                      console.log("[Debug] Changed to type 'text', icon 'eye-off'"); // Debug log
                   } else {
                       passwordInput.type = 'password';
-                      icon.setAttribute('data-feather', 'eye');
+                      // Update the icon using feather.replace() on a temporary element
+                      const tempIcon = document.createElement('i');
+                      tempIcon.setAttribute('data-feather', 'eye');
+                      // Replace the current SVG with the new one generated by Feather
+                      this.innerHTML = ''; // Clear the button's content
+                      this.appendChild(tempIcon); // Add the temporary icon
+                       if (typeof feather !== 'undefined') {
+                          feather.replace({ 'aria-hidden': 'true' }); // Replace icons within the button context
+                      }
+                      console.log("[Debug] Changed to type 'password', icon 'eye'"); // Debug log
                   }
-                  feather.replace({"aria-hidden": "true"}); // Re-render the icon
+
+                  // No need to call feather.replace() globally again here,
+                  // as we replaced the specific icon above.
+
               } else {
-                  console.warn("Could not find password input or icon for toggle button.");
+                  // More specific error message
+                  if (!passwordInput) {
+                      console.error("[Debug] Could not find 'input' element within the wrapper:", wrapper);
+                  }
+                  if (!iconSvg) { // <<< CHECK iconSvg
+                      // Log the button's innerHTML to see what's actually inside if the SVG isn't found
+                      console.error("[Debug] Could not find 'svg' element within the button:", this, "Button innerHTML:", this.innerHTML);
+                  }
+                  console.warn("[Debug] Failed to find password input or icon SVG within wrapper/button."); // <<< UPDATED WARNING
               }
           });
       });
   } else {
-      console.warn("Toggle password buttons not found.");
+      console.warn("[Debug] No toggle password buttons found.");
   }
 
   // --- Password Strength Meter (Example - adapt as needed) ---
