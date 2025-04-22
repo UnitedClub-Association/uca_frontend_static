@@ -45,6 +45,9 @@
 
     <!-- Remove the duplicate script tag and use only the module version -->
     <script type="module" src="/js/join-us.js"></script>
+
+    <!-- Add reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <!-- Skip to main content link for accessibility -->
@@ -254,9 +257,15 @@
                 <span class="error-message" id="class-error"></span>
               </div>
 
+              <!-- START: Add CAPTCHA Placeholder -->
               <div class="form-group checkbox-group">
                 <label class="checkbox-label">
-                  <input type="checkbox" id="terms" name="terms" required />
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    name="terms"
+                    required
+                  />
                   <span
                     >I understand and agree to the
                     <a href="/terms.html">terms and conditions</a>
@@ -266,12 +275,23 @@
                 <span class="error-message" id="terms-error"></span>
               </div>
 
-              <button type="submit" class="submit-btn">Register</button>
+              <!-- START: Invisible CAPTCHA Container -->
+              <div class="form-group captcha-container" id="captcha-container">
+                <div class="g-recaptcha"
+                     data-sitekey="6Ld2aiArAAAAAAZgNkNRIqB6euq9ihtzGOxppWq3"
+                     data-size="invisible"
+                     data-callback="onRecaptchaSuccess"
+                     id="recaptcha-widget"></div>
+                <span class="error-message" id="captcha-error"></span>
+              </div>
+              <!-- END: Invisible CAPTCHA Container -->
+
+              <button type="submit" class="submit-btn" id="register-submit-btn">Register</button>
               <div class="form-message" id="register-message"></div>
             </form>
           </div>
 
-          <!-- Login form update -->
+          <!-- Login form update (No changes needed here for removing OTP) -->
           <div class="tab-content" id="login-tab">
             <form id="login-form" class="join-form" novalidate> <!-- Added novalidate -->
               <div class="form-group">
@@ -316,40 +336,14 @@
             </form>
           </div>
 
-          <!-- Add OTP verification modal -->
-          <div class="otp-modal" id="otp-modal">
-            <div class="otp-modal-content">
-              <h3>Verification Required</h3>
-              <p>
-                We've sent a verification code to your email. Please enter it
-                below to continue.
-              </p>
+          <!-- START: Remove OTP Modal -->
+          <!-- The entire <div class="otp-modal" id="otp-modal">...</div> block should be deleted -->
+          <!-- END: Remove OTP Modal -->
 
-              <div class="otp-container">
-                <!-- OTP Inputs -->
-                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 1" placeholder="0" title="Enter first digit of OTP" />
-                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 2" placeholder="0" title="Enter second digit of OTP" />
-                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 3" placeholder="0" title="Enter third digit of OTP" />
-                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 4" placeholder="0" title="Enter fourth digit of OTP" />
-                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 5" placeholder="0" title="Enter fifth digit of OTP" />
-                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" aria-label="OTP digit 6" placeholder="0" title="Enter sixth digit of OTP" />
-              </div>
-
-              <div class="otp-actions">
-                <button type="button" id="verify-otp-btn" class="submit-btn">
-                  Verify
-                </button>
-                <button type="button" id="resend-otp-btn" class="text-btn">
-                  Resend Code
-                </button>
-              </div>
-
-              <div class="form-message" id="otp-message"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+        </div> <!-- End tab-container -->
+      </div> <!-- End form-container -->
+    </section>
+  </main>
 
     <!-- Footer will be inserted here by include-footer.js -->
     <script src="/js/include-footer.js" defer></script>
@@ -363,4 +357,11 @@
       });
     </script>
   </body>
+
+  <!-- Add reCAPTCHA script - Place this before your closing </body> tag -->
+  <!-- This uses the "Automatic render" method -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <script type="module" src="/js/join-us.js"></script>
+</body>
 </html>
