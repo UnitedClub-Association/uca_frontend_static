@@ -1,2 +1,5 @@
-[build]
-  functions = "netlify/functions"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "script-src 'self' https://www.googletagmanager.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-inline' 'strict-dynamic' nonce-YOUR_NONCE_VALUE; object-src 'none'; base-uri 'self';"
+    # Add other directives like style-src, img-src etc. as needed

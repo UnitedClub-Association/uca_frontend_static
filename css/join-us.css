@@ -72,7 +72,7 @@ body {
       rgba(42, 67, 101, 0.8),
       rgba(42, 67, 101, 0.8)
     ),
-    url("/images/join-hero.jpg");
+    url("/images/join-hero.jpg"); /* This line causes the 404 */
   background-size: cover;
   background-position: center;
   height: 30vh;

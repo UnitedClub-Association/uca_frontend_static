@@ -7,127 +7,110 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <!-- About Pages -->
   <url>
     <loc>https://unitedclubassociation.netlify.app/about/about.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/about/executive-panel.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <!-- Club Pages -->
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/clubs.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/debate-club.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/language-club.html</loc>
     <lastmod>2025-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/literature-club.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/photography-club.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/quiz-club.html</loc>
     <lastmod>2025-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/science-club.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/sports-club.html</loc>
     <lastmod>2025-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/cultural-club.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/clubs/ict-club.html</loc>
     <lastmod>2025-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <!-- Events Pages -->
   <url>
     <loc>https://unitedclubassociation.netlify.app/events/events.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/events/snapfest.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <!-- Contact Pages -->
   <url>
     <loc>https://unitedclubassociation.netlify.app/contact/contact.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://unitedclubassociation.netlify.app/contact/join-us.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Gallery -->
   <url>
     <loc>https://unitedclubassociation.netlify.app/gallery/gallery.html</loc>
-    <lastmod>2025-04-18</lastmod>
+    <lastmod>2025-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
