@@ -36,11 +36,9 @@
     </script>
   </head>
   <body>
-    <!-- Skip link removed -->
-    
     <!-- Navbar will be inserted here by include-navbar.js -->
     <script src="/js/include-navbar.js" defer></script>
-    
+
     <main class="club-page" id="main-content">
       <header class="club-header" role="banner">
         <img
@@ -104,16 +102,16 @@
         </article>
       </section>
     </main>
-    
+
     <!-- Footer will be inserted here by include-footer.js -->
     <script src="/js/include-footer.js" defer></script>
-    
+
     <!-- Initialize Feather Icons -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         if (typeof feather !== "undefined") {
           feather.replace({
-            "aria-hidden": "true"
+            "aria-hidden": "true",
           });
         } else {
           console.error("Feather Icons library failed to load.");
