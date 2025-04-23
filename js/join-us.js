@@ -177,8 +177,21 @@ document.addEventListener("DOMContentLoaded", function () {
             registrationMessage.textContent = "Verifying...";
             registrationMessage.className = "form-message info";
         }
-        console.log("Form validated, executing hCaptcha...");
-        hcaptcha.execute(); // Trigger the invisible reCAPTCHA
+        console.log("Form validated, attempting to execute hCaptcha...");
+
+        // --- EDIT: Check if hcaptcha object exists before executing ---
+        if (typeof hcaptcha !== 'undefined') {
+          hcaptcha.execute(); // Trigger the invisible hCaptcha
+        } else {
+          console.error("hCaptcha object not found. Was the script loaded correctly?");
+          if (registrationMessage) {
+            registrationMessage.textContent = "CAPTCHA failed to load. Please refresh the page and try again.";
+            registrationMessage.className = "form-message error";
+          }
+          // Re-enable button if captcha is not available
+          registerSubmitBtn.disabled = false;
+        }
+        // --- END EDIT ---
 
         // NOTE: The actual insertion now happens in onHCaptchaSuccess -> completeRegistration
         // We removed the pre-check for existing users here. Database constraints will handle uniqueness.
@@ -348,8 +361,18 @@ document.addEventListener("DOMContentLoaded", function () {
         // Always re-enable the submit button after attempt (success or fail)
         if(registerSubmitBtn) registerSubmitBtn.disabled = false;
         window.validatedUserData = null; // Clear global data after attempt
-        // Replace grecaptcha with hcaptcha
-        try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha in finally block", e); }
+        // Reset hcaptcha
+        // --- EDIT: Add check before resetting hCaptcha in finally block ---
+        if (typeof hcaptcha !== 'undefined') {
+          try {
+            hcaptcha.reset();
+          } catch (e) {
+            console.warn("Could not reset hCaptcha in finally block", e);
+          }
+        } else {
+            console.warn("hCaptcha object not found in finally block, cannot reset.");
+        }
+        // --- END EDIT ---
         console.log("Registration attempt finished, button re-enabled, captcha reset."); // Log end of finally
     }
   }
