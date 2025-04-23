@@ -131,12 +131,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if (registrationForm && registerSubmitBtn) {
     registrationForm.addEventListener("submit", async function (event) {
       event.preventDefault();
-      
+
       // Clear previous messages and disable submit button
       registerSubmitBtn.disabled = true;
       clearErrorMessages(registrationForm);
-      
+      if (registrationMessage) {
+        registrationMessage.textContent = ""; // Clear previous status messages
+        registrationMessage.className = "form-message";
+      }
+
       if (validateRegistrationForm()) {
+        // Collect user data after validation passes
         const userData = {
           first_name: document.getElementById("firstName").value.trim(),
           last_name: document.getElementById("lastName").value.trim(),
@@ -150,40 +155,28 @@ document.addEventListener("DOMContentLoaded", function () {
           class: (roleStudent.checked && classSelect.value) ? classSelect.value : null
         };
 
-        try {
-          // Check availability first
-          const { data: existingUser, error: checkError } = await supabase
-            .from('members')
-            .select('email, username')
-            .or(`email.eq.${userData.email},username.eq.${userData.username}`);
+        // Store data globally for the CAPTCHA callback
+        window.validatedUserData = userData;
 
-          if (checkError) throw checkError;
-
-          if (existingUser && existingUser.length > 0) {
-            if (existingUser[0].email === userData.email) {
-              registrationMessage.textContent = "This email is already registered.";
-            } else {
-              registrationMessage.textContent = "This username is already taken.";
-            }
-            registrationMessage.className = "form-message error";
-            registerSubmitBtn.disabled = false;
-            return;
-          }
-
-          // Store validated data and execute reCAPTCHA
-          window.validatedUserData = userData;
-          grecaptcha.execute();
-
-        } catch (error) {
-          console.error("Error checking existing user:", error);
-          registrationMessage.textContent = "Registration failed: " + (error.message || "Could not check user details.");
-          registrationMessage.className = "form-message error";
-          registerSubmitBtn.disabled = false;
-          window.validatedUserData = null;
-          grecaptcha.reset();
+        // Display message and execute CAPTCHA
+        if (registrationMessage) {
+            registrationMessage.textContent = "Verifying...";
+            registrationMessage.className = "form-message info";
         }
+        console.log("Form validated, executing reCAPTCHA...");
+        grecaptcha.execute(); // Trigger the invisible reCAPTCHA
+
+        // NOTE: The actual insertion now happens in onRecaptchaSuccess -> completeRegistration
+        // We removed the pre-check for existing users here. Database constraints will handle uniqueness.
+
       } else {
-        registerSubmitBtn.disabled = false;
+        // Validation failed
+        console.log("Registration form validation failed.");
+        if (registrationMessage) {
+            registrationMessage.textContent = "Please correct the errors above.";
+            registrationMessage.className = "form-message error";
+        }
+        registerSubmitBtn.disabled = false; // Re-enable button if validation fails
       }
     });
   } else {
@@ -263,8 +256,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (error) throw error;
 
-        console.log("Login successful:", data);
-        window.location.href = "/";
+        console.log("Login successful:", data); // This 'data' is from the device_id update
+        window.location.href = "/"; // Redirects to the root on successful login
+        // --- End Login Success Path ---
 
       } catch (error) {
         console.error("Login error:", error);
@@ -278,41 +272,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function completeRegistration(userData) {
     const registrationMessage = document.getElementById("register-message");
-    if (!registrationMessage) {
-        console.error("Registration message element not found.");
-        return;
+    const registerSubmitBtn = document.getElementById('register-submit-btn'); // Get button again
+    if (!registrationMessage || !registerSubmitBtn) {
+        console.error("Registration message or submit button element not found in completeRegistration.");
+        return; // Exit if elements aren't found
     }
 
     try {
+        // Add device ID and timestamp just before insertion
         userData.device_id = generateDeviceId();
         localStorage.setItem('deviceId', userData.device_id);
-
         userData.created_at = new Date().toISOString();
 
+        // Attempt to insert the user data
         const { data, error } = await supabase
             .from('members')
             .insert([userData])
             .select();
 
-        if (error) throw error;
+        if (error) {
+            // Check for unique constraint violation (PostgreSQL error code 23505)
+            if (error.code === '23505') {
+                if (error.message.includes('members_email_unique')) {
+                    displayFieldError('email-error', 'This email address is already registered.');
+                    throw new Error("Email already registered."); // Throw specific error
+                } else if (error.message.includes('members_username_unique')) {
+                    displayFieldError('username-error', 'This username is already taken.');
+                    throw new Error("Username already taken."); // Throw specific error
+                }
+            }
+            // Throw other errors
+            throw error;
+        }
 
         console.log("Registration successful:", data);
         registrationMessage.textContent = "Registration successful! You can now log in.";
         registrationMessage.className = "form-message success";
 
-        registrationForm.reset();
+        registrationForm.reset(); // Reset the form on success
+        // Optionally switch to login tab
         const loginTab = document.querySelector('[data-tab="login"]');
         if (loginTab) loginTab.click();
 
     } catch (error) {
         console.error("Registration error:", error);
-        registrationMessage.textContent = error.message || "Registration failed. Please try again.";
+        // Display specific errors caught above, or a generic one
+        registrationMessage.textContent = error.message.includes("already registered") || error.message.includes("already taken")
+            ? error.message // Show specific duplicate message
+            : "Registration failed. Please check the details and try again."; // Generic failure
         registrationMessage.className = "form-message error";
-        throw error;
+        // Do not re-throw here unless needed upstream, but re-enable button
+    } finally {
+        // Always re-enable the submit button after attempt (success or fail)
+        if(registerSubmitBtn) registerSubmitBtn.disabled = false;
+        window.validatedUserData = null; // Clear global data after attempt
+        grecaptcha.reset(); // Reset captcha widget
     }
   }
 
-  // --- Form Validation Logic ---
+  // --- Validation and Helper Functions ---
   function validateRegistrationForm() {
     const termsCheckbox = document.getElementById('terms');
     let isValid = true;
