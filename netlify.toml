@@ -1,6 +1,6 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # Updated CSP to allow unpkg.com and inline scripts
-    Content-Security-Policy = "script-src 'self' https://www.googletagmanager.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://unpkg.com 'unsafe-inline'; object-src 'none'; base-uri 'self';"
+    # Updated CSP to allow unpkg.com, inline scripts, and jsDelivr (for Supabase)
+    Content-Security-Policy = "script-src 'self' https://www.googletagmanager.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://unpkg.com https://cdn.jsdelivr.net/npm/ 'unsafe-inline'; object-src 'none'; base-uri 'self';"
     # Add other directives like style-src, img-src, font-src etc. as needed based on browser console errors
