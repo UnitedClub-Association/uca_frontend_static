@@ -46,11 +46,16 @@
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
 
-    <!-- Remove the duplicate script tag and use only the module version -->
+    <!-- Component scripts -->
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
     <script type="module" src="/js/join-us.js"></script>
 
-    <!-- Add reCAPTCHA script -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- REMOVE THIS LINE: Google reCAPTCHA Script -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+
+    <!-- ENSURE THIS LINE IS PRESENT: hCaptcha Script -->
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   </head>
   <body>
    

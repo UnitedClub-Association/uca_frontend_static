@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.warn("Login form not found.");
   }
 
-  async function completeRegistration(userData) {
+  async function completeRegistration(userData, captchaToken) { // Added captchaToken parameter
     const registrationMessage = document.getElementById("register-message");
     const registerSubmitBtn = document.getElementById('register-submit-btn'); // Get button again
     if (!registrationMessage || !registerSubmitBtn) {
@@ -348,7 +348,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Always re-enable the submit button after attempt (success or fail)
         if(registerSubmitBtn) registerSubmitBtn.disabled = false;
         window.validatedUserData = null; // Clear global data after attempt
-        grecaptcha.reset(); // Reset captcha widget
+        // Replace grecaptcha with hcaptcha
+        try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha in finally block", e); }
         console.log("Registration attempt finished, button re-enabled, captcha reset."); // Log end of finally
     }
   }
