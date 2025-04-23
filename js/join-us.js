@@ -8,33 +8,50 @@ function generateDeviceId() {
   });
 }
 
-// --- Global reCAPTCHA Success Callback ---
-window.onRecaptchaSuccess = async function(token) {
-  console.log("reCAPTCHA verification successful");
+// --- Global hCaptcha Callbacks ---
+window.onHCaptchaSuccess = async function(token) {
+  console.log("hCaptcha verification successful");
   const registrationMessage = document.getElementById("register-message");
   const registerSubmitBtn = document.getElementById('register-submit-btn');
 
   if (!window.validatedUserData) {
-    console.error("No validated user data found");
+    console.error("No validated user data found for hCaptcha callback");
     if (registrationMessage) {
       registrationMessage.textContent = "An unexpected error occurred. Please try again.";
       registrationMessage.className = "form-message error";
     }
-    grecaptcha.reset();
+    // Reset hCaptcha if possible (might need widget ID)
+    try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha", e); }
     if(registerSubmitBtn) registerSubmitBtn.disabled = false;
     return;
   }
 
   try {
-    await completeRegistration(window.validatedUserData);
+    // Pass the hCaptcha token to the registration function
+    await completeRegistration(window.validatedUserData, token);
     window.validatedUserData = null;
-    grecaptcha.reset();
+    // Reset hCaptcha (might need widget ID if multiple captchas exist)
+    try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha", e); }
   } catch (error) {
-    grecaptcha.reset();
+    // Error handled within completeRegistration, but reset captcha here too
+    try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha", e); }
     if(registerSubmitBtn) registerSubmitBtn.disabled = false;
     window.validatedUserData = null;
   }
 };
+
+window.onHCaptchaError = function(error) {
+  console.error("hCaptcha error:", error);
+  const captchaErrorElement = document.getElementById("captcha-error");
+  const registerSubmitBtn = document.getElementById('register-submit-btn');
+  if (captchaErrorElement) {
+    captchaErrorElement.textContent = `Captcha challenge failed (${error}). Please try again.`;
+    captchaErrorElement.style.display = 'block';
+  }
+   if(registerSubmitBtn) registerSubmitBtn.disabled = false;
+   window.validatedUserData = null; // Clear pending data on error
+};
+
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded");
@@ -52,17 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("login-form");
   const registrationMessage = document.getElementById("register-message");
   const loginMessage = document.getElementById("login-message");
-  const captchaContainer = document.getElementById('captcha-container');
+  // No need for captchaContainer specifically unless styling requires it
   const registerSubmitBtn = document.getElementById('register-submit-btn');
-
-  // --- State for Registration Flow ---
-  let isCaptchaRequired = false;
+  const captchaErrorElement = document.getElementById("captcha-error"); // Get error element
 
   // Store validated data globally
   window.validatedUserData = null;
 
   // --- Form Interaction Logic ---
-
   // Handle institution type selection
   const institutionUlsc = document.getElementById("institution-ulsc");
   const institutionOther = document.getElementById("institution-other");
@@ -163,10 +177,10 @@ document.addEventListener("DOMContentLoaded", function () {
             registrationMessage.textContent = "Verifying...";
             registrationMessage.className = "form-message info";
         }
-        console.log("Form validated, executing reCAPTCHA...");
-        grecaptcha.execute(); // Trigger the invisible reCAPTCHA
+        console.log("Form validated, executing hCaptcha...");
+        hcaptcha.execute(); // Trigger the invisible reCAPTCHA
 
-        // NOTE: The actual insertion now happens in onRecaptchaSuccess -> completeRegistration
+        // NOTE: The actual insertion now happens in onHCaptchaSuccess -> completeRegistration
         // We removed the pre-check for existing users here. Database constraints will handle uniqueness.
 
       } else {

@@ -29,6 +29,9 @@
       content="UCA, United Club Association, join club, register, sign in, membership"
     />
 
+    <!-- Add hCaptcha Site Key Meta Tag -->
+    <meta name="hcaptcha-sitekey" content="c99ce990-71b0-48fa-b588-bfe2c0e42fc2">
+
     <!-- Include centralized fonts -->
     <script src="/js/include-fonts.js" defer></script>
 
@@ -273,16 +276,18 @@
                 <span class="error-message" id="terms-error"></span>
               </div>
 
-              <!-- START: Invisible CAPTCHA Container -->
+              <!-- START: Replace reCAPTCHA with hCaptcha Container -->
               <div class="form-group captcha-container" id="captcha-container">
-                <div class="g-recaptcha"
-                     data-sitekey="6Ld2aiArAAAAAAZgNkNRIqB6euq9ihtzGOxppWq3"
+                <!-- hCaptcha Widget -->
+                <div class="h-captcha"
+                     data-sitekey="c99ce990-71b0-48fa-b588-bfe2c0e42fc2"
                      data-size="invisible"
-                     data-callback="onRecaptchaSuccess"
-                     id="recaptcha-widget"></div>
+                     data-callback="onHCaptchaSuccess"
+                     data-error-callback="onHCaptchaError"
+                     id="hcaptcha-widget"></div>
                 <span class="error-message" id="captcha-error"></span>
               </div>
-              <!-- END: Invisible CAPTCHA Container -->
+              <!-- END: hCaptcha Container -->
 
               <button type="submit" class="submit-btn" id="register-submit-btn">Register</button>
               <div class="form-message" id="register-message"></div>
@@ -353,11 +358,8 @@
     </script>
   </body>
 
-  <!-- Add reCAPTCHA script - Place this before your closing </body> tag -->
-  <!-- This uses the "Automatic render" method -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-  <script type="module" src="/js/join-us.js"></script>
+  <!-- Replace reCAPTCHA script with hCaptcha script -->
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </body>
 </html>
 

@@ -142,12 +142,13 @@ sign_in_sign_ups = 30
 token_verifications = 30
 
 # Configure one of the supported captcha providers: `hcaptcha`, `turnstile`.
-# [auth.captcha]
-# enabled = true
-# provider = "hcaptcha"
-# secret = ""
+[auth.captcha]
+enabled = true
+provider = "hcaptcha"
+# Use environment variable substitution for the secret key
+secret = "env(HCAPTCHA_SECRET_KEY)"
 
-[auth.email]
+# [auth.email]
 # Allow/disallow new user signups via email to your project.
 enable_signup = true
 # If enabled, a user will be required to confirm any email change on both the old, and new email
