@@ -278,19 +278,26 @@ document.addEventListener("DOMContentLoaded", function () {
         return; // Exit if elements aren't found
     }
 
+    console.log("Attempting completeRegistration with data:", userData); // Log incoming data
+
     try {
         // Add device ID and timestamp just before insertion
         userData.device_id = generateDeviceId();
         localStorage.setItem('deviceId', userData.device_id);
         userData.created_at = new Date().toISOString();
 
+        console.log("Data prepared for insertion:", userData); // Log data before insert
+
         // Attempt to insert the user data
+        console.log("Calling supabase.from('members').insert()..."); // Log before Supabase call
         const { data, error } = await supabase
             .from('members')
             .insert([userData])
             .select();
+        console.log("Supabase insert call finished."); // Log after Supabase call returns
 
         if (error) {
+            console.error("Supabase insert error object:", error); // Log the specific error object
             // Check for unique constraint violation (PostgreSQL error code 23505)
             if (error.code === '23505') {
                 if (error.message.includes('members_email_unique')) {
@@ -305,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
             throw error;
         }
 
-        console.log("Registration successful:", data);
+        console.log("Registration successful (Supabase data):", data); // Log success data
         registrationMessage.textContent = "Registration successful! You can now log in.";
         registrationMessage.className = "form-message success";
 
@@ -315,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (loginTab) loginTab.click();
 
     } catch (error) {
-        console.error("Registration error:", error);
+        console.error("Caught error during registration process:", error); // Log any caught error
         // Display specific errors caught above, or a generic one
         registrationMessage.textContent = error.message.includes("already registered") || error.message.includes("already taken")
             ? error.message // Show specific duplicate message
@@ -323,10 +330,12 @@ document.addEventListener("DOMContentLoaded", function () {
         registrationMessage.className = "form-message error";
         // Do not re-throw here unless needed upstream, but re-enable button
     } finally {
+        console.log("Executing finally block of completeRegistration."); // Log finally block entry
         // Always re-enable the submit button after attempt (success or fail)
         if(registerSubmitBtn) registerSubmitBtn.disabled = false;
         window.validatedUserData = null; // Clear global data after attempt
         grecaptcha.reset(); // Reset captcha widget
+        console.log("Registration attempt finished, button re-enabled, captcha reset."); // Log end of finally
     }
   }
 
