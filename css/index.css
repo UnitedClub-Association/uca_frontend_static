@@ -409,12 +409,25 @@ body {
     padding: 3.5rem 1.5rem;
   }
 
-  .club-grid,
-  .event-grid {
-    gap: 1.5rem;
+  /* Add padding to body to account for fixed navbar height */
+  body {
+    /* Use desktop height by default */
+    padding-top: var(--navbar-height-desktop, 6rem); /* Added fallback */
   }
+  
+  @media (width <= 768px) {
+    body {
+      /* Use mobile height on smaller screens */
+      padding-top: var(--navbar-height-mobile, 4.5rem); /* Added fallback */
+    }
 
-  .club-card {
-    height: auto;
+    .club-grid,
+    .event-grid {
+      gap: 1.5rem;
+    }
+  
+    .club-card {
+      height: auto;
+    }
   }
 }
