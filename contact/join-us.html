@@ -51,10 +51,10 @@
     <script src="/js/include-footer.js" defer></script>
     <script type="module" src="/js/join-us.js"></script>
 
-    <!-- REMOVE THIS LINE: Google reCAPTCHA Script -->
+    <!-- REMOVE THIS LINE: Old Google reCAPTCHA Script -->
     <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 
-    <!-- ENSURE THIS LINE IS PRESENT: hCaptcha Script -->
+    <!-- ADD THIS LINE: Correct hCaptcha Script -->
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   </head>
   <body>
@@ -272,8 +272,7 @@
                     name="terms"
                     required
                   />
-                  <span
-                    >I understand and agree to the
+                  <span>I understand and agree to the
                     <a href="/terms.html">terms and conditions</a>
                     <span class="required">*</span></span
                   >
@@ -281,9 +280,9 @@
                 <span class="error-message" id="terms-error"></span>
               </div>
 
-              <!-- START: Replace reCAPTCHA with hCaptcha Container -->
+              <!-- START: hCaptcha Container -->
               <div class="form-group captcha-container" id="captcha-container">
-                <!-- hCaptcha Widget -->
+                <!-- Ensure this div is present and correctly configured -->
                 <div class="h-captcha"
                      data-sitekey="c99ce990-71b0-48fa-b588-bfe2c0e42fc2"
                      data-size="invisible"
@@ -362,9 +361,5 @@
       });
     </script>
   </body>
-
-  <!-- Replace reCAPTCHA script with hCaptcha script -->
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-</body>
 </html>
 
