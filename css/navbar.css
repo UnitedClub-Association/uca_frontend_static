@@ -286,21 +286,21 @@
   .navbar__menu {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
+    right: -100%; /* Start off-screen */
+    width: min(80%, 300px); /* Responsive width */
     height: 100vh;
     background: var(--background);
     flex-direction: column;
     gap: 0;
-    padding: 6rem 1.5rem 2rem;
-    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow-y: auto;
-    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+    padding: calc(var(--navbar-height-mobile) + 1rem) 1.5rem 2rem; /* Padding below navbar */
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth slide-in */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    z-index: 999; /* Ensure it's below the toggle */
   }
 
   .navbar__menu.active {
-    right: 0;
+    right: 0; /* Slide in */
   }
 
   .navbar__item {
@@ -310,47 +310,107 @@
   .navbar__link {
     flex-direction: row;
     justify-content: flex-start;
-    padding: 1rem 0;
+    align-items: center; /* Vertically center icon and text */
+    padding: 1rem 0.5rem; /* Adjusted padding */
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 1rem; /* Slightly larger font */
+    color: var(--text); /* Ensure text color */
+    transition: background-color 0.2s ease; /* Add hover feedback */
+  }
+  
+  .navbar__link:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+      color: var(--primary-light); /* Match desktop hover */
   }
 
   .navbar__link i {
     margin-right: 1rem;
+    flex-shrink: 0; /* Prevent icon shrinking */
+    font-size: 1.4rem; /* Slightly larger icon */
+    transition: transform 0.2s ease;
+  }
+  
+  .navbar__link:hover i {
+      transform: scale(1.1); /* Subtle icon grow on hover */
+  }
+
+  .navbar__link span {
+    opacity: 1; /* Ensure text is fully visible */
+    transform: none; /* Reset any desktop transforms */
   }
 
   .navbar__link::before {
-    display: none;
+    display: none; /* No underline needed on mobile */
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  /* Style the main dropdown link */
+  .dropdown > .navbar__link {
+    display: flex; /* Use flex to align arrow */
+    justify-content: space-between; /* Push arrow to the right */
+    align-items: center;
+  }
+
+  /* Add a dropdown arrow indicator */
+  .dropdown > .navbar__link::after {
+    content: '';
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-right: 0.5rem;
+  }
+
+  .dropdown.active > .navbar__link::after {
+    transform: rotate(225deg); /* Point arrow up when open */
   }
 
   .dropdown__menu {
-    position: static;
+    position: static; /* No absolute positioning needed */
     transform: none;
     width: 100%;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.1); /* Subtle background for distinction */
     box-shadow: none;
     border: none;
     border-radius: 0;
-    padding: 0;
-    margin-left: 2rem;
-    height: 0;
+    padding: 0; 
+    margin: 0; /* Remove margin */
+    height: 0; /* Start closed */
     overflow: hidden;
     opacity: 1;
     visibility: visible;
-    transition: height 0.3s ease;
+    transition: height 0.35s ease, padding 0.35s ease; /* Smooth transition for height and padding */
   }
 
   .dropdown.active .dropdown__menu {
-    height: auto;
+    /* Height is set dynamically by JS */
+    padding: 0.5rem 0; /* Add padding when open */
+  }
+
+  .dropdown__menu li {
+    /* Inherit width */
   }
 
   .dropdown__menu a {
-    padding: 0.75rem 1rem;
-    border-left: 2px solid var(--primary);
+    padding: 0.75rem 1rem 0.75rem 2.5rem; /* Indent dropdown items */
+    border-left: none; /* Remove side border */
+    font-size: 0.9rem; /* Slightly smaller font */
+    color: var(--text-muted);
+    display: block; /* Ensure links take full width */
+    transition: padding-left 0.2s ease, color 0.2s ease, background-color 0.2s ease;
   }
 
   .dropdown__menu a:hover {
-    padding-left: 1.5rem;
+    padding-left: 2.8rem; /* Adjust hover indent */
+    color: var(--primary-light);
+    background-color: rgba(255, 255, 255, 0.03);
   }
 
   /* Toggle animation */
