@@ -1,21 +1,19 @@
 /* Enhanced Navbar Variables */
 :root {
-  --primary: #673ab7; /* Slightly deeper purple */
-  --primary-light: #9575cd; /* Adjusted lighter purple */
-  --primary-gradient: linear-gradient(135deg, #673ab7, #9575cd);
-  --text: #e8eaf6; /* Slightly softer white */
-  --text-muted: rgba(232, 234, 246, 0.75); /* Adjusted muted text */
-  --background: rgba(
-    26, 30, 36, 0.92 /* Slightly adjusted background transparency */
-  );
-  --background-light: rgba(26, 30, 36, 0.88);
+  --primary: #6200ea; /* Deeper, more vibrant purple */
+  --primary-light: #9d46ff; /* Brighter purple for accents */
+  --primary-gradient: linear-gradient(135deg, #6200ea, #9d46ff);
+  --text: #ffffff; /* Pure white for better contrast */
+  --text-muted: rgba(255, 255, 255, 0.85); /* More visible muted text */
+  --background: rgba(26, 24, 38, 0.95); /* Darker, more sophisticated background */
+  --background-light: rgba(26, 24, 38, 0.92);
   --spacer: 1rem;
   --link-height: calc(var(--spacer) * 3.5);
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --navbar-height-desktop: 5.5rem; /* Slightly reduced height */
-  --navbar-height-mobile: 4rem; /* Slightly reduced height */
-  --dropdown-shadow: 0 10px 35px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
-  --navbar-glow: 0 0 12px rgba(149, 117, 205, 0.5); /* Adjusted glow */
+  --navbar-height-desktop: 5rem;
+  --navbar-height-mobile: 4rem;
+  --dropdown-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+  --navbar-glow: 0 0 15px rgba(157, 70, 255, 0.3);
 }
 
 /* The rest of the navbar.css remains the same */
