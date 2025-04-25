@@ -52,11 +52,11 @@
   max-width: 1500px;
   margin: 0 auto;
   padding: var(--spacing-lg);
-  padding-top: calc(var(--navbar-height) + var(--spacing-lg)); /* Add padding to account for fixed navbar */
+  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
   background-color: var(--club-secondary);
   color: var(--text-light);
   font-family: var(--font-primary);
-  min-height: calc(100vh - var(--footer-height)); /* Remove navbar height from calculation since we're using padding */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -188,53 +188,11 @@
   border-radius: var(--border-radius);
 }
 
-/* Social Links */
-.social-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-lg);
-}
-
-.social-btn,
-.website-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: var(--spacing-sm);
-  border: var(--border-width-thin) solid var(--club-primary);
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  font-weight: 600;
-  font-family: var(--font-primary);
-  transition: var(--transition-standard);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-narrow);
-}
-
-.website-btn {
-  background: transparent;
-  color: var(--club-primary);
-}
-
-.social-btn {
-  background: transparent;
-  color: var(--club-accent);
-}
-
-.social-btn:hover,
-.website-btn:hover {
-  background: var(--club-primary);
-  color: var(--club-secondary);
-  transform: translateY(-3px);
-  box-shadow: var(--neon-glow);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .club-page {
     padding: var(--spacing-sm);
+    padding-top: calc(var(--navbar-height) + 1rem);
   }
 
   .club-header {
@@ -248,9 +206,5 @@
   .club-logo {
     width: 120px;
     height: 120px;
-  }
-
-  .social-links {
-    grid-template-columns: 1fr;
   }
 }

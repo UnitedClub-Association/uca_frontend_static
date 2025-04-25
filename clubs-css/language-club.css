@@ -20,14 +20,16 @@ body {
   padding: 0;
 }
 
+/* Club Page Container */
 .club-page {
   max-width: 1500px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
   background-color: var(--club-neutral);
   color: var(--text-dark);
   font-family: "Source Sans Pro", sans-serif;
-  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -293,54 +295,6 @@ body {
   min-width: 24px;
 }
 
-/* Social Grid with Modern Design */
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.8rem;
-  margin-top: 2.5rem;
-}
-
-.social-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem 1.5rem;
-  background: rgba(44, 62, 80, 0.03);
-  border-radius: 16px;
-  text-decoration: none;
-  color: var(--text-dark);
-  transition: var(--transition);
-  border: 2px solid transparent;
-}
-
-.social-item:hover {
-  transform: translateY(-8px);
-  background: rgba(44, 62, 80, 0.06);
-  border-color: var(--club-primary);
-  box-shadow: 0 10px 25px rgba(44, 62, 80, 0.1);
-}
-
-.social-item i {
-  color: var(--club-primary);
-  font-size: 2rem;
-  stroke-width: 2;
-  transition: var(--transition);
-}
-
-.social-item:hover i {
-  color: var(--club-secondary);
-  transform: scale(1.2);
-}
-
-.social-item span {
-  font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-}
-
 /* Language Bubbles Animation */
 .language-bubbles {
   position: absolute;
@@ -415,6 +369,7 @@ body {
 @media (max-width: 768px) {
   .club-page {
     padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
   }
 
   .club-header {
@@ -439,10 +394,6 @@ body {
   }
 
   .language-list {
-    grid-template-columns: 1fr;
-  }
-
-  .social-grid {
     grid-template-columns: 1fr;
   }
 
@@ -472,8 +423,7 @@ body {
   
   .language-card:hover,
   .connect-section:hover,
-  .language-list li:hover,
-  .social-item:hover {
+  .language-list li:hover {
     transform: none;
   }
 }
@@ -504,10 +454,6 @@ body {
   .connect-section {
     box-shadow: none;
     border: 1px solid #ddd;
-  }
-  
-  .social-grid {
-    display: none;
   }
   
   .language-bubbles {

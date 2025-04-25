@@ -1,25 +1,21 @@
 /* Enhanced Navbar Variables */
-/* Enhanced Navbar Variables */
 :root {
-  --primary: #7e57c2; /* Rich purple - vibrant but easy on eyes */
-  --primary-light: #b085f5; /* Lighter purple */
-  --primary-gradient: linear-gradient(135deg, #7e57c2, #b085f5);
-  --text: #f0f4f8; /* Soft white text for better contrast */
-  --text-muted: rgba(240, 244, 248, 0.8);
+  --primary: #673ab7; /* Slightly deeper purple */
+  --primary-light: #9575cd; /* Adjusted lighter purple */
+  --primary-gradient: linear-gradient(135deg, #673ab7, #9575cd);
+  --text: #e8eaf6; /* Slightly softer white */
+  --text-muted: rgba(232, 234, 246, 0.75); /* Adjusted muted text */
   --background: rgba(
-    28,
-    32,
-    38,
-    0.95
-  ); /* Dark background with slight blue tint */
-  --background-light: rgba(28, 32, 38, 0.85);
+    26, 30, 36, 0.92 /* Slightly adjusted background transparency */
+  );
+  --background-light: rgba(26, 30, 36, 0.88);
   --spacer: 1rem;
   --link-height: calc(var(--spacer) * 3.5);
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --navbar-height-desktop: 6rem;
-  --navbar-height-mobile: 4.5rem;
-  --dropdown-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  --navbar-glow: 0 0 15px rgba(126, 87, 194, 0.4);
+  --navbar-height-desktop: 5.5rem; /* Slightly reduced height */
+  --navbar-height-mobile: 4rem; /* Slightly reduced height */
+  --dropdown-shadow: 0 10px 35px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  --navbar-glow: 0 0 12px rgba(149, 117, 205, 0.5); /* Adjusted glow */
 }
 
 /* The rest of the navbar.css remains the same */
@@ -32,7 +28,7 @@
   right: 0;
   background: var(--background);
   color: var(--text);
-  padding: 0 max(calc(var(--spacer) * 2), 5vw);
+  padding: 0 max(calc(var(--spacer) * 1.5), 4vw); /* Adjusted padding */
   height: var(--navbar-height-desktop);
   display: flex;
   align-items: center;
@@ -75,7 +71,7 @@
 }
 
 .logo-img {
-  height: 45px;
+  height: 40px; /* Slightly smaller logo */
   width: auto;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -109,7 +105,7 @@
 /* Enhanced Menu Styles */
 .navbar__menu {
   display: flex;
-  gap: calc(var(--spacer) * 1.5);
+  gap: calc(var(--spacer) * 1.2); /* Reduced gap */
   align-items: center;
   margin: 0;
   padding: 0;
@@ -168,14 +164,14 @@
 }
 
 .navbar__link:hover i {
-  transform: translateY(-5px) scale(1.15);
+  transform: translateY(-4px) scale(1.1); /* Adjusted hover transform */
   color: var(--primary-light);
   filter: drop-shadow(var(--navbar-glow));
 }
 
 .navbar__link:hover span {
   opacity: 1;
-  transform: translateY(2px);
+  transform: translateY(1px); /* Adjusted hover transform */
 }
 
 /* Enhanced Dropdown Styles */
@@ -244,8 +240,8 @@
 /* Scroll Behavior */
 .navbar.scrolled {
   background: var(--background);
-  height: calc(var(--navbar-height-desktop) * 0.85);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  height: calc(var(--navbar-height-desktop) * 0.8); /* Adjusted scrolled height */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
 }
 
 /* Mobile Toggle Button */
@@ -272,7 +268,7 @@
 @media (width <= 768px) {
   .navbar {
     height: var(--navbar-height-mobile);
-    padding: 0 1.5rem;
+    padding: 0 1.2rem; /* Adjusted mobile padding */
   }
 
   .navbar.scrolled {
@@ -287,15 +283,15 @@
     position: fixed;
     top: 0;
     right: -100%; /* Start off-screen */
-    width: min(80%, 300px); /* Responsive width */
+    width: min(75%, 280px); /* Adjusted width */
     height: 100vh;
     background: var(--background);
     flex-direction: column;
     gap: 0;
-    padding: calc(var(--navbar-height-mobile) + 1rem) 1.5rem 2rem; /* Padding below navbar */
+    padding: calc(var(--navbar-height-mobile) + 0.8rem) 1.2rem 1.5rem; /* Adjusted padding */
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth slide-in */
     overflow-y: auto; /* Allow scrolling if content overflows */
-    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.25); /* Adjusted shadow */
     z-index: 999; /* Ensure it's below the toggle */
   }
 
@@ -318,21 +314,21 @@
     color: var(--text); /* Ensure text color */
     transition: background-color 0.2s ease; /* Add hover feedback */
   }
-  
+
   .navbar__link:hover {
-      background-color: rgba(255, 255, 255, 0.03);
-      color: var(--primary-light); /* Match desktop hover */
+    background-color: rgba(255, 255, 255, 0.04); /* Slightly more visible hover */
+    color: var(--primary-light); /* Match desktop hover */
   }
 
   .navbar__link i {
-    margin-right: 1rem;
+    margin-right: 0.8rem; /* Adjusted icon margin */
     flex-shrink: 0; /* Prevent icon shrinking */
-    font-size: 1.4rem; /* Slightly larger icon */
+    font-size: 1.3rem; /* Adjusted icon size */
     transition: transform 0.2s ease;
   }
-  
+
   .navbar__link:hover i {
-      transform: scale(1.1); /* Subtle icon grow on hover */
+    transform: scale(1.1); /* Subtle icon grow on hover */
   }
 
   .navbar__link span {
@@ -357,7 +353,7 @@
 
   /* Add a dropdown arrow indicator */
   .dropdown > .navbar__link::after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 0.5em;
     height: 0.5em;
@@ -365,7 +361,7 @@
     border-bottom: 2px solid var(--text-muted);
     transform: rotate(45deg);
     transition: transform 0.3s ease;
-    margin-right: 0.5rem;
+    margin-right: 0.4rem; /* Adjusted margin */
   }
 
   .dropdown.active > .navbar__link::after {
@@ -376,11 +372,11 @@
     position: static; /* No absolute positioning needed */
     transform: none;
     width: 100%;
-    background: rgba(0, 0, 0, 0.1); /* Subtle background for distinction */
+    background: rgba(0, 0, 0, 0.15); /* Slightly darker background */
     box-shadow: none;
     border: none;
     border-radius: 0;
-    padding: 0; 
+    padding: 0;
     margin: 0; /* Remove margin */
     height: 0; /* Start closed */
     overflow: hidden;
@@ -399,18 +395,19 @@
   }
 
   .dropdown__menu a {
-    padding: 0.75rem 1rem 0.75rem 2.5rem; /* Indent dropdown items */
+    padding: 0.7rem 1rem 0.7rem 2.2rem; /* Adjusted indent */
     border-left: none; /* Remove side border */
     font-size: 0.9rem; /* Slightly smaller font */
     color: var(--text-muted);
     display: block; /* Ensure links take full width */
-    transition: padding-left 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    transition: padding-left 0.2s ease, color 0.2s ease,
+      background-color 0.2s ease;
   }
 
   .dropdown__menu a:hover {
-    padding-left: 2.8rem; /* Adjust hover indent */
+    padding-left: 2.5rem; /* Adjust hover indent */
     color: var(--primary-light);
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(255, 255, 255, 0.04); /* Match link hover */
   }
 
   /* Toggle animation */

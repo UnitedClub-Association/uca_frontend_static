@@ -20,20 +20,25 @@
   min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
+  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
 }
 
 /* Header Section with Camera Lens Effect */
 .club-header {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 4rem 2rem; /* Adjusted padding for content */
   background: var(--club-secondary);
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Keep overflow hidden */
   border-radius: 50%;
   aspect-ratio: 1;
   max-width: 600px;
   margin: 0 auto 3rem;
   border: 15px solid var(--club-primary);
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
 }
 
 /* Lens Animation Elements */
@@ -84,17 +89,18 @@
 .club-title {
   color: var(--lens-color);
   font-size: 3.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Adjusted margin */
   font-family: "Playfair Display", serif;
   text-shadow: var(--lens-shadow);
   position: relative;
   z-index: 1;
+  line-height: 1.2; /* Added line-height */
 }
 
 .club-description {
   color: var(--text-light);
   font-size: 1.2rem;
-  max-width: 600px;
+  max-width: 90%; /* Allow text to use more width inside */
   margin: 0 auto;
   line-height: 1.6;
   position: relative;
@@ -260,8 +266,16 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .club-page {
+    padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
+  }
+
   .club-header {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem; /* Reduce padding */
+    max-width: 400px; /* Reduce max width */
+    border-width: 10px; /* Reduce border width */
+    margin-bottom: 2rem; /* Adjust margin */
   }
 
   .lens-container {
@@ -270,10 +284,52 @@
   }
 
   .club-title {
-    font-size: 2.8rem;
+    font-size: 2.2rem; /* Reduce font size */
+    margin-bottom: 0.5rem; /* Adjust margin */
+  }
+
+  .club-description {
+    font-size: 0.8rem; /* Reduce font size */
+    max-width: 95%; /* Adjust width */
   }
 
   .social-links {
     grid-template-columns: 1fr;
+  }
+
+  .about-section,
+  .connect-section {
+    /* Apply padding adjustment if connect-section were kept */
+    padding: 1.5rem;
+  }
+
+  .club-content h2 {
+    font-size: 1.8rem; /* Adjust heading size in content */
+  }
+}
+
+@media (max-width: 480px) {
+  .club-header {
+    padding: 1.5rem 0.5rem; /* Further reduce padding */
+    max-width: 300px; /* Further reduce max width */
+    border-width: 8px; /* Further reduce border width */
+  }
+
+  .club-title {
+    font-size: 1.8rem; /* Further reduce font size */
+  }
+
+  .club-description {
+    font-size: 0.9rem; /* Further reduce font size */
+  }
+
+  .about-section,
+  .connect-section {
+    /* Apply padding adjustment if connect-section were kept */
+    padding: 1rem;
+  }
+
+  .club-content h2 {
+    font-size: 1.6rem; /* Adjust heading size in content */
   }
 }

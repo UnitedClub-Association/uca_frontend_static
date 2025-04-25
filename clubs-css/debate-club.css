@@ -20,10 +20,12 @@ body {
   padding: 0;
 }
 
+/* Club Page Container */
 .club-page {
   max-width: 1500px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
   background-color: var(--club-secondary);
   color: var(--text-dark);
   font-family: "Montserrat", sans-serif;
@@ -514,72 +516,7 @@ body {
 
 /* Enhanced Debate-style Social Links */
 .social-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.social-btn,
-.contact-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  padding: 1.5rem;
-  background: transparent;
-  border: 2px solid var(--club-contrast);
-  color: var(--club-contrast);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.2rem;
-  transition: var(--transition-standard);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  letter-spacing: 1px;
-  box-shadow: 0 5px 15px rgba(230, 57, 70, 0.1);
-}
-
-.social-btn::before,
-.contact-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--club-contrast);
-  transition: var(--transition-standard);
-  z-index: -1;
-}
-
-.social-btn:hover::before,
-.contact-btn:hover::before {
-  left: 0;
-}
-
-.social-btn:hover,
-.contact-btn:hover {
-  color: var(--text-light);
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(230, 57, 70, 0.2);
-}
-
-.social-btn i,
-.contact-btn i {
-  stroke-width: 2.5;
-  transition: var(--transition-standard);
-  background: rgba(230, 57, 70, 0.1);
-  padding: 8px;
-  border-radius: 50%;
-}
-
-.social-btn:hover i,
-.contact-btn:hover i {
-  transform: scale(1.2) rotate(10deg);
-  background: rgba(255, 255, 255, 0.2);
+  display: none; /* Remove social links related CSS */
 }
 
 /* Enhanced Debate Bubbles Animation */
@@ -682,19 +619,15 @@ body {
 @media (max-width: 768px) {
   .club-page {
     padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
   }
 
   .club-header {
-    padding: 4rem 1.5rem;
-  }
-
-  .club-logo {
-    width: 120px;
-    height: 120px;
+    padding: 4rem 1rem;
   }
 
   .club-title {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
   }
 
   .club-description {
@@ -703,6 +636,10 @@ body {
 
   .club-description strong {
     font-size: 1.5rem;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
   }
 
   .feature-item:nth-child(odd),
@@ -715,12 +652,12 @@ body {
   }
 
   .social-links {
-    grid-template-columns: 1fr;
+    display: none; /* Remove social links related CSS */
   }
 
   .section-card,
   .connect-section {
-    padding: 2.5rem 1.8rem;
+    padding: 2rem;
   }
 
   .section-card h2,

@@ -16,10 +16,11 @@
   max-width: 1500px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
   background-color: var(--club-secondary);
   color: var(--text-light);
   font-family: "Exo 2", sans-serif;
-  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -199,40 +200,6 @@
   color: var(--club-highlight);
 }
 
-/* Social Grid */
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.social-item {
-  background: var(--club-primary);
-  padding: 1.5rem;
-  border-radius: 4px;
-  text-align: center;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: var(--text-light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  border: 1px solid var(--club-accent);
-}
-
-.social-item:hover {
-  transform: translateY(-5px);
-  background: var(--club-accent);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.social-item i {
-  font-size: 2rem;
-  color: var(--club-highlight);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .element-grid {
@@ -258,9 +225,21 @@
     grid-template-columns: 1fr;
   }
 
-  .social-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .club-page {
+    padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
+    min-height: calc(100vh - var(--navbar-height)); /* Adjust min-height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  .lab-card {
+    margin: 1rem;
+    width: calc(100% - 2rem); /* Ensure card doesn't overflow */
+  }
+
+  .connect-section {
+    margin: 1rem;
+    width: calc(100% - 2rem);
   }
 }
 

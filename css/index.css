@@ -1,7 +1,7 @@
 /* Root Variables */
 :root {
   /* Colors */
-  --primary-color: #5e9dbc;
+  --primary-color: #57b2df;
   --secondary-color: #2d3e50;
   --background-light: #7eb8a0;
   --background-dark: #3d7068;
@@ -79,7 +79,9 @@ body {
 .hero-subtitle {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   margin-bottom: 2rem;
-  color: var(--text-medium);
+  /* Adjusted color for better contrast */
+  color: var(--text-light); /* Changed from --text-medium */
+  opacity: 0.9; /* Slightly reduced opacity if needed, but ensure contrast */
 }
 
 /* Explore Clubs Button */
@@ -94,9 +96,17 @@ body {
   font-weight: 600;
   border: 2px solid var(--primary-color);
   border-radius: 8px;
-  transition: var(--transition);
+  /* Refined transition for smoother effect */
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease,
+    border-color 0.3s ease;
   position: relative;
   overflow: hidden;
+  text-decoration: none; /* Ensure no underline */
+}
+
+.explore-clubs-button span {
+  /* Target span if text is inside */
+  text-decoration: none;
 }
 
 .explore-clubs-button::before {
@@ -111,7 +121,8 @@ body {
   z-index: -1;
   opacity: 0;
   transform: scale(0.8);
-  transition: var(--transition);
+  /* Match transition timing */
+  transition: opacity 0.3s ease, transform 0.3s ease;
   border-radius: 6px;
 }
 
@@ -204,7 +215,7 @@ body {
   background: linear-gradient(
     135deg,
     var(--primary-color),
-    var(--background-light)
+    var(--secondary-color)
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -269,13 +280,18 @@ body {
   left: 0;
   right: 0;
   padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    transparent
+  ); /* Slightly darker gradient */
   color: var(--text-light);
 }
 
 .club-info h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add subtle shadow for readability */
 }
 
 /* Events Section */
@@ -402,32 +418,54 @@ body {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
+@media (max-width: 992px) {
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  .about-content,
+  .club-card,
+  .event-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh; /* Adjust height for smaller screens */
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .explore-clubs-button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+  }
   .about,
-  .clubs,
+  .featured-clubs,
   .events {
-    padding: 3.5rem 1.5rem;
+    padding: 3rem 1rem; /* Adjust padding for smaller screens */
   }
+  .about-grid,
+  .club-grid,
+  .event-grid {
+    grid-template-columns: 1fr; /* Stack items on smaller screens */
+  }
+  .about h2,
+  .featured-clubs h2,
+  .events h2 {
+    font-size: 2rem;
+  }
+}
 
-  /* Add padding to body to account for fixed navbar height */
+/* Ensure content starts below the fixed navbar on desktop */
+@media (min-width: 769px) {
   body {
-    /* Use desktop height by default */
-    padding-top: var(--navbar-height-desktop, 6rem); /* Added fallback */
-  }
-  
-  @media (width <= 768px) {
-    body {
-      /* Use mobile height on smaller screens */
-      padding-top: var(--navbar-height-mobile, 4.5rem); /* Added fallback */
-    }
-
-    .club-grid,
-    .event-grid {
-      gap: 1.5rem;
-    }
-  
-    .club-card {
-      height: auto;
-    }
+    padding-top: 88px; /* Height of the desktop navbar */
   }
 }

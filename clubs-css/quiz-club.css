@@ -17,6 +17,7 @@
   max-width: 1500px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
   background-color: #f9f9f9;
   background-image: 
     radial-gradient(#e0e0e0 1px, transparent 1px),
@@ -25,7 +26,7 @@
   background-position: 0 0, 10px 10px;
   color: var(--text-dark);
   font-family: "Space Grotesk", sans-serif;
-  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -221,82 +222,6 @@
   color: var(--club-accent);
 }
 
-/* Social Grid */
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.social-item {
-  background: #fff;
-  color: var(--text-dark);
-  padding: 2rem 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  transition: var(--transition-standard);
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.05);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.social-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--club-gradient);
-  z-index: -1;
-  opacity: 0;
-  transition: var(--transition-standard);
-}
-
-.social-item:hover {
-  transform: translateY(-8px);
-  color: var(--text-light);
-  /* From: */
-  box-shadow: 0 12px 30px rgba(44, 62, 80, 0.2);
-  /* To: */
-  box-shadow: 0 12px 30px rgb(44 62 80 / 20%);
-  
-  /* From: */
-  box-shadow: 0 8px 25px rgb(0 0 0 / 30%);
-  /* To: */
-  box-shadow: 0 8px 25px rgb(0 0 0 / 30%);
-}
-
-.social-item:hover::before {
-  opacity: 1;
-}
-
-.social-item i {
-  font-size: 2.5rem;
-  color: var(--club-accent);
-  transition: var(--transition-standard);
-}
-
-.social-item:hover i {
-  color: var(--club-secondary);
-  transform: scale(1.2);
-}
-
-.social-item span {
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 600;
-  font-size: 1.2rem;
-  transition: var(--transition-standard);
-}
-
 /* Animations */
 @keyframes float {
   0% {
@@ -332,6 +257,7 @@
 @media (max-width: 768px) {
   .club-page {
     padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
   }
 
   .club-header {
@@ -355,9 +281,5 @@
   
   .card-content {
     padding: 1.5rem;
-  }
-
-  .social-grid {
-    grid-template-columns: 1fr;
   }
 }
