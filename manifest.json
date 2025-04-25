@@ -1,0 +1,23 @@
+{
+  "name": "United Club Association",
+  "short_name": "UCA",
+  "description": "A vibrant community of university clubs and activities at University Laboratory School and College",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3d7068",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/images/DU_Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/DU_Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
