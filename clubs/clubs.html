@@ -18,6 +18,11 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discover and join our diverse range of student clubs at United Club Association - from academic pursuits to cultural activities and sports." />
+    <meta name="keywords" content="student clubs, university clubs, academic clubs, cultural clubs, sports clubs, UCA" />
+    <meta property="og:title" content="Our Clubs - United Club Association" />
+    <meta property="og:description" content="Find your community among our diverse collection of student organizations." />
+    <meta property="og:image" content="/images/clubs-og-image.jpg" />
     <title>Clubs - United Club Association</title>
     <!-- Include centralized fonts -->
     <script src="/js/include-fonts.js"></script>
@@ -26,30 +31,41 @@
     <link rel="stylesheet" href="/css/clubs.css" />
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/css/clubs.css" as="style" />
+    <link rel="preload" href="https://unpkg.com/feather-icons" as="script" />
   </head>
   <body>
     <!-- Navbar -->
     <script src="/js/include-navbar.js"></script>
 
     <!-- Hero Section -->
-    <section class="clubs-hero">
+    <section class="clubs-hero" aria-labelledby="hero-heading">
       <div class="hero-content">
-        <h1>Our Vibrant Clubs</h1>
-        <p>Discover communities where passion meets purpose</p>
+        <h1 id="hero-heading">Our Communities</h1>
+        <p>Discover your passion, develop your skills, and connect with like-minded peers in our diverse collection of student organizations</p>
       </div>
     </section>
 
     <!-- Clubs Section -->
-    <section class="clubs">
-      <h2>Explore Our Clubs</h2>
-      <div class="clubs-filter">
-        <button class="filter-btn active" data-filter="all">All Clubs</button>
-        <button class="filter-btn" data-filter="academic">Academic</button>
-        <button class="filter-btn" data-filter="cultural">Cultural</button>
-        <button class="filter-btn" data-filter="sports">Sports</button>
+    <section class="clubs" aria-labelledby="clubs-heading">
+      <h2 id="clubs-heading" class="sr-only">Browse Clubs by Category</h2>
+      <div class="clubs-filter" role="tablist" aria-label="Filter clubs by category">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" aria-controls="all-clubs">
+          All Clubs
+        </button>
+        <button class="filter-btn" data-filter="academic" role="tab" aria-selected="false" aria-controls="academic-clubs">
+          Academic
+        </button>
+        <button class="filter-btn" data-filter="cultural" role="tab" aria-selected="false" aria-controls="cultural-clubs">
+          Cultural
+        </button>
+        <button class="filter-btn" data-filter="sports" role="tab" aria-selected="false" aria-controls="sports-clubs">
+          Sports
+        </button>
       </div>
 
-      <div class="container">
+      <div class="container" role="tabpanel" id="all-clubs" aria-label="Club listings">
         <!-- Debate Club -->
         <div
           class="card"
@@ -68,8 +84,8 @@
                 <span class="club-tag">Academic</span>
               </div>
               <p>
-                Master the art of persuasion and critical thinking through
-                competitive debates.
+                Develop critical thinking and public speaking skills through
+                structured debate.
               </p>
               <div class="card-footer">
                 <a href="/clubs/debate-club.html" class="details-btn">
@@ -98,9 +114,7 @@
                 <h2>Photography Club</h2>
                 <span class="club-tag">Cultural</span>
               </div>
-              <p>
-                Capture moments and tell stories through the art of photography.
-              </p>
+              <p>Express creativity through the art of visual storytelling.</p>
               <div class="card-footer">
                 <a href="/clubs/photography-club.html" class="details-btn">
                   <span>Details</span>
@@ -324,14 +338,19 @@
     </section>
 
     <!-- Join a Club CTA Section -->
-    <section class="join-cta">
+    <section class="join-cta" aria-labelledby="cta-heading">
       <div class="cta-content">
-        <h2>Find Your Community</h2>
+        <h2 id="cta-heading">Find Your Community</h2>
         <p>
           Ready to explore your interests and develop new skills? Join one of
           our clubs today!
         </p>
-        <a href="/contact/join-us.html" class="cta-button">Join a Club</a>
+        <a href="/contact/join-us.html" class="cta-button">
+          Join a Club
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -341,7 +360,10 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize Feather Icons
-        feather.replace();
+        feather.replace({
+          'stroke-width': 2,
+          'aria-hidden': true
+        });
 
         // Filter functionality
         const filterBtns = document.querySelectorAll(".filter-btn");
@@ -349,23 +371,24 @@
 
         filterBtns.forEach((btn) => {
           btn.addEventListener("click", () => {
-            // Remove active class from all buttons
-            filterBtns.forEach((b) => b.classList.remove("active"));
-
-            // Add active class to clicked button
+            // Update ARIA states
+            filterBtns.forEach((b) => {
+              b.setAttribute('aria-selected', 'false');
+              b.classList.remove("active");
+            });
+            btn.setAttribute('aria-selected', 'true');
             btn.classList.add("active");
 
             const filter = btn.getAttribute("data-filter");
-
-            // Show/hide cards based on filter
+            
+            // Show/hide cards with animation
             cards.forEach((card) => {
-              if (
-                filter === "all" ||
-                card.getAttribute("data-category") === filter
-              ) {
+              if (filter === "all" || card.getAttribute("data-category") === filter) {
                 card.style.display = "block";
+                setTimeout(() => card.style.opacity = "1", 10);
               } else {
-                card.style.display = "none";
+                card.style.opacity = "0";
+                setTimeout(() => card.style.display = "none", 300);
               }
             });
           });
@@ -375,23 +398,34 @@
         document.querySelectorAll(".card").forEach((card) => {
           const clubType = card.getAttribute("data-club");
           if (clubType) {
-            // This ensures the CSS variables are properly applied
-            card.style.setProperty(
-              "--club-color",
-              `var(--${clubType}-primary, var(--accent-color))`
-            );
+            card.style.setProperty("--club-color", `var(--${clubType}-primary)`);
           }
         });
 
-        // Card hover effects
+        // Enhanced card interactions
         cards.forEach((card) => {
+          const detailsBtn = card.querySelector('.details-btn');
+          
           card.addEventListener("mouseenter", () => {
             card.classList.add("hover");
+            if (detailsBtn) detailsBtn.setAttribute('aria-expanded', 'true');
           });
 
           card.addEventListener("mouseleave", () => {
             card.classList.remove("hover");
+            if (detailsBtn) detailsBtn.setAttribute('aria-expanded', 'false');
           });
+
+          // Keyboard navigation
+          if (detailsBtn) {
+            detailsBtn.addEventListener('focus', () => {
+              card.classList.add("hover");
+            });
+            
+            detailsBtn.addEventListener('blur', () => {
+              card.classList.remove("hover");
+            });
+          }
         });
       });
     </script>

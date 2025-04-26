@@ -198,7 +198,8 @@
   line-height: 1.8;
 }
 
-/* Connect Section */
+/* Remove or comment out the old .connect-section styles */
+/*
 .connect-section {
   background: var(--text-light);
   border-radius: 16px;
@@ -221,6 +222,30 @@
 .connect-section h2 svg {
   color: var(--club-accent);
 }
+*/
+
+/* Adjust .points style slightly to accommodate text better */
+.points {
+  background: var(--club-secondary);
+  color: var(--text-dark);
+  padding: 0.5rem 1.2rem; /* Slightly more horizontal padding */
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+
+/* Keep the ::before style if you want the trophy icon for all points spans */
+.points::before {
+  content: "🏆";
+  font-size: 1.2rem;
+}
+
 
 /* Animations */
 @keyframes float {

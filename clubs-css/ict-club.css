@@ -148,9 +148,30 @@
   margin-bottom: var(--spacing-lg);
 }
 
+/* Updated Tech Card Styles */
+.tech-card {
+  background: rgba(10, 25, 47, 0.7); /* Keep semi-transparent background */
+  border: var(--border-width-thin) solid var(--club-primary);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
+  transition: var(--transition-standard);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  overflow: hidden; /* Add overflow hidden */
+  padding: 0; /* Remove base padding */
+  position: relative; /* Ensure positioning context */
+}
+
+.tech-card:hover {
+  border-color: var(--club-accent);
+  box-shadow: 0 8px 30px rgba(100, 255, 218, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Remove or comment out old separate section styles if they conflict */
+/*
 .about-section,
 .connect-section {
-  background: rgba(10, 25, 47, 0.7);
   padding: var(--spacing-xl);
   border: var(--border-width-thin) solid var(--club-primary);
   border-radius: var(--border-radius);
@@ -159,36 +180,134 @@
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
+*/
 
-.about-section:hover,
-.connect-section:hover {
-  border-color: var(--club-accent);
-  box-shadow: 0 8px 30px rgba(100, 255, 218, 0.2);
-  transform: translateY(-5px);
+/* New Card Header Styles */
+.card-header {
+  background: rgba(0, 255, 65, 0.1); /* Subtle green header background */
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-bottom: var(--border-width-thin) solid var(--club-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
-.club-content h2 {
+.card-header h2 {
   color: var(--club-primary);
-  font-size: 2rem;
-  margin-bottom: var(--spacing-md);
+  font-size: 1.8rem; /* Slightly smaller header */
+  margin: 0; /* Remove default margin */
   position: relative;
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-medium);
+  display: flex; /* Align icon and text */
+  align-items: center;
+  gap: var(--spacing-sm); /* Gap between icon and text */
+  padding-bottom: 0; /* Remove padding if any */
 }
 
-.club-content h2::after {
-  content: "";
+/* Remove old h2::after underline */
+.card-header h2::after {
+  content: none;
+}
+
+.card-header h2 i {
+  stroke-width: 2; /* Ensure consistent icon stroke */
+  color: var(--club-primary); /* Match icon color to text */
+}
+
+/* New Card Content Styles */
+.card-content {
+  padding: var(--spacing-xl);
+  position: relative; /* For positioning internal elements */
+  z-index: 1; /* Keep content above patterns */
+}
+
+.card-content p {
+  color: var(--text-light);
+  font-size: 1.1rem; /* Consistent paragraph size */
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-primary);
+}
+
+.card-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Style for Circuit Pattern */
+.circuit-pattern {
   position: absolute;
-  bottom: -10px;
+  top: 0;
   left: 0;
-  width: 60px;
-  height: var(--border-width-thick);
-  background: var(--cyber-gradient);
-  border-radius: var(--border-radius);
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0; /* Place behind content */
 }
 
-/* Responsive Design */
+/* Tech Features List Styling */
+.tech-features {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.tech-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: rgba(100, 255, 218, 0.05); /* Subtle accent background */
+  border-left: 3px solid var(--club-accent);
+  border-radius: var(--border-radius);
+  transition: var(--transition-standard);
+  color: var(--text-light);
+}
+
+.tech-features li:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateX(5px);
+}
+
+.tech-features li i {
+  color: var(--club-accent);
+  stroke-width: 2;
+}
+
+/* Tech Grid (Pixel Animation) Styling */
+.tech-grid {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-lg);
+  justify-content: center; /* Center the pixels */
+}
+
+.pixel {
+  width: 15px;
+  height: 15px;
+  background-color: var(--club-primary);
+  box-shadow: var(--neon-glow);
+  animation: blink 1.5s infinite alternate;
+}
+
+.pixel:nth-child(2) { animation-delay: 0.2s; background-color: var(--club-accent); }
+.pixel:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
   .club-page {
     padding: var(--spacing-sm);
@@ -207,4 +326,23 @@
     width: 120px;
     height: 120px;
   }
+
+  .card-header h2 {
+    font-size: 1.6rem; /* Adjust header size */
+  }
+
+  .card-content {
+    padding: var(--spacing-lg); /* Adjust padding */
+  }
+
+  .tech-features {
+    grid-template-columns: 1fr; /* Stack features on smaller screens */
+  }
+
+  /* Ensure tech-card takes appropriate width */
+   .tech-card {
+     margin-left: 0;
+     margin-right: 0;
+     width: 100%;
+   }
 }

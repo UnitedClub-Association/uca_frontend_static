@@ -130,7 +130,13 @@
   text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
 }
 
-/* Lab Card Styles */
+/* Apply lab-card styles to the about section as well */
+.about-section {
+  /* Inherits lab-card base styles */
+  margin-bottom: 2rem; /* Ensure spacing */
+}
+
+/* General Lab Card Styles */
 .lab-card {
   background: var(--club-secondary);
   border: 1px solid var(--club-accent);
@@ -149,7 +155,7 @@
 
 .card-header {
   background: var(--club-primary);
-  padding: 1.5rem;
+  padding: 1.5rem 2rem; /* Adjusted padding */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -161,13 +167,74 @@
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem; /* Slightly increased gap */
   font-family: "Exo 2", sans-serif;
+  font-size: 1.8rem; /* Consistent header size */
+}
+
+.card-header h2 i {
+  stroke-width: 2; /* Ensure icons look consistent */
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: 2rem; /* Consistent padding */
   background: var(--club-secondary);
+  position: relative; /* For positioning internal elements like glassware */
+}
+
+/* Consistent paragraph styling within cards */
+.card-content p {
+  font-family: "Exo 2", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e0e0e0; /* Lighter text for dark background */
+  margin-bottom: 1.5rem;
+}
+
+.card-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Styling for Glassware in About Section */
+.glassware {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0.1;
+  pointer-events: none; /* Prevent interaction */
+  z-index: 0;
+}
+
+.beaker,
+.flask,
+.test-tube {
+  background: var(--club-highlight);
+  border: 1px solid var(--club-accent);
+}
+
+.beaker {
+  width: 30px;
+  height: 40px;
+  border-radius: 0 0 5px 5px;
+}
+.flask {
+  width: 35px;
+  height: 45px;
+  border-radius: 50% 50% 5px 5px / 60% 60% 5px 5px;
+}
+.test-tube {
+  width: 15px;
+  height: 50px;
+  border-radius: 0 0 7px 7px;
+}
+
+/* Styling for Experiment List */
+.experiment-area {
+  margin-top: 2rem;
+  position: relative; /* Ensure it's above glassware */
+  z-index: 1;
 }
 
 .experiment-list {
@@ -176,7 +243,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */ /* Removed, spacing handled by experiment-area */
 }
 
 .experiment-list li {
@@ -198,6 +265,250 @@
 
 .experiment-list li i {
   color: var(--club-highlight);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .element-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .element {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .club-header {
+    padding: 2rem 1rem;
+  }
+
+  .club-description strong {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .experiment-list {
+    grid-template-columns: 1fr;
+  }
+
+  .club-page {
+    padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
+    min-height: calc(100vh - var(--navbar-height)); /* Adjust min-height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  .lab-card {
+    margin: 1rem;
+    width: calc(100% - 2rem); /* Ensure card doesn't overflow */
+  }
+
+  .connect-section {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .element-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .club-page {
+    padding: 1rem;
+  }
+
+  .lab-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-header h2 {
+    font-size: 1.6rem; /* Adjust header size */
+  }
+
+  .card-content {
+    padding: 1.5rem; /* Adjust padding */
+  }
+
+  .glassware {
+    display: none; /* Hide glassware on smaller screens */
+  }
+
+  .molecule-animation::before,
+  .molecule-animation::after {
+    display: none; /* Hide connecting lines if layout breaks */
+  }
+
+  .lab-card {
+    margin-left: 0; /* Remove side margin */
+    margin-right: 0;
+    width: 100%; /* Full width */
+  }
+
+  /* Remove specific connect-section margin overrides */
+  /* .connect-section {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  } */
+}
+
+.experiment-list li i {
+  color: var(--club-highlight);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .element-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .element {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .club-header {
+    padding: 2rem 1rem;
+  }
+
+  .club-description strong {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .experiment-list {
+    grid-template-columns: 1fr;
+  }
+
+  .club-page {
+    padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
+    min-height: calc(100vh - var(--navbar-height)); /* Adjust min-height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  .lab-card {
+    margin: 1rem;
+    width: calc(100% - 2rem); /* Ensure card doesn't overflow */
+  }
+
+  .connect-section {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .element-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .club-page {
+    padding: 1rem;
+  }
+
+  .lab-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-header h2 {
+    font-size: 1.6rem; /* Adjust header size */
+  }
+
+  .card-content {
+    padding: 1.5rem; /* Adjust padding */
+  }
+
+  .glassware {
+    display: none; /* Hide glassware on smaller screens */
+  }
+
+  .molecule-animation::before,
+  .molecule-animation::after {
+    display: none; /* Hide connecting lines if layout breaks */
+  }
+
+  .lab-card {
+    margin-left: 0; /* Remove side margin */
+    margin-right: 0;
+    width: 100%; /* Full width */
+  }
+
+  /* Remove specific connect-section margin overrides */
+  /* .connect-section {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  } */
+}
+
+/* Styling for Molecule Animation in Connect Section */
+.molecule-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem; /* Space between atoms */
+  margin-top: 2rem;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.atom {
+  width: 25px;
+  height: 25px;
+  background-color: var(--club-highlight);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 8px var(--club-highlight);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Add connecting lines (optional) */
+.molecule-animation::before,
+.molecule-animation::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: var(--club-accent);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.molecule-animation::before {
+  width: 30px; /* Adjust width based on gap */
+  left: calc(50% - 15px - 1.5rem); /* Center - half line width - gap */
+}
+
+.molecule-animation::after {
+  width: 30px; /* Adjust width based on gap */
+  right: calc(50% - 15px - 1.5rem); /* Center - half line width - gap */
+}
+
+.atom:nth-child(1) {
+  animation-delay: 0s;
+}
+.atom:nth-child(2) {
+  animation-delay: 0.2s;
+  width: 30px;
+  height: 30px;
+} /* Center atom slightly larger */
+.atom:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
 }
 
 /* Responsive Design */

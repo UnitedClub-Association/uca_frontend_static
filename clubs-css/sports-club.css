@@ -362,6 +362,22 @@
   border-radius: 2px;
 }
 
+/* Add these styles for consistent paragraph and list typography */
+.about-section p,
+.connect-section p {
+  font-family: "Roboto Condensed", sans-serif; /* Ensure consistent font */
+  font-size: 1.15rem; /* Slightly larger for readability */
+  line-height: 1.7; /* Improve spacing between lines */
+  color: #333; /* Slightly softer dark color */
+  margin-bottom: 1.5rem; /* Consistent spacing below paragraphs */
+  position: relative; /* Needed for z-index if overlapping pseudo-elements */
+  z-index: 1;
+}
+
+.connect-section p:last-of-type {
+  margin-bottom: 0; /* Remove margin from last paragraph in connect section */
+}
+
 /* Enhanced feature list with sports equipment icons */
 .feature-list {
   list-style: none;
@@ -370,6 +386,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  position: relative; /* Needed for z-index */
+  z-index: 1;
 }
 
 .feature-list li {
@@ -383,6 +401,9 @@
   border-left: 3px solid var(--club-primary);
   position: relative;
   overflow: hidden;
+  font-family: "Roboto Condensed", sans-serif; /* Ensure consistent font */
+  font-size: 1.1rem; /* Align size closer to paragraphs */
+  color: #333; /* Match paragraph color */
 }
 
 .feature-list li::before {

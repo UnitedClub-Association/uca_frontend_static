@@ -66,27 +66,63 @@
       </header>
 
       <section class="club-content">
-        <div class="lab-card">
+        <!-- Updated About Section structure to use lab-card style -->
+        <div class="lab-card about-section">
           <div class="card-header">
-            <h2><i data-feather="flask"></i> About Us</h2>
+            <h2><i data-feather="flask-conical"></i> About Our Club</h2> <!-- Changed icon -->
           </div>
           <div class="card-content">
+             <div class="glassware" aria-hidden="true"> <!-- Moved glassware inside card-content -->
+               <div class="beaker"></div>
+               <div class="flask"></div>
+               <div class="test-tube"></div>
+             </div>
             <p>
-              Science Club is the fifth club to be established in the United
-              Club Association. It is a club for students who are interested in
-              the wonders of science. It was established on 10th October 2024.
+              The Science Club is dedicated to exploring the wonders of scientific discovery
+              through hands-on experimentation, research, and innovation. We foster a spirit
+              of scientific inquiry and provide opportunities for students to engage with
+              cutting-edge STEM concepts.
             </p>
-            <ul class="experiment-list">
-              <li><i data-feather="zap"></i> Advanced Equipment Access</li>
-              <li><i data-feather="search"></i> Research Mentorship</li>
-              <li><i data-feather="users"></i> Peer Collaboration</li>
-            </ul>
+            <p>
+              As the fifth club to join UCA in October 2024, we've become a catalyst for
+              scientific exploration and innovation in our university community.
+            </p>
+            <div class="experiment-area">
+              <ul class="experiment-list">
+                <li><i data-feather="zap"></i> Advanced Equipment Access</li>
+                <li><i data-feather="search"></i> Research Mentorship</li>
+                <li><i data-feather="users"></i> Peer Collaboration</li>
+                <li><i data-feather="award"></i> Scientific Competitions</li>
+                <li><i data-feather="book"></i> STEM Workshops</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div class="connect-section">
-          <h2><i data-feather="link"></i> Join Our Network</h2>
+        <!-- Merged Connect Section using lab-card style -->
+        <div class="lab-card connect-section">
+          <div class="card-header"> <!-- Added card-header -->
+            <h2><i data-feather="link"></i> Join the Experiment</h2> <!-- Updated title -->
+          </div>
+          <div class="card-content"> <!-- Added card-content -->
+            <p>
+              Be part of a community that's passionate about scientific discovery and innovation.
+            </p>
+            <p>
+              Curious about the universe? All clubs are part of the United Club Association (UCA).
+              Visit the main UCA page to learn how to become a member and get involved!
+            </p>
+            <div class="molecule-animation">
+              <div class="atom"></div>
+              <div class="atom"></div>
+              <div class="atom"></div>
+            </div>
+            <!-- Optional: Add a link if needed, styled appropriately -->
+            <!-- <p><a href="/contact/join-us.html" class="cta-button">Learn More & Join UCA</a></p> -->
+          </div>
         </div>
+        <!-- Removed the second connect-section -->
+
       </section>
     </main>
   </body>

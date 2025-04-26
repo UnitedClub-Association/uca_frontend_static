@@ -19,6 +19,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ICT Club - United Club Association</title>
 
+     <!-- Favicon -->
+     <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
+     
     <!-- External Scripts and Stylesheets -->
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
@@ -54,20 +57,62 @@
       </header>
 
       <section class="club-content">
-        <article class="about-section">
-          <h2>About Us</h2>
-          <p>
-            The University Laboratory ICT Club is where innovation meets
-            technology. We document and share our achievements with the world,
-            inspiring hope, creativity, and technological advancement. Our goal
-            is to showcase the skills and knowledge we possess, while empowering
-            others to explore the endless possibilities of technology.
-          </p>
+        <article class="tech-card about-section">
+          <!-- Added card-header -->
+          <div class="card-header">
+            <h2><i data-feather="terminal"></i> About Us</h2>
+          </div>
+          <!-- Added card-content -->
+          <div class="card-content">
+            <div class="circuit-pattern"></div> <!-- Moved inside card-content -->
+            <p>
+              The ICT Club is at the forefront of digital innovation and technological advancement
+              in our university. We bridge the gap between theory and practical application,
+              providing hands-on experience in programming, web development, cybersecurity,
+              and emerging technologies.
+            </p>
+            <p>
+              As the sixth club to join UCA in October 2024, we've taken charge of the association's
+              digital infrastructure and online presence, showcasing the transformative power
+              of technology in student organizations.
+            </p>
+            <ul class="tech-features"> <!-- Moved inside card-content -->
+              <li><i data-feather="code"></i> Web Development</li>
+              <li><i data-feather="shield"></i> Cybersecurity</li>
+              <li><i data-feather="smartphone"></i> Mobile Apps</li>
+              <li><i data-feather="cpu"></i> Hardware Projects</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="connect-section">
-          <h2>Connect With Us</h2>
+        <!-- Merged Connect Section using tech-card style -->
+        <article class="tech-card connect-section">
+           <!-- Added card-header -->
+           <div class="card-header">
+             <h2><i data-feather="link"></i> Connect With Us</h2> <!-- Kept original title -->
+           </div>
+           <!-- Added card-content -->
+           <div class="card-content">
+             <p>
+               Join us to explore the endless possibilities of technology and be part of the
+               digital revolution shaping our future.
+             </p>
+             <p> <!-- Added content from the second section -->
+               Interested in technology and innovation? All clubs are part of the United Club Association (UCA).
+               Visit the main UCA page to learn how to become a member and get involved!
+             </p>
+             <div class="tech-grid"> <!-- Moved inside card-content -->
+               <span class="pixel"></span>
+               <span class="pixel"></span>
+               <span class="pixel"></span>
+             </div>
+             <!-- Optional: Add a link if needed, styled appropriately -->
+             <!-- <p><a href="/contact/join-us.html" class="cta-button">Learn More & Join UCA</a></p> -->
+           </div>
         </article>
+
+        <!-- Removed the second connect-section article -->
+
       </section>
     </main>
 

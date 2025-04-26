@@ -1,24 +1,24 @@
 :root {
-  /* Refined color palette with better contrast */
-  --primary-color: #2c3e50;
-  --secondary-color: #1a2a3a;
-  --accent-color: #e74c3c;
-  --accent-secondary: #f39c12;
-  --accent-tertiary: #3498db;
-  --neutral-light: #ecf0f1;
-  --neutral-medium: #bdc3c7;
-  --neutral-dark: #7f8c8d;
-  --background-light: #f9f9f9;
-  --background-dark: #2c3e50;
-  --text-light: #ffffff;
-  --text-dark: #2c3e50;
-  --text-muted: #5d6d7e;
+  /* New Theme Colors */
+  --primary-color: #3e4a89;
+  --secondary-color: #1a1a2e;
+  --accent-color: #8ca4c6;
+  --accent-secondary: #5a6896;
+  --accent-tertiary: #b6d0e2;
+  --neutral-light: #dceaf2;
+  --neutral-medium: #5a6896;
+  --neutral-dark: #2c2c54;
+  --background-light: #0f0f1c;
+  --background-dark: #1a1a2e;
+  --text-light: #dceaf2;
+  --text-dark: #0f0f1c;
+  --text-muted: #8ca4c6;
 
-  /* Refined gradients */
-  --featured-gradient: linear-gradient(135deg, #2c3e50, #1a2a3a);
-  --accent-gradient: linear-gradient(135deg, #e74c3c, #c0392b);
-  --secondary-gradient: linear-gradient(135deg, #f39c12, #d35400);
-  --tertiary-gradient: linear-gradient(135deg, #3498db, #2980b9);
+  /* Updated gradients */
+  --featured-gradient: linear-gradient(135deg, #0f0f1c, #1a1a2e);
+  --accent-gradient: linear-gradient(135deg, #3e4a89, #2c2c54);
+  --secondary-gradient: linear-gradient(135deg, #5a6896, #3e4a89);
+  --tertiary-gradient: linear-gradient(135deg, #8ca4c6, #5a6896);
 
   /* Refined shadows */
   --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
@@ -39,6 +39,7 @@
   --space-xxl: 3rem;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --max-width: 1200px;
+  --navbar-height: 60px;
 }
 
 *,
@@ -54,8 +55,19 @@ body {
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
   line-height: var(--line-height-base);
-  background-color: var(--background-light);
+  background: linear-gradient(
+    135deg,
+    #0f0f1c,
+    #1a1a2e,
+    #2c2c54,
+    #3e4a89,
+    #5a6896,
+    #8ca4c6,
+    #b6d0e2,
+    #dceaf2
+  );
   color: var(--text-dark);
+  padding-top: var(--navbar-height);
 }
 
 :focus {
@@ -84,15 +96,10 @@ body {
 
 /* Updated Hero Section with correct title */
 .hero {
-  background-color: var(--secondary-color);
-  background-image: linear-gradient(
-      rgba(26, 42, 58, 0.85),
-      rgba(44, 62, 80, 0.9)
-    ),
-    url("/images/events-title-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 60vh;
+  background: linear-gradient(135deg, #1a1a2e, #2c2c54);
+  min-height: 60vh;
+  margin-top: -var(--navbar-height);
+  padding-top: calc(var(--navbar-height) + var(--space-lg));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -246,7 +253,8 @@ body {
 /* New card design with hexagonal accents */
 article {
   position: relative;
-  background: var(--text-light);
+  background: rgba(26, 26, 46, 0.8);
+  border: 1px solid rgba(140, 164, 198, 0.1);
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
   overflow: hidden;
@@ -352,7 +360,7 @@ article:nth-child(3) .event-date {
 .article-body h2 {
   font-size: 1.5rem;
   margin-bottom: var(--space-md);
-  color: var(--text-dark);
+  color: var(--text-light);
   font-weight: 700;
   line-height: 1.3;
   position: relative;
@@ -382,7 +390,7 @@ article:nth-child(3) .article-body h2::after {
   font-size: 1rem;
   margin-bottom: var(--space-lg);
   flex-grow: 1;
-  color: var(--neutral-dark);
+  color: var(--text-muted);
   line-height: 1.6;
 }
 

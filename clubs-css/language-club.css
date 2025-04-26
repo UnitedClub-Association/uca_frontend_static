@@ -189,76 +189,77 @@ body {
   }
 }
 
-/* Modern Card Layouts */
+/* Modern Card Layouts - Updated to match science club style */
 .language-card,
 .connect-section {
-  background: var(--text-light);
-  padding: 3.5rem;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(44, 62, 80, 0.1);
-  transition: var(--transition);
+  background: var(--text-light); /* Changed background */
+  border: 1px solid var(--club-accent); /* Added border */
+  border-radius: 8px; /* Adjusted border-radius */
+  overflow: hidden; /* Added overflow */
+  margin-bottom: 2rem; /* Added margin-bottom */
   position: relative;
-  overflow: hidden;
-  border: none;
+  box-shadow: var(--language-shadow); /* Kept original shadow for now */
+  transition: var(--transition);
+  padding: 0; /* Remove base padding, handled by card-content */
 }
 
+/* Remove top border pseudo-element */
 .language-card::before,
 .connect-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, var(--club-primary), var(--club-accent));
+ content: none;
 }
+
 
 .language-card:hover,
 .connect-section:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(44, 62, 80, 0.15);
+  transform: translateY(-5px); /* Adjusted hover transform */
+  box-shadow: 0 20px 40px rgba(44, 62, 80, 0.15); /* Kept original hover shadow */
 }
 
+/* Updated Card Header */
 .card-header {
-  margin-bottom: 2.5rem;
-}
-
-.card-header h2 {
-  color: var(--club-primary);
-  font-size: 2.4rem;
-  margin: 0;
+  background: var(--club-primary); /* Added background */
+  padding: 1.5rem 2rem; /* Adjusted padding */
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-family: "Playfair Display", serif;
-  position: relative;
-  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--club-secondary); /* Changed border color */
+  margin-bottom: 0; /* Remove margin, handled by card-content padding */
 }
 
+.card-header h2 {
+  color: var(--club-secondary); /* Changed text color */
+  font-size: 1.8rem; /* Adjusted font size */
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* Adjusted gap */
+  font-family: "Playfair Display", serif; /* Kept original font */
+  position: relative;
+  padding-bottom: 0; /* Remove padding */
+}
+
+/* Remove header underline pseudo-element */
 .card-header h2::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 70px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--club-secondary), var(--club-accent));
-  border-radius: 2px;
+  content: none;
 }
 
 .card-header h2 i {
-  color: var(--club-secondary);
+  color: var(--club-secondary); /* Ensure icon color matches */
   stroke-width: 2;
 }
 
+/* Updated Card Content */
 .card-content {
-  font-size: 1.2rem;
-  line-height: 1.9;
+  padding: 2rem; /* Added padding */
+  font-size: 1.1rem; /* Adjusted font size */
+  line-height: 1.7; /* Adjusted line height */
+  background: var(--text-light); /* Ensure background matches card base */
 }
 
 .card-content p {
-  margin-bottom: 2.5rem;
-  color: #4b5563;
+  margin-bottom: 1.5rem; /* Adjusted margin */
+  color: var(--text-dark); /* Ensure text color is appropriate */
 }
 
 /* Enhanced Language List */

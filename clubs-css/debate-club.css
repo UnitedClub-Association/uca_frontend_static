@@ -694,5 +694,84 @@ body {
   }
 }
 
+/* Styles for the About Section Feature List */
+.debate-features {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.debate-features li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem; /* Adjusted font size */
+  color: #4b5563; /* Match paragraph color */
+  padding: 0.8rem 1rem; /* Add some padding */
+  background-color: rgba(94, 53, 177, 0.04); /* Subtle background */
+  border-radius: 8px; /* Rounded corners */
+  border-left: 4px solid var(--club-primary); /* Accent border */
+  transition: var(--transition-standard);
+}
+
+.debate-features li:hover {
+  background-color: rgba(94, 53, 177, 0.08);
+  transform: translateX(5px); /* Slight shift on hover */
+}
+
+.debate-features li i {
+  color: var(--club-primary); /* Icon color */
+  stroke-width: 2; /* Feather icon stroke */
+  flex-shrink: 0; /* Prevent icon shrinking */
+}
+
+/* Styles for the Connect Section Animation Placeholder */
+.debate-animation {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  min-height: 60px; /* Give it some space */
+}
+
+.speech-bubble {
+  background-color: var(--club-contrast);
+  color: var(--text-light);
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px 20px 20px 5px; /* Speech bubble shape */
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(230, 57, 70, 0.2);
+  position: relative;
+  animation: popUp 0.5s ease-out backwards;
+}
+
+/* Stagger animation */
+.speech-bubble:nth-child(1) { animation-delay: 0.1s; }
+.speech-bubble:nth-child(2) { animation-delay: 0.3s; background-color: var(--club-highlight); box-shadow: 0 4px 10px rgba(126, 87, 194, 0.2); border-radius: 20px 20px 5px 20px;}
+.speech-bubble:nth-child(3) { animation-delay: 0.5s; background-color: var(--club-accent); color: var(--text-dark); box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2); }
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Ensure content wrapper has some basic styling if needed */
+.content-wrapper {
+  position: relative; /* Ensure it contains floated/absolute children if any */
+  z-index: 1; /* Keep content above potential pseudo-elements */
+}
+
+
 /* Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Bungee&display=swap");
