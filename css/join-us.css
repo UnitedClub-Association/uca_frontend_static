@@ -65,6 +65,11 @@ body {
   top: 0;
 }
 
+/* Add top padding specifically to the main content on this page */
+main#main-content {
+  padding-top: 80px; /* Adjust this value based on your navbar's height */
+}
+
 /* Hero Section */
 .join-hero {
   background-color: #2a4365;

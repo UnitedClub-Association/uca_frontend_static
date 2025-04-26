@@ -306,6 +306,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     console.log("Attempting completeRegistration with data:", userData); // Log incoming data
+    // Ensure message is still 'Verifying...' before Supabase call
+    registrationMessage.textContent = "Verifying registration...";
+    registrationMessage.className = "form-message info";
+
 
     try {
         // Add device ID and timestamp just before insertion
@@ -340,8 +344,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         console.log("Registration successful (Supabase data):", data); // Log success data
+        console.log("Attempting to update message to success..."); // <<< ADDED LOG
         registrationMessage.textContent = "Registration successful! You can now log in.";
         registrationMessage.className = "form-message success";
+        console.log("Message updated to success."); // <<< ADDED LOG
 
         registrationForm.reset(); // Reset the form on success
         // Optionally switch to login tab
@@ -350,11 +356,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     } catch (error) {
         console.error("Caught error during registration process:", error); // Log any caught error
+        console.log("Attempting to update message to error..."); // <<< ADDED LOG
         // Display specific errors caught above, or a generic one
         registrationMessage.textContent = error.message.includes("already registered") || error.message.includes("already taken")
             ? error.message // Show specific duplicate message
             : "Registration failed. Please check the details and try again."; // Generic failure
         registrationMessage.className = "form-message error";
+        console.log("Message updated to error."); // <<< ADDED LOG
         // Do not re-throw here unless needed upstream, but re-enable button
     } finally {
         console.log("Executing finally block of completeRegistration."); // Log finally block entry
