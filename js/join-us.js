@@ -10,6 +10,7 @@ function generateDeviceId() {
 
 // --- Global hCaptcha Callbacks ---
 window.onHCaptchaSuccess = async function(token) {
+  console.log(">>> onHCaptchaSuccess CALLED with token:", token); // <<< ADD THIS LOG
   console.log("hCaptcha verification successful");
   const registrationMessage = document.getElementById("register-message");
   const registerSubmitBtn = document.getElementById('register-submit-btn');
@@ -41,6 +42,7 @@ window.onHCaptchaSuccess = async function(token) {
 };
 
 window.onHCaptchaError = function(error) {
+  console.log(">>> onHCaptchaError CALLED with error:", error); // <<< ADD THIS LOG
   console.error("hCaptcha error:", error);
   const captchaErrorElement = document.getElementById("captcha-error");
   const registerSubmitBtn = document.getElementById('register-submit-btn');
@@ -181,7 +183,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // --- EDIT: Check if hcaptcha object exists before executing ---
         if (typeof hcaptcha !== 'undefined') {
-          hcaptcha.execute(); // Trigger the invisible hCaptcha
+          console.log("hCaptcha object found. Calling hcaptcha.execute()..."); // <<< ADD THIS LOG
+          try {
+            hcaptcha.execute(); // Trigger the invisible hCaptcha
+            console.log("hcaptcha.execute() called successfully."); // <<< ADD THIS LOG
+          } catch (e) {
+            console.error("Error calling hcaptcha.execute():", e); // <<< ADD THIS LOG
+            if (registrationMessage) {
+              registrationMessage.textContent = "CAPTCHA execution failed. Please refresh and try again.";
+              registrationMessage.className = "form-message error";
+            }
+            registerSubmitBtn.disabled = false; // Re-enable button on execution error
+          }
         } else {
           console.error("hCaptcha object not found. Was the script loaded correctly?");
           if (registrationMessage) {
