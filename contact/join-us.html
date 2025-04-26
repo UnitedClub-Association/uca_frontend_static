@@ -29,8 +29,8 @@
       content="UCA, United Club Association, join club, register, sign in, membership"
     />
 
-    <!-- Add hCaptcha Site Key Meta Tag -->
-    <meta name="hcaptcha-sitekey" content="c99ce990-71b0-48fa-b588-bfe2c0e42fc2">
+    <!-- REMOVE THIS LINE: hCaptcha Site Key Meta Tag -->
+    <!-- <meta name="hcaptcha-sitekey" content="c99ce990-71b0-48fa-b588-bfe2c0e42fc2"> -->
 
     <!-- Include centralized fonts -->
     <script src="/js/include-fonts.js" defer></script>
@@ -51,315 +51,333 @@
     <script src="/js/include-footer.js" defer></script>
     <script type="module" src="/js/join-us.js"></script>
 
-    <!-- REMOVE THIS LINE: Old Google reCAPTCHA Script -->
-    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
-
-    <!-- ADD THIS LINE: Correct hCaptcha Script -->
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-  </head>
+     </head>
   <body>
-   
-    <!-- Navbar will be inserted here by include-navbar.js -->
-    <script src="/js/include-navbar.js" defer></script>
+     
+      <!-- Navbar will be inserted here by include-navbar.js -->
+      <script src="/js/include-navbar.js" defer></script>
 
-    <main id="main-content">
-      <section class="join-hero">
-        <div class="join-hero-content">
-          <h1>Join UCA</h1>
-          <p>Become part of our vibrant community of clubs</p>
-        </div>
-      </section>
-
-      <section class="join-options">
-        <div class="container">
-          <div class="tabs">
-            <button class="tab-btn active" data-tab="register">
-              New Member
-            </button>
-            <button class="tab-btn" data-tab="login">Already Registered</button>
+      <main id="main-content">
+        <section class="join-hero">
+          <div class="join-hero-content">
+            <h1>Join UCA</h1>
+            <p>Become part of our vibrant community of clubs</p>
           </div>
+        </section>
 
-          <div class="tab-content active" id="register-tab">
-            <form id="registration-form" class="join-form" novalidate> <!-- Added novalidate to rely on JS validation -->
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="firstName"
-                    >First Name <span class="required">*</span></label
-                  >
-                  <input type="text" id="firstName" name="firstName" required />
-                  <span class="error-message" id="firstName-error"></span>
+        <section class="join-options">
+          <div class="container">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="register">
+                New Member
+              </button>
+              <button class="tab-btn" data-tab="login">Already Registered</button>
+            </div>
+
+            <div class="tab-content active" id="register-tab">
+              <form id="registration-form" class="join-form" novalidate> <!-- Added novalidate to rely on JS validation -->
+                <!-- Honeypot field: visually hidden but accessible -->
+                <div class="form-group honeypot-field" style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <label for="website">Website (leave blank)</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                 </div>
-                <div class="form-group">
-                  <label for="lastName"
-                    >Last Name <span class="required">*</span></label
-                  >
-                  <input type="text" id="lastName" name="lastName" required />
-                  <span class="error-message" id="lastName-error"></span>
-                </div>
-              </div>
 
-              <div class="form-group">
-                <label for="username"
-                  >Username <span class="required">*</span></label
-                >
-                <input type="text" id="username" name="username" required />
-                <span class="error-message" id="username-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="email"
-                  >E-Mail <span class="required">*</span></label
-                >
-                <input type="email" id="email" name="email" required />
-                <span class="error-message" id="email-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="reg-password"
-                  >Password <span class="required">*</span></label
-                >
-                <!-- Change class from 'password-field' to 'password-input-wrapper' -->
-                <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="reg-password"
-                    name="password"
-                    required
-                  />
-                  <button
-                    type="button"
-                    class="toggle-password"
-                    aria-label="Toggle password visibility"
-                  >
-                    <i data-feather="eye"></i>
-                  </button>
-                </div>
-                <span class="error-message" id="password-error"></span>
-                <div class="password-strength">
-                  <div class="strength-meter">
-                    <div
-                      class="strength-meter-fill"
-                      id="strength-meter-fill"
-                    ></div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName"
+                      >First Name <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      required
+                      aria-required="true"
+                      placeholder="e.g., John"
+                    />
+                    <div class="error-message" aria-live="polite"></div>
                   </div>
-                  <span class="strength-text" id="strength-text"
-                    >Password strength</span
-                  >
+                  <div class="form-group">
+                    <label for="lastName"
+                      >Last Name <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      required
+                      aria-required="true"
+                      placeholder="e.g., Doe"
+                    />
+                    <div class="error-message" aria-live="polite"></div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="confirm-password"
-                  >Confirm Password <span class="required">*</span></label
-                >
-                <!-- Change class from 'password-field' to 'password-input-wrapper' -->
-                <div class="password-input-wrapper">
+                <div class="form-group">
+                  <label for="username"
+                    >Username <span class="required">*</span></label
+                  >
+                  <input type="text" id="username" name="username" required />
+                  <span class="error-message" id="username-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email"
+                    >E-Mail <span class="required">*</span></label
+                  >
+                  <input type="email" id="email" name="email" required />
+                  <span class="error-message" id="email-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="reg-password"
+                    >Password <span class="required">*</span></label
+                  >
+                  <!-- Change class from 'password-field' to 'password-input-wrapper' -->
+                  <div class="password-input-wrapper">
+                    <input
+                      type="password"
+                      id="reg-password"
+                      name="password"
+                      required
+                    />
+                    <button
+                      type="button"
+                      class="toggle-password"
+                      aria-label="Toggle password visibility"
+                    >
+                      <i data-feather="eye"></i>
+                    </button>
+                  </div>
+                  <span class="error-message" id="password-error"></span>
+                  <div class="password-strength">
+                    <div class="strength-meter">
+                      <div
+                        class="strength-meter-fill"
+                        id="strength-meter-fill"
+                      ></div>
+                    </div>
+                    <span class="strength-text" id="strength-text"
+                      >Password strength</span
+                    >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="confirm-password"
+                    >Confirm Password <span class="required">*</span></label
+                  >
+                  <!-- Change class from 'password-field' to 'password-input-wrapper' -->
+                  <div class="password-input-wrapper">
+                    <input
+                      type="password"
+                      id="confirm-password"
+                      name="confirm-password"
+                      required
+                    />
+                    <button
+                      type="button"
+                      class="toggle-password"
+                      aria-label="Toggle password visibility"
+                    >
+                      <i data-feather="eye"></i>
+                    </button>
+                  </div>
+                  <span class="error-message" id="confirm-password-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="mobile"
+                    >Mobile Number <span class="required">*</span></label
+                  >
+                  <div class="phone-field">
+                    <span class="country-code">+880</span>
+                    <input
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      pattern="[0-9]{10}"
+                      placeholder="1XXXXXXXXX"
+                      required
+                    />
+                  </div>
+                  <span class="error-message" id="mobile-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label>I am a <span class="required">*</span></label>
+                  <div class="radio-group">
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="student"
+                        checked
+                        id="role-student"
+                      />
+                      <span>Student</span>
+                    </label>
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="teacher"
+                        id="role-teacher"
+                      />
+                      <span>Teacher</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Add School/College selection -->
+                <div class="form-group">
+                  <label>School/College <span class="required">*</span></label>
+                  <div class="radio-group">
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="institution-type"
+                        value="ulsc"
+                        checked
+                        id="institution-ulsc"
+                      />
+                      <span>University Laboratory School and College</span>
+                    </label>
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="institution-type"
+                        value="other"
+                        id="institution-other"
+                      />
+                      <span>Other</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Add institution name field - Ensure style="display: none;" is present -->
+                <div class="form-group" id="other-institution-field" style="display: none;">
+                  <label for="institution-name">School/College Name <span class="required">*</span></label>
+                  <input type="text" id="institution-name" name="institution-name" placeholder="Enter your school/college name" />
+                  <span class="error-message" id="institution-name-error"></span>
+                </div>
+
+                <!-- Class field - Ensure id="class-field" is present -->
+                <div class="form-group" id="class-field">
+                  <label for="class">Class <span class="required">*</span></label>
+                  <select id="class" name="class" required>
+                    <option value="" disabled selected>Select your class</option>
+                    <option value="VI">Class VI</option>
+                    <option value="VII">Class VII</option>
+                    <option value="VIII">Class VIII</option>
+                    <option value="IX">Class IX</option>
+                    <option value="X">Class X</option>
+                    <option value="XI">Class XI</option>
+                    <option value="XII">Class XII</option>
+                  </select>
+                  <span class="error-message" id="class-error"></span>
+                </div>
+
+                <!-- START: Add Math Puzzle -->
+                <div class="form-group" id="math-puzzle-group">
+                  <label for="math-answer" id="math-question-label">Verification: What is X + Y?</label>
+                  <input type="number" id="math-answer" name="math-answer" required placeholder="Your answer" />
+                  <input type="hidden" id="math-expected-answer" name="math-expected-answer" value="" />
+                  <span class="error-message" id="math-error"></span>
+                </div>
+                <!-- END: Add Math Puzzle -->
+
+                <!-- START: Add CAPTCHA Placeholder -->
+                <div class="form-group checkbox-group">
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      id="terms"
+                      name="terms"
+                      required
+                    />
+                    <span>I understand and agree to the
+                      <a href="/contact/terms.html">terms and conditions</a>
+                      <span class="required">*</span></span
+                    >
+                  </label>
+                  <span class="error-message" id="terms-error"></span>
+                </div>
+
+                <!-- REMOVE: hCaptcha Container -->
+                <!-- <div class="form-group captcha-container" id="captcha-container"> -->
+                <!--   <div class="h-captcha" ... ></div> -->
+                <!--   <span class="error-message" id="captcha-error"></span> -->
+                <!-- </div> -->
+                <!-- END REMOVE -->
+
+                <button type="submit" class="submit-btn" id="register-submit-btn">Register</button>
+                <div class="form-message" id="register-message"></div>
+              </form>
+            </div>
+
+            <!-- Login form update (No changes needed here for removing OTP) -->
+            <div class="tab-content" id="login-tab">
+              <form id="login-form" class="join-form" novalidate> <!-- Added novalidate -->
+                <div class="form-group">
+                  <label for="login-identifier"
+                    >Username or E-Mail <span class="required">*</span></label
+                  >
                   <input
-                    type="password"
-                    id="confirm-password"
-                    name="confirm-password"
+                    type="text"
+                    id="login-identifier"
+                    name="identifier"
                     required
                   />
-                  <button
-                    type="button"
-                    class="toggle-password"
-                    aria-label="Toggle password visibility"
-                  >
-                    <i data-feather="eye"></i>
-                  </button>
+                  <span class="error-message" id="login-identifier-error"></span>
                 </div>
-                <span class="error-message" id="confirm-password-error"></span>
-              </div>
 
-              <div class="form-group">
-                <label for="mobile"
-                  >Mobile Number <span class="required">*</span></label
-                >
-                <div class="phone-field">
-                  <span class="country-code">+880</span>
-                  <input
-                    type="tel"
-                    id="mobile"
-                    name="mobile"
-                    pattern="[0-9]{10}"
-                    placeholder="1XXXXXXXXX"
-                    required
-                  />
+                <div class="form-group">
+                  <label for="password">Password <span class="required">*</span></label>
+                  <!-- Ensure this wrapper exists and has the correct class -->
+                  <div class="password-input-wrapper">
+                    <input type="password" id="password" name="password" required />
+                    <button
+                      type="button"
+                      class="toggle-password"
+                      aria-label="Toggle password visibility"
+                    >
+                      <i data-feather="eye"></i>
+                    </button>
+                  </div>
+                  <span class="error-message" id="login-password-error"></span>
                 </div>
-                <span class="error-message" id="mobile-error"></span>
-              </div>
 
-              <div class="form-group">
-                <label>I am a <span class="required">*</span></label>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="role"
-                      value="student"
-                      checked
-                      id="role-student"
-                    />
-                    <span>Student</span>
+                <div class="form-group checkbox-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="remember" name="remember" />
+                    <span>Remember me</span>
                   </label>
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="role"
-                      value="teacher"
-                      id="role-teacher"
-                    />
-                    <span>Teacher</span>
-                  </label>
+                  <a href="#" class="forgot-password">Forgot password?</a>
                 </div>
-              </div>
 
-              <!-- Add School/College selection -->
-              <div class="form-group">
-                <label>School/College <span class="required">*</span></label>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="institution-type"
-                      value="ulsc"
-                      checked
-                      id="institution-ulsc"
-                    />
-                    <span>University Laboratory School and College</span>
-                  </label>
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="institution-type"
-                      value="other"
-                      id="institution-other"
-                    />
-                    <span>Other</span>
-                  </label>
-                </div>
-              </div>
+                <button type="submit" class="submit-btn">Sign In</button>
+                <div class="form-message" id="login-message"></div>
+              </form>
+            </div>
 
-              <!-- Add institution name field - Ensure style="display: none;" is present -->
-              <div class="form-group" id="other-institution-field" style="display: none;">
-                <label for="institution-name">School/College Name <span class="required">*</span></label>
-                <input type="text" id="institution-name" name="institution-name" placeholder="Enter your school/college name" />
-                <span class="error-message" id="institution-name-error"></span>
-              </div>
+            
+          </div> <!-- End tab-container -->
+        </div> <!-- End form-container -->
+      </section>
+    </main>
 
-              <!-- Class field - Ensure id="class-field" is present -->
-              <div class="form-group" id="class-field">
-                <label for="class">Class <span class="required">*</span></label>
-                <select id="class" name="class" required>
-                  <option value="" disabled selected>Select your class</option>
-                  <option value="VI">Class VI</option>
-                  <option value="VII">Class VII</option>
-                  <option value="VIII">Class VIII</option>
-                  <option value="IX">Class IX</option>
-                  <option value="X">Class X</option>
-                  <option value="XI">Class XI</option>
-                  <option value="XII">Class XII</option>
-                </select>
-                <span class="error-message" id="class-error"></span>
-              </div>
+      <!-- Footer will be inserted here by include-footer.js -->
+      <script src="/js/include-footer.js" defer></script>
 
-              <!-- START: Add CAPTCHA Placeholder -->
-              <div class="form-group checkbox-group">
-                <label class="checkbox-label">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    name="terms"
-                    required
-                  />
-                  <span>I understand and agree to the
-                    <a href="/contact/terms.html">terms and conditions</a>
-                    <span class="required">*</span></span
-                  >
-                </label>
-                <span class="error-message" id="terms-error"></span>
-              </div>
-
-              <!-- START: hCaptcha Container -->
-              <div class="form-group captcha-container" id="captcha-container">
-                <!-- Ensure this div is present and correctly configured -->
-                <div class="h-captcha"
-                     data-sitekey="c99ce990-71b0-48fa-b588-bfe2c0e42fc2"
-                     data-size="invisible"
-                     data-callback="onHCaptchaSuccess"
-                     data-error-callback="onHCaptchaError"
-                     id="hcaptcha-widget"></div>
-                <span class="error-message" id="captcha-error"></span>
-              </div>
-              <!-- END: hCaptcha Container -->
-
-              <button type="submit" class="submit-btn" id="register-submit-btn">Register</button>
-              <div class="form-message" id="register-message"></div>
-            </form>
-          </div>
-
-          <!-- Login form update (No changes needed here for removing OTP) -->
-          <div class="tab-content" id="login-tab">
-            <form id="login-form" class="join-form" novalidate> <!-- Added novalidate -->
-              <div class="form-group">
-                <label for="login-identifier"
-                  >Username or E-Mail <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  id="login-identifier"
-                  name="identifier"
-                  required
-                />
-                <span class="error-message" id="login-identifier-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="password">Password <span class="required">*</span></label>
-                <!-- Ensure this wrapper exists and has the correct class -->
-                <div class="password-input-wrapper">
-                  <input type="password" id="password" name="password" required />
-                  <button
-                    type="button"
-                    class="toggle-password"
-                    aria-label="Toggle password visibility"
-                  >
-                    <i data-feather="eye"></i>
-                  </button>
-                </div>
-                <span class="error-message" id="login-password-error"></span>
-              </div>
-
-              <div class="form-group checkbox-group">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="remember" name="remember" />
-                  <span>Remember me</span>
-                </label>
-                <a href="#" class="forgot-password">Forgot password?</a>
-              </div>
-
-              <button type="submit" class="submit-btn">Sign In</button>
-              <div class="form-message" id="login-message"></div>
-            </form>
-          </div>
-
-          
-        </div> <!-- End tab-container -->
-      </div> <!-- End form-container -->
-    </section>
-  </main>
-
-    <!-- Footer will be inserted here by include-footer.js -->
-    <script src="/js/include-footer.js" defer></script>
-
-    <!-- Initialize Feather Icons after the DOM is ready -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        if (typeof feather !== 'undefined') {
-          feather.replace({ 'aria-hidden': 'true' });
-        }
-      });
-    </script>
-  </body>
-</html>
+      <!-- Initialize Feather Icons after the DOM is ready -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          if (typeof feather !== 'undefined') {
+            feather.replace({ 'aria-hidden': 'true' });
+          }
+        });
+      </script>
+    </body>
+  </html>
 

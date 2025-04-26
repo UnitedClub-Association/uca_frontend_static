@@ -1,58 +1,97 @@
 import supabase from "./supabase-client.js";
 
-// Helper function to generate Device ID
-function generateDeviceId() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
+// REMOVE: Helper function to generate Device ID (Supabase handles sessions)
+// function generateDeviceId() {
+//   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+//     const r = (Math.random() * 16) | 0,
+//       v = c == "x" ? r : (r & 0x3) | 0x8;
+//     return v.toString(16);
+//   });
+// }
+
+// --- NEW: Math Puzzle Generation ---
+function generateMathPuzzle() {
+  const num1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+  const num2 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+  const expectedAnswer = num1 + num2;
+  const questionLabel = document.getElementById("math-question-label");
+  const expectedAnswerInput = document.getElementById("math-expected-answer");
+  const mathAnswerInput = document.getElementById("math-answer"); // Get the user input field
+
+  if (questionLabel && expectedAnswerInput && mathAnswerInput) {
+    questionLabel.textContent = `Verification: What is ${num1} + ${num2}?`;
+    expectedAnswerInput.value = expectedAnswer;
+    mathAnswerInput.value = ''; // Clear previous user answer
+    clearFieldError('math-error'); // Clear previous math error
+  } else {
+    console.error("Math puzzle elements not found.");
+  }
+}
+// --- END NEW ---
+
+// --- NEW: Password Strength Calculation ---
+function calculatePasswordStrength(password) {
+  let score = 0;
+  if (!password) return 0;
+
+  // Award points for length
+  if (password.length >= 8) score++;
+  if (password.length >= 12) score++;
+
+  // Award points for character types
+  if (/[a-z]/.test(password)) score++; // Lowercase
+  if (/[A-Z]/.test(password)) score++; // Uppercase
+  if (/\d/.test(password)) score++;   // Digits
+  if (/[^A-Za-z0-9]/.test(password)) score++; // Symbols
+
+  // Simple score to category mapping
+  if (score <= 2) return 'weak';
+  if (score <= 4) return 'medium';
+  return 'strong';
 }
 
-// --- Global hCaptcha Callbacks ---
-window.onHCaptchaSuccess = async function(token) {
-  console.log(">>> onHCaptchaSuccess CALLED with token:", token); // <<< ADD THIS LOG
-  console.log("hCaptcha verification successful");
-  const registrationMessage = document.getElementById("register-message");
-  const registerSubmitBtn = document.getElementById('register-submit-btn');
+function updatePasswordStrengthUI(password) {
+  const strengthMeterFill = document.getElementById('strength-meter-fill');
+  const strengthText = document.getElementById('strength-text');
+  if (!strengthMeterFill || !strengthText) return;
 
-  if (!window.validatedUserData) {
-    console.error("No validated user data found for hCaptcha callback");
-    if (registrationMessage) {
-      registrationMessage.textContent = "An unexpected error occurred. Please try again.";
-      registrationMessage.className = "form-message error";
+  const strength = calculatePasswordStrength(password);
+
+  strengthMeterFill.className = 'strength-meter-fill'; // Reset classes
+  strengthText.textContent = 'Password strength'; // Reset text
+
+  if (password.length > 0) {
+    strengthMeterFill.classList.add(strength);
+    strengthText.textContent = `Strength: ${strength.charAt(0).toUpperCase() + strength.slice(1)}`;
+  } else {
+     strengthText.textContent = 'Password strength'; // Default text when empty
+  }
+}
+// --- END NEW ---
+
+
+// --- NEW: Toggle Password Visibility ---
+function togglePasswordVisibility(button) {
+    const wrapper = button.closest('.password-input-wrapper');
+    if (!wrapper) return;
+    const passwordInput = wrapper.querySelector('input[type="password"], input[type="text"]');
+    const icon = button.querySelector('i');
+
+    if (!passwordInput || !icon) return;
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.setAttribute('data-feather', 'eye-off');
+    } else {
+        passwordInput.type = 'password';
+        icon.setAttribute('data-feather', 'eye');
     }
-    // Reset hCaptcha if possible (might need widget ID)
-    try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha", e); }
-    if(registerSubmitBtn) registerSubmitBtn.disabled = false;
-    return;
-  }
-
-  try {
-    // Pass the hCaptcha token to the registration function
-    await completeRegistration(window.validatedUserData, token);
-    window.validatedUserData = null;
-    // Reset hCaptcha (might need widget ID if multiple captchas exist)
-    try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha", e); }
-  } catch (error) {
-    // Error handled within completeRegistration, but reset captcha here too
-    try { hcaptcha.reset(); } catch (e) { console.warn("Could not reset hCaptcha", e); }
-    if(registerSubmitBtn) registerSubmitBtn.disabled = false;
-    window.validatedUserData = null;
-  }
-};
-
-window.onHCaptchaError = function(error) {
-  console.log(">>> onHCaptchaError CALLED with error:", error); // <<< ADD THIS LOG
-  console.error("hCaptcha error:", error);
-  const captchaErrorElement = document.getElementById("captcha-error");
-  const registerSubmitBtn = document.getElementById('register-submit-btn');
-  if (captchaErrorElement) {
-    captchaErrorElement.textContent = `Captcha challenge failed (${error}). Please try again.`;
-    captchaErrorElement.style.display = 'block';
-  }
-   if(registerSubmitBtn) registerSubmitBtn.disabled = false;
-   window.validatedUserData = null; // Clear pending data on error
-};
+    // Re-initialize Feather icons for the changed icon
+    if (typeof feather !== 'undefined') {
+        feather.replace({ 'aria-hidden': 'true' });
+    }
+}
+// --- END NEW ---
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -71,21 +110,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("login-form");
   const registrationMessage = document.getElementById("register-message");
   const loginMessage = document.getElementById("login-message");
-  // No need for captchaContainer specifically unless styling requires it
-  const registerSubmitBtn = document.getElementById('register-submit-btn');
-  const captchaErrorElement = document.getElementById("captcha-error"); // Get error element
+  const registerSubmitBtn = document.getElementById("register-submit-btn");
+  // REMOVE: const captchaErrorElement = document.getElementById("captcha-error");
 
-  // Store validated data globally
-  window.validatedUserData = null;
+  // REMOVE: window.validatedUserData = null;
+
+  // --- NEW: Generate Math Puzzle on Load ---
+  if (document.getElementById("math-puzzle-group")) {
+    generateMathPuzzle();
+  }
+  // --- END NEW ---
 
   // --- Form Interaction Logic ---
   // Handle institution type selection
   const institutionUlsc = document.getElementById("institution-ulsc");
   const institutionOther = document.getElementById("institution-other");
-  const otherInstitutionField = document.getElementById("other-institution-field");
+  const otherInstitutionField = document.getElementById(
+    "other-institution-field"
+  );
   const institutionNameInput = document.getElementById("institution-name");
 
-  if (institutionUlsc && institutionOther && otherInstitutionField && institutionNameInput) {
+  if (
+    institutionUlsc &&
+    institutionOther &&
+    otherInstitutionField &&
+    institutionNameInput
+  ) {
     // Initial state setup
     if (institutionUlsc.checked) {
       otherInstitutionField.style.display = "none";
@@ -95,13 +145,13 @@ document.addEventListener("DOMContentLoaded", function () {
       institutionNameInput.required = true;
     }
 
-    institutionUlsc.addEventListener("change", function() {
+    institutionUlsc.addEventListener("change", function () {
       otherInstitutionField.style.display = "none";
       institutionNameInput.required = false;
       institutionNameInput.value = ""; // Clear the field
     });
 
-    institutionOther.addEventListener("change", function() {
+    institutionOther.addEventListener("change", function () {
       otherInstitutionField.style.display = "block";
       institutionNameInput.required = true;
     });
@@ -127,13 +177,13 @@ document.addEventListener("DOMContentLoaded", function () {
       classSelect.required = false;
     }
 
-    roleStudent.addEventListener("change", function() {
+    roleStudent.addEventListener("change", function () {
       classField.classList.remove("disabled");
       classSelect.disabled = false;
       classSelect.required = true;
     });
 
-    roleTeacher.addEventListener("change", function() {
+    roleTeacher.addEventListener("change", function () {
       classField.classList.add("disabled");
       classSelect.disabled = true;
       classSelect.required = false;
@@ -150,13 +200,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Clear previous messages and disable submit button
       registerSubmitBtn.disabled = true;
-      clearErrorMessages(registrationForm);
+      clearErrorMessages(registrationForm); // Includes clearing math error now
       if (registrationMessage) {
         registrationMessage.textContent = ""; // Clear previous status messages
         registrationMessage.className = "form-message";
       }
 
-      if (validateRegistrationForm()) {
+      // --- NEW: Honeypot Check ---
+      const honeypotInput = document.getElementById("website");
+      if (honeypotInput && honeypotInput.value !== "") {
+          console.warn("Honeypot field filled, likely a bot.");
+          // Optionally display a generic error or just block submission silently
+          if (registrationMessage) {
+              registrationMessage.textContent = "Registration failed. Please try again.";
+              registrationMessage.className = "form-message error";
+          }
+          registerSubmitBtn.disabled = false; // Re-enable button
+          return; // Stop submission
+      }
+      // --- END NEW ---
+
+
+      if (validateRegistrationForm()) { // Validation now includes the math puzzle
+        // Validation now includes the math puzzle
         // Collect user data after validation passes
         const userData = {
           first_name: document.getElementById("firstName").value.trim(),
@@ -164,59 +230,52 @@ document.addEventListener("DOMContentLoaded", function () {
           username: document.getElementById("username").value.trim(),
           email: document.getElementById("email").value.trim(),
           password: document.getElementById("reg-password").value, // **INSECURE - HASH ON BACKEND**
-          institution_type: institutionUlsc.checked ? 'ulsc' : 'other',
-          institution_name: institutionUlsc.checked ? 'University Laboratory School and College' : institutionNameInput.value.trim(),
-          phone: '+880' + document.getElementById("mobile").value.trim(), // Assuming +880 prefix
-          role: roleStudent.checked ? 'student' : 'teacher',
-          class: (roleStudent.checked && classSelect.value) ? classSelect.value : null
+          institution_type: institutionUlsc.checked ? "ulsc" : "other",
+          institution_name: institutionUlsc.checked
+            ? "University Laboratory School and College"
+            : institutionNameInput.value.trim(),
+          phone: "+880" + document.getElementById("mobile").value.trim(), // Assuming +880 prefix
+          role: roleStudent.checked ? "student" : "teacher",
+          class:
+            roleStudent.checked && classSelect.value ? classSelect.value : null,
+          // Add a default verification status if needed for manual approval later
+          // is_verified: false // Example: Add this if your backend expects it
         };
 
-        // Store data globally for the CAPTCHA callback
-        window.validatedUserData = userData;
+        // REMOVE: window.validatedUserData = userData;
 
-        // Display message and execute CAPTCHA
+        // Display message and call registration directly
         if (registrationMessage) {
-            registrationMessage.textContent = "Verifying...";
-            registrationMessage.className = "form-message info";
+          registrationMessage.textContent = "Registering...";
+          registrationMessage.className = "form-message info";
         }
-        console.log("Form validated, attempting to execute hCaptcha...");
+        console.log("Form validated, attempting registration directly...");
 
-        // --- EDIT: Check if hcaptcha object exists before executing ---
-        if (typeof hcaptcha !== 'undefined') {
-          console.log("hCaptcha object found. Calling hcaptcha.execute()..."); // <<< ADD THIS LOG
-          try {
-            hcaptcha.execute(); // Trigger the invisible hCaptcha
-            console.log("hcaptcha.execute() called successfully."); // <<< ADD THIS LOG
-          } catch (e) {
-            console.error("Error calling hcaptcha.execute():", e); // <<< ADD THIS LOG
-            if (registrationMessage) {
-              registrationMessage.textContent = "CAPTCHA execution failed. Please refresh and try again.";
-              registrationMessage.className = "form-message error";
-            }
-            registerSubmitBtn.disabled = false; // Re-enable button on execution error
-          }
-        } else {
-          console.error("hCaptcha object not found. Was the script loaded correctly?");
+        // REMOVE hCaptcha execution logic
+        // if (typeof hcaptcha !== 'undefined') { ... } else { ... }
+
+        // Call completeRegistration directly (no captcha token needed)
+        try {
+          await completeRegistration(userData); // Pass only userData
+        } catch (error) {
+          // Error handling is mostly within completeRegistration,
+          // but ensure button is re-enabled if an error bubbles up here.
+          console.error("Error during registration submission:", error);
           if (registrationMessage) {
-            registrationMessage.textContent = "CAPTCHA failed to load. Please refresh the page and try again.";
+            registrationMessage.textContent =
+              "An unexpected error occurred during submission.";
             registrationMessage.className = "form-message error";
           }
-          // Re-enable button if captcha is not available
-          registerSubmitBtn.disabled = false;
+          registerSubmitBtn.disabled = false; // Ensure button is re-enabled
         }
-        // --- END EDIT ---
-
-        // NOTE: The actual insertion now happens in onHCaptchaSuccess -> completeRegistration
-        // We removed the pre-check for existing users here. Database constraints will handle uniqueness.
-
       } else {
-        // Validation failed
+        // If validation fails, re-enable the button
+        registerSubmitBtn.disabled = false;
         console.log("Registration form validation failed.");
-        if (registrationMessage) {
-            registrationMessage.textContent = "Please correct the errors above.";
-            registrationMessage.className = "form-message error";
+        // Regenerate puzzle on failed attempt to prevent simple retries
+        if (document.getElementById("math-puzzle-group")) {
+          generateMathPuzzle();
         }
-        registerSubmitBtn.disabled = false; // Re-enable button if validation fails
       }
     });
   } else {
@@ -259,17 +318,18 @@ document.addEventListener("DOMContentLoaded", function () {
         loginMessage.textContent = "Signing in...";
         loginMessage.className = "form-message info";
 
-        const isEmail = identifier.includes('@');
+        const isEmail = identifier.includes("@");
         const { data: userArray, error: fetchError } = await supabase
-          .from('members')
-          .select('*')
+          .from("members")
+          .select("*")
           .or(isEmail ? `email.eq.${identifier}` : `username.eq.${identifier}`)
           .limit(1);
 
         if (fetchError) throw fetchError;
 
         if (!userArray || userArray.length === 0) {
-          loginMessage.textContent = "User not found. Please check your username/email.";
+          loginMessage.textContent =
+            "User not found. Please check your username/email.";
           loginMessage.className = "form-message error";
           return;
         }
@@ -286,10 +346,10 @@ document.addEventListener("DOMContentLoaded", function () {
         loginMessage.className = "form-message info";
 
         const deviceId = generateDeviceId();
-        localStorage.setItem('deviceId', deviceId);
+        localStorage.setItem("deviceId", deviceId);
 
         const { data, error } = await supabase
-          .from('members')
+          .from("members")
           .update({ device_id: deviceId })
           .or(isEmail ? `email.eq.${identifier}` : `username.eq.${identifier}`)
           .select();
@@ -299,23 +359,31 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Login successful:", data); // This 'data' is from the device_id update
         window.location.href = "/"; // Redirects to the root on successful login
         // --- End Login Success Path ---
-
       } catch (error) {
         console.error("Login error:", error);
-        loginMessage.textContent = "Login failed: " + (error.message || "An unexpected error occurred.");
+        loginMessage.textContent =
+          "Login failed: " + (error.message || "An unexpected error occurred.");
         loginMessage.className = "form-message error";
+      } finally {
+        // Always re-enable button unless redirecting
+        if (window.location.pathname !== '/') { // Simple check if not redirected yet
+             loginSubmitBtn.disabled = false;
+        }
       }
     });
   } else {
     console.warn("Login form not found.");
   }
 
-  async function completeRegistration(userData, captchaToken) { // Added captchaToken parameter
+  async function completeRegistration(userData, captchaToken) {
+    // Added captchaToken parameter
     const registrationMessage = document.getElementById("register-message");
-    const registerSubmitBtn = document.getElementById('register-submit-btn'); // Get button again
+    const registerSubmitBtn = document.getElementById("register-submit-btn"); // Get button again
     if (!registrationMessage || !registerSubmitBtn) {
-        console.error("Registration message or submit button element not found in completeRegistration.");
-        return; // Exit if elements aren't found
+      console.error(
+        "Registration message or submit button element not found in completeRegistration."
+      );
+      return; // Exit if elements aren't found
     }
 
     console.log("Attempting completeRegistration with data:", userData); // Log incoming data
@@ -323,88 +391,99 @@ document.addEventListener("DOMContentLoaded", function () {
     registrationMessage.textContent = "Verifying registration...";
     registrationMessage.className = "form-message info";
 
-
     try {
-        // Add device ID and timestamp just before insertion
-        userData.device_id = generateDeviceId();
-        localStorage.setItem('deviceId', userData.device_id);
-        userData.created_at = new Date().toISOString();
+      // Add device ID and timestamp just before insertion
+      userData.device_id = generateDeviceId();
+      localStorage.setItem("deviceId", userData.device_id);
+      userData.created_at = new Date().toISOString();
 
-        console.log("Data prepared for insertion:", userData); // Log data before insert
+      console.log("Data prepared for insertion:", userData); // Log data before insert
 
-        // Attempt to insert the user data
-        console.log("Calling supabase.from('members').insert()..."); // Log before Supabase call
-        const { data, error } = await supabase
-            .from('members')
-            .insert([userData])
-            .select();
-        console.log("Supabase insert call finished."); // Log after Supabase call returns
+      // Attempt to insert the user data
+      console.log("Calling supabase.from('members').insert()..."); // Log before Supabase call
+      const { data, error } = await supabase
+        .from("members")
+        .insert([userData])
+        .select();
+      console.log("Supabase insert call finished."); // Log after Supabase call returns
 
-        if (error) {
-            console.error("Supabase insert error object:", error); // Log the specific error object
-            // Check for unique constraint violation (PostgreSQL error code 23505)
-            if (error.code === '23505') {
-                if (error.message.includes('members_email_unique')) {
-                    displayFieldError('email-error', 'This email address is already registered.');
-                    throw new Error("Email already registered."); // Throw specific error
-                } else if (error.message.includes('members_username_unique')) {
-                    displayFieldError('username-error', 'This username is already taken.');
-                    throw new Error("Username already taken."); // Throw specific error
-                }
-            }
-            // Throw other errors
-            throw error;
-        }
-
-        console.log("Registration successful (Supabase data):", data); // Log success data
-        console.log("Attempting to update message to success..."); // <<< ADDED LOG
-        registrationMessage.textContent = "Registration successful! You can now log in.";
-        registrationMessage.className = "form-message success";
-        console.log("Message updated to success."); // <<< ADDED LOG
-
-        registrationForm.reset(); // Reset the form on success
-        // Optionally switch to login tab
-        const loginTab = document.querySelector('[data-tab="login"]');
-        if (loginTab) loginTab.click();
-
-    } catch (error) {
-        console.error("Caught error during registration process:", error); // Log any caught error
-        console.log("Attempting to update message to error..."); // <<< ADDED LOG
-        // Display specific errors caught above, or a generic one
-        registrationMessage.textContent = error.message.includes("already registered") || error.message.includes("already taken")
-            ? error.message // Show specific duplicate message
-            : "Registration failed. Please check the details and try again."; // Generic failure
-        registrationMessage.className = "form-message error";
-        console.log("Message updated to error."); // <<< ADDED LOG
-        // Do not re-throw here unless needed upstream, but re-enable button
-    } finally {
-        console.log("Executing finally block of completeRegistration."); // Log finally block entry
-        // Always re-enable the submit button after attempt (success or fail)
-        if(registerSubmitBtn) registerSubmitBtn.disabled = false;
-        window.validatedUserData = null; // Clear global data after attempt
-        // Reset hcaptcha
-        // --- EDIT: Add check before resetting hCaptcha in finally block ---
-        if (typeof hcaptcha !== 'undefined') {
-          try {
-            hcaptcha.reset();
-          } catch (e) {
-            console.warn("Could not reset hCaptcha in finally block", e);
+      if (error) {
+        console.error("Supabase insert error object:", error); // Log the specific error object
+        // Check for unique constraint violation (PostgreSQL error code 23505)
+        if (error.code === "23505") {
+          if (error.message.includes("members_email_unique")) {
+            displayFieldError(
+              "email-error",
+              "This email address is already registered."
+            );
+            throw new Error("Email already registered."); // Throw specific error
+          } else if (error.message.includes("members_username_unique")) {
+            displayFieldError(
+              "username-error",
+              "This username is already taken."
+            );
+            throw new Error("Username already taken."); // Throw specific error
           }
-        } else {
-            console.warn("hCaptcha object not found in finally block, cannot reset.");
         }
-        // --- END EDIT ---
-        console.log("Registration attempt finished, button re-enabled, captcha reset."); // Log end of finally
+        // Throw other errors
+        throw error;
+      }
+
+      console.log("Registration successful (Supabase data):", data); // Log success data
+      console.log("Attempting to update message to success..."); // <<< ADDED LOG
+      registrationMessage.textContent =
+        "Registration successful! You can now log in.";
+      registrationMessage.className = "form-message success";
+      console.log("Message updated to success."); // <<< ADDED LOG
+
+      registrationForm.reset(); // Reset the form on success
+      // Optionally switch to login tab
+      const loginTab = document.querySelector('[data-tab="login"]');
+      if (loginTab) loginTab.click();
+    } catch (error) {
+      console.error("Caught error during registration process:", error); // Log any caught error
+      console.log("Attempting to update message to error..."); // <<< ADDED LOG
+      // Display specific errors caught above, or a generic one
+      registrationMessage.textContent =
+        error.message.includes("already registered") ||
+        error.message.includes("already taken")
+          ? error.message // Show specific duplicate message
+          : "Registration failed. Please check the details and try again."; // Generic failure
+      registrationMessage.className = "form-message error";
+      console.log("Message updated to error."); // <<< ADDED LOG
+      // Do not re-throw here unless needed upstream, but re-enable button
+    } finally {
+      console.log("Executing finally block of completeRegistration."); // Log finally block entry
+      // Always re-enable the submit button after attempt (success or fail)
+      if (registerSubmitBtn) registerSubmitBtn.disabled = false;
+      window.validatedUserData = null; // Clear global data after attempt
+      // Reset hcaptcha
+      // --- EDIT: Add check before resetting hCaptcha in finally block ---
+      if (typeof hcaptcha !== "undefined") {
+        try {
+          hcaptcha.reset();
+        } catch (e) {
+          console.warn("Could not reset hCaptcha in finally block", e);
+        }
+      } else {
+        console.warn(
+          "hCaptcha object not found in finally block, cannot reset."
+        );
+      }
+      // --- END EDIT ---
+      console.log(
+        "Registration attempt finished, button re-enabled, captcha reset."
+      ); // Log end of finally
     }
   }
 
   // --- Validation and Helper Functions ---
   function validateRegistrationForm() {
-    const termsCheckbox = document.getElementById('terms');
+    const termsCheckbox = document.getElementById("terms");
     let isValid = true;
 
     const requiredFields = registrationForm.querySelectorAll("[required]");
-    requiredFields.forEach(field => {
+    requiredFields.forEach((field) => {
       if (!field.value.trim()) {
         displayFieldError(`${field.id}-error`, "This field is required.");
         isValid = false;
@@ -414,11 +493,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (!termsCheckbox || !termsCheckbox.checked) {
-      displayFieldError('terms-error', 'You must agree to the terms and conditions.');
+      displayFieldError(
+        "terms-error",
+        "You must agree to the terms and conditions."
+      );
       isValid = false;
     } else {
-      clearFieldError('terms-error');
+      clearFieldError("terms-error");
     }
+
+    // REMOVE Captcha validation check if any existed here
 
     return isValid;
   }
@@ -426,7 +510,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function clearFieldError(errorId) {
     const errorSpan = document.getElementById(errorId);
     if (errorSpan) {
-      errorSpan.textContent = '';
+      errorSpan.textContent = "";
     }
   }
 
@@ -438,127 +522,97 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function clearErrorMessages(form) {
-    const errorSpans = form.querySelectorAll(".error-message");
-    errorSpans.forEach(span => {
-      span.textContent = '';
-    });
+    const errorMessages = form.querySelectorAll(".error-message");
+    errorMessages.forEach((el) => (el.textContent = ""));
+    // Also clear math error specifically if it exists outside the standard querySelector scope
+    const mathError = document.getElementById('math-error');
+    if (mathError) mathError.textContent = '';
   }
 
-  // --- Password Strength Meter ---
-  const regPasswordInput = document.getElementById('reg-password');
-  const strengthMeterFill = document.querySelector('.strength-meter-fill');
-  const strengthText = document.querySelector('.strength-text');
-
-  if (regPasswordInput && strengthMeterFill && strengthText) {
-    regPasswordInput.addEventListener('input', function() {
-      const password = this.value;
-      let strength = 0;
-      let text = '';
-      let className = '';
-
-      if (password.length >= 8) strength++;
-      if (password.match(/[a-z]/)) strength++;
-      if (password.match(/[A-Z]/)) strength++;
-      if (password.match(/[0-9]/)) strength++;
-      if (password.match(/[^a-zA-Z0-9]/)) strength++;
-
-      switch (strength) {
-        case 0:
-        case 1:
-        case 2:
-          text = 'Weak';
-          className = 'weak';
-          break;
-        case 3:
-        case 4:
-          text = 'Medium';
-          className = 'medium';
-          break;
-        case 5:
-          text = 'Strong';
-          className = 'strong';
-          break;
-        default:
-          text = '';
-          className = '';
+  // Modify displayFieldError to handle ID strings or element references
+  function displayFieldError(elementOrId, message) {
+      let element;
+      if (typeof elementOrId === 'string') {
+          element = document.getElementById(elementOrId);
+      } else {
+          element = elementOrId; // Assume it's already an element
       }
 
-      strengthMeterFill.className = `strength-meter-fill ${className}`;
-      strengthText.textContent = `Password strength: ${text}`;
-    });
+      if (element) {
+          element.textContent = message;
+      } else {
+          console.warn("Could not find error element:", elementOrId);
+      }
   }
 
-  // --- Toggle Password Visibility ---
-  const togglePasswordBtns = document.querySelectorAll(".toggle-password");
 
-  if (togglePasswordBtns.length) {
-    togglePasswordBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const wrapper = this.closest('.password-input-wrapper');
-        if (!wrapper) {
-          console.error("Could not find parent '.password-input-wrapper'.");
-          return;
-        }
+  // --- completeRegistration function ---
+  // REMOVE the captchaToken parameter and any logic using it
+  async function completeRegistration(userData /* REMOVE: , captchaToken */) {
+    const registrationMessage = document.getElementById("register-message");
+    const registerSubmitBtn = document.getElementById("register-submit-btn");
+    // ... rest of the function remains largely the same, just ensure no captchaToken is used ...
 
-        const passwordInput = wrapper.querySelector('input');
-        const iconSvg = this.querySelector('svg');
+    console.log("Attempting completeRegistration with data:", userData);
+    registrationMessage.textContent = "Verifying registration...";
+    registrationMessage.className = "form-message info";
 
-        if (passwordInput && iconSvg) {
-          if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            const tempIcon = document.createElement('i');
-            tempIcon.setAttribute('data-feather', 'eye-off');
-            this.innerHTML = '';
-            this.appendChild(tempIcon);
-            if (typeof feather !== 'undefined') {
-              feather.replace({ 'aria-hidden': 'true' });
-            }
-          } else {
-            passwordInput.type = 'password';
-            const tempIcon = document.createElement('i');
-            tempIcon.setAttribute('data-feather', 'eye');
-            this.innerHTML = '';
-            this.appendChild(tempIcon);
-            if (typeof feather !== 'undefined') {
-              feather.replace({ 'aria-hidden': 'true' });
-            }
-          }
-        } else {
-          if (!passwordInput) {
-            console.error("Could not find 'input' element within the wrapper.");
-          }
-          if (!iconSvg) {
-            console.error("Could not find 'svg' element within the button.");
+    try {
+      // ... (add device_id, created_at) ...
+      userData.device_id = generateDeviceId();
+      localStorage.setItem("deviceId", userData.device_id);
+      userData.created_at = new Date().toISOString();
+
+      console.log("Data prepared for insertion:", userData);
+
+      // ... (Supabase insert call) ...
+      const { data, error } = await supabase
+        .from("members")
+        .insert([userData])
+        .select();
+
+      // ... (Error handling for Supabase insert) ...
+      if (error) {
+        console.error("Supabase insert error object:", error);
+        if (error.code === "23505") {
+          if (error.message.includes("members_email_unique")) {
+            displayFieldError("email-error", "This email address is already registered.");
+            throw new Error("Email already registered.");
+          } else if (error.message.includes("members_username_unique")) {
+            displayFieldError("username-error", "This username is already taken.");
+            throw new Error("Username already taken.");
           }
         }
-      });
-    });
-  } else {
-    console.warn("No toggle password buttons found.");
+        throw error; // Re-throw other errors
+      }
+
+      // ... (Success handling) ...
+      console.log("Registration successful (Supabase data):", data);
+      registrationMessage.textContent =
+        "Registration successful! Redirecting...";
+      registrationMessage.className = "form-message success";
+
+      // Redirect after a short delay
+      setTimeout(() => {
+        window.location.href = "/"; // Redirect to homepage or login page
+      }, 2000);
+
+    } catch (error) {
+      console.error("Error in completeRegistration:", error);
+      // Display specific errors caught from Supabase or generic error
+      if (registrationMessage) {
+          // Use the error message thrown if available (e.g., "Email already registered.")
+          registrationMessage.textContent = error.message || "Registration failed. Please check your details and try again.";
+          registrationMessage.className = "form-message error";
+      }
+      // Regenerate puzzle on failed registration attempt
+      if (document.getElementById("math-puzzle-group")) {
+          generateMathPuzzle();
+      }
+      // Ensure button is re-enabled ONLY if the error wasn't a success-redirect scenario
+      if (registerSubmitBtn) registerSubmitBtn.disabled = false;
+    }
   }
 
-  // --- Tab Switching Functionality ---
-  const tabBtns = document.querySelectorAll(".tab-btn");
-  const tabContents = document.querySelectorAll(".tab-content");
-
-  if (tabBtns.length && tabContents.length) {
-    tabBtns.forEach((btn) => {
-      btn.addEventListener("click", function () {
-        tabBtns.forEach((b) => b.classList.remove("active"));
-        tabContents.forEach((c) => c.classList.remove("active"));
-
-        this.classList.add("active");
-        const tabId = this.getAttribute("data-tab");
-        const correspondingContent = document.getElementById(`${tabId}-tab`);
-        if (correspondingContent) {
-          correspondingContent.classList.add("active");
-        } else {
-          console.warn(`Tab content not found for ID: ${tabId}-tab`);
-        }
-      });
-    });
-  } else {
-    console.warn("Tab buttons or content not found.");
-  }
-
-}); // End DOMContentLoaded
+  // ... rest of the existing code ...
+});

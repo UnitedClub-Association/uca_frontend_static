@@ -143,10 +143,10 @@ token_verifications = 30
 
 # Configure one of the supported captcha providers: `hcaptcha`, `turnstile`.
 [auth.captcha]
-enabled = true
-provider = "hcaptcha"
-# Use environment variable substitution for the secret key
-secret = "env(HCAPTCHA_SECRET_KEY)"
+# Set enabled to false to disable captcha verification
+enabled = false
+# provider = "hcaptcha" # No longer needed
+# secret = "env(HCAPTCHA_SECRET_KEY)" # No longer needed
 
 # [auth.email]
 # Allow/disallow new user signups via email to your project.

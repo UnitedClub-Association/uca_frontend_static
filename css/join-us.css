@@ -162,6 +162,16 @@ main#main-content {
   transition: var(--join-transition);
 }
 
+/* Add style for honeypot field */
+.honeypot-field {
+  position: absolute !important; /* Ensure it's taken out of flow */
+  left: -5000px; /* Move it far off-screen */
+  width: 1px; /* Minimize size */
+  height: 1px;
+  overflow: hidden; /* Hide any potential overflow */
+}
+
+
 .form-group {
   margin-bottom: var(--join-space-lg);
   position: relative;
