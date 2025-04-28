@@ -395,7 +395,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Add the user_id to userData and remove password
       userData.user_id = authData.user.id;
-      delete userData.password;
+      // Store the password in the members table instead of deleting it
+      // delete userData.password;
       userData.created_at = new Date().toISOString();
       userData.email_verified = false;
 
