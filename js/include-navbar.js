@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       logoContainer.classList.add("logo-container");
 
       const logoImg = document.createElement("img");
-      logoImg.src = "/images/DU_Logo.png";
+      logoImg.src = "/images/uca_logo.png";
       logoImg.alt = "UCA Logo";
       logoImg.classList.add("logo-img");
 

@@ -330,9 +330,18 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // *** ADD THIS LOG ***
+    console.log("Data received by completeRegistration:", JSON.stringify(userData));
+
     console.log("Attempting completeRegistration with data:", userData);
     registrationMessage.textContent = "Creating your account...";
     registrationMessage.className = "form-message info";
+
+    // Keep a copy of the password for auth, but don't store it in members table
+    const passwordForAuth = userData.password;
+    // Create a copy of userData to modify for insertion, removing the password
+    const memberData = { ...userData };
+    delete memberData.password; // *** IMPORTANT: Remove password before inserting into members ***
 
     try {
       // Check if email already exists
@@ -372,14 +381,22 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // First, sign up the user with Supabase Auth
+      // *** ADD LOG BEFORE AUTH SIGNUP ***
+      console.log("Calling supabase.auth.signUp with options.data:", JSON.stringify({
+        username: userData.username,
+        first_name: userData.first_name,
+        last_name: userData.last_name
+      }));
+
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: userData.email,
-        password: userData.password,
+        password: passwordForAuth, // Use the original password here
         options: {
           data: {
             username: userData.username,
             first_name: userData.first_name,
             last_name: userData.last_name
+            // Add any other metadata fields here if needed
           }
         }
       });
@@ -390,29 +407,51 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (!authData.user) {
-        throw new Error("Failed to create user account");
+        // Log the authData if user is missing
+        console.error("Auth successful, but no user object returned:", authData);
+        throw new Error("Failed to create user account (no user object).");
       }
 
-      // Add the user_id to userData and remove password
-      userData.user_id = authData.user.id;
-      // Store the password in the members table instead of deleting it
-      // delete userData.password;
-      userData.created_at = new Date().toISOString();
-      userData.email_verified = false;
+      // *** DEBUGGING: Log the user ID ***
+      console.log("Auth successful. User ID:", authData.user.id);
+      // *** ADD LOG: Check auth metadata ***
+      console.log("Auth user metadata after signup:", JSON.stringify(authData.user.user_metadata));
 
-      console.log("Auth successful, inserting member data...");
 
-      // Insert the user data into the members table
+      // Add the user_id to the memberData object (which doesn't have the password)
+      memberData.user_id = authData.user.id;
+      memberData.created_at = new Date().toISOString();
+      memberData.email_verified = false; // Assuming email verification is off or handled later
+
+      // *** DEBUGGING: Log the data being inserted ***
+      console.log("Attempting to insert member data:", JSON.stringify(memberData)); // Stringify for clarity
+
+      // Insert the user data (without password) into the members table
       const { error: insertError } = await supabase
         .from("members")
-        .insert([userData]);
+        .insert([memberData]); // Use memberData here
 
       if (insertError) {
         console.error("Database insert error:", insertError);
-        // If insert fails, we should delete the auth user to maintain consistency
-        await supabase.auth.admin.deleteUser(authData.user.id);
-        throw insertError;
+        // Attempt to delete the auth user if insert fails
+        // WARNING: This requires admin privileges and might fail on the frontend.
+        // Consider moving cleanup logic to a backend function if this is critical.
+        try {
+            console.warn("Attempting to clean up auth user:", authData.user.id);
+            // Note: supabase.auth.admin is typically not available/permissible in browser clients.
+            // This call will likely fail unless using a service_role key, which is unsafe in the browser.
+            // const { data: adminData, error: adminError } = await supabase.auth.admin.deleteUser(authData.user.id);
+            // if(adminError) console.error("Failed to cleanup auth user:", adminError);
+            // else console.log("Auth user cleanup successful.");
+             console.error("Frontend cannot perform admin user deletion. Manual cleanup might be required if insert fails.");
+        } catch (cleanupError) {
+             console.error("Error during auth user cleanup attempt:", cleanupError);
+        }
+        throw insertError; // Re-throw the original insert error
       }
+
+      // *** ADD LOG: Confirm insert success ***
+      console.log("Insert into members table successful for user_id:", memberData.user_id);
 
       console.log("Registration successful!");
       registrationMessage.textContent = "Registration successful! Please check your email to verify your account, then you can log in.";
