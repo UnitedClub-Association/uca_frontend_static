@@ -9,5 +9,5 @@
 3. UCA Unveiled Event Page:
     - Create uca-uneiled.html and css
 
-4. Update the Card design for Featured Clubs in Index
+4. Update the Card design for Featured Events in Index
 5. 
