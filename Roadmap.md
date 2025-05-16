@@ -10,4 +10,4 @@
     - Create uca-uneiled.html and css
 
 4. Update the Card design for Featured Events in Index
-5. 
+5. Add Green Club Page. Use placeholder logo
