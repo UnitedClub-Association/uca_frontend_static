@@ -1,34 +1,59 @@
 /* Root Variables */
-:root {
-  /* New Theme Colors */
-  --primary-color: #4A5C6A;
+:root, [data-theme="dark"] {
+  /* Enhanced Dark Theme Colors */
+  --primary-color: #3B4A54; /* Slightly lighter for contrast */
   --secondary-color: #11212D;
   --background-dark: #06141B;
   --background-light: #9BA8AB;
-  --text-light: #CCD0CF;
+  --text-light: #DDE1E3; /* Higher contrast */
   --text-dark: #06141B;
-  --text-medium: #9BA8AB;
+  --text-medium: #A8B3B7; /* Improved readability */
 
-  /* Enhanced Gradients with new colors */
+  /* Enhanced Gradients */
   --hero-gradient: linear-gradient(
     45deg,
     rgba(6, 20, 27, 0.8),
-    rgba(17, 33, 45, 0.7)
+    rgba(59, 74, 84, 0.7)
   );
   --about-gradient: linear-gradient(135deg, #06141B, #11212D);
   --clubs-gradient: linear-gradient(135deg, #11212D, #253745);
-  --events-gradient: linear-gradient(135deg, #253745, #4A5C6A);
+  --events-gradient: linear-gradient(135deg, #253745, #3B4A54);
 
   /* Transitions */
   --transition: all 0.3s ease;
 
-  /* Shadows with new colors */
-  --card-shadow: 0 15px 35px rgba(6, 20, 27, 0.2);
-  --hover-shadow: 0 20px 45px rgba(6, 20, 27, 0.3);
+  /* Shadows */
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 
   /* Animation Variables */
   --bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --smooth-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  /* Light Theme Colors */
+  --primary-color: #4f46e5;
+  --secondary-color: #6b7280;
+  --background-dark: #e2e8f0;
+  --background-light: #f8fafc;
+  --text-light: #1f2937;
+  --text-dark: #111827;
+  --text-medium: #4b5563;
+
+  /* Light Theme Gradients */
+  --hero-gradient: linear-gradient(
+    45deg,
+    rgba(79, 70, 229, 0.8),
+    rgba(107, 114, 128, 0.7)
+  );
+  --about-gradient: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  --clubs-gradient: linear-gradient(135deg, #e2e8f0, #d1d5db);
+  --events-gradient: linear-gradient(135deg, #d1d5db, #4f46e5);
+
+  /* Shadows */
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 /* General Reset */
@@ -47,7 +72,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(-45deg, var(--secondary-color), var(--background-dark), #253745, #4A5C6A);
+  background: linear-gradient(-45deg, var(--secondary-color), var(--background-dark), #253745, var(--primary-color));
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   height: 100vh;
@@ -59,23 +84,12 @@ body {
   overflow: hidden;
 }
 
-/* Add Keyframes for the background gradient animation */
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
-  50% {
-    background-position: 100% 50%;
-    filter: hue-rotate(10deg);
-  }
-  100% {
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Enhanced Hero Overlay */
 .hero::before {
   content: "";
   position: absolute;
@@ -91,7 +105,6 @@ body {
   50% { opacity: 0.5; }
 }
 
-/* Add styles for existing animated background elements if needed */
 .animated-bg {
   position: absolute;
   top: 0;
@@ -99,19 +112,18 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 0; /* Behind hero content but above solid background */
+  z-index: 0;
 }
 
 .animated-bg .star {
   position: absolute;
-  background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0.8));
+  background: linear-gradient(45deg, var(--text-light), rgba(255, 255, 255, 0.8));
   border-radius: 50%;
   animation: twinkle 10s infinite linear;
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
 }
 
-/* Example star positions and sizes (add more for variety) */
-.animated-bg .star:nth-child(1) { width: 2px; height: 2px; top: 20%; left: 15%; animation-duration: 8s; animation-delay: 0s; }
+.animated-bg .star:nth-child(1) { width: 2px; height: 2px; top: 20%; left: 15%; animation-duration: 8s; }
 .animated-bg .star:nth-child(2) { width: 3px; height: 3px; top: 50%; left: 40%; animation-duration: 12s; animation-delay: 1s; }
 .animated-bg .star:nth-child(3) { width: 1px; height: 1px; top: 75%; left: 70%; animation-duration: 6s; animation-delay: 2s; }
 .animated-bg .star:nth-child(4) { width: 2px; height: 2px; top: 10%; left: 85%; animation-duration: 10s; animation-delay: 0.5s; }
@@ -123,13 +135,11 @@ body {
   50% { transform: scale(1.2) translate(5px, -5px); opacity: 1; }
 }
 
-/* Enhanced Hero Content */
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 800px;
   padding: 0 2rem;
-  animation: fadeInUp 1.2s var(--bounce-timing);
 }
 
 .hero-content h1 {
@@ -145,12 +155,10 @@ body {
 .hero-subtitle {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   margin-bottom: 2rem;
-  /* Adjusted color for better contrast */
-  color: var(--text-light); /* Changed from --text-medium */
-  opacity: 0.9; /* Slightly reduced opacity if needed, but ensure contrast */
+  color: var(--text-light);
+  opacity: 0.9;
 }
 
-/* Hero Call-to-Action */
 .hero-cta {
   display: flex;
   gap: 1.5rem;
@@ -158,82 +166,73 @@ body {
   margin-top: 2rem;
 }
 
-/* Join Now Button */
-.join-now-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  background: var(--primary-color);
-  color: var(--text-light);
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: transform 0.3s var(--bounce-timing), 
-              box-shadow 0.3s ease,
-              background-color 0.3s ease;
-  box-shadow: 0 4px 15px rgba(74, 92, 106, 0.3);
-}
-
-.join-now-button:hover {
-  transform: translateY(-5px) scale(1.05);
-  background: #5a6d7c;
-  box-shadow: 0 8px 25px rgba(74, 92, 106, 0.4);
-}
-
-/* Explore Clubs Button */
+.join-now-button,
 .explore-clubs-button {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  border: 3px solid var(--text-light);
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 18px 28px;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
   background: transparent;
   color: var(--text-light);
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: 2px solid var(--primary-color);
-  border-radius: 8px;
-  /* Refined transition for smoother effect */
-  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease,
-    border-color 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none; /* Ensure no underline */
+  will-change: transform, opacity;
+  transition: transform 0.3s var(--smooth-timing), opacity 0.3s ease;
 }
 
-.explore-clubs-button span {
-  /* Target span if text is inside */
-  text-decoration: none;
+.join-now-button:hover,
+.explore-clubs-button:hover {
+  background: transparent;
+  color: var(--text-light);
 }
 
+.join-now-button::before,
 .explore-clubs-button::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--background-light)
-  );
-  z-index: -1;
-  opacity: 0;
-  transform: scale(0.8);
-  /* Match transition timing */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  border-radius: 6px;
-}
-
-.explore-clubs-button:hover {
-  color: var(--text-dark);
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: var(--hover-shadow);
-  border-color: transparent;
-}
-
-.explore-clubs-button:hover::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--text-light);
+  transition: opacity 0.3s, transform 0.3s;
   opacity: 1;
-  transform: scale(1);
+}
+
+.join-now-button:hover::before,
+.explore-clubs-button:hover::before {
+  opacity: 0;
+}
+
+.join-now-button::after,
+.explore-clubs-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 3px solid var(--primary-color);
+  opacity: 0;
+  transform: scaleX(1.1) scaleY(1.3);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.join-now-button:hover::after,
+.explore-clubs-button:hover::after {
+  opacity: 1;
+  transform: scaleX(1) scaleY(1);
+}
+
+.join-now-button:active,
+.explore-clubs-button:active {
+  transform: translateY(3px);
 }
 
 /* About Section */
@@ -281,13 +280,12 @@ body {
   color: var(--text-medium);
 }
 
-/* Stats Section */
 .about-stats {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
-  margin-top: 3rem; /* Add some top margin */
+  margin-top: 3rem;
 }
 
 .stat-item {
@@ -295,14 +293,12 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1); /* Slightly less opaque */
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
-  -webkit-backdrop-filter: blur(8px); /* Slightly less blur */
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add box-shadow transition */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
   min-width: 180px;
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Add subtle border */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add base shadow */
   animation: float 6s ease-in-out infinite;
 }
 
@@ -314,13 +310,12 @@ body {
   animation-delay: -4s;
 }
 
-/* Style for the added icons */
 .stat-icon {
   width: 36px;
   height: 36px;
-  color: var(--primary-color); /* Use primary color for icons */
-  margin-bottom: 1rem; /* Space between icon and number */
-  stroke-width: 1.5; /* Adjust icon line thickness */
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  stroke-width: 1.5;
 }
 
 .stat-number {
@@ -369,11 +364,12 @@ body {
 .club-card {
   position: relative;
   height: 350px;
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
   cursor: pointer;
   box-shadow: var(--card-shadow);
-  transition: all 0.4s var(--bounce-timing);
+  transition: transform 0.4s var(--smooth-timing);
+  will-change: transform;
 }
 
 .club-card::before {
@@ -383,8 +379,7 @@ body {
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    transparent 40%,
-    rgba(6, 20, 27, 0.9) 100%
+    var(--primary-color) 100%
   );
   z-index: 1;
   opacity: 0.8;
@@ -395,8 +390,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform-origin: center;
-  transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: transform 0.6s var(--smooth-timing);
 }
 
 .club-info {
@@ -407,7 +401,7 @@ body {
   padding: 2rem;
   z-index: 2;
   transform: translateY(30px);
-  transition: transform 0.5s var(--bounce-timing);
+  transition: transform 0.4s var(--smooth-timing);
 }
 
 .club-info h3 {
@@ -415,28 +409,16 @@ body {
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--text-light);
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  opacity: 0.9;
-  transition: transform 0.5s var(--bounce-timing), opacity 0.5s ease;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
-.club-info p {
-  color: var(--text-light);
-  font-size: 1.1rem;
-  max-width: 280px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s var(--bounce-timing);
-}
-
-/* Club Card Hover Effects */
 .club-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  box-shadow: var(--hover-shadow);
 }
 
 .club-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .club-card:hover::before {
@@ -447,40 +429,24 @@ body {
   transform: translateY(0);
 }
 
-.club-card:hover .club-info h3 {
-  opacity: 1;
-  transform: translateY(-10px);
-}
-
-.club-card:hover .club-info p {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Add wave animation */
 .wave {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 80px;
   background: linear-gradient(to top, rgba(155, 168, 171, 0.2) 0%, transparent 100%);
   transform: translateY(100%);
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
 .club-card:hover .wave {
   transform: translateY(0);
-  animation: waveAnimation 2s ease-in-out infinite;
 }
 
 @keyframes waveAnimation {
-  0%, 100% {
-    transform: translateY(0) scaleY(1);
-  }
-  50% {
-    transform: translateY(-20px) scaleY(0.8);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* Events Section */
@@ -491,7 +457,6 @@ body {
   overflow: hidden;
 }
 
-/* Add dynamic background pattern */
 .events::before {
   content: '';
   position: absolute;
@@ -522,22 +487,20 @@ body {
 }
 
 .event-card {
-  background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s var(--bounce-timing);
+  transition: transform 0.4s var(--smooth-timing);
   display: flex;
   flex-direction: column;
+  will-change: transform;
 }
 
 .event-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--hover-shadow);
 }
 
 .event-image {
@@ -550,7 +513,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0,0,0.3) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -563,11 +526,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: transform 0.6s var(--smooth-timing);
 }
 
 .event-card:hover .event-image img {
-  transform: scale(1.1) rotate(-2deg);
+  transform: scale(1.05);
 }
 
 .event-content {
@@ -583,14 +546,13 @@ body {
   align-items: center;
   gap: 0.5rem;
   background: linear-gradient(135deg, var(--primary-color), var(--background-light));
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
+  padding: 0.8rem;
+  border-radius: 50%;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--text-light);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transform: translateY(0);
-  transition: transform 0.3s var(--bounce-timing);
+  transition: transform 0.3s var(--smooth-timing);
 }
 
 .event-card:hover .event-date {
@@ -600,13 +562,14 @@ body {
 .event-card h3 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .event-card p {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: var(--text-medium);
-  flex-grow: 1; /* Allow paragraph to push button down */
+  flex-grow: 1;
 }
 
 .read-more {
@@ -642,7 +605,7 @@ body {
 
 @media (max-width: 768px) {
   .hero {
-    height: 80vh; /* Adjust height for smaller screens */
+    height: 80vh;
   }
   .hero-content h1 {
     font-size: 2.5rem;
@@ -650,22 +613,18 @@ body {
   .hero-subtitle {
     font-size: 1.1rem;
   }
-  .explore-clubs-button {
-    padding: 0.8rem 1.8rem;
-    font-size: 1rem;
-  }
   .about,
-  .featured-clubs,
+  .clubs,
   .events {
-    padding: 3rem 1rem; /* Adjust padding for smaller screens */
+    padding: 3rem 1rem;
   }
   .about-grid,
   .club-grid,
   .event-grid {
-    grid-template-columns: 1fr; /* Stack items on smaller screens */
+    grid-template-columns: 1fr;
   }
   .about h2,
-  .featured-clubs h2,
+  .clubs h2,
   .events h2 {
     font-size: 2rem;
   }
@@ -674,18 +633,18 @@ body {
     align-items: center;
     gap: 1rem;
   }
-
   .join-now-button,
   .explore-clubs-button {
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     justify-content: center;
+    padding: 15px 24px;
+    font-size: 14px;
   }
 }
 
-/* Ensure content starts below the fixed navbar on desktop */
 @media (min-width: 769px) {
   body {
-    padding-top: 88px; /* Height of the desktop navbar */
+    padding-top: 88px;
   }
 }

@@ -22,20 +22,22 @@
       content="United Club Association - A vibrant community of university clubs and activities at University Laboratory School and College"
     />
 
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="UCA, United Club Association, university clubs, student activities, Bangladesh">
+    <meta name="author" content="United Club Association">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:site_name" content="United Club Association">
+    <meta property="og:url" content="https://uca-bd.org">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Accessibility -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
     <!-- Theme color for supported browsers (Chrome, Edge, Safari) -->
-    <meta
-      name="theme-color"
-      content="#4f46e5"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#1e293b"
-      media="(prefers-color-scheme: dark)"
-    />
-    <meta name="theme-color" content="#4f46e5" />
-    <meta name="msapplication-navbutton-color" content="#4f46e5" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#4f46e5" />
+    <meta name="theme-color" content="#1C2526" />
 
     <!-- Add Open Graph tags for better social sharing -->
     <meta property="og:title" content="United Club Association" />
@@ -53,6 +55,10 @@
     <link rel="preload" href="js/include-fonts.js" as="script" />
     <link rel="preconnect" href="https://unpkg.com" />
     <link rel="preload" href="css/index.css" as="style" />
+
+    <!-- Preconnect to Critical Origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Include centralized fonts -->
     <script src="js/include-fonts.js" defer></script>
@@ -75,10 +81,6 @@
     <!-- Modern Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
 
-    <!-- Add AOS library for scroll animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
-
     <!-- Progressive Enhancement - Load polyfills only if needed -->
     <script>
       if (!("IntersectionObserver" in window)) {
@@ -97,25 +99,17 @@
       <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-heading">
         <div class="hero-overlay"></div>
-        <div class="animated-bg">
-          <div class="star"></div>
-          <div class="star"></div>
-          <div class="star"></div>
-          <div class="star"></div>
-          <div class="star"></div>
-          <div class="star"></div>
-        </div>
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <div class="hero-content animate-on-scroll">
           <h1 id="hero-heading">United Club Association</h1>
           <p class="hero-subtitle">Find Your Passion • Join Your Community • Create Your Legacy</p>
           <div class="hero-cta">
-            <a href="clubs/clubs.html" class="explore-clubs-button" aria-label="Explore all UCA clubs">
-              Explore Clubs
-              <i data-feather="arrow-right"></i>
-            </a>
             <a href="contact/join-us.html" class="join-now-button" aria-label="Join UCA now">
               Join Now
               <i data-feather="user-plus"></i>
+            </a>
+            <a href="clubs/clubs.html" class="explore-clubs-button" aria-label="Explore all UCA clubs">
+              Explore Clubs
+              <i data-feather="arrow-right"></i>
             </a>
           </div>
         </div>
@@ -125,25 +119,25 @@
       <section class="about" aria-labelledby="about-heading">
         <div class="about-container">
           <div class="about-content">
-            <div class="about-text" data-aos="fade-up" data-aos-duration="800">
+            <div class="about-text animate-on-scroll">
               <h2 id="about-heading">Discover UCA</h2>
               <p class="about-description">
                 Join a vibrant community where passion meets purpose. At UCA, we bring together diverse interests, talents, and dreams to create an enriching student experience.
               </p>
               <div class="about-stats">
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="stat-item animate-on-scroll" data-delay="0.1s">
                   <i data-feather="users" class="stat-icon"></i>
                   <span class="stat-number" data-count="9">0</span>
                   <span class="stat-label">Active Clubs</span>
                 </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                <div class="stat-item animate-on-scroll" data-delay="0.2s">
                   <i data-feather="user-check" class="stat-icon"></i>
                   <span class="stat-number" data-count="100">0</span>
                   <span class="stat-label">Members</span>
                 </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                <div class="stat-item animate-on-scroll" data-delay="0.3s">
                   <i data-feather="calendar" class="stat-icon"></i>
-                  <span class="stat-number" data-count="5">0</span>
+                  <span class="stat-number" data-count="3">0</span>
                   <span class="stat-label">Events</span>
                 </div>
               </div>
@@ -158,13 +152,12 @@
         class="clubs"
         aria-labelledby="featured-clubs-heading"
       >
-        <h2 id="featured-clubs-heading" data-aos="fade-up">Featured Clubs</h2>
+        <h2 id="featured-clubs-heading" class="animate-on-scroll">Featured Clubs</h2>
         <div class="club-grid">
           <a
             href="clubs/sports-club.html"
-            class="club-card"
-            data-aos="fade-up"
-            data-aos-delay="100"
+            class="club-card animate-on-scroll"
+            data-delay="0.1s"
           >
             <div class="wave"></div>
             <img
@@ -177,26 +170,24 @@
             </div>
           </a>
           <a
-            href="clubs/quiz-club.html"
-            class="club-card"
-            data-aos="fade-up"
-            data-aos-delay="200"
+            href="clubs/ict-club.html"
+            class="club-card animate-on-scroll"
+            data-delay="0.2s"
           >
             <div class="wave"></div>
             <img
-              src="images/quiz-club.jpg"
-              alt="Students participating in a quiz competition"
+              src="images/ict-club.jpg"
+              alt="Students working on computers and technology projects"
               loading="lazy"
             />
             <div class="club-info">
-              <h3>Quiz Club</h3>
+              <h3>ICT Club</h3>
             </div>
           </a>
           <a
             href="clubs/photography-club.html"
-            class="club-card"
-            data-aos="fade-up"
-            data-aos-delay="300"
+            class="club-card animate-on-scroll"
+            data-delay="0.3s"
           >
             <div class="wave"></div>
             <img
@@ -213,16 +204,17 @@
 
       <!-- Featured Events Section -->
       <section class="events" aria-labelledby="featured-events-heading">
-        <h2 id="featured-events-heading" data-aos="fade-up">Featured Events</h2>
+        <h2 id="featured-events-heading" class="animate-on-scroll">Featured Events</h2>
         <div class="event-grid">
           <!-- Event Card 1: SnapFest -->
-          <article class="event-card" data-aos="fade-up" data-aos-delay="100">
+          <article class="event-card animate-on-scroll" data-delay="0.1s">
             <div class="event-image">
               <img
                 src="images/Snapfest_Event_Pic.jpg"
                 alt="SnapFest: A photography event showcasing prize-winning pictures"
                 loading="lazy"
               />
+              <h3 class="event-title">SnapFest</h3>
             </div>
             <div class="event-content">
               <div class="event-date">
@@ -230,7 +222,6 @@
                 <span class="day">18</span>
                 <span class="year">2024</span>
               </div>
-              <h3>SnapFest</h3>
               <p>
                 Hosted by University Laboratory Photography Club, featuring the
                 best pictures from the Prize Giving Ceremony at TSC.
@@ -242,13 +233,14 @@
             </div>
           </article>
           <!-- Event Card 2: TriQuest -->
-          <article class="event-card" data-aos="fade-up" data-aos-delay="200">
+          <article class="event-card animate-on-scroll" data-delay="0.2s">
             <div class="event-image">
               <img
                 src="images/TriQuest- Battle_of_Knowledge.jpg"
                 alt="TriQuest: A quiz competition"
                 loading="lazy"
               />
+              <h3 class="event-title">TriQuest</h3>
             </div>
             <div class="event-content">
               <div class="event-date">
@@ -256,7 +248,6 @@
                 <span class="day">2</span>
                 <span class="year">2024</span>
               </div>
-              <h3>TriQuest</h3>
               <p>
                 A quiz competition hosted by Quiz Club, Science Club, and
                 Language Club.
@@ -267,28 +258,27 @@
               </a>
             </div>
           </article>
-          <!-- Event Card 3: Okkhore Ekush -->
-          <article class="event-card" data-aos="fade-up" data-aos-delay="300">
+          <!-- Event Card 3: UCA Unveiled -->
+          <article class="event-card animate-on-scroll" data-delay="0.3s">
             <div class="event-image">
               <img
-                src="images/okkhore-ekush.png"
-                alt="অক্ষরে একুশ - Language Day Celebration"
+                src="images/uca_logo.png"
+                alt="UCA Unveiled - Introduction Ceremony"
                 loading="lazy"
               />
+              <h3 class="event-title">UCA Unveiled</h3>
             </div>
             <div class="event-content">
               <div class="event-date">
-                <span class="month">Feb</span>
-                <span class="day">21</span>
+                <span class="month">May</span>
+                <span class="day">8</span>
                 <span class="year">2025</span>
               </div>
-              <h3>অক্ষরে একুশ</h3>
               <p>
-                ULLC, ULIC, ও ULPC কর্তৃক আয়োজিত ভাষা ও সংস্কৃতির প্রতি শ্রদ্ধা
-                জানানো একটি বিশেষ অনুষ্ঠান।
+                Join us in the Introduction as we reveal the official clubs under UCA.
               </p>
-              <a href="events/okkhore-ekush.html" class="read-more">
-                Read more <span class="sr-only"> about Okkhore Ekush</span>
+              <a href="events/uca-unveiled.html" class="read-more">
+                Read more <span class="sr-only"> about UCA Unveiled</span>
                 <i data-feather="arrow-right" class="icon"></i>
               </a>
             </div>
@@ -300,21 +290,9 @@
     <!-- Footer -->
     <script src="js/include-footer.js" defer></script>
 
-    <!-- Initialize Feather Icons and AOS -->
+    <!-- Initialize Feather Icons and Stats Animation -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Initialize AOS with reduced motion preference check
-        const prefersReducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        );
-
-        AOS.init({
-          duration: prefersReducedMotion.matches ? 0 : 800,
-          once: true,
-          offset: 100,
-          disable: prefersReducedMotion.matches,
-        });
-
         // Initialize Feather Icons
         if (typeof feather !== "undefined") {
           feather.replace({
@@ -324,6 +302,7 @@
 
         // Animate statistics numbers with IntersectionObserver
         const stats = document.querySelectorAll(".stat-number");
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
