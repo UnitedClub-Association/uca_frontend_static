@@ -1,0 +1,309 @@
+:root {
+  --primary-bg: #0a0a0a;
+  --accent-primary: #ff6200;
+  --accent-secondary: #ff8c00;
+  --accent-tertiary: #ffd700;
+  --text-primary: #f5f5f5;
+  --text-secondary: #cccccc;
+  --card-bg: rgba(255, 98, 0, 0.15);
+  --card-border: rgba(255, 215, 0, 0.3);
+  --shadow: 0 10px 20px rgba(255, 98, 0, 0.4);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient: linear-gradient(135deg, #ff6200, #ffd700);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.snapfest-main {
+  position: relative;
+}
+
+.hero-section {
+  position: relative;
+  min-height: 80vh;
+  background: url('/images/snapfest-bg.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  animation: slideIn 1s ease-out;
+  max-width: 900px;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.hero-section h1 {
+  font-size: clamp(3.5rem, 10vw, 6.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 98, 0, 0.5);
+}
+
+.event-date {
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.hero-description {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--gradient);
+  color: var(--primary-bg);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: var(--transition);
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.content-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(to bottom, var(--primary-bg), #1a1a1a);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content-section h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-tertiary);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.content-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 5px;
+  background: var(--gradient);
+  border-radius: 5px;
+}
+
+.judge-card, .winner-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 2.5rem;
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--card-border);
+  margin-bottom: 4rem;
+  transition: var(--transition);
+}
+
+.judge-card:hover, .winner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+}
+
+.judge-card img, .winner-card img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid var(--accent-secondary);
+}
+
+.winner-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.winner-images img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid var(--accent-secondary);
+}
+
+.judge-info h3, .winner-info h3 {
+  font-size: 2rem;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.judge-info p, .winner-info p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.judge-quote, .winner-quote {
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 4px solid var(--accent-tertiary);
+}
+
+.cta-section {
+  text-align: center;
+  padding: 3rem;
+  background: var(--card-bg);
+  border-radius: 15px;
+  border: 1px solid var(--card-border);
+}
+
+.cta-section h2 {
+  margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  background: var(--gradient);
+  color: var(--primary-bg);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.social-link i {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+  }
+
+  .hero-overlay {
+    padding: 2rem;
+  }
+
+  .judge-card, .winner-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .judge-card img, .winner-card img {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .winner-images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .winner-images img {
+    max-width: 250px;
+  }
+
+  .content-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-description {
+    font-size: 1.1rem;
+  }
+
+  .event-date {
+    font-size: 1.3rem;
+  }
+
+  .hero-cta {
+    padding: 0.8rem 2rem;
+  }
+}

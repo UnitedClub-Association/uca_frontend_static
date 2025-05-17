@@ -2,48 +2,86 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SnapFest</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      .fade-in {
-        animation: fadeIn 2s ease-in-out;
-      }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapfest 2024 - ULPC Photography Contest</title>
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="/js/include-fonts.js"></script>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/event-css/snapfest.css" />
+    <script src="https://unpkg.com/feather-icons" defer></script>
   </head>
-  <body
-    class="bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex items-center justify-center"
-  >
-    <div class="text-center fade-in">
-      <h1 class="text-6xl md:text-8xl font-bold text-white animate-pulse">
-        Coming Soon
-      </h1>
-      <p class="mt-4 text-xl text-white opacity-80">
-        We're working on something amazing!
-      </p>
-    </div>
+  <body>
+    <script src="/js/include-navbar.js"></script>
+
+    <main class="snapfest-main">
+      <section class="hero-section" aria-labelledby="snapfest-title">
+        <div class="hero-overlay">
+          <h1 id="snapfest-title">Snapfest 2024</h1>
+          <p class="event-date">November 17, 2024 | TSC Auditorium, University of Dhaka</p>
+          <p class="hero-description">
+            Snapfest 2024, originally launched as "Freeze the Moment," was an exhilarating photography contest hosted by the University Laboratory Photography Club. Students captured the essence of the award ceremony, with Ishrak, founder of Noksha Visuals, judging the finest shots.
+          </p>
+          </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="content-heading">
+        <div class="container">
+          <h2 id="content-heading">Event Highlights</h2>
+
+          <h2>Meet Our Esteemed Judge</h2>
+          <div class="judge-card">
+            <img src="/images/snapfest_judge_poster.jpg" alt="Ishrak, Judge of Snapfest 2024" loading="lazy">
+            <div class="judge-info">
+              <h3>Ishrak</h3>
+              <p>Founder of Noksha Visuals<br>Daffodil International University</p>
+              <p class="judge-quote">
+                Ishrak brought unparalleled expertise to select the winning entry that truly captured the spirit of the moment.
+              </p>
+            </div>
+          </div>
+
+          <h2>Winner Spotlight</h2>
+          <div class="winner-card">
+            <div class="winner-images">
+              <img src="/images/snapfest_winner_poster.jpeg" alt="Sajidul Islam's Winner Poster" loading="lazy">
+              <img src="/images/snapfest_winning_pic.jpeg" alt="Sajidul Islam's Winning Photo" loading="lazy">
+            </div>
+            <div class="winner-info">
+              <h3>Sajidul Islam</h3>
+              <p>University Laboratory School and College - XII(A)</p>
+              <p class="winner-quote">
+                "This photo portrays a silent force whose music resonates louder than their presence—a backstage hero orchestrating harmony from the shadows."
+              </p>
+            </div>
+          </div>
+
+          <div class="cta-section">
+            <h2>Stay Connected</h2>
+            <p>Results announced on November 20, 2024. Follow ULPC on social media for the latest updates!</p>
+            <div class="social-links">
+              <a href="https://facebook.com/ulpc.fb" class="social-link" aria-label="Follow ULPC on Facebook">
+                <i data-feather="facebook"></i> Facebook
+              </a>
+              <a href="https://instagram.com/ulpc.ig" class="social-link" aria-label="Follow ULPC on Instagram">
+                <i data-feather="instagram"></i> Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/js/include-footer.js"></script>
   </body>
 </html>

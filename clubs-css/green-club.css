@@ -1,0 +1,163 @@
+:root {
+  --club-primary: #2ecc71; /* Vibrant Green */
+  --club-secondary: #27ae60; /* Dark Green */
+  --club-accent: #3498db; /* Sky Blue */
+  --club-highlight: #f1c40f; /* Sunny Yellow */
+  --text-light: #ffffff;
+  --text-dark: #2c3e50;
+  --green-shadow: 0 8px 30px rgba(46, 204, 113, 0.15);
+  --navbar-height: 80px;
+  --footer-height: 400px;
+  --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.club-page {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: calc(var(--navbar-height) + 2rem);
+  background: linear-gradient(to bottom, #f8fff9, #ffffff);
+  color: var(--text-dark);
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Nature-themed Header Section */
+.club-header {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+  color: var(--text-light);
+  border-radius: 16px;
+  margin-bottom: 3rem;
+  box-shadow: var(--green-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.club-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/leaf-pattern.png');
+  background-size: 200px;
+  opacity: 0.1;
+  animation: sway 20s linear infinite;
+}
+
+@keyframes sway {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
+}
+
+.club-logo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--text-light);
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.club-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.club-description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card Styling */
+.eco-card {
+  background: var(--text-light);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: var(--green-shadow);
+}
+
+.card-header {
+  background: var(--club-secondary);
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--club-primary);
+}
+
+.card-header h2 {
+  color: var(--text-light);
+  font-size: 1.8rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-content {
+  padding: 2rem;
+}
+
+/* Feature List */
+.eco-features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.eco-features li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(46, 204, 113, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid var(--club-primary);
+  transition: var(--transition-standard);
+}
+
+.eco-features li:hover {
+  transform: translateX(5px);
+  background: rgba(46, 204, 113, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .club-page {
+    padding: 1rem;
+    padding-top: calc(var(--navbar-height) + 1rem);
+  }
+
+  .club-header {
+    padding: 3rem 1rem;
+  }
+
+  .club-title {
+    font-size: 2.5rem;
+  }
+
+  .eco-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .club-header::before {
+    animation: none;
+  }
+}

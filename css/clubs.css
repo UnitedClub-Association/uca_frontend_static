@@ -41,6 +41,10 @@
 
   --language-primary: #06b6d4;
   --language-secondary: #0891b2;
+
+  /* Add Green Club colors */
+  --green-primary: #2ecc71;
+  --green-secondary: #27ae60;
 }
 
 body {
@@ -280,6 +284,11 @@ body {
   border-top: 4px solid var(--language-secondary);
 }
 
+.card[data-club="green"] {
+  --club-color: var(--green-primary);
+  border-top: 4px solid var(--green-secondary);
+}
+
 .pic {
   height: 240px;
   background-size: cover;
@@ -373,6 +382,11 @@ body {
 
 .card[data-club="language"] .club-tag {
   background: var(--language-secondary);
+  color: var(--light-color);
+}
+
+.card[data-club="green"] .club-tag {
+  background: var(--green-secondary);
   color: var(--light-color);
 }
 

@@ -594,6 +594,79 @@ article:nth-child(3) .details-btn {
   transform: translateX(4px);
 }
 
+/* Event Card Styling */
+.event-card {
+  background: var(--club-secondary);
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  transform: translateY(30px);
+  opacity: 0;
+  animation: cardAppear 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-image {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.event-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: var(--text-light);
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.event-content {
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+}
+
+.event-date {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.event-date .month {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.event-date .day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+.event-date .year {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
   .section {
