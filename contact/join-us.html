@@ -12,390 +12,43 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
+
       gtag("config", "G-H2YV0FNQ9X");
     </script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join UCA - United Club Association</title>
-
-    <!-- Meta tags for SEO -->
-    <meta
-      name="description"
-      content="Join the United Club Association (UCA) - Register as a new member or sign in to your existing account."
-    />
-    <meta
-      name="keywords"
-      content="UCA, United Club Association, join club, register, sign in, membership"
-    />
-
-    
-    <!-- Include centralized fonts -->
-    <script src="/js/include-fonts.js" defer></script>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/join-us.css" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
-
-    <!-- Feather Icons -->
-    <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <!-- Component scripts -->
-    <script src="/js/include-navbar.js" defer></script>
-    <script src="/js/include-footer.js" defer></script>
-    <script type="module" src="/js/join-us.js"></script>
-  </head>
-  <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
-    <script src="/js/include-navbar.js" defer></script>
-
-    <main id="main-content">
-      <section class="join-hero">
-        <div class="join-hero-content">
-          <h1>Join UCA</h1>
-          <p>Become part of our vibrant community of clubs</p>
-        </div>
-      </section>
-
-      <section class="join-options">
-        <div class="container">
-          <div class="tabs">
-            <button class="tab-btn active" data-tab="register">
-              New Member
-            </button>
-            <button class="tab-btn" data-tab="login">Already Registered</button>
-          </div>
-          <div class="tab-content active" id="register-tab">
-            <form id="registration-form" class="join-form" novalidate>
-              <!-- Added novalidate to rely on JS validation -->
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="firstName"
-                    >First Name <span class="required">*</span></label
-                  >
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    aria-required="true"
-                    placeholder="e.g., John"
-                  />
-                  <div class="error-message" aria-live="polite"></div>
-                </div>
-                <div class="form-group">
-                  <label for="lastName"
-                    >Last Name <span class="required">*</span></label
-                  >
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    aria-required="true"
-                    placeholder="e.g., Doe"
-                  />
-                  <div class="error-message" aria-live="polite"></div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="username"
-                  >Username <span class="required">*</span></label
-                >
-                <input type="text" id="username" name="username" required />
-                <span class="error-message" id="username-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="email"
-                  >E-Mail <span class="required">*</span></label
-                >
-                <input type="email" id="email" name="email" required />
-                <span class="error-message" id="email-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="reg-password"
-                  >Password <span class="required">*</span></label
-                >
-                <!-- Change class from 'password-field' to 'password-input-wrapper' -->
-                <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="reg-password"
-                    name="password"
-                    required
-                  />
-                  <button
-                    type="button"
-                    class="toggle-password"
-                    aria-label="Toggle password visibility"
-                  >
-                    <i data-feather="eye"></i>
-                  </button>
-                </div>
-                <span class="error-message" id="password-error"></span>
-                <div class="password-strength">
-                  <div class="strength-meter">
-                    <div
-                      class="strength-meter-fill"
-                      id="strength-meter-fill"
-                    ></div>
-                  </div>
-                  <span class="strength-text" id="strength-text"
-                    >Password strength</span
-                  >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="confirm-password"
-                  >Confirm Password <span class="required">*</span></label
-                >
-                <!-- Change class from 'password-field' to 'password-input-wrapper' -->
-                <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="confirm-password"
-                    name="confirm-password"
-                    required
-                  />
-                  <button
-                    type="button"
-                    class="toggle-password"
-                    aria-label="Toggle password visibility"
-                  >
-                    <i data-feather="eye"></i>
-                  </button>
-                </div>
-                <span class="error-message" id="confirm-password-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="mobile"
-                  >Mobile Number <span class="required">*</span></label
-                >
-                <div class="phone-field">
-                  <span class="country-code">+880</span>
-                  <input
-                    type="tel"
-                    id="mobile"
-                    name="mobile"
-                    pattern="[0-9]{10}"
-                    placeholder="1XXXXXXXXX"
-                    required
-                  />
-                </div>
-                <span class="error-message" id="mobile-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label>I am a <span class="required">*</span></label>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="role"
-                      value="student"
-                      checked
-                      id="role-student"
-                    />
-                    <span>Student</span>
-                  </label>
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="role"
-                      value="teacher"
-                      id="role-teacher"
-                    />
-                    <span>Teacher</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Add School/College selection -->
-              <div class="form-group">
-                <label>School/College <span class="required">*</span></label>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="institution-type"
-                      value="ulsc"
-                      checked
-                      id="institution-ulsc"
-                    />
-                    <span>University Laboratory School and College</span>
-                  </label>
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="institution-type"
-                      value="other"
-                      id="institution-other"
-                    />
-                    <span>Other</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Add institution name field - Ensure style="display: none;" is present -->
-              <div
-                class="form-group"
-                id="other-institution-field"
-                style="display: none"
-              >
-                <label for="institution-name"
-                  >School/College Name <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  id="institution-name"
-                  name="institution-name"
-                  placeholder="Enter your school/college name"
-                />
-                <span class="error-message" id="institution-name-error"></span>
-              </div>
-
-              <!-- Class field - Ensure id="class-field" is present -->
-              <div class="form-group" id="class-field">
-                <label for="class">Class <span class="required">*</span></label>
-                <select id="class" name="class" required>
-                  <option value="" disabled selected>Select your class</option>
-                  <option value="VI">Class VI</option>
-                  <option value="VII">Class VII</option>
-                  <option value="VIII">Class VIII</option>
-                  <option value="IX">Class IX</option>
-                  <option value="X">Class X</option>
-                  <option value="XI">Class XI</option>
-                  <option value="XII">Class XII</option>
-                </select>
-                <span class="error-message" id="class-error"></span>
-              </div>
-              <div class="form-group checkbox-group">
-                <label class="checkbox-label">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    name="terms"
-                    required
-                    aria-describedby="terms-error"
-                  />
-                  <span
-                    >I understand and agree to the
-                    <a
-                      href="/contact/terms.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >terms and conditions</a
-                    >
-                    <span class="required">*</span></span
-                  >
-                </label>
-                <span
-                  class="error-message"
-                  id="terms-error"
-                  aria-live="polite"
-                ></span>
-              </div>
-
-              <!-- REMOVE: hCaptcha Container -->
-
-              <button type="submit" class="submit-btn" id="register-submit-btn">
-                <span class="btn-text">Register</span>
-                <span class="spinner" style="display: none"></span>
-                <!-- Optional: for loading indicator -->
-              </button>
-              <div
-                class="form-message"
-                id="register-message"
-                aria-live="assertive"
-              ></div>
-            </form>
-          </div>
-
-          <div class="tab-content" id="login-tab">
-            <form id="login-form" class="join-form" novalidate>
-              <div class="form-group">
-                <label for="login-identifier"
-                  >Username or E-Mail <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  id="login-identifier"
-                  name="identifier"
-                  required
-                  aria-describedby="login-identifier-error"
-                />
-                <span
-                  class="error-message"
-                  id="login-identifier-error"
-                  aria-live="polite"
-                ></span>
-              </div>
-
-              <div class="form-group">
-                <label for="password"
-                  >Password <span class="required">*</span></label
-                >
-                <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    aria-describedby="login-password-error"
-                  />
-                  <button
-                    type="button"
-                    class="toggle-password"
-                    aria-label="Toggle password visibility"
-                  >
-                    <i data-feather="eye"></i>
-                  </button>
-                </div>
-                <span
-                  class="error-message"
-                  id="login-password-error"
-                  aria-live="polite"
-                ></span>
-              </div>
-
-              <div class="form-group checkbox-group">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="remember" name="remember" />
-                  <span>Remember me</span>
-                </label>
-                <a href="#" class="forgot-password">Forgot password?</a>
-              </div>
-
-              <button type="submit" class="submit-btn">Sign In</button>
-              <div class="form-message" id="login-message"></div>
-            </form>
-          </div>
-        </div>
-        <!-- End container -->
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <div id="footer-placeholder"></div>
-    <script src="/js/include-footer.js" defer></script>
-
-    <!-- Initialize Feather Icons -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof feather !== "undefined") {
-          feather.replace({ "aria-hidden": "true" });
+    <title>SnapFest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
-      });
-    </script>
+        to {
+          opacity: 1;
+        }
+      }
+      .fade-in {
+        animation: fadeIn 2s ease-in-out;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex items-center justify-center"
+  >
+    <div class="text-center fade-in">
+      <h1 class="text-6xl md:text-8xl font-bold text-white animate-pulse">
+        Coming Soon
+      </h1>
+      <p class="mt-4 text-xl text-white opacity-80">
+        We're working on something amazing!
+      </p>
+      <button
+        class="mt-8 px-4 py-2 bg-white text-purple-500 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
+        onclick="window.location.href='https://unitedclubassociation.netlify.app'"
+          
+      >
+    </div>
   </body>
 </html>

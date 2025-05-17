@@ -542,22 +542,25 @@ body {
 }
 
 .event-date {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--background-light));
-  padding: 0.8rem;
-  border-radius: 50%;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--text-light);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s var(--smooth-timing);
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+background: linear-gradient(135deg, var(--primary-color), var(--background-light));
+padding: 0.9rem;
+border-radius: 12px;
+font-weight: 700;
+font-size: 1rem;
+color: var(--text-light);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+transition: transform 0.3s var(--smooth-timing), box-shadow 0.3s ease;
 }
 
-.event-card:hover .event-date {
-  transform: translateY(-5px);
+.event-date:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
+
 
 .event-card h3 {
   font-size: 1.4rem;
