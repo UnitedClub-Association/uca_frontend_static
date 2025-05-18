@@ -1,54 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-H2YV0FNQ9X");
-    </script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SnapFest</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      .fade-in {
-        animation: fadeIn 2s ease-in-out;
-      }
-    </style>
+    <title>Join UCA - United Club Association</title>
+    <meta
+      name="description"
+      content="Learn how to join the United Club Association (UCA) based in Dhaka, Bangladesh, or sign in as an existing member."
+    />
+    <meta
+      name="keywords"
+      content="UCA, United Club Association, join club, sign in, membership, Dhaka, Bangladesh"
+    />
+    <script src="/js/include-fonts.js" defer></script>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/join-us.css" />
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <script src="https://unpkg.com/feather-icons" defer></script>
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+    <script type="module" src="/js/join-us.js" defer></script>
   </head>
-  <body
-    class="bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex items-center justify-center"
-  >
-    <div class="text-center fade-in">
-      <h1 class="text-6xl md:text-8xl font-bold text-white animate-pulse">
-        Coming Soon
-      </h1>
-      <p class="mt-4 text-xl text-white opacity-80">
-        We're working on something amazing!
-      </p>
-      <button
-        class="mt-8 px-4 py-2 bg-white text-purple-500 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
-        onclick="window.location.href='https://unitedclubassociation.netlify.app'"
-          
-      >
-    </div>
+  <body>
+    <!-- Stars Background -->
+    <div class="stars"></div>
+
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container">
+          <h1>Join United Club Association</h1>
+          <p>Empowering Student Communities Since 2024</p>
+        </div>
+      </section>
+
+      <!-- Join Section -->
+      <section class="join-section">
+        <div class="container">
+          <div class="join-content">
+            <div class="wrapper">
+              <div class="box">
+                <h2>How to Join UCA</h2>
+              </div>
+            </div>
+            <div class="join-steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <h3>Contact Us</h3>
+                <p>Reach out to us via email or phone to express your interest in joining UCA.</p>
+                <div class="contact-info">
+                  <a href="mailto:uca.official.bd@gmail.com"><i data-feather="mail"></i> uca.official.bd@gmail.com</a>
+                  <a href="tel:+8801886150418"><i data-feather="phone"></i> +8801886150418</a>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">2</div>
+                <h3>Submit Application</h3>
+                <p>Fill out our membership application form which you'll receive after initial contact.</p>
+              </div>
+
+              <div class="step">
+                <div class="step-number">3</div>
+                <h3>Interview</h3>
+                <p>Meet with our executive panel for a brief orientation and interview.</p>
+              </div>
+            </div>
+
+            <div class="social-connect">
+              <h3>Connect With Us</h3>
+              <div class="social-links">
+                <a href="https://www.facebook.com/ucaofficial.fb" class="social-link">
+                  <i data-feather="facebook"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/uca.ulab" class="social-link">
+                  <i data-feather="instagram"></i> Instagram
+                </a>
+                <a href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV" class="social-link">
+                  <i data-feather="message-circle"></i> WhatsApp
+                </a>
+                <a href="https://www.linkedin.com/company/united-club-association" class="social-link">
+                  <i data-feather="linkedin"></i> LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
   </body>
 </html>
