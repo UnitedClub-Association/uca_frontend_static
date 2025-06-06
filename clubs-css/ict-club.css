@@ -1,14 +1,15 @@
 :root {
-  /* Color palette */
-  --club-primary: #00ff41; /* Matrix Green */
-  --club-secondary: #0a192f; /* Deep Tech Blue */
-  --club-accent: #64ffda; /* Cyber Mint */
-  --text-light: #e6f1ff;
-  --text-dark: #5b81b9;
+  /* Updated Color palette */
+  --club-primary: #ffbd59; /* Main orange/gold color */
+  --club-secondary: #2e1a47; /* Deep purple */
+  --club-accent: #ff8c00; /* Orange complement */
+  --text-light: #fff6e6; /* Light shade for text */
+  --text-dark: #4a2b7e; /* Dark purple shade */
+  --club-dark: #1a0b2e; /* Very dark purple for backgrounds */
 
   /* Effects */
-  --neon-glow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3),
-    0 0 30px rgba(0, 255, 65, 0.1);
+  --neon-glow: 0 0 10px rgba(255, 189, 89, 0.5), 0 0 20px rgba(255, 189, 89, 0.3),
+    0 0 30px rgba(255, 189, 89, 0.1);
   --cyber-gradient: linear-gradient(
     135deg,
     var(--club-primary),
@@ -20,8 +21,8 @@
   --footer-height: 400px;
 
   /* Typography */
-  --font-primary: "Space Mono", "Courier New", monospace;
-  --font-display: "Orbitron", sans-serif;
+  --font-primary: "Iceberg","Space Mono", "Courier New", monospace;
+  --font-display: "Blanka","Orbitron", sans-serif;
   --letter-spacing-wide: 3px;
   --letter-spacing-medium: 2px;
   --letter-spacing-narrow: 1px;
@@ -53,7 +54,7 @@
   margin: 0 auto;
   padding: var(--spacing-lg);
   padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
-  background-color: var(--club-secondary);
+  background-color: var(--club-dark);
   color: var(--text-light);
   font-family: var(--font-primary);
   min-height: 100vh;
@@ -108,7 +109,7 @@
 
 .club-logo:hover {
   transform: scale(1.05);
-  box-shadow: var(--neon-glow), 0 0 40px rgba(0, 255, 65, 0.2);
+  box-shadow: var(--neon-glow), 0 0 40px rgba(255, 189, 89, 0.2);
 }
 
 .club-title {
@@ -150,10 +151,10 @@
 
 /* Updated Tech Card Styles */
 .tech-card {
-  background: rgba(10, 25, 47, 0.7); /* Keep semi-transparent background */
+  background: rgba(46, 26, 71, 0.7); /* Semi-transparent purple background */
   border: var(--border-width-thin) solid var(--club-primary);
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
+  box-shadow: 0 4px 20px rgba(255, 189, 89, 0.1);
   transition: var(--transition-standard);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
@@ -164,27 +165,13 @@
 
 .tech-card:hover {
   border-color: var(--club-accent);
-  box-shadow: 0 8px 30px rgba(100, 255, 218, 0.2);
+  box-shadow: 0 8px 30px rgba(255, 140, 0, 0.2);
   transform: translateY(-5px);
 }
 
-/* Remove or comment out old separate section styles if they conflict */
-/*
-.about-section,
-.connect-section {
-  padding: var(--spacing-xl);
-  border: var(--border-width-thin) solid var(--club-primary);
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
-  transition: var(--transition-standard);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-}
-*/
-
 /* New Card Header Styles */
 .card-header {
-  background: rgba(0, 255, 65, 0.1); /* Subtle green header background */
+  background: rgba(255, 189, 89, 0.1); /* Subtle orange header background */
   padding: var(--spacing-md) var(--spacing-xl);
   border-bottom: var(--border-width-thin) solid var(--club-primary);
   display: flex;
@@ -242,8 +229,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255, 189, 89, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 189, 89, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.5;
   pointer-events: none;
@@ -265,7 +252,7 @@
   align-items: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm);
-  background: rgba(100, 255, 218, 0.05); /* Subtle accent background */
+  background: rgba(255, 140, 0, 0.05); /* Subtle accent background */
   border-left: 3px solid var(--club-accent);
   border-radius: var(--border-radius);
   transition: var(--transition-standard);
@@ -273,11 +260,47 @@
 }
 
 .tech-features li:hover {
-  background: rgba(100, 255, 218, 0.1);
+  background: rgba(255, 140, 0, 0.1);
   transform: translateX(5px);
 }
 
 .tech-features li i {
+  color: var(--club-accent);
+  stroke-width: 2;
+}
+
+/* Social Links Styling */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(255, 140, 0, 0.1);
+  border: 1px solid var(--club-accent);
+  border-radius: var(--border-radius);
+  color: var(--club-primary);
+  text-decoration: none;
+  transition: var(--transition-standard);
+  font-family: var(--font-display);
+  letter-spacing: var(--letter-spacing-narrow);
+}
+
+.social-link:hover {
+  background: rgba(255, 140, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.2);
+  color: var(--text-light);
+}
+
+.social-link i {
   color: var(--club-accent);
   stroke-width: 2;
 }
@@ -345,4 +368,14 @@
      margin-right: 0;
      width: 100%;
    }
+   
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-link {
+    width: 100%;
+    justify-content: center;
+  }
 }

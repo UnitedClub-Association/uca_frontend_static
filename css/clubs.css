@@ -15,37 +15,70 @@
   --border-radius: 1rem;
 
   /* Club colors adjusted for dark mode */
-  --debate-primary: #7c3aed;
-  --debate-secondary: #6d28d9;
+  /* ICT Club */
+  --ict-primary: #ffbd59;
+  --ict-secondary: #2E003E;
+  --ict-accent1: #FFA500;
+  --ict-accent2: #FF8C00;
+  --ict-bg: #4B0082;
 
-  --photo-primary: #10b981;
-  --photo-secondary: #059669;
+  /* Debate Club */
+  --debate-primary: #FFFFFF;
+  --debate-secondary: #28a745;
+  --debate-bg: #1C1C1C;
 
-  --sports-primary: #ef4444;
-  --sports-secondary: #dc2626;
+  /* Photography Club */
+  --photo-primary: #5D4037;
+  --photo-secondary: #F5F5DC;
+  --photo-bg: #000000;
 
-  --quiz-primary: #8b5cf6;
-  --quiz-secondary: #7c3aed;
+  /* Sports Club */
+  --sports-primary: #1E90FF;
+  --sports-secondary: #C0C0C0;
+  --sports-accent: #D3D3D3;
+  --sports-bg: #001F3F;
 
-  --science-primary: #3b82f6;
-  --science-secondary: #2563eb;
+  /* Quiz Club */
+  --quiz-primary: #FF4136;
+  --quiz-secondary: #2ECC40;
+  --quiz-accent: #FFDC00;
+  --quiz-bg: #000000;
+  --quiz-border: #FFFFFF;
 
-  --ict-primary: #14b8a6;
-  --ict-secondary: #0d9488;
+  /* Science Club */
+  --science-primary: #FFFFFF;
+  --science-secondary: #C0C0C0;
+  --science-accent: #808080;
+  --science-bg: #000000;
 
-  --lit-primary: #f59e0b;
-  --lit-secondary: #d97706;
+  /* Language Club */
+  --language-primary: #FFFFFF;
+  --language-secondary: #0077BE;
+  --language-bg: #FAF9F6;
 
-  --cultural-primary: #ec4899;
-  --cultural-secondary: #db2777;
+  /* Cultural Club */
+  --cultural-primary: #800000;
+  --cultural-secondary: #FFD700;
+  --cultural-accent1: #1A4D4F;
+  --cultural-accent2: #F5F5DC;
 
-  --language-primary: #06b6d4;
-  --language-secondary: #0891b2;
-
-  /* Add Green Club colors */
-  --green-primary: #2ecc71;
-  --green-secondary: #27ae60;
+  /* Green Club */
+  --green-primary: #2E7D32;
+  --green-secondary: #AEEA00;
+  --green-accent: #FFEB3B;
+  --green-bg: #E8F5E9;
 }
+
+/* Import Club-specific fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Raleway:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&family=Poppins:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Cabin:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -239,54 +272,153 @@ body {
   flex-direction: column;
 }
 
-.card[data-club="debate"] {
-  --club-color: var(--debate-primary);
-  border-top: 4px solid var(--debate-primary);
+/* ICT Club Card Styling */
+.card[data-club="ict"] {
+  --club-color: var(--ict-primary);
+  font-family: "Iceberg", "Space Mono", "Courier New", monospace;
+  border-top: 4px solid var(--ict-secondary);
+}
+.card[data-club="ict"] .card-header h2 {
+  font-family: "Blanka", "Iceberg", sans-serif;
+}
+.card[data-club="ict"] .card-content p {
+  font-family: "Iceberg", "Space Mono", monospace;
+}
+.card[data-club="ict"] .club-tag {
+  background: var(--ict-secondary);
+  color: var(--ict-primary);
+}
+.card[data-club="ict"]:hover {
+  box-shadow: 0 0 15px rgba(255, 189, 89, 0.3);
 }
 
+/* Debate Club Card Styling */
+.card[data-club="debate"] {
+  --club-color: var(--debate-primary);
+  border-top: 4px solid var(--debate-secondary);
+}
+.card[data-club="debate"] .card-header h2 {
+  font-family: "Playfair Display", serif;
+}
+.card[data-club="debate"] .card-content p {
+  font-family: "Merriweather", serif;
+}
+.card[data-club="debate"] .club-tag {
+  background: var(--debate-secondary);
+  color: var(--debate-primary);
+}
+
+/* Photography Club Card Styling */
 .card[data-club="photography"] {
   --club-color: var(--photo-primary);
   border-top: 4px solid var(--photo-secondary);
 }
+.card[data-club="photography"] .card-header h2 {
+  font-family: "Bebas Neue", sans-serif;
+}
+.card[data-club="photography"] .card-content p {
+  font-family: "Montserrat", sans-serif;
+}
+.card[data-club="photography"] .club-tag {
+  background: var(--photo-bg);
+  color: var(--photo-secondary);
+}
 
+/* Sports Club Card Styling */
 .card[data-club="sports"] {
   --club-color: var(--sports-primary);
   border-top: 4px solid var(--sports-primary);
 }
+.card[data-club="sports"] .card-header h2 {
+  font-family: "Impact", "Arial Black", sans-serif;
+}
+.card[data-club="sports"] .card-content p {
+  font-family: "Open Sans", sans-serif;
+}
+.card[data-club="sports"] .club-tag {
+  background: var(--sports-bg);
+  color: var(--sports-secondary);
+}
 
+/* Quiz Club Card Styling */
 .card[data-club="quiz"] {
   --club-color: var(--quiz-primary);
   border-top: 4px solid var(--quiz-secondary);
 }
+.card[data-club="quiz"] .card-header h2 {
+  font-family: "Times New Roman", Times, serif;
+}
+.card[data-club="quiz"] .card-content p {
+  font-family: "Times New Roman", Times, serif;
+}
+.card[data-club="quiz"] .club-tag {
+  background: var(--quiz-bg);
+  color: var(--quiz-accent);
+  border: 1px solid var(--quiz-border);
+}
 
+/* Science Club Card Styling */
 .card[data-club="science"] {
   --club-color: var(--science-primary);
   border-top: 4px solid var(--science-secondary);
 }
-
-.card[data-club="ict"] {
-  --club-color: var(--ict-primary);
-  border-top: 4px solid var(--ict-secondary);
+.card[data-club="science"] .card-header h2 {
+  font-family: "Orbitron", sans-serif;
+}
+.card[data-club="science"] .card-content p {
+  font-family: "Raleway", sans-serif;
+}
+.card[data-club="science"] .club-tag {
+  background: var(--science-bg);
+  color: var(--science-secondary);
 }
 
-.card[data-club="literature"] {
-  --club-color: var(--lit-primary);
-  border-top: 4px solid var(--lit-secondary);
+/* Language Club Card Styling */
+.card[data-club="language"] {
+  --club-color: var(--language-primary);
+  border-top: 4px solid var(--language-secondary);
+}
+.card[data-club="language"] .card-header h2 {
+  font-family: "Cinzel", serif;
+}
+.card[data-club="language"] .card-content p {
+  font-family: "EB Garamond", serif;
+}
+.card[data-club="language"] .club-tag {
+  background: var(--language-secondary);
+  color: var(--language-bg);
 }
 
+/* Cultural Club Card Styling */
 .card[data-club="cultural"] {
   --club-color: var(--cultural-primary);
   border-top: 4px solid var(--cultural-secondary);
 }
-
-.card[data-club="language"] {
-  --club-color: var(--language-secondary);
-  border-top: 4px solid var(--language-secondary);
+.card[data-club="cultural"] .card-header h2 {
+  font-family: "Yeseva One", cursive;
+}
+.card[data-club="cultural"] .card-content p {
+  font-family: "Poppins", sans-serif;
+}
+.card[data-club="cultural"] .club-tag {
+  background: var(--cultural-accent1);
+  color: var(--cultural-secondary);
 }
 
+/* Green Club Card Styling */
 .card[data-club="green"] {
   --club-color: var(--green-primary);
   border-top: 4px solid var(--green-secondary);
+}
+.card[data-club="green"] .card-header h2 {
+  font-family: "Fjalla One", sans-serif;
+}
+.card[data-club="green"] .card-content p {
+  font-family: "Cabin", sans-serif;
+}
+.card[data-club="green"] .club-tag {
+  background: var(--green-primary);
+  color: var(--green-bg);
 }
 
 .pic {
@@ -337,57 +469,6 @@ body {
   margin: 0;
   flex: 1;
   text-decoration: none;
-}
-
-/* Club-specific tag colors */
-.card[data-club="debate"] .club-tag {
-  background: var(--debate-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="photography"] .club-tag {
-  background: var(--photo-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="sports"] .club-tag {
-  background: var(--sports-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="quiz"] .club-tag {
-  background: var(--quiz-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="science"] .club-tag {
-  background: var(--science-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="ict"] .club-tag {
-  background: var(--ict-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="literature"] .club-tag {
-  background: var(--lit-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="cultural"] .club-tag {
-  background: var(--cultural-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="language"] .club-tag {
-  background: var(--language-secondary);
-  color: var(--light-color);
-}
-
-.card[data-club="green"] .club-tag {
-  background: var(--green-secondary);
-  color: var(--light-color);
 }
 
 .club-tag {
