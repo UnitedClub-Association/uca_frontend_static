@@ -4,78 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join UCA - United Club Association</title>
-    <meta
-      name="description"
-      content="Learn how to join the United Club Association (UCA) based in Dhaka, Bangladesh, or sign in as an existing member."
-    />
-    <meta
-      name="keywords"
-      content="UCA, United Club Association, join club, sign in, membership, Dhaka, Bangladesh"
-    />
+    <meta name="description" content="Join the United Club Association (UCA) in Dhaka, Bangladesh, and become part of our vibrant student community." />
+    <meta name="keywords" content="UCA, United Club Association, join club, membership, student clubs, Dhaka, Bangladesh" />
     <script src="/js/include-fonts.js" defer></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/join-us.css" />
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
     <script src="https://unpkg.com/feather-icons" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
     <script src="/js/include-navbar.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
-    <script type="module" src="/js/join-us.js" defer></script>
+    <script type="module" src="/js/join-us.js"></script>
   </head>
   <body>
-    <!-- Navbar -->
-    <div id="navbar-placeholder"></div>
-
-    <!-- Main Content -->
     <main class="main-content">
-      <!-- Hero Section -->
       <section class="hero-section">
         <div class="container">
-          <h1>Join United Club Association</h1>
-          <p>Empowering Student Communities Since 2024</p>
+          <h1>Join UCA</h1>
+          <p>Be part of our vibrant student community</p>
         </div>
       </section>
-
-      <!-- Join Section -->
       <section class="join-section">
         <div class="container">
           <div class="join-content">
             <h2>How to Join UCA</h2>
             <div class="join-steps">
               <div class="step">
-                <h3>1. Contact Us</h3>
-                <p>Reach out to us via email or phone to express your interest in joining UCA.</p>
+                <div class="step-icon"><i data-feather="mail"></i></div>
+                <h3>1. Get the Form</h3>
+                <p>Contact a club executive to obtain the official UCA registration form.</p>
                 <div class="contact-info">
-                  <a href="mailto:uca.official.bd@gmail.com"><i data-feather="mail"></i> uca.official.bd@gmail.com</a>
-                  <a href="tel:+8801886150418"><i data-feather="phone"></i> +8801886150418</a>
+                  <a href="mailto:uca.official.bd@gmail.com">uca.official.bd@gmail.com</a>
+                  <a href="tel:+8801886150418"><i data-feather="phone"></i> +880 1886 150418</a>
                 </div>
               </div>
-
               <div class="step">
+                <div class="step-icon"><i data-feather="edit"></i></div>
                 <h3>2. Submit Application</h3>
-                <p>Fill out our membership application form which you'll receive after initial contact.</p>
+                <p>Complete and submit the registration form with a 20 Taka fee per club (max 3 clubs).</p>
               </div>
-
               <div class="step">
-                <h3>3. Interview</h3>
-                <p>Meet with our executive panel for a brief orientation and interview.</p>
+                <div class="step-icon"><i data-feather="user-check"></i></div>
+                <h3>3. Become a Member</h3>
+                <p>Once approved, you’re part of UCA! For executive roles, apply with a 50 Taka fee.</p>
               </div>
             </div>
-
             <div class="social-connect">
               <h3>Connect With Us</h3>
               <div class="social-links">
-                <a href="https://www.facebook.com/ucaofficial.fb" class="social-link">
-                  <i data-feather="facebook"></i> Facebook
+                <a href="https://www.facebook.com/ucaofficial2023" class="social-link facebook">
+                  <div class="social-icon"><i data-feather="facebook"></i></div>
+                  <span>Facebook</span>
+                  <p>Follow our updates</p>
                 </a>
-                <a href="https://www.instagram.com/uca.ulab" class="social-link">
-                  <i data-feather="instagram"></i> Instagram
+                <a href="https://www.instagram.com/uca.ulab" class="social-link instagram">
+                  <div class="social-icon"><i data-feather="instagram"></i></div>
+                  <span>Instagram</span>
+                  <p>View our photos</p>
                 </a>
-                <a href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV" class="social-link">
-                  <i data-feather="message-circle"></i> WhatsApp
+                <a href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV" class="social-link whatsapp">
+                  <div class="social-icon"><i data-feather="message-circle"></i></div>
+                  <span>WhatsApp</span>
+                  <p>Join our group</p>
                 </a>
-                <a href="https://www.linkedin.com/company/united-club-association" class="social-link">
-                  <i data-feather="linkedin"></i> LinkedIn
+                <a href="#" class="social-link discord">
+                  <div class="social-icon"><i data-feather="message-square"></i></div>
+                  <span>Discord</span>
+                  <p>Chat with us</p>
                 </a>
               </div>
             </div>
@@ -83,8 +80,12 @@
         </div>
       </section>
     </main>
-
-    <!-- Footer -->
-    <div id="footer-placeholder"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+          feather.replace();
+        }
+      });
+    </script>
   </body>
 </html>

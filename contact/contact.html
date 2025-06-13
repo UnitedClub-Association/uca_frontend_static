@@ -1,64 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - United Club Association</title>
-
-    <!-- Meta tags for SEO -->
-    <meta
-      name="description"
-      content="Contact the United Club Association (UCA) team. We're here to answer your questions and help you connect with our community."
-    />
-    <meta
-      name="keywords"
-      content="UCA, United Club Association, contact, support, help, questions"
-    />
-
-    <!-- Include centralized fonts -->
+    <meta name="description" content="Reach out to the United Club Association (UCA) team. We're here to answer your queries and connect you with our vibrant community." />
+    <meta name="keywords" content="UCA, United Club Association, contact, support, student clubs, community" />
     <script src="/js/include-fonts.js" defer></script>
-
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/contacts.css" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/DU_Logo.ico" />
-
-    <!-- Feather Icons -->
+    <link rel="stylesheet" href="/css/contact.css" />
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
     <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <!-- Add module script for contact.js -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
     <script type="module" src="/js/contact.js"></script>
   </head>
   <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
-    <script src="/js/include-navbar.js" defer></script>
-
     <main id="main-content">
       <section class="contact-hero">
         <div class="contact-hero-content">
           <h1>Contact Us</h1>
-          <p>We'd love to hear from you</p>
+          <p>Connect with the UCA community—we’re here to help!</p>
         </div>
       </section>
-
       <section class="contact-info">
         <div class="container">
           <div class="contact-cards">
@@ -71,7 +45,6 @@
               <p>P9MR+837 Dhaka University, Nilkhet Road</p>
               <p>Dhaka 1000, Bangladesh</p>
             </div>
-
             <div class="contact-card">
               <div class="icon-container">
                 <i data-feather="phone"></i>
@@ -80,66 +53,43 @@
               <p><a href="tel:+8801886150418">+880 1886 150 418</a></p>
               <p>Monday-Friday, 9am-5pm</p>
             </div>
-
             <div class="contact-card">
               <div class="icon-container">
                 <i data-feather="mail"></i>
               </div>
               <h3>Email</h3>
-              <p>
-                <a href="mailto:ucoofficial2024@gmail.com"
-                  >ucoofficial2024@gmail.com</a
-                >
-              </p>
-              <p>We'll respond as soon as possible</p>
+              <p><a href="mailto:uca.official.bd@gmail.com">uca.official.bd@gmail.com</a></p>
+              <p>We’ll respond promptly</p>
             </div>
           </div>
         </div>
       </section>
-
       <section class="contact-form-section">
         <div class="container">
           <div class="contact-grid">
             <div class="form-container">
-              <h2>Send Us a Message</h2>
+              <h2>Send a Message</h2>
               <form id="contact-form" class="contact-form">
                 <div class="form-group">
-                  <label for="name"
-                    >Full Name <span class="required">*</span></label
-                  >
+                  <label for="name">Full Name <span class="required">*</span></label>
                   <input type="text" id="name" name="name" required />
                   <span class="error-message" id="name-error"></span>
                 </div>
-
                 <div class="form-group">
-                  <label for="email"
-                    >Email Address <span class="required">*</span></label
-                  >
+                  <label for="email">Email Address <span class="required">*</span></label>
                   <input type="email" id="email" name="email" required />
                   <span class="error-message" id="email-error"></span>
                 </div>
-
                 <div class="form-group">
-                  <label for="subject"
-                    >Subject <span class="required">*</span></label
-                  >
+                  <label for="subject">Subject <span class="required">*</span></label>
                   <input type="text" id="subject" name="subject" required />
                   <span class="error-message" id="subject-error"></span>
                 </div>
-
                 <div class="form-group">
-                  <label for="message"
-                    >Message <span class="required">*</span></label
-                  >
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="6"
-                    required
-                  ></textarea>
+                  <label for="message">Message <span class="required">*</span></label>
+                  <textarea id="message" name="message" rows="6" required></textarea>
                   <span class="error-message" id="message-error"></span>
                 </div>
-
                 <button type="submit" class="submit-btn">
                   <span class="btn-text">Send Message</span>
                   <span class="btn-icon"><i data-feather="send"></i></span>
@@ -159,12 +109,7 @@
                   <p>P9MR+837 Dhaka University, Nilkhet Road</p>
                   <p>Dhaka 1000, Bangladesh</p>
                 </div>
-                <a
-                  href="https://www.google.com/maps/place/University+Laboratory+School+%26+College/@23.7332983,90.3900558,21z/data=!4m6!3m5!1s0x3755b8c160b85819:0xa06816b4d60ce68e!8m2!3d23.7332983!4d90.3900558!16s%2Fg%2F11c1z0_4m9?entry=ttu"
-                  class="map-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://www.google.com/maps/place/University+Laboratory+School+%26+College/@23.7332983,90.3900558,21z/data=!4m6!3m5!1s0x3755b8c160b85819:0xa06816b4d60ce68e!8m2!3d23.7332983!4d90.3900558!16s%2Fg%2F11c1z0_4m9?entry=ttu" class="map-link" target="_blank" rel="noopener noreferrer">
                   <span>View on Google Maps</span>
                   <i data-feather="external-link" width="18" height="18"></i>
                 </a>
@@ -173,7 +118,6 @@
           </div>
         </div>
       </section>
-
       <section class="faq-section">
         <div class="container">
           <h2>Frequently Asked Questions</h2>
@@ -186,15 +130,9 @@
                 </button>
               </div>
               <div class="faq-answer">
-                <p>
-                  To join a club, you need to register through our
-                  <a href="/contact/join-us.html">Join UCA</a> page. Once
-                  registered, you can browse available clubs and submit your
-                  application to join.
-                </p>
+                <p>To join a club, obtain the official UCA registration form from a club executive. The membership fee is 20 Taka per club, and you can join up to 3 clubs.</p>
               </div>
             </div>
-
             <div class="faq-item">
               <div class="faq-question">
                 <h3>What are the membership fees?</h3>
@@ -203,14 +141,9 @@
                 </button>
               </div>
               <div class="faq-answer">
-                <p>
-                  Membership fees vary by club. Basic UCA membership is free for
-                  all students. Some specialized clubs may have additional fees
-                  to cover materials and activities.
-                </p>
+                <p>The membership fee is 20 Taka per club, with a maximum of 3 clubs. For those applying for an executive position, a 50 Taka registration fee is required.</p>
               </div>
             </div>
-
             <div class="faq-item">
               <div class="faq-question">
                 <h3>How can I start a new club?</h3>
@@ -219,15 +152,9 @@
                 </button>
               </div>
               <div class="faq-answer">
-                <p>
-                  To start a new club, you need to submit a proposal to the UCA
-                  executive committee. The proposal should include the club's
-                  purpose, activities, and potential membership. Contact us for
-                  more details on the application process.
-                </p>
+                <p>Submit a proposal to the UCA executive committee, detailing the club’s purpose, planned activities, and potential membership. Contact us for the application process.</p>
               </div>
             </div>
-
             <div class="faq-item">
               <div class="faq-question">
                 <h3>When do clubs typically meet?</h3>
@@ -236,15 +163,9 @@
                 </button>
               </div>
               <div class="faq-answer">
-                <p>
-                  Club meeting schedules vary. Most clubs meet weekly or
-                  bi-weekly, typically after school hours or during designated
-                  activity periods. Check each club's page for specific meeting
-                  times and locations.
-                </p>
+                <p>Most clubs meet weekly or bi-weekly, typically after school or during activity periods. Visit individual club pages for specific schedules and locations.</p>
               </div>
             </div>
-
             <div class="faq-item">
               <div class="faq-question">
                 <h3>Can I join multiple clubs?</h3>
@@ -253,62 +174,47 @@
                 </button>
               </div>
               <div class="faq-answer">
-                <p>
-                  Yes, you can join multiple clubs based on your interests and
-                  availability. We encourage students to explore different
-                  activities, but be mindful of time commitments to ensure you
-                  can actively participate in each club.
-                </p>
+                <p>Yes, you can join up to 3 clubs, depending on your availability. Ensure you can balance your commitments to participate actively in each club.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <section class="social-connect-section">
+      <section class="social-connect">
         <div class="container">
-          <h2>Connect With Us</h2>
-          <p>
-            Follow us on social media for the latest updates and announcements
-          </p>
+          <h4>Connect With Us</h4>
+          <p>Follow us on social media for updates and community events</p>
           <div class="social-grid">
-            <a href="#" class="social-card facebook">
-              <div class="social-icon">
-                <i data-feather="facebook"></i>
-              </div>
-              <h3>Facebook</h3>
+            <a href="https://www.facebook.com/ucaofficial2023" class="social-link facebook">
+              <div class="social-icon"><i data-feather="facebook"></i></div>
+              <span>Facebook</span>
               <p>Follow our page for updates</p>
             </a>
-            <a
-              href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV"
-              class="social-card whatsapp"
-            >
-              <div class="social-icon">
-                <i data-feather="message-circle"></i>
-              </div>
-              <h3>WhatsApp</h3>
+            <a href="https://www.instagram.com/uca.ulab" class="social-link instagram">
+              <div class="social-icon"><i data-feather="instagram"></i></div>
+              <span>Instagram</span>
+              <p>View our latest photos</p>
+            </a>
+            <a href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV" class="social-link whatsapp">
+              <div class="social-icon"><i data-feather="message-circle"></i></div>
+              <span>WhatsApp</span>
               <p>Join our community group</p>
             </a>
-            <a href="#" class="social-card instagram">
-              <div class="social-icon">
-                <i data-feather="instagram"></i>
-              </div>
-              <h3>Instagram</h3>
-              <p>See our latest photos</p>
-            </a>
-            <a href="#" class="social-card youtube">
-              <div class="social-icon">
-                <i data-feather="youtube"></i>
-              </div>
-              <h3>YouTube</h3>
-              <p>Watch our videos</p>
+            <a href="#" class="social-link discord">
+              <div class="social-icon"><i data-feather="message-square"></i></div>
+              <span>Discord</span>
+              <p>Chat with our community</p>
             </a>
           </div>
         </div>
       </section>
     </main>
-
-    <!-- Footer will be inserted here by include-footer.js -->
-    <script src="/js/include-footer.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+          feather.replace();
+        }
+      });
+    </script>
   </body>
 </html>
