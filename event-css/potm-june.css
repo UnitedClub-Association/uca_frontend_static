@@ -1,0 +1,240 @@
+:root {
+  --primary-bg: #0a0a14; /* UCA Starry Night */
+  --card-bg: rgba(20, 20, 30, 0.7);
+  --card-border-color: #F5F5DC; /* Photography Club Accent */
+  --accent-primary: #5D4037; /* Photography Club Text */
+  --accent-secondary: #F5F5DC; /* Photography Club Optional Accent */
+  --text-primary: #FFFFFF;
+  --text-secondary: #D0D0D5;
+  --photo-font-title: 'Bebas Neue', sans-serif;
+  --photo-font-body: 'Montserrat', sans-serif;
+  --border-radius-main: 16px;
+  --border-radius-card: 12px;
+  --shadow-card: 0 8px 25px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 12px 35px rgba(245, 245, 220, 0.3); /* Photography Club Accent */
+  --transition-main: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --accent-secondary-rgb: 245, 245, 220;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--photo-font-body);
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, var(--primary-bg), #1a0b2e, #2e1a47, var(--primary-bg)), url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30v4h4v2h-4v4h-2v-4h-4v-2h4v-4h2zM6 34v4h4v2H6v4H4v-4H0v-2h4v-4h2zM6 4v4H4v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  background-size: 400% 400%, 60px 60px;
+  animation: gradientBG 25s ease infinite;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('/images/Photographer-of-the-Month-June-BG.gif') center/cover no-repeat;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  filter: grayscale(100%);
+  border-bottom: 3px solid var(--accent-secondary);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-family: var(--photo-font-title);
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(var(--accent-secondary-rgb), 0.5);
+}
+
+.event-date {
+  font-family: var(--photo-font-body);
+  font-size: 1.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.club-tag {
+  display: inline-block;
+  background-color: rgba(245, 245, 220, 0.2);
+  color: var(--accent-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: var(--photo-font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.winner-month, .runner-up-first, .runner-up-second, .week-winners {
+  padding: 3rem 0;
+}
+
+.winner-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.winner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.image-container {
+  flex: 1;
+  max-width: 50%;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-card);
+  object-fit: cover;
+}
+
+.text-container {
+  flex: 1;
+  padding: 1rem;
+}
+
+.text-container h2 {
+  font-family: var(--photo-font-title);
+  font-size: 2.5rem;
+  color: var(--accent-secondary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.text-container h3 {
+  font-family: var(--photo-font-title);
+  font-size: 1.8rem;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.text-container p {
+  font-family: var(--photo-font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.week-winners h2 {
+  font-family: var(--photo-font-title);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--accent-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.week-image {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--border-radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-main);
+}
+
+.week-image:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.week-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .winner-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-container {
+    max-width: 100%;
+  }
+
+  .week-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  .text-container h2 {
+    font-size: 2rem;
+  }
+
+  .text-container h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.feather {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}

@@ -1,39 +1,31 @@
 :root {
-    --primary-color: #4f46e5;
-    --secondary-color: #1e1e2e;
-    --accent-color: #7c3aed;
-    --light-color: #f8fafc;
-    --dark-color: #0f0f1a;
-    --text-primary: #e2e8f0;
-    --text-secondary: #94a3b8;
-    --bg-primary: #0f0f1a;
-    --bg-secondary: #1e1e2e;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --uca-bg-primary: #000000; /* Black */
+    --uca-bg-secondary: #FFFFFF; /* White */
+    --uca-text-primary: #FFFFFF; /* White */
+    --uca-text-secondary: #000000; /* Black */
+    --uca-accent-primary: #ffbd59; /* Gold */
+    --uca-accent-secondary: #4B0082; /* Purple */
     --border-radius: 1rem;
+    --shadow-card: 0 6px 15px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 10px 20px rgba(255, 189, 89, 0.3); /* Gold */
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-    /* Club colors */
-    --sports-primary: #ef4444;
-    --quiz-primary: #8b5cf6;
-    --ict-primary: #14b8a6;
-    --photo-primary: #10b981;
-    --debate-primary: #7c3aed;
-    --science-primary: #3b82f6;
-    --language-primary: #06b6d4;
-    --cultural-primary: #ec4899;
-    --green-primary: #22c55e;
+    /* Club Fonts (using Photography Club fonts as base) */
+    --photo-font-title: 'Bebas Neue', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--uca-bg-primary);
+    color: var(--uca-text-primary);
+    line-height: 1.7;
 }
 
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    background: linear-gradient(135deg, #000000, #FFFFFF);
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -41,24 +33,13 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    animation: pulse 10s infinite ease-in-out;
+    animation: fadeShift 15s infinite ease-in-out;
 }
 
-@keyframes pulse {
-    0%, 100% { background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); }
-    50% { background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); }
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("/images/events/uca-unveiled-bg.jpg") center/cover;
-    opacity: 0.1;
-    z-index: 1;
+@keyframes fadeShift {
+    0% { background: linear-gradient(135deg, #000000, #FFFFFF); }
+    50% { background: linear-gradient(135deg, #FFFFFF, #000000); }
+    100% { background: linear-gradient(135deg, #000000, #FFFFFF); }
 }
 
 .hero-content {
@@ -74,32 +55,33 @@ body {
 }
 
 .hero h1 {
+    font-family: var(--photo-font-title);
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 800;
     margin-bottom: 1rem;
     text-transform: uppercase;
-    background: linear-gradient(to right, var(--light-color), var(--accent-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--uca-accent-primary);
+    text-shadow: 0 0 10px rgba(255, 189, 89, 0.5);
 }
 
 .event-date {
+    font-family: var(--font-body);
     font-size: 1.5rem;
-    color: var(--text-secondary);
+    color: var(--uca-text-secondary);
     margin-bottom: 1.5rem;
 }
 
 .description {
+    font-family: var(--font-body);
     font-size: 1.2rem;
     line-height: 1.6;
-    color: var(--text-secondary);
+    color: var(--uca-text-secondary);
     max-width: 800px;
     margin: 0 auto 2rem;
 }
 
 .event-details {
-    background: var(--bg-secondary);
+    background: var(--uca-bg-secondary);
     padding: 4rem 1rem;
 }
 
@@ -110,11 +92,13 @@ body {
 }
 
 .event-details h2 {
+    font-family: var(--photo-font-title);
     font-size: 2.5rem;
-    color: var(--text-primary);
+    color: var(--uca-text-primary);
     text-align: center;
     margin-bottom: 2rem;
     position: relative;
+    font-weight: 700;
 }
 
 .event-details h2::after {
@@ -125,7 +109,7 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: var(--primary-color);
+    background: var(--uca-accent-primary);
     border-radius: 2px;
 }
 
@@ -134,39 +118,43 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: 4rem;
+    padding: 1rem;
 }
 
 .stat-card {
-    background: var(--bg-primary);
+    background: var(--uca-bg-primary);
     padding: 2rem;
     border-radius: var(--border-radius);
     text-align: center;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-card);
     transition: var(--transition);
+    margin: 1rem;
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .stat-card svg {
     width: 36px;
     height: 36px;
-    color: var(--primary-color);
+    color: var(--uca-accent-secondary);
     margin-bottom: 1rem;
 }
 
 .stat-card h3 {
+    font-family: var(--font-body);
     font-size: 1.25rem;
-    color: var(--text-primary);
+    color: var(--uca-text-primary);
     margin-bottom: 0.5rem;
 }
 
 .stat-card p {
+    font-family: var(--font-body);
     font-size: 1.75rem;
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--uca-accent-primary);
 }
 
 .clubs-grid {
@@ -174,16 +162,18 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
+    padding: 1rem;
 }
 
 .club-card {
-    background: var(--bg-primary);
+    background: var(--uca-bg-primary);
     padding: 1.5rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-card);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    margin: 1rem;
 }
 
 .club-card::before {
@@ -193,62 +183,58 @@ body {
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--club-color);
+    background: var(--uca-accent-primary);
     transition: var(--transition);
 }
 
 .club-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-card-hover);
 }
 
-.club-card[data-club="sports"] { --club-color: var(--sports-primary); }
-.club-card[data-club="quiz"] { --club-color: var(--quiz-primary); }
-.club-card[data-club="ict"] { --club-color: var(--ict-primary); }
-.club-card[data-club="photography"] { --club-color: var(--photo-primary); }
-.club-card[data-club="debate"] { --club-color: var(--debate-primary); }
-.club-card[data-club="science"] { --club-color: var(--science-primary); }
-.club-card[data-club="language"] { --club-color: var(--language-primary); }
-.club-card[data-club="cultural"] { --club-color: var(--cultural-primary); }
-.club-card[data-club="green"] { --club-color: var(--green-primary); }
-
 .club-card h3 {
+    font-family: var(--photo-font-title);
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: var(--uca-text-primary);
     margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
 .club-card p {
+    font-family: var(--font-body);
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: var(--uca-text-secondary);
     margin: 0.5rem 0;
 }
 
 .cta-section {
     text-align: center;
     padding: 2rem;
-    background: var(--bg-primary);
+    background: var(--uca-bg-primary);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-card);
 }
 
 .cta-section h2 {
+    font-family: var(--photo-font-title);
     font-size: 2rem;
-    color: var(--text-primary);
+    color: var(--uca-text-primary);
     margin-bottom: 1rem;
 }
 
 .cta-section p {
+    font-family: var(--font-body);
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: var(--uca-text-secondary);
     margin-bottom: 2rem;
 }
 
 .cta-button {
-    background: var(--primary-color);
-    color: var(--light-color);
+    background: var(--uca-accent-primary);
+    color: var(--uca-text-primary);
     padding: 1rem 2rem;
     border-radius: 9999px;
+    font-family: var(--font-body);
     font-weight: 600;
     font-size: 1.1rem;
     text-decoration: none;
@@ -260,11 +246,11 @@ body {
 
 .cta-button:hover {
     transform: translateY(-3px);
-    background: var(--accent-color);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    background: var(--uca-accent-secondary);
+    box-shadow: var(--shadow-card-hover);
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
     .hero h1 {
         font-size: clamp(2.5rem, 7vw, 4rem);
     }
@@ -286,7 +272,7 @@ body {
     }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
     .hero {
         min-height: 50vh;
     }
@@ -302,4 +288,10 @@ body {
     .cta-section {
         padding: 1.5rem;
     }
+}
+
+.feather {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
 }

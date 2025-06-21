@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-H2YV0FNQ9X");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Events - United Club Association</title>
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700&family=Bebas+Neue&family=Blanka&family=Iceberg&family=Playfair+Display&family=Merriweather&family=Montserrat&family=Impact&family=Open+Sans&family=Times+New+Roman&family=Raleway&family=Cinzel&family=EB+Garamond&family=Yeseva+One&family=Fjalla+One&family=Cabin&display=swap" rel="stylesheet" />
+    <script src="/js/include-fonts.js"></script>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/all-events.css" />
+    <script src="https://unpkg.com/feather-icons" defer></script>
+    <script src="/js/all-events.js" defer></script>
+  </head>
+  <body>
+    <script src="/js/include-navbar.js"></script>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-content">
+          <h1 id="page-title">All Events</h1>
+          <p class="section-description">Explore the full calendar of events hosted by UCA and its vibrant student clubs, from academic challenges to cultural celebrations.</p>
+        </div>
+      </section>
+
+      <section class="events-filter">
+        <div class="filter-container">
+          <div class="filter-group">
+            <label for="club-type-filter">Club Type:</label>
+            <select id="club-type-filter" class="filter-dropdown">
+              <option value="all">All</option>
+              <option value="academic">Academic</option>
+              <option value="cultural">Cultural</option>
+              <option value="sports">Sports</option>
+              <option value="environment">Environment</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="club-filter">Clubs:</label>
+            <select id="club-filter" class="filter-dropdown">
+              <option value="all">All</option>
+              <option value="uca">UCA</option>
+              <option value="debate">Debate Club</option>
+              <option value="photography">Photography Club</option>
+              <option value="sports">Sports Club</option>
+              <option value="quiz">Quiz Club</option>
+              <option value="science">Science Club</option>
+              <option value="language">Language Club</option>
+              <option value="cultural">Cultural Club</option>
+              <option value="green">Green Club</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="collab-filter">Single/Collab:</label>
+            <select id="collab-filter" class="filter-dropdown">
+              <option value="all">All</option>
+              <option value="single">Single</option>
+              <option value="collab">Collab</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="events-grid">
+        <div class="event-card" data-club="photography" data-type="cultural" data-collab="single">
+          <div class="event-image">
+            <img src="/images/Snapfest_Event_Pic.jpg" alt="SnapFest Photography Exhibition" />
+            <div class="event-date">
+              <span class="month">Nov</span>
+              <span class="day">17</span>
+              <span class="year">2024</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <span class="club-tag">📸 Photography Club</span>
+            <h3>SnapFest Photography Exhibition</h3>
+            <p>Immerse yourself in visual storytelling at our annual photography exhibition. Featuring award-winning captures from the Prize Giving Ceremony and beyond.</p>
+            <a href="/events/snapfest.html" class="details-btn">View Details <i data-feather="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="event-card" data-club="quiz science language" data-type="academic" data-collab="collab">
+          <div class="event-image">
+            <img src="/images/TriQuest- Battle_of_Knowledge.jpg" alt="TriQuest: Battle of Knowledge" />
+            <div class="event-date">
+              <span class="month">Dec</span>
+              <span class="day">2</span>
+              <span class="year">2024</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <span class="club-tag">🧠 Quiz, 🔬 Science, 🌍 Language</span>
+            <h3>TriQuest: Battle of Knowledge</h3>
+            <p>Challenge your intellect in this collaborative quiz competition. Test your knowledge across various disciplines and compete for exciting prizes.</p>
+            <a href="/events/triquest.html" class="details-btn">View Details <i data-feather="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="event-card" data-club="uca" data-type="all" data-collab="collab">
+          <div class="event-image">
+            <img src="/images/uca_logo.png" alt="UCA Unveiled - Club Introduction Day" />
+            <div class="event-date">
+              <span class="month">May</span>
+              <span class="day">8</span>
+              <span class="year">2025</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <span class="club-tag">🌌 UCA</span>
+            <h3>UCA Unveiled - Club Introduction Day</h3>
+            <p>Join us for an engaging introductory session where club presidents and advisors share their visions, followed by an exciting quiz competition.</p>
+            <a href="/events/uca-unveiled.html" class="details-btn">View Details <i data-feather="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="event-card" data-club="photography" data-type="cultural" data-collab="single">
+          <div class="event-image">
+            <img src="/images/uca_logo.png" alt="Photographer of the Month: June" />
+            <div class="event-date">
+              <span class="month">Jun</span>
+              <span class="day">21</span>
+              <span class="year">2025</span>
+            </div>
+          </div>
+          <div class="event-content">
+            <span class="club-tag">📸 Photography Club</span>
+            <h3>Photographer of the Month: June</h3>
+            <p>Celebrate the talent of our Photography Club with this month's spotlight, showcasing outstanding captures and creative excellence.</p>
+            <a href="/events/photographer-month-june.html" class="details-btn">View Details <i data-feather="arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="join-cta">
+        <div class="cta-content">
+          <h2>Join Our Vibrant Community</h2>
+          <p>Become a part of UCA’s dynamic clubs, participate in exciting events, and connect with passionate peers.</p>
+          <a href="/contact/join-us.html" class="cta-button">Join a Club <i data-feather="user-plus"></i></a>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/include-footer.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof feather !== "undefined") {
+          feather.replace({
+            "stroke-width": 2,
+            color: "currentColor",
+            size: 18,
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
