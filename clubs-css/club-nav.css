@@ -1,0 +1,189 @@
+/*
+================================================
+|                                              |
+|      CLUB-SPECIFIC NAVBAR STYLES - UCA       |
+|                                              |
+================================================
+*/
+
+/* 1. BASE THEME (Fallback & Default)
+   Inherits from the main site's celestial theme.
+------------------------------------------------ */
+:root {
+  --nav-bg: rgba(12, 14, 29, 0.75);
+  --nav-border: rgba(148, 163, 184, 0.15);
+  --nav-text: #94A3B8;
+  --nav-text-hover: #E2E8F0;
+  --nav-logo-text: #E2E8F0;
+  --nav-link-highlight: #8B5CF6;
+  --nav-dropdown-bg: rgba(18, 20, 40, 0.95);
+  --font-nav: 'Satoshi', sans-serif;
+}
+
+/* 2. CLUB-SPECIFIC THEMES
+------------------------------------------------ */
+
+/* --- ICT Club --- */
+body.theme-ict {
+  --nav-bg: radial-gradient(circle, #2E003E, #4B0082);
+  --nav-border: #ffbd59;
+  --nav-text: #e2e8f0;
+  --nav-text-hover: #ffbd59;
+  --nav-logo-text: #ffbd59;
+  --nav-link-highlight: #FFA500;
+  --nav-dropdown-bg: #2E003E;
+  --font-nav: 'Yuruy', sans-serif;
+}
+
+/* --- Debate Club --- */
+body.theme-debate {
+  --nav-bg: linear-gradient(135deg, #1C1C1C, #3D3D3D);
+  --nav-border: #28a745;
+  --nav-text: #E2E8F0;
+  --nav-text-hover: #FFFFFF;
+  --nav-logo-text: #FFFFFF;
+  --nav-link-highlight: #28a745;
+  --nav-dropdown-bg: #1C1C1C;
+  --font-nav: 'Libre Baskerville', serif;
+}
+
+/* --- Photography Club --- */
+body.theme-photo {
+  --nav-bg: #5d4037;
+  --nav-border: #F5F5DC;
+  --nav-text: #F5F5DC;
+  --nav-text-hover: #F5F5DC;
+  --nav-logo-text: #F5F5DC;
+  --nav-link-highlight: #F5F5DC;
+  --nav-dropdown-bg: #5d4037;
+  --font-nav: 'Antipasto', sans-serif;
+}
+
+/* --- Sports Club --- */
+body.theme-sports {
+  --nav-bg: linear-gradient(rgba(0,31,63,0.95), rgba(0,31,63,0.95));
+  --nav-border: #1E90FF;
+  --nav-text: #C0C0C0;
+  --nav-text-hover: #FFFFFF;
+  --nav-logo-text: #1E90FF;
+  --nav-link-highlight: #1E90FF;
+  --nav-dropdown-bg: #001F3F;
+  --font-nav: 'NFS font', sans-serif;
+}
+
+/* --- Quiz Club --- */
+body.theme-quiz {
+  --nav-bg: linear-gradient(45deg, #FF4136, #FFDC00);
+  --nav-border: #FFFFFF;
+  --nav-text: #000;
+  --nav-text-hover: #000;
+  --nav-logo-text: #000;
+  --nav-link-highlight: #FF4136;
+  --nav-dropdown-bg: #FFDC00;
+  --font-nav: 'Lexend', sans-serif;
+}
+
+/* --- Science Club --- */
+body.theme-science {
+  --nav-bg: radial-gradient(circle, #000, #333);
+  --nav-border: #C0C0C0;
+  --nav-text: #C0C0C0;
+  --nav-text-hover: #FFFFFF;
+  --nav-logo-text: #FFFFFF;
+  --nav-link-highlight: #C0C0C0;
+  --nav-dropdown-bg: #000;
+  --font-nav: 'Elianto', sans-serif;
+}
+
+/* --- Language Club --- */
+body.theme-language {
+  --nav-bg: linear-gradient(#FAF9F6, #e9e8e5);
+  --nav-border: #0077BE;
+  --nav-text: #555;
+  --nav-text-hover: #0077BE;
+  --nav-logo-text: #333;
+  --nav-link-highlight: #0077BE;
+  --nav-dropdown-bg: #e9e8e5;
+  --font-nav: 'Cinzel Decorative', serif;
+}
+
+/* --- Cultural Club --- */
+body.theme-cultural {
+  --nav-bg: linear-gradient(120deg, #800000, #FFD700);
+  --nav-border: #1A4D4F;
+  --nav-text: #F5F5DC;
+  --nav-text-hover: #FFFFFF;
+  --nav-logo-text: #FFFFFF;
+  --nav-link-highlight: #F5F5DC;
+  --nav-dropdown-bg: #800000;
+  --font-nav: 'Gilroy-Bold', sans-serif;
+}
+
+/* --- Green Club --- */
+body.theme-green {
+  --nav-bg: linear-gradient(to right, #2E7D32, #AEEA00);
+  --nav-border: #FFFFFF;
+  --nav-text: #000;
+  --nav-text-hover: #000;
+  --nav-logo-text: #000;
+  --nav-link-highlight: #2E7D32;
+  --nav-dropdown-bg: #AEEA00;
+  --font-nav: 'Quicksand', sans-serif;
+}
+
+/* --- Literature Club (Suspended) --- */
+body.theme-literature {
+  --nav-bg: linear-gradient(135deg, #555, #888);
+  --nav-border: #aaa;
+  --nav-text: #ddd;
+  --nav-text-hover: #fff;
+  --nav-logo-text: #fff;
+  --nav-link-highlight: #ccc;
+  --nav-dropdown-bg: #555;
+  --font-nav: 'EB Garamond', serif;
+}
+
+
+/* 3. NAVBAR STYLING (Uses the variables above)
+------------------------------------------------ */
+.navbar {
+  font-family: var(--font-nav);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  color: var(--nav-text);
+}
+
+.navbar .logo-text-main,
+.navbar .logo-text-sub {
+  color: var(--nav-logo-text);
+}
+
+.navbar__link {
+  color: var(--nav-text);
+}
+
+.navbar__link:hover {
+  color: var(--nav-text-hover);
+}
+
+.navbar__link::before {
+  background: radial-gradient(circle, var(--nav-link-highlight) 0%, transparent 80%);
+}
+
+.dropdown__menu {
+  background-color: var(--nav-dropdown-bg);
+  border: 1px solid var(--nav-border);
+}
+
+.dropdown__menu a {
+  color: var(--nav-text);
+}
+
+.dropdown__menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--nav-text-hover);
+}
+
+.bar {
+  background-color: var(--nav-text-hover);
+}

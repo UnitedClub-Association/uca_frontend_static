@@ -1,0 +1,172 @@
+/*
+================================================
+|                                              |
+|      CLUB-SPECIFIC FOOTER STYLES - UCA       |
+|                                              |
+================================================
+*/
+
+/* 1. BASE THEME (Fallback & Default)
+------------------------------------------------ */
+:root {
+  --footer-bg: linear-gradient(to top, #02020C, #0A0B1A);
+  --footer-border: rgba(148, 163, 184, 0.2);
+  --footer-text: #94A3B8;
+  --footer-heading: #E2E8F0;
+  --footer-link-hover: #FFFFFF;
+  --footer-social-hover: #8B5CF6;
+  --font-footer: 'Bricolage Grotesque', sans-serif;
+}
+
+/* 2. CLUB-SPECIFIC THEMES
+------------------------------------------------ */
+
+/* --- ICT Club --- */
+body.theme-ict {
+  --footer-bg: radial-gradient(circle, #2E003E, #4B0082);
+  --footer-border: #ffbd59;
+  --footer-text: #e2e8f0;
+  --footer-heading: #ffbd59;
+  --footer-link-hover: #FFA500;
+  --footer-social-hover: #FFA500;
+  --font-footer: 'Yuruy', sans-serif;
+}
+
+/* --- Debate Club --- */
+body.theme-debate {
+  --footer-bg: linear-gradient(135deg, #1C1C1C, #3D3D3D);
+  --footer-border: #28a745;
+  --footer-text: #E2E8F0;
+  --footer-heading: #FFFFFF;
+  --footer-link-hover: #28a745;
+  --footer-social-hover: #28a745;
+  --font-footer: 'Libre Baskerville', serif;
+}
+
+/* --- Photography Club --- */
+body.theme-photo {
+  --footer-bg: #5d4037;
+  --footer-border: #F5F5DC;
+  --footer-text: #F5F5DC;
+  --footer-heading: #F5F5DC;
+  --footer-link-hover: #F5F5DC;
+  --footer-social-hover: #F5F5DC;
+  --font-footer: 'Antipasto', sans-serif;
+}
+
+/* --- Sports Club --- */
+body.theme-sports {
+  --footer-bg: linear-gradient(#001F3F, #001021);
+  --footer-border: #1E90FF;
+  --footer-text: #C0C0C0;
+  --footer-heading: #FFFFFF;
+  --footer-link-hover: #1E90FF;
+  --footer-social-hover: #1E90FF;
+  --font-footer: 'NFS font', sans-serif;
+}
+
+/* --- Quiz Club --- */
+body.theme-quiz {
+  --footer-bg: linear-gradient(45deg, #FF4136, #FFDC00);
+  --footer-border: #FFFFFF;
+  --footer-text: #000;
+  --footer-heading: #000;
+  --footer-link-hover: #000;
+  --footer-social-hover: #FF4136;
+  --font-footer: 'Lexend', sans-serif;
+}
+
+/* --- Science Club --- */
+body.theme-science {
+  --footer-bg: radial-gradient(circle, #000, #333);
+  --footer-border: #C0C0C0;
+  --footer-text: #C0C0C0;
+  --footer-heading: #FFFFFF;
+  --footer-link-hover: #FFFFFF;
+  --footer-social-hover: #C0C0C0;
+  --font-footer: 'Elianto', sans-serif;
+}
+
+/* --- Language Club --- */
+body.theme-language {
+  --footer-bg: linear-gradient(#FAF9F6, #e9e8e5);
+  --footer-border: #0077BE;
+  --footer-text: #555;
+  --footer-heading: #333;
+  --footer-link-hover: #0077BE;
+  --footer-social-hover: #0077BE;
+  --font-footer: 'Cinzel Decorative', serif;
+}
+
+/* --- Cultural Club --- */
+body.theme-cultural {
+  --footer-bg: linear-gradient(120deg, #800000, #FFD700);
+  --footer-border: #1A4D4F;
+  --footer-text: #F5F5DC;
+  --footer-heading: #FFFFFF;
+  --footer-link-hover: #FFFFFF;
+  --footer-social-hover: #F5F5DC;
+  --font-footer: 'Gilroy-Bold', sans-serif;
+}
+
+/* --- Green Club --- */
+body.theme-green {
+  --footer-bg: linear-gradient(to right, #2E7D32, #AEEA00);
+  --footer-border: #FFFFFF;
+  --footer-text: #000;
+  --footer-heading: #000;
+  --footer-link-hover: #000;
+  --footer-social-hover: #2E7D32;
+  --font-footer: 'Quicksand', sans-serif;
+}
+
+/* --- Literature Club (Suspended) --- */
+body.theme-literature {
+  --footer-bg: linear-gradient(135deg, #555, #888);
+  --footer-border: #aaa;
+  --footer-text: #ddd;
+  --footer-heading: #fff;
+  --footer-link-hover: #fff;
+  --footer-social-hover: #ccc;
+  --font-footer: 'EB Garamond', serif;
+}
+
+
+/* 3. FOOTER STYLING (Uses the variables above)
+------------------------------------------------ */
+footer {
+  font-family: var(--font-footer);
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-top: 1px solid var(--footer-border);
+}
+
+.footer-branding h2,
+.footer-section h4 {
+  color: var(--footer-heading);
+}
+
+.footer-section a {
+  color: var(--footer-text);
+}
+
+.footer-section a:hover {
+  color: var(--footer-link-hover);
+}
+
+.footer-bottom {
+  border-top: 1px solid;
+  border-image: linear-gradient(to right, transparent, var(--footer-border), transparent) 1;
+}
+
+.social-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--footer-text);
+    border: 1px solid var(--footer-border);
+}
+
+.social-icon:hover {
+  background-color: var(--footer-social-hover);
+  border-color: var(--footer-social-hover);
+  color: var(--footer-heading);
+}

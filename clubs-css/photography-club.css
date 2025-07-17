@@ -1,335 +1,251 @@
+/*
+================================================
+|                                              |
+|      PHOTOGRAPHY CLUB PAGE - REDESIGN V3     |
+|      Theme: Minimalist, Clean, High-Fashion  |
+|      Inspiration: Modern Gallery, Noir       |
+|                                              |
+================================================
+*/
+
+/* 1. THEME & ROOT VARIABLES
+------------------------------------------------ */
 :root {
-  --club-primary: #457b9d; /* Ocean blue */
-  --club-secondary: #1d3557; /* Navy blue */
-  --club-accent: #f1faee; /* Off white */
-  --lens-color: #a8dadc; /* Light blue */
-  --text-light: #ffffff;
-  --text-dark: #1a1a1a;
-  --lens-shadow: 0 0 15px rgba(168, 218, 220, 0.3);
-  --navbar-height: 80px;
-  --footer-height: 400px;
+  /* Colors inspired by high-fashion and classic cameras */
+  --photo-bg-dark: #0a0a0a; /* True black for deep contrast */
+  --photo-bg-card: #1c1c1c; /* Off-black for cards */
+  --photo-text-primary: #f5f5f5; /* Soft off-white */
+  --photo-text-secondary: #a1a1a1; /* Muted grey for secondary text */
+  --photo-accent-brown: #5d4037; /* Rich leather brown */
+  --photo-accent-beige: #f5f5dc; /* Classic beige */
+  --photo-border-color: rgba(161, 161, 161, 0.2);
+  --photo-border-hover: rgba(245, 245, 220, 0.5); /* Beige on hover */
+
+  /* Typography */
+  --font-main: "Antipasto", "Helvetica Neue", sans-serif;
+  --font-body: "Satoshi", "Helvetica Neue", sans-serif; /* Inspired by index.css */
+
+  /* Effects */
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --hover-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. GENERAL PAGE SETUP
+------------------------------------------------ */
+body.photo-theme {
+  background-color: var(--photo-bg-dark);
+  color: var(--photo-text-primary);
+  font-family: var(--font-body);
+  padding-top: 80px; /* Space for a fixed navbar */
 }
 
 .club-page {
-  max-width: 1500px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  background-color: var(--club-secondary);
-  color: var(--text-light);
-  font-family: "Montserrat", sans-serif;
-  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
-  display: flex;
-  flex-direction: column;
-  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
+  padding: 2rem 2rem 4rem;
 }
 
-/* Header Section with Camera Lens Effect */
+/* 3. HEADER SECTION
+------------------------------------------------ */
 .club-header {
   text-align: center;
-  padding: 4rem 2rem; /* Adjusted padding for content */
-  background: var(--club-secondary);
-  position: relative;
-  overflow: hidden; /* Keep overflow hidden */
-  border-radius: 50%;
-  aspect-ratio: 1;
-  max-width: 600px;
-  margin: 0 auto 3rem;
-  border: 15px solid var(--club-primary);
-  display: flex; /* Use flexbox for centering */
-  flex-direction: column; /* Stack items vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-}
-
-/* Lens Animation Elements */
-.club-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    var(--lens-color) 120deg,
-    transparent 180deg
-  );
-  animation: lensSpin 8s linear infinite;
-  opacity: 0.2;
-}
-
-.club-header::after {
-  content: "";
-  position: absolute;
-  inset: 20px;
-  border: 2px dashed var(--lens-color);
-  border-radius: 50%;
-  animation: focusRing 4s ease-in-out infinite;
-}
-
-@keyframes lensSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes focusRing {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(0.9);
-    opacity: 1;
-  }
+  padding: 8rem 2rem;
+  margin-bottom: 5rem;
 }
 
 .club-title {
-  color: var(--lens-color);
-  font-size: 3.5rem;
-  margin-bottom: 1rem; /* Adjusted margin */
-  font-family: "Playfair Display", serif;
-  text-shadow: var(--lens-shadow);
-  position: relative;
-  z-index: 1;
-  line-height: 1.2; /* Added line-height */
+  font-family: var(--font-main);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: bold;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--photo-text-primary);
+  margin: 0;
+  letter-spacing: 2px;
 }
 
-.club-description {
-  color: var(--text-light);
-  font-size: 1.2rem;
-  max-width: 90%; /* Allow text to use more width inside */
-  margin: 0 auto;
+.club-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--photo-text-secondary);
+  margin-top: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
-  position: relative;
-  z-index: 1;
 }
 
-/* Content Sections */
-.club-content {
+/* 4. SPLIT LAYOUT FOR ABOUT/GALLERY
+------------------------------------------------ */
+.split-layout {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  flex: 1;
+  margin-bottom: 6rem;
+}
+
+@media (min-width: 992px) {
+  .split-layout {
+    grid-template-columns: 45% 55%;
+    align-items: center;
+    gap: 4rem;
+  }
+}
+
+/* 5. ABOUT CONTENT
+------------------------------------------------ */
+.about-content {
+  padding: 2rem 0;
+}
+
+.about-content h2 {
+  font-family: var(--font-main);
+  font-size: 3rem;
+  font-weight: bold;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--photo-border-color);
+  color: var(--photo-accent-beige);
 }
 
-.about-section,
-.connect-section {
-  background: rgba(69, 123, 157, 0.1);
-  padding: 2.5rem;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(168, 218, 220, 0.2);
-}
-
-.about-section::before {
-  content: "📸";
-  position: absolute;
-  right: -20px;
-  bottom: -20px;
-  font-size: 8rem;
-  opacity: 0.1;
-  transform: rotate(-15deg);
-}
-
-.club-content h2 {
-  color: var(--lens-color);
-  font-size: 2.2rem;
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--photo-text-secondary);
   margin-bottom: 1.5rem;
-  font-family: "Playfair Display", serif;
-  position: relative;
 }
 
-/* Social Links with Shutter Effect */
-.social-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.social-btn,
-.website-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: transparent;
-  border: 2px solid var(--lens-color);
-  color: var(--lens-color);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.social-btn::before,
-.website-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--lens-color);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: -1;
-}
-
-.social-btn:hover::before,
-.website-btn:hover::before {
-  transform: translateX(0);
-}
-
-.social-btn:hover,
-.website-btn:hover {
-  color: var(--club-secondary);
-}
-
-/* Add to head section of HTML */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap");
-
-/* Lens Container and Effects */
-.lens-container {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 2rem;
-}
-
-.lens-ring {
-  position: absolute;
-  inset: 0;
-  border: 15px solid var(--club-primary);
-  border-radius: 50%;
-  animation: focusRing 4s ease-in-out infinite;
-}
-
-.lens-aperture {
-  position: absolute;
-  inset: 30px;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    var(--lens-color) 120deg,
-    transparent 180deg
-  );
-  border-radius: 50%;
-  animation: lensSpin 8s linear infinite;
-  opacity: 0.2;
-}
-
-.club-logo {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.club-logo:hover {
-  transform: scale(1.05);
-}
-
-/* Feature List Styling */
-.feature-list {
+.features-list {
   list-style: none;
   padding: 0;
-  margin: 2rem 0;
+  margin-top: 2.5rem;
 }
 
-.feature-list li {
+.features-list li {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+}
+
+.features-list i {
+  color: var(--photo-accent-beige);
+  stroke-width: 1.5;
+}
+
+/* 6. PHOTO GALLERY
+------------------------------------------------ */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 280px;
+  gap: 1rem;
+  border-radius: 16px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+  transition: transform var(--transition-smooth);
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+  z-index: 10;
+  box-shadow: var(--hover-shadow);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--transition-smooth),
+    filter 0.4s var(--transition-smooth);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+  filter: brightness(0.8);
+}
+
+/* Masonry layout for gallery */
+.gallery-item:nth-child(1) {
+  grid-column: 1 / 3;
+}
+.gallery-item:nth-child(4) {
+  grid-row: 2 / 4;
+  grid-column: 2 / 3;
+}
+
+/* 7. JOIN CTA SECTION
+------------------------------------------------ */
+.join-cta {
+  padding: 6rem 2rem;
+  text-align: center;
+  background-color: var(--photo-bg-card);
+  border: 1px solid var(--photo-border-color);
+  border-radius: 16px;
+}
+
+.join-cta h2 {
+  font-family: var(--font-main);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: bold;
   margin-bottom: 1rem;
-  padding: 0.5rem;
+  color: var(--photo-accent-beige);
+}
+
+.join-cta p {
+  color: var(--photo-text-secondary);
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  font-family: var(--font-main);
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 3rem;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  background-color: var(--photo-accent-beige);
+  color: var(--photo-bg-dark);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(245, 245, 220, 0.1);
 }
 
-.feature-list li:hover {
-  transform: translateX(10px);
-  background: rgba(168, 218, 220, 0.1);
+.cta-button:hover {
+  background-color: #fff; /* Brighter beige on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(245, 245, 220, 0.2);
 }
 
-.feature-list i {
-  color: var(--lens-color);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .club-page {
-    padding: 1rem;
-    padding-top: calc(var(--navbar-height) + 1rem);
-  }
-
+/* 8. RESPONSIVE ADJUSTMENTS
+------------------------------------------------ */
+@media (max-width: 767px) {
   .club-header {
-    padding: 2rem 1rem; /* Reduce padding */
-    max-width: 400px; /* Reduce max width */
-    border-width: 10px; /* Reduce border width */
-    margin-bottom: 2rem; /* Adjust margin */
+    padding: 5rem 1rem;
   }
-
-  .lens-container {
-    width: 150px;
-    height: 150px;
-  }
-
-  .club-title {
-    font-size: 2.2rem; /* Reduce font size */
-    margin-bottom: 0.5rem; /* Adjust margin */
-  }
-
-  .club-description {
-    font-size: 0.8rem; /* Reduce font size */
-    max-width: 95%; /* Adjust width */
-  }
-
-  .social-links {
+  .photo-gallery {
     grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
   }
-
-  .about-section,
-  .connect-section {
-    /* Apply padding adjustment if connect-section were kept */
-    padding: 1.5rem;
+  /* Reset masonry for mobile */
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
   }
-
-  .club-content h2 {
-    font-size: 1.8rem; /* Adjust heading size in content */
-  }
-}
-
-@media (max-width: 480px) {
-  .club-header {
-    padding: 1.5rem 0.5rem; /* Further reduce padding */
-    max-width: 300px; /* Further reduce max width */
-    border-width: 8px; /* Further reduce border width */
-  }
-
-  .club-title {
-    font-size: 1.8rem; /* Further reduce font size */
-  }
-
-  .club-description {
-    font-size: 0.9rem; /* Further reduce font size */
-  }
-
-  .about-section,
-  .connect-section {
-    /* Apply padding adjustment if connect-section were kept */
-    padding: 1rem;
-  }
-
-  .club-content h2 {
-    font-size: 1.6rem; /* Adjust heading size in content */
+  .join-cta {
+    padding: 4rem 1.5rem;
   }
 }

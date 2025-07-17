@@ -1,129 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Science Club - United Club Association</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
 
-    <!-- External Scripts and Stylesheets -->
-    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/include-fonts.js" defer></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
     <link rel="stylesheet" href="/clubs-css/science-club.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Exo+2:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/js/include-fonts.js" defer></script>
-    <script src="/js/include-navbar.js" defer></script>
-    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/include-club-navbar.js" defer></script>
+    <script src="/js/include-club-footer.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <!-- Initialize Icons -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        feather.replace();
-      });
-    </script>
   </head>
   <body>
     <nav aria-label="Main Navigation">
-      <!-- Navbar content will be included here -->
-    </nav>
+      </nav>
 
     <main class="club-page" id="main-content">
       <header class="club-header" role="banner">
-        <div class="element-grid">
-          <div class="element" data-atomic="21">Sc</div>
-          <div class="element" data-atomic="53">I</div>
-          <div class="element" data-atomic="63">
-            E<span class="faded-u">u</span>
-          </div>
-          <div class="element" data-atomic="7">N</div>
-          <div class="element" data-atomic="58">Ce</div>
-        </div>
+        <h1 class="header-title">The Hypothesis</h1>
         <p class="club-description">
-          <strong>HYPOTHESIZE • TEST • DISCOVER</strong><br />
-          Unlocking the mysteries of the universe, one experiment at a time
+          <strong>Discovering the fundamental fabric of reality.</strong><br />
+          Unlocking the mysteries of the universe, one experiment at a time.
         </p>
       </header>
 
-      <section class="club-content">
-        <!-- Updated About Section structure to use lab-card style -->
-        <div class="lab-card about-section">
-          <div class="card-header">
-            <h2><i data-feather="flask-conical"></i> About Our Club</h2> <!-- Changed icon -->
-          </div>
-          <div class="card-content">
-             <div class="glassware" aria-hidden="true"> <!-- Moved glassware inside card-content -->
-               <div class="beaker"></div>
-               <div class="flask"></div>
-               <div class="test-tube"></div>
-             </div>
-            <p>
-              The Science Club is dedicated to exploring the wonders of scientific discovery
-              through hands-on experimentation, research, and innovation. We foster a spirit
-              of scientific inquiry and provide opportunities for students to engage with
-              cutting-edge STEM concepts.
-            </p>
-            <p>
-              As the fifth club to join UCA in October 2024, we've become a catalyst for
-              scientific exploration and innovation in our university community.
-            </p>
-            <div class="experiment-area">
-              <ul class="experiment-list">
-                <li><i data-feather="zap"></i> Advanced Equipment Access</li>
-                <li><i data-feather="search"></i> Research Mentorship</li>
-                <li><i data-feather="users"></i> Peer Collaboration</li>
-                <li><i data-feather="award"></i> Scientific Competitions</li>
-                <li><i data-feather="book"></i> STEM Workshops</li>
-              </ul>
-            </div>
-          </div>
+      <div class="lab-card about-section">
+        <div class="card-header">
+          <i data-feather="flask-conical"></i>
+          <h2>About Our Club</h2>
         </div>
-
-        <!-- Merged Connect Section using lab-card style -->
-        <div class="lab-card connect-section">
-          <div class="card-header"> <!-- Added card-header -->
-            <h2><i data-feather="link"></i> Join the Experiment</h2> <!-- Updated title -->
-          </div>
-          <div class="card-content"> <!-- Added card-content -->
-            <p>
-              Be part of a community that's passionate about scientific discovery and innovation.
-            </p>
-            <p>
-              Curious about the universe? All clubs are part of the United Club Association (UCA).
-              Visit the main UCA page to learn how to become a member and get involved!
-            </p>
-            <div class="molecule-animation">
-              <div class="atom"></div>
-              <div class="atom"></div>
-              <div class="atom"></div>
-            </div>
-            <!-- Optional: Add a link if needed, styled appropriately -->
-            <!-- <p><a href="/contact/join-us.html" class="cta-button">Learn More & Join UCA</a></p> -->
-          </div>
+        <div class="card-content">
+          <p>
+            The Science Club is dedicated to exploring the wonders of scientific
+            discovery through hands-on experimentation, research, and
+            innovation. We foster a spirit of scientific inquiry and provide
+            opportunities for students to engage with cutting-edge STEM
+            concepts.
+          </p>
+          <p>
+            As the fifth club to join UCA in October 2024, we've become a
+            catalyst for scientific exploration and innovation in our university
+            community.
+          </p>
+          <ul class="experiment-list">
+            <li>
+              <i data-feather="zap"></i>
+              <span>Advanced Equipment Access</span>
+            </li>
+            <li>
+              <i data-feather="search"></i>
+              <span>Research Mentorship</span>
+            </li>
+            <li>
+              <i data-feather="users"></i>
+              <span>Peer Collaboration</span>
+            </li>
+            <li>
+              <i data-feather="award"></i>
+              <span>Scientific Competitions</span>
+            </li>
+            <li>
+              <i data-feather="book-open"></i>
+              <span>STEM Workshops</span>
+            </li>
+          </ul>
         </div>
-        <!-- Removed the second connect-section -->
+      </div>
 
-      </section>
+      <div class="lab-card connect-section">
+        <div class="card-header">
+          <i data-feather="atom"></i>
+          <h2>Join the Experiment</h2>
+        </div>
+        <div class="card-content">
+          <p>
+            Be part of a community that's passionate about scientific discovery
+            and innovation. Curious about the universe? All clubs are part of
+            the United Club Association (UCA).
+          </p>
+          <p>
+            Visit the main UCA page to learn how to become a member and get
+            involved!
+          </p>
+          <a href="/contact/join-us.html" class="join-link"
+            >Learn More & Join UCA</a
+          >
+        </div>
+      </div>
     </main>
   </body>
 </html>

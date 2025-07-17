@@ -1,65 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Club - United Club Association</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
 
-    <!-- External Scripts and Stylesheets -->
-    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/include-fonts.js" defer></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
     <link rel="stylesheet" href="/clubs-css/quiz-club.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/js/include-fonts.js" defer></script>
-    <script src="/js/include-navbar.js" defer></script>
-    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/include-club-navbar.js" defer></script>
+    <script src="/js/include-club-footer.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <!-- Initialize Icons -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        feather.replace();
-      });
-    </script>
   </head>
-  <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
-
+  <body class="quiz-theme">
     <main class="club-page" id="main-content">
       <header class="club-header" role="banner">
-        <div class="quiz-container">
-          <div class="question-mark">?</div>
-          <img
-            src="/images/quiz-club.jpg"
-            alt="Quiz Club Logo"
-            class="club-logo"
-          />
-        </div>
+        <img
+          src="/images/quiz-club.jpg"
+          alt="Quiz Club Logo"
+          class="club-logo"
+        />
         <h1 class="club-title">Quiz Club</h1>
         <p class="club-description">
           <span class="typewriter">Did you know?</span><br />
-          Knowledge is power, and competition makes it fun
+          Knowledge is power, and competition makes it fun.
         </p>
       </header>
 
@@ -83,30 +59,28 @@
           </div>
         </div>
 
-        <!-- Merged Connect/Join section styled as a question-card -->
         <div class="question-card">
            <div class="card-header">
-             <!-- Updated header text and icon -->
              <h2><i data-feather="link"></i> Join the Challenge</h2>
-             <!-- Updated points text -->
              <span class="points">Get Involved!</span>
            </div>
            <div class="card-content">
              <p>
-               Join us in our pursuit of knowledge and excellence through competitive quizzing!
+               Ready to test your knowledge? All clubs are part of the United Club Association (UCA).
+               Visit the main UCA page to learn how to become a member and join the challenge!
              </p>
-             <p>
-               Think you have what it takes? All clubs are part of the United Club Association (UCA).
-               Visit the main UCA page to learn how to become a member and get involved!
-             </p>
-             <!-- Optional: Add a link if needed, styled appropriately -->
-             <!-- <p><a href="/contact/join-us.html" class="cta-button">Learn More & Join UCA</a></p> -->
            </div>
         </div>
-        <!-- The second connect-section below is now removed -->
       </section>
     </main>
 
-    <!-- Footer will be inserted here by include-footer.js -->
+    <script>
+      // Ensures Feather Icons are rendered correctly
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof feather !== "undefined") {
+          feather.replace();
+        }
+      });
+    </script>
   </body>
 </html>

@@ -1,463 +1,193 @@
+/*
+================================================
+|                                              |
+|        LANGUAGE CLUB PAGE - REDESIGN V3      |
+|      Theme: Literary, Wise, Historical       |
+|   Inspiration: Old Libraries, Parchment      |
+|                                              |
+================================================
+*/
+
+/* 1. THEME & ROOT VARIABLES
+------------------------------------------------ */
 :root {
-  --club-primary: #2c3e50; /* Deep blue */
-  --club-secondary: #e67e22; /* Warm orange */
-  --club-accent: #3498db; /* Bright blue */
-  --club-highlight: #9b59b6; /* Purple */
-  --club-neutral: #f8f9fa; /* Off-white */
-  --text-light: #ffffff;
-  --text-dark: #2c3e50;
-  --language-shadow: 0 10px 30px rgba(44, 62, 80, 0.15);
-  --navbar-height: 80px;
-  --footer-height: 400px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Fonts */
+  --font-title: 'Cinzel Decorative', serif;
+  --font-body: 'EB Garamond', serif;
+
+  /* Colors */
+  --color-bg: linear-gradient(180deg, #FAF9F6, #e9e8e5); /* Off-white Parchment */
+  --color-text-primary: #333333; /* Dark Charcoal */
+  --color-text-secondary: #555555;
+  --color-border: rgba(51, 51, 51, 0.15);
+  --color-accent: #0077BE; /* A distinguished blue */
+  --color-card-bg: #ffffff;
+
+  /* Effects */
+  --transition-smooth: 350ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.05);
+  --card-hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.07), 0 20px 30px rgba(0, 0, 0, 0.07);
 }
 
-body {
-  font-family: "Source Sans Pro", sans-serif;
-  background-color: var(--club-neutral);
-  color: var(--text-dark);
-  margin: 0;
-  padding: 0;
+/* 2. GENERAL PAGE SETUP
+------------------------------------------------ */
+body.language-theme {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  padding-top: 80px; /* Space for fixed navbar */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Club Page Container */
 .club-page {
-  max-width: 1500px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
-  background-color: var(--club-neutral);
-  color: var(--text-dark);
-  font-family: "Source Sans Pro", sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
+  padding: 2rem 2rem 4rem;
 }
 
-/* Subtle Background Pattern */
-.club-page::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(52, 152, 219, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(230, 126, 34, 0.05) 0%, transparent 25%);
-  z-index: -1;
-}
-
-/* Modern Header Section with Logo */
+/* 3. HEADER SECTION
+------------------------------------------------ */
 .club-header {
   text-align: center;
-  padding: 5rem 2rem;
-  background: linear-gradient(135deg, var(--club-primary), var(--club-accent));
-  color: var(--text-light);
-  border-radius: 20px;
-  margin-bottom: 3.5rem;
-  box-shadow: var(--language-shadow);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.club-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/images/language-pattern.png');
-  background-size: 200px 200px;
-  opacity: 0.1;
-  animation: moveBackground 30s linear infinite;
-}
-
-@keyframes moveBackground {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 200px 200px;
-  }
-}
-
-.club-logo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--club-secondary);
-  margin-bottom: 1.5rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  animation: logoReveal 1s ease-out forwards;
-  position: relative;
-  z-index: 2;
-}
-
-@keyframes logoReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  padding: 6rem 2rem;
+  margin-bottom: 4rem;
 }
 
 .club-title {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  font-family: "Playfair Display", serif;
-  color: var(--text-light);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  position: relative;
-  display: inline-block;
-  animation: fadeInDown 1s ease-out forwards;
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem 0;
+  letter-spacing: 2px;
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.club-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-style: italic;
 }
 
-.club-title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: var(--club-secondary);
-  border-radius: 2px;
-}
-
-.club-description {
-  font-size: 1.5rem;
-  max-width: 700px;
-  margin: 2rem auto 0;
-  line-height: 1.7;
-  animation: fadeIn 1.2s ease-out 0.3s forwards;
-  opacity: 0;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.club-description strong {
-  color: var(--club-secondary);
-  font-size: 1.7rem;
-  display: block;
-  margin-bottom: 1rem;
-  letter-spacing: 3px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Content Layout with Cards */
-.club-content {
+/* 4. CONTENT GRID & CARDS
+------------------------------------------------ */
+.content-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3.5rem;
-  margin-bottom: 2.5rem;
+  gap: 2.5rem;
 }
 
 @media (min-width: 992px) {
-  .club-content {
-    grid-template-columns: 3fr 2fr;
+  .content-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: flex-start;
   }
 }
 
-/* Modern Card Layouts - Updated to match science club style */
-.language-card,
-.connect-section {
-  background: var(--text-light); /* Changed background */
-  border: 1px solid var(--club-accent); /* Added border */
-  border-radius: 8px; /* Adjusted border-radius */
-  overflow: hidden; /* Added overflow */
-  margin-bottom: 2rem; /* Added margin-bottom */
-  position: relative;
-  box-shadow: var(--language-shadow); /* Kept original shadow for now */
-  transition: var(--transition);
-  padding: 0; /* Remove base padding, handled by card-content */
+.section-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  overflow: hidden;
 }
 
-/* Remove top border pseudo-element */
-.language-card::before,
-.connect-section::before {
- content: none;
+.section-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-hover-shadow);
 }
 
-
-.language-card:hover,
-.connect-section:hover {
-  transform: translateY(-5px); /* Adjusted hover transform */
-  box-shadow: 0 20px 40px rgba(44, 62, 80, 0.15); /* Kept original hover shadow */
-}
-
-/* Updated Card Header */
 .card-header {
-  background: var(--club-primary); /* Added background */
-  padding: 1.5rem 2rem; /* Adjusted padding */
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   gap: 1rem;
-  border-bottom: 2px solid var(--club-secondary); /* Changed border color */
-  margin-bottom: 0; /* Remove margin, handled by card-content padding */
 }
 
 .card-header h2 {
-  color: var(--club-secondary); /* Changed text color */
-  font-size: 1.8rem; /* Adjusted font size */
+  font-family: var(--font-title);
+  font-size: 1.8rem;
   margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem; /* Adjusted gap */
-  font-family: "Playfair Display", serif; /* Kept original font */
-  position: relative;
-  padding-bottom: 0; /* Remove padding */
+  color: var(--color-text-primary);
 }
 
-/* Remove header underline pseudo-element */
-.card-header h2::after {
-  content: none;
+.card-header i {
+  color: var(--color-accent);
+  stroke-width: 1.5;
 }
 
-.card-header h2 i {
-  color: var(--club-secondary); /* Ensure icon color matches */
-  stroke-width: 2;
-}
-
-/* Updated Card Content */
 .card-content {
-  padding: 2rem; /* Added padding */
-  font-size: 1.1rem; /* Adjusted font size */
-  line-height: 1.7; /* Adjusted line height */
-  background: var(--text-light); /* Ensure background matches card base */
+  padding: 2rem;
 }
 
 .card-content p {
-  margin-bottom: 1.5rem; /* Adjusted margin */
-  color: var(--text-dark); /* Ensure text color is appropriate */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+.card-content p:last-child {
+  margin-bottom: 0;
 }
 
-/* Enhanced Language List */
-.language-list {
+/* 5. FEATURES & LANGUAGE LISTS
+------------------------------------------------ */
+.features-list {
   list-style: none;
   padding: 0;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.8rem;
-  margin: 2.5rem 0;
+  gap: 1.5rem;
 }
 
-.language-list li {
+.features-list li {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  padding: 1.3rem 1.8rem;
-  background: rgba(52, 152, 219, 0.05);
-  border-radius: 12px;
-  transition: var(--transition);
-  border-left: 4px solid var(--club-accent);
-  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.05);
+  gap: 1rem;
+  font-size: 1.1rem;
 }
 
-.language-list li:hover {
-  background: rgba(52, 152, 219, 0.08);
-  transform: translateX(8px);
-  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.08);
+.features-list i {
+  color: var(--color-accent);
+  flex-shrink: 0;
 }
 
-.language-list li i {
-  color: var(--club-secondary);
-  stroke-width: 2.5;
-  min-width: 24px;
+/* 6. JOIN BUTTON
+------------------------------------------------ */
+.button-primary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border-radius: 6px;
+  background-color: var(--color-accent);
+  color: #fff;
+  border: 2px solid var(--color-accent);
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+  margin-top: 1rem;
 }
 
-/* Language Bubbles Animation */
-.language-bubbles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
+.button-primary:hover {
+  background-color: transparent;
+  color: var(--color-accent);
 }
 
-.bubble {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  animation: float 8s infinite ease-in-out;
-}
-
-.bubble:nth-child(1) {
-  width: 80px;
-  height: 80px;
-  left: 10%;
-  top: 40%;
-  animation-delay: 0s;
-}
-
-.bubble:nth-child(2) {
-  width: 60px;
-  height: 60px;
-  left: 20%;
-  top: 20%;
-  animation-delay: 1s;
-}
-
-.bubble:nth-child(3) {
-  width: 40px;
-  height: 40px;
-  left: 80%;
-  top: 30%;
-  animation-delay: 2s;
-}
-
-.bubble:nth-child(4) {
-  width: 100px;
-  height: 100px;
-  left: 70%;
-  top: 70%;
-  animation-delay: 3s;
-}
-
-.bubble:nth-child(5) {
-  width: 50px;
-  height: 50px;
-  left: 30%;
-  top: 60%;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.1);
-    opacity: 0.8;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
+/* 7. RESPONSIVE ADJUSTMENTS
+------------------------------------------------ */
+@media (max-width: 767px) {
   .club-page {
-    padding: 1rem;
-    padding-top: calc(var(--navbar-height) + 1rem);
+    padding: 1rem 1rem 2rem;
   }
-
   .club-header {
-    padding: 4rem 1.5rem;
-  }
-
-  .club-logo {
-    width: 100px;
-    height: 100px;
-  }
-
-  .club-title {
-    font-size: 3.2rem;
-  }
-  
-  .club-description {
-    font-size: 1.3rem;
-  }
-  
-  .club-description strong {
-    font-size: 1.5rem;
-  }
-
-  .language-list {
-    grid-template-columns: 1fr;
-  }
-
-  .language-card,
-  .connect-section {
-    padding: 2.5rem 1.8rem;
-  }
-  
-  .card-header h2 {
-    font-size: 2rem;
-  }
-}
-
-/* Reduced Motion Preferences */
-@media (prefers-reduced-motion: reduce) {
-  .club-header::before,
-  .club-title,
-  .club-description,
-  .club-logo,
-  .bubble {
-    animation: none;
-  }
-  
-  .club-description {
-    opacity: 1;
-  }
-  
-  .language-card:hover,
-  .connect-section:hover,
-  .language-list li:hover {
-    transform: none;
-  }
-}
-
-/* Print Styles */
-@media print {
-  .club-page {
-    background: white;
-    min-height: initial;
-  }
-
-  .club-header {
-    background: #f0f0f0;
-    color: black;
-    box-shadow: none;
-  }
-
-  .club-title {
-    color: var(--club-primary);
-    text-shadow: none;
-  }
-  
-  .club-description strong {
-    color: var(--club-primary);
-  }
-
-  .language-card,
-  .connect-section {
-    box-shadow: none;
-    border: 1px solid #ddd;
-  }
-  
-  .language-bubbles {
-    display: none;
+    padding: 4rem 1rem;
   }
 }

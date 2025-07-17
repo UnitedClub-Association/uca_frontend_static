@@ -1,115 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photography Club - United Club Association</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
 
-    <!-- External Scripts and Stylesheets -->
-    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/include-fonts.js" defer></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
     <link rel="stylesheet" href="/clubs-css/photography-club.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/js/include-fonts.js" defer></script>
-    <script src="/js/include-navbar.js" defer></script>
-    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/include-club-navbar.js" defer></script>
+    <script src="/js/include-club-footer.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <!-- Initialize Icons -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        feather.replace();
-      });
-    </script>
   </head>
-  <body>
-    <!-- Navbar -->
-    <nav aria-label="Main Navigation">
-      <!-- Navbar content will be included here -->
-    </nav>
+  <body class="photo-theme">
+    <div id="navbar-placeholder"></div>
 
     <main class="club-page" id="main-content">
-      <header class="club-header" role="banner">
-        <div class="lens-container">
-          <div class="lens-ring"></div>
-          <div class="lens-aperture"></div>
-          <img
-            src="/images/photography-club.jpg"
-            alt="Photography Club Logo"
-            class="club-logo"
-          />
-        </div>
-        <h1 class="club-title">Photography Club</h1>
-        <p class="club-description">
-          <strong>SNAP • SHARE • INSPIRE</strong><br />
-          Explore the art of visual storytelling through the lens
+      <header class="club-header">
+        <h1 class="club-title">U L P C</h1>
+        <h2 class="club-title">SNAP SHARE INSPIRE</h2>
+        <p class="club-tagline">
+          The art of observation and capturing light. A community for creators,
+          storytellers, and visionaries.
         </p>
       </header>
 
-      <section class="club-content">
-        <div class="about-section">
-          <h2><i data-feather="camera"></i> About Us</h2>
+      <div class="split-layout">
+        <div class="about-content">
+          <h2>About The Club</h2>
           <p>
-            The Photography Club is where passion meets perspective. We're a community 
-            of creative minds dedicated to exploring the art and science of photography. 
-            From beginners to advanced photographers, our club provides a space to learn, 
-            share, and grow together through visual storytelling.
+            The Photography Club is a community of creative minds dedicated to
+            exploring the art and science of photography. We are a space to
+            learn, share, and grow together through visual storytelling.
           </p>
           <p>
-            As the second club to join UCA in October 2024, we've been instrumental in 
-            documenting and showcasing the vibrant life of our university community.
+            From beginners learning composition to advanced members mastering
+            complex lighting, our goal is to elevate the craft for everyone
+            involved.
           </p>
-          <ul class="feature-list">
+          <ul class="features-list">
             <li>
-              <i data-feather="camera"></i> Photography skills development
+              <i data-feather="aperture"></i> Composition & Framing Workshops
+            </li>
+            <li><i data-feather="zap"></i> Mastering Light & Shadow</li>
+            <li>
+              <i data-feather="edit-3"></i> Post-Processing & Editing Techniques
             </li>
             <li>
-              <i data-feather="book-open"></i> Monthly workshops and technique tutorials
-            </li>
-            <li>
-              <i data-feather="share-2"></i> Equipment sharing and learning opportunities
-            </li>
-            <li>
-              <i data-feather="award"></i> Photo exhibitions and competitions
-            </li>
-            <li>
-              <i data-feather="users"></i> Collaborative projects with other clubs
+              <i data-feather="map-pin"></i> Curated Photo Walks & Exhibitions
             </li>
           </ul>
         </div>
 
-        <!-- Update the connect-section -->
-        <div class="connect-section">
-          <h2><i data-feather="link"></i> Join Us</h2>
-          <p>
-            Interested in capturing moments and perspectives? All clubs are part of the United Club Association (UCA).
-            Visit the main UCA page to learn how to become a member and get involved!
-          </p>
-          <!-- Optional: Add a link if needed, styled appropriately -->
-          <!-- <p><a href="/contact/join-us.html" class="cta-button">Learn More & Join UCA</a></p> -->
+        <div class="photo-gallery">
+          <div class="gallery-item">
+            <img
+              src="/images/ulpc-1.jpeg"
+              alt="Three People enjoying the warmness of fire during winter"
+            />
+          </div>
+          <div class="gallery-item">
+            <img src="/images/ulpc-2.jpeg" alt="At a Book Fair" />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="/images/ulpc-3.jpeg"
+              alt="A crowded Book fair stall"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="/images/ulpc-4.jpeg"
+              alt="The Raju Statue in Dhaka University"
+            />
+          </div>
         </div>
+      </div>
+
+      <section class="join-cta">
+        <h2>Find Your Focus</h2>
+        <p>
+          Join a community dedicated to seeing the world differently. All skill
+          levels welcome.
+        </p>
+        <a href="https://www.facebook.com/ulpc.fb" class="cta-button"
+          >Join ULPC</a
+        >
       </section>
     </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // Initialize Feather Icons
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof feather !== "undefined") {
+          feather.replace();
+        }
+      });
+    </script>
   </body>
 </html>

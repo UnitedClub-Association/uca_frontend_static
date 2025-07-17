@@ -1,310 +1,210 @@
+/*
+================================================
+|                                              |
+|            QUIZ CLUB PAGE - NEW DESIGN       |
+|      Theme: Modern, Dark, Glassmorphism      |
+|                                              |
+================================================
+*/
+
+/* 1. ROOT & THEME VARIABLES (Values updated for new theme)
+------------------------------------------------ */
 :root {
-  --club-primary: #2c3e50; /* Dark Blue */
-  --club-secondary: #f1c40f; /* Bright Yellow */
-  --club-accent: #9b59b6; /* Purple */
-  --club-gradient: linear-gradient(135deg, #3498db, #9b59b6);
-  --correct-green: #2ecc71;
-  --wrong-red: #e74c3c;
-  --text-light: #ffffff;
-  --text-dark: #2c3e50;
-  --quiz-shadow: 0 10px 30px rgba(44, 62, 80, 0.15);
-  --navbar-height: 80px;
-  --footer-height: 400px;
-  --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* The variable names are the same, but values are updated for the new design */
+  --club-bg: #1a1a1a;
+  --card-bg: rgba(40, 40, 40, 0.65);
+  --text-dark: #f0f0f0; /* Was dark, now light for body text */
+  --text-light: #a0a0a0; /* Was light, now a dimmer light for secondary text */
+  --title-color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.15);
+  --accent-gradient: linear-gradient(45deg, #FF4136, #FFDC00);
+  --font-primary: 'Lexend', sans-serif;
+  --transition-speed: 0.4s ease;
 }
 
-.club-page {
-  max-width: 1500px;
+/* 2. GENERAL PAGE SETUP
+------------------------------------------------ */
+body.quiz-theme {
+  background-color: var(--club-bg);
+  /* Adding a subtle background pattern for depth */
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
+  font-family: var(--font-primary);
+  color: var(--text-dark);
+  line-height: 1.7;
+  max-width: 2000px;
   margin: 0 auto;
   padding: 2rem;
-  padding-top: calc(var(--navbar-height) + 2rem); /* Add padding for navbar */
-  background-color: #f9f9f9;
-  background-image: 
-    radial-gradient(#e0e0e0 1px, transparent 1px),
-    radial-gradient(#e0e0e0 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-  color: var(--text-dark);
-  font-family: "Space Grotesk", sans-serif;
+  padding-top: 80px; /* Add padding for navbar */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-/* Quiz-themed Header */
+/* 3. HEADER SECTION
+------------------------------------------------ */
 .club-header {
   text-align: center;
-  padding: 5rem 2rem;
-  background: var(--club-gradient);
-  position: relative;
-  margin-bottom: 4rem;
-  color: var(--text-light);
-  border-radius: 16px;
-  box-shadow: var(--quiz-shadow);
-  overflow: hidden;
-}
-
-.club-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/images/quiz-pattern.png');
-  background-size: 200px 200px;
-  opacity: 0.1;
-}
-
-.quiz-container {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 2rem;
-  transform: rotate(-5deg);
-  transition: var(--transition-standard);
-}
-
-.quiz-container:hover {
-  transform: rotate(5deg) scale(1.05);
-}
-
-.question-mark {
-  position: absolute;
-  font-size: 140px;
-  font-weight: bold;
-  color: var(--club-secondary);
-  opacity: 0.4;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: float 3s ease-in-out infinite;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding: 3rem 0;
+  margin-bottom: 3rem;
 }
 
 .club-logo {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
-  border-radius: 16px;
-  border: 4px solid var(--club-secondary);
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  background: var(--club-bg);
+  padding: 6px;
   position: relative;
-  z-index: 1;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  transition: var(--transition-standard);
+  /* Glowing border effect */
+  box-shadow: 0 0 15px rgba(255, 65, 54, 0.3), 0 0 30px rgba(255, 220, 0, 0.2);
 }
 
 .club-title {
-  color: var(--text-light);
-  font-size: 4.5rem;
-  margin-bottom: 1.5rem;
-  font-family: "Roboto Slab", serif;
+  font-family: var(--font-primary);
   font-weight: 700;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  position: relative;
-  display: inline-block;
-}
-
-.club-title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: var(--club-secondary);
-  border-radius: 2px;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  color: var(--title-color);
+  margin: 0 0 1rem 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .club-description {
-  font-size: 1.5rem;
-  max-width: 700px;
-  margin: 2rem auto 0;
-  line-height: 1.6;
-}
-
-.typewriter {
-  display: inline-block;
-  overflow: hidden;
-  border-right: 3px solid var(--club-secondary);
-  white-space: nowrap;
-  margin-bottom: 0.5rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--club-secondary);
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-/* Question Card Style */
-.question-card {
-  background: var(--text-light);
-  border-radius: 16px;
-  box-shadow: var(--quiz-shadow);
-  overflow: hidden;
-  margin-bottom: 3rem;
-  transform: translateY(0);
-  transition: var(--transition-standard);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.question-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(44, 62, 80, 0.2);
-}
-
-.card-header {
-  background: var(--club-gradient);
+  font-size: 1.2rem;
   color: var(--text-light);
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.card-header h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.card-header svg {
-  stroke-width: 2.5;
-}
-
-.points {
-  background: var(--club-secondary);
-  color: var(--text-dark);
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.points::before {
-  content: "🏆";
-  font-size: 1.2rem;
-}
-
-.card-content {
-  padding: 2.5rem;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-/* Remove or comment out the old .connect-section styles */
-/*
-.connect-section {
-  background: var(--text-light);
-  border-radius: 16px;
-  padding: 2.5rem;
-  box-shadow: var(--quiz-shadow);
-  position: relative;
-  overflow: hidden;
-  border-top: 5px solid var(--club-accent);
-}
-
-.connect-section h2 {
-  color: var(--text-dark);
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.connect-section h2 svg {
-  color: var(--club-accent);
-}
-*/
-
-/* Adjust .points style slightly to accommodate text better */
-.points {
-  background: var(--club-secondary);
-  color: var(--text-dark);
-  padding: 0.5rem 1.2rem; /* Slightly more horizontal padding */
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  white-space: nowrap; /* Prevent text wrapping */
-}
-
-
-/* Keep the ::before style if you want the trophy icon for all points spans */
-.points::before {
-  content: "🏆";
-  font-size: 1.2rem;
-}
-
-
-/* Animations */
-@keyframes float {
-  0% {
-    transform: translate(-50%, -50%);
-  }
-  50% {
-    transform: translate(-50%, -60%);
-  }
-  100% {
-    transform: translate(-50%, -50%);
-  }
+/* Typewriter effect updated for dark theme */
+.typewriter {
+  font-weight: 700;
+  color: var(--title-color);
+  border-right: 3px solid var(--title-color);
+  animation: typing 2s steps(12, end), blink-caret .75s step-end infinite;
 }
 
 @keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0 }
+  to { width: 100% }
 }
 
 @keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: var(--club-secondary);
-  }
+  from, to { border-color: transparent }
+  50% { border-color: var(--title-color); }
 }
 
-/* Responsive Design */
+
+/* 4. CONTENT & QUESTION CARDS (New Glassmorphism Design)
+------------------------------------------------ */
+.club-content {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.question-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  position: relative;
+  /* The "glass" effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Using the gradient as a border image */
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+}
+
+.question-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.question-card:hover::before {
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-header .feather {
+  width: 28px;
+  height: 28px;
+  stroke: var(--title-color);
+  stroke-width: 2;
+}
+
+.points {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 1px solid var(--border-color);
+}
+
+.card-content {
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.card-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* 5. RESPONSIVE DESIGN
+------------------------------------------------ */
 @media (max-width: 768px) {
   .club-page {
     padding: 1rem;
-    padding-top: calc(var(--navbar-height) + 1rem);
   }
-
   .club-header {
-    padding: 3rem 1rem;
-    border-radius: 12px;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
   }
-
-  .club-title {
-    font-size: 3rem;
-  }
-  
-  .typewriter {
-    font-size: 1.5rem;
-  }
-
   .card-header {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
-  
-  .card-content {
-    padding: 1.5rem;
+  .question-card:hover {
+    transform: translateY(-5px); /* Less dramatic on mobile */
   }
 }

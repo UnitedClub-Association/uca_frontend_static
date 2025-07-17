@@ -1,121 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Debate Club - United Club Association</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
 
-    <script src="/js/include-fonts.js"></script>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/include-fonts.js" defer></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
     <link rel="stylesheet" href="/clubs-css/debate-club.css" />
+    <script src="/js/include-club-navbar.js"></script>
+    <script src="/js/include-club-footer.js"></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
   </head>
   <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
-    <script src="/js/include-navbar.js"></script>
+    <div id="navbar-placeholder"></div>
 
     <main class="club-page" id="main-content">
       <header class="club-header">
-        <div class="debate-bubbles" aria-hidden="true">
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-        </div>
-        <!-- Update the src attribute to point to the correct image path -->
-        <img
-          src="/images/debate-club.jpg"
-          alt="Debate Club Logo"
-          class="club-logo"
-        />
-        <h1 class="club-title">Debate Club</h1>
+        <img src="/images/debate-club.jpeg" alt="Debate Club Logo" class="club-logo"/>
+        <h1 class="club-title">🗣️ Debate Club</h1>
+        <p class="club-tagline">Intellectual • Formal • Unconventional</p>
         <p class="club-description">
-          <strong>THINK • SPEAK • PERSUADE</strong>
-          Developing critical thinking and public speaking skills through
-          structured debate and thoughtful discourse
+          We contend that critical thinking and persuasive argumentation are the cornerstones of progress.
         </p>
       </header>
 
-      <section class="club-content">
-        <!-- Corrected class to 'section-card' and removed podium-pattern div -->
+      <section class="club-content-grid">
         <article class="section-card about-section">
-          <!-- <div class="podium-pattern"></div> -->
-          <h2><i data-feather="message-square"></i> About Our Club</h2>
-          <div class="content-wrapper">
-            <p>
-              The UCA Debate Club fosters critical thinking, public speaking, and
-              persuasive argumentation skills. We empower students to engage in
-              meaningful discourse on contemporary issues, develop logical reasoning,
-              and become confident communicators.
-            </p>
-            <p>
-              As the first club to join UCA in October 2024, we've set the foundation
-              for excellence in student leadership and intellectual discourse.
-            </p>
-            <ul class="debate-features">
-              <li><i data-feather="award"></i> Competitive Debating</li>
-              <li><i data-feather="users"></i> Public Speaking</li>
-              <li><i data-feather="book"></i> Critical Analysis</li>
-              <li><i data-feather="target"></i> Leadership Development</li>
-            </ul>
-          </div>
+          <h2><i data-feather="book-open"></i> Our Thesis</h2>
+          <p>
+            The UCA Debate Club fosters a dynamic environment for developing public speaking, critical analysis, and persuasive reasoning. We empower students to confidently engage with complex ideas and construct compelling arguments.
+          </p>
+          <ul class="features-list">
+            <li><i data-feather="award"></i> Competitive Debating & Tournaments</li>
+            <li><i data-feather="mic"></i> Public Speaking Workshops</li>
+            <li><i data-feather="git-pull-request"></i> Logical Reasoning Exercises</li>
+            <li><i data-feather="users"></i> Leadership & Teamwork Development</li>
+          </ul>
         </article>
 
-        <!-- Ensured class is 'connect-section' and removed speech-pattern div -->
-        <article class="connect-section">
-          <!-- <div class="speech-pattern"></div> -->
-          <h2><i data-feather="link"></i> Join The Conversation</h2>
-          <div class="content-wrapper">
-            <p>
-              Interested in developing your voice and challenging your thinking? Join our
-              vibrant community of debaters and critical thinkers. New members are always
-              welcome!
-            </p>
-            <!-- Keep the animation container, we'll style it -->
-            <div class="debate-animation">
-              <div class="speech-bubble">Join Us!</div>
-              <div class="speech-bubble">Speak Up!</div>
-              <div class="speech-bubble">Debate!</div>
-            </div>
-          </div>
+        <article class="section-card connect-section">
+          <h2><i data-feather="user-plus"></i> Join The Discourse</h2>
+          <p>
+            New perspectives are always welcome. Whether you are a seasoned orator or just beginning to find your voice, we invite you to join our community. Meetings are held weekly.
+          </p>
+          <a href="/contact/join-us.html" class="button-primary">
+            <span>Become a Member</span>
+            <i data-feather="arrow-right"></i>
+          </a>
         </article>
       </section>
     </main>
 
-    <!-- Footer will be inserted here by include-footer.js -->
-    <script src="/js/include-footer.js"></script>
+    <div id="footer-placeholder"></div>
 
-    <!-- Initialize Icons -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         if (typeof feather !== "undefined") {
-          feather.replace({
-            "aria-hidden": "true",
-            "stroke-width": 2.5,
-            color: "#5e35b1",
-          });
-        } else {
-          console.error("Feather Icons library failed to load.");
+          feather.replace();
         }
       });
     </script>

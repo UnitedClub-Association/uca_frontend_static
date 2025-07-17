@@ -1,116 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Language Club - United Club Association</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
 
-    <!-- External Scripts and Stylesheets -->
-    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/include-fonts.js" defer></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
     <link rel="stylesheet" href="/clubs-css/language-club.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/js/include-fonts.js" defer></script>
-    <script src="/js/include-navbar.js" defer></script>
-    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/include-club-navbar.js" defer></script>
+    <script src="/js/include-club-footer.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        feather.replace();
-      });
-    </script>
   </head>
-  <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
+  <body class="language-theme">
+    <div id="navbar-placeholder"></div>
 
     <main class="club-page" id="main-content">
-      <header class="club-header" role="banner">
-        <div class="language-bubbles" aria-hidden="true">
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-        </div>
-        <img
-          src="/images/language-club.jpg"
-          alt="Language Club Logo"
-          class="club-logo"
-        />
+      <header class="club-header">
         <h1 class="club-title">Language Club</h1>
-        <p class="club-description">
-          <strong>SPEAK • CONNECT • EXPLORE</strong>
-          Breaking barriers through the power of communication
+        <p class="club-tagline">
+          In every language, a new world of stories awaits.
         </p>
       </header>
 
-      <section class="club-content">
-        <div class="language-card"> <!-- Changed class from about-section -->
-          <div class="card-header"> <!-- Added card-header -->
-            <h2><i data-feather="globe"></i> About Our Club</h2>
+      <div class="content-grid">
+        <article class="section-card about-section">
+          <div class="card-header">
+            <i data-feather="book-open"></i>
+            <h2>Our Philosophy</h2>
           </div>
-          <div class="card-content"> <!-- Added card-content -->
+          <div class="card-content">
             <p>
-              The Language Club is dedicated to promoting linguistic diversity and cultural
-              understanding through language learning. We focus on developing communication
-              skills in various languages while exploring the cultures associated with them.
+              The Language Club is dedicated to promoting linguistic diversity
+              and cultural understanding through the power of words. We focus on
+              developing communication skills in various languages while
+              exploring the rich history and cultures associated with them.
             </p>
             <p>
-              Founded in February 2024, we are the ninth club to join UCA. While we operated
-              independently for the first six months, we continue to foster language learning
-              and cross-cultural communication in our university community.
+              Founded in February 2024, we foster a community where members can
+              confidently explore new languages, share their heritage, and forge
+              connections that transcend borders.
             </p>
-            <ul class="language-list">
-              <li><i data-feather="message-circle"></i> Conversation Practice</li>
-              <li><i data-feather="book"></i> Language Exchange</li>
-              <li><i data-feather="film"></i> Cultural Movie Screenings</li>
-              <li><i data-feather="users"></i> International Language Days</li>
+            <ul class="features-list">
+              <li>
+                <i data-feather="message-circle"></i> Immersive Conversation
+                Practice
+              </li>
+              <li><i data-feather="book"></i> Collaborative Language Exchange</li>
+              <li>
+                <i data-feather="film"></i> Cultural & Film Discussions
+              </li>
+              <li>
+                <i data-feather="globe"></i> International Heritage Events
+              </li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="connect-section"> <!-- Merged the two connect sections -->
-          <div class="card-header"> <!-- Added card-header -->
-            <h2><i data-feather="link"></i> Join Our Global Community</h2>
+        <aside class="section-card connect-section">
+          <div class="card-header">
+            <i data-feather="user-plus"></i>
+            <h2>Join Our Story</h2>
           </div>
-          <div class="card-content"> <!-- Added card-content -->
+          <div class="card-content">
             <p>
-              Expand your horizons and connect with people across languages and cultures.
+              Expand your horizons and connect with a global community of
+              learners. New voices and perspectives are always welcome.
             </p>
             <p>
-              Want to connect through language? All clubs are part of the United Club Association (UCA).
-              Visit the main UCA page to learn how to become a member and get involved!
+              Visit the main UCA page to learn how to become a member and get
+              involved!
             </p>
-            <!-- Optional: Add a link if needed, styled appropriately -->
-            <!-- <p><a href="/contact/join-us.html" class="cta-button">Learn More & Join UCA</a></p> -->
+            <a href="/contact/join-us.html" class="button-primary"
+              >Become a Member</a
+            >
           </div>
-        </div>
-        <!-- Removed the second connect-section div -->
-      </section>
+        </aside>
+      </div>
     </main>
 
-    <!-- Footer will be inserted here by include-footer.js -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // Initialize Feather Icons
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof feather !== "undefined") {
+          feather.replace();
+        }
+      });
+    </script>
   </body>
 </html>
