@@ -1,0 +1,3779 @@
+index.css v1
+/* Root Variables */
+:root, [data-theme="dark"] {
+  /* Enhanced Dark Theme Colors */
+  --primary-color: #3B4A54; /* Slightly lighter for contrast */
+  --secondary-color: #11212D;
+  --background-dark: #06141B;
+  --background-light: #9BA8AB;
+  --text-light: #DDE1E3; /* Higher contrast */
+  --text-dark: #06141B;
+  --text-medium: #A8B3B7; /* Improved readability */
+
+  /* Enhanced Gradients */
+  --hero-gradient: linear-gradient(
+    45deg,
+    rgba(6, 20, 27, 0.8),
+    rgba(59, 74, 84, 0.7)
+  );
+  --about-gradient: linear-gradient(135deg, #06141B, #11212D);
+  --clubs-gradient: linear-gradient(135deg, #11212D, #253745);
+  --events-gradient: linear-gradient(135deg, #253745, #3B4A54);
+
+  /* Transitions */
+  --transition: all 0.3s ease;
+
+  /* Shadows */
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+  /* Animation Variables */
+  --bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --smooth-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  /* Light Theme Colors */
+  --primary-color: #4f46e5;
+  --secondary-color: #6b7280;
+  --background-dark: #e2e8f0;
+  --background-light: #f8fafc;
+  --text-light: #1f2937;
+  --text-dark: #111827;
+  --text-medium: #4b5563;
+
+  /* Light Theme Gradients */
+  --hero-gradient: linear-gradient(
+    45deg,
+    rgba(79, 70, 229, 0.8),
+    rgba(107, 114, 128, 0.7)
+  );
+  --about-gradient: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  --clubs-gradient: linear-gradient(135deg, #e2e8f0, #d1d5db);
+  --events-gradient: linear-gradient(135deg, #d1d5db, #4f46e5);
+
+  /* Shadows */
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  color: var(--text-light);
+  line-height: 1.6;
+  background: var(--background-dark);
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('../images/banner-3.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  animation: gradientBG 15s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hero-gradient);
+  opacity: 0.7;
+  z-index: 1;
+  animation: pulseOverlay 4s var(--smooth-timing) infinite;
+}
+
+@keyframes pulseOverlay {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.5; }
+}
+
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.animated-bg .star {
+  position: absolute;
+  background: linear-gradient(45deg, var(--text-light), rgba(255, 255, 255, 0.8));
+  border-radius: 50%;
+  animation: twinkle 10s infinite linear;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+}
+
+.animated-bg .star:nth-child(1) { width: 2px; height: 2px; top: 20%; left: 15%; animation-duration: 8s; }
+.animated-bg .star:nth-child(2) { width: 3px; height: 3px; top: 50%; left: 40%; animation-duration: 12s; animation-delay: 1s; }
+.animated-bg .star:nth-child(3) { width: 1px; height: 1px; top: 75%; left: 70%; animation-duration: 6s; animation-delay: 2s; }
+.animated-bg .star:nth-child(4) { width: 2px; height: 2px; top: 10%; left: 85%; animation-duration: 10s; animation-delay: 0.5s; }
+.animated-bg .star:nth-child(5) { width: 3px; height: 3px; top: 90%; left: 25%; animation-duration: 14s; animation-delay: 1.5s; }
+.animated-bg .star:nth-child(6) { width: 1px; height: 1px; top: 40%; left: 55%; animation-duration: 7s; animation-delay: 2.5s; }
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.7; }
+  50% { transform: scale(1.2) translate(5px, -5px); opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+
+.explore-clubs-button {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  border: 3px solid var(--text-light);
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 18px 28px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: transparent;
+  color: var(--text-light);
+  will-change: transform, opacity;
+  transition: transform 0.3s var(--smooth-timing), opacity 0.3s ease;
+}
+
+
+.explore-clubs-button:hover {
+  background: transparent;
+  color: var(--text-light);
+}
+
+
+.explore-clubs-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--text-light);
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 1;
+}
+
+
+.explore-clubs-button:hover::before {
+  opacity: 0;
+}
+
+
+.explore-clubs-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 3px solid var(--primary-color);
+  opacity: 0;
+  transform: scaleX(1.1) scaleY(1.3);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+
+.explore-clubs-button:hover::after {
+  opacity: 1;
+  transform: scaleX(1) scaleY(1);
+}
+
+.explore-clubs-button:active {
+  transform: translateY(3px);
+}
+
+/* About Section */
+.about {
+  padding: 6rem 2rem;
+  background: #2b2b2b;
+  position: relative;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.about-text {
+  text-align: center;
+  max-width: 800px;
+}
+
+.about h2 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.about h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.about-description {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  margin-bottom: 2rem;
+  color: var(--text-medium);
+}
+
+.about-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+  min-width: 180px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.stat-item:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.stat-item:nth-child(3) {
+  animation-delay: -4s;
+}
+
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  color: linear-gradient( 135deg, var(--primary-color), var(--text-light) );
+  margin-bottom: 1rem;
+  stroke-width: 1.5;
+}
+
+.stat-number {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--text-light)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-label {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Clubs Section */
+.clubs {
+  padding: 4rem 2rem;
+  background: linear-gradient( 180deg, #2b2b2b, #262626 );
+  position: relative;
+}
+
+.clubs h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.club-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.club-card {
+  position: relative;
+  height: 350px;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s var(--smooth-timing);
+  will-change: transform;
+}
+
+.club-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--primary-color) 100%
+  );
+  z-index: 1;
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+}
+
+.club-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--smooth-timing);
+}
+
+.club-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 2;
+  transform: translateY(30px);
+  transition: transform 0.4s var(--smooth-timing);
+}
+
+.club-info h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.club-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--hover-shadow);
+}
+
+.club-card:hover img {
+  transform: scale(1.05);
+}
+
+.club-card:hover::before {
+  opacity: 0.9;
+}
+
+.club-card:hover .club-info {
+  transform: translateY(0);
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, rgba(155, 168, 171, 0.2) 0%, transparent 100%);
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.club-card:hover .wave {
+  transform: translateY(0);
+}
+
+@keyframes waveAnimation {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Events Section */
+.events {
+  padding: 5rem 2rem;
+  background: linear-gradient( 180deg,  #262626, #1f1f1f );;
+  position: relative;
+  overflow: hidden;
+}
+
+.events::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 25%);
+  animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.events h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s var(--smooth-timing);
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--hover-shadow);
+}
+
+.event-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.event-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0,0,0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.event-card:hover .event-image::after {
+  opacity: 1;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--smooth-timing);
+}
+
+.event-card:hover .event-image img {
+  transform: scale(1.05);
+}
+
+.event-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.event-date {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+background: linear-gradient(135deg, var(--primary-color), var(--background-light));
+padding: 0.9rem;
+border-radius: 12px;
+font-weight: 700;
+font-size: 1rem;
+color: var(--text-light);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+transition: transform 0.3s var(--smooth-timing), box-shadow 0.3s ease;
+}
+
+.event-date:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.event-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.event-card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text-medium);
+  flex-grow: 1;
+}
+
+.read-more {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--background-light);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  gap: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  .about-content,
+  .club-card,
+  .event-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .about,
+  .clubs,
+  .events {
+    padding: 3rem 1rem;
+  }
+  .about-grid,
+  .club-grid,
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+  .about h2,
+  .clubs h2,
+  .events h2 {
+    font-size: 2rem;
+  }
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+
+  .explore-clubs-button {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+    padding: 15px 24px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    padding-top: 88px;
+  }
+}
+
+index.css v2
+/* --- A Celestial Voyage: index.css V2 --- */
+
+/* 1. ROOT & THEME DEFINITION
+========================================================================== */
+:root{
+    /* Fonts */
+    --font-display-impact: 'Monument Extended', sans-serif;
+    --font-sans-clean: 'Satoshi', sans-serif;
+    --font-sans-quirky: 'Bricolage Grotesque', sans-serif;
+    --font-serif-elegant: 'Medio', serif;
+    --font-serif-display: 'Avigea', serif;
+
+    /* Starry Night Palette - Refined */
+    --color-bg-deep-space: #0A0B1A;
+    --color-bg-night-sky: #11132a; /* Lighter, atmospheric blue */
+    --color-bg-void: #02020C;
+    --color-primary-glow: #8B5CF6; /* Vibrant Violet */
+    --color-secondary-glow: #38BDF8; /* Bright Cyan */
+    --color-accent-star: #FDE047; /* Warm Yellow */
+    --color-text-primary: #E2E8F0;
+    --color-text-secondary: #94A3B8;
+    --color-border: rgba(148, 163, 184, 0.2);
+    --color-border-hover: rgba(139, 92, 246, 0.5);
+
+    /* Effects & Transitions */
+    --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px; /* Sharper look */
+}
+
+/* 2. GENERAL STYLES & RESETS
+========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-sans-clean);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-deep-space);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.section-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header h2 {
+    font-family: var(--font-serif-display);
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--color-text-primary), var(--color-text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: normal;
+}
+.section-header .section-subtitle {
+    font-family: var(--font-sans-quirky);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* 3. HERO SECTION
+========================================================================== */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.constellation-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-bg-void) 0%, var(--color-bg-deep-space) 100%);
+    z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; padding: 0 2rem; }
+.hero-content h1 {
+    font-family: var(--font-display-impact);
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    line-height: 1.1;
+}
+.hero-subtitle {
+    font-family: var(--font-sans-quirky);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--color-text-secondary);
+    opacity: 0.9;
+    margin-top: 1.5rem;
+}
+.hero-cta { margin-top: 2.5rem; }
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-text-secondary);
+    animation: bounce 2s infinite;
+    transition: color 0.3s ease;
+}
+.scroll-indicator:hover { color: var(--color-text-primary); }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -10px); }
+    60% { transform: translate(-50%, -5px); }
+}
+
+/* --- NEW DOUBLE OUTLINE BUTTON --- */
+.button-primary {
+    display: inline-block;
+    font-family: var(--font-sans-clean);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    padding: 1rem 2.5rem;
+    background: none;
+    border: none;
+}
+.button-primary::before,
+.button-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--color-primary-glow);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.button-primary::before {
+    transform: translate(6px, 6px);
+    border-color: var(--color-secondary-glow);
+}
+.button-primary::after { transform: translate(-6px, -6px); }
+.button-primary:hover::before {
+    transform: translate(0, 0);
+    border-color: var(--color-primary-glow);
+}
+.button-primary:hover::after { transform: translate(0, 0); }
+
+/* 4. ABOUT SECTION (Stat Card Redesign)
+========================================================================== */
+.about { padding: 8rem 0; background-color: var(--color-bg-deep-space); }
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+.stat-item {
+    background-color: var(--color-bg-night-sky);
+    border: 1px solid var(--color-border);
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    transition: border-color var(--transition-smooth), transform var(--transition-smooth);
+}
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-border-hover);
+}
+.stat-number { font-family: var(--font-display-impact); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--color-text-primary); }
+.stat-label { font-family: var(--font-sans-quirky); font-size: 1rem; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 1.5px; }
+
+/* 5. CLUBS & EVENTS (Card Redesign)
+========================================================================== */
+.clubs, .events { padding: 8rem 0; position: relative; }
+.clubs { background-color: var(--color-bg-void); }
+.events { background-color: var(--color-bg-deep-space); }
+
+.club-grid, .event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+/* -- CLUB CARD REDESIGN -- */
+.club-card {
+    height: 400px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    position: relative;
+    background-color: var(--color-bg-night-sky);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--transition-smooth);
+    text-decoration: none;
+}
+.club-card:hover { border-color: var(--color-border-hover); }
+.club-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--transition-smooth);
+}
+.club-card:hover img { transform: scale(1.05); }
+.club-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(10, 11, 26, .9) 0%, rgba(10, 11, 26, .7) 50%, transparent 100%);
+}
+.club-info h3 {
+    font-family: var(--font-serif-elegant);
+    font-size: 2rem;
+    color: #fff;
+}
+
+/* -- EVENT CARD REDESIGN -- */
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-night-sky);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: border-color var(--transition-smooth);
+}
+.event-card:hover { border-color: var(--color-border-hover); }
+.event-image {
+    height: 200px;
+    overflow: hidden;
+}
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--transition-smooth);
+}
+.event-card:hover .event-image img { transform: scale(1.05); }
+.event-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+.event-date {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    color: var(--color-secondary-glow);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-sans-clean);
+}
+.event-content h3 {
+    font-family: var(--font-serif-elegant);
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+    color: var(--color-text-primary);
+}
+.event-content p {
+    color: var(--color-text-secondary);
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-sans-clean);
+    line-height: 1.6;
+}
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--color-primary-glow);
+    font-weight: 600;
+    text-decoration: none;
+    transition: gap .3s ease;
+    align-self: flex-start;
+    font-family: var(--font-sans-clean);
+}
+.read-more:hover { gap: .75rem; text-decoration: underline; }
+
+/* 6. ANIMATION & RESPONSIVE
+========================================================================== */
+.animate-on-scroll { opacity: 0; transition: opacity .8s var(--transition-smooth),transform .8s var(--transition-smooth); }
+.animate-on-scroll[data-animation=fade-up] { transform: translateY(50px); }
+.animate-on-scroll[data-animation=zoom-in] { transform:scale(.9); }
+.animate-on-scroll.animated { opacity: 1; transform: translateY(0) scale(1); }
+
+@media (max-width:768px){
+    body { padding-top: 70px; }
+    .section-container { padding: 0 1rem; }
+    .about, .clubs, .events { padding: 4rem 0; }
+    .club-grid, .event-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+index.html v1
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-H2YV0FNQ9X");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="United Club Association - A vibrant community of university clubs and activities at University Laboratory School and College"
+    />
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="UCA, United Club Association, university clubs, student activities, Bangladesh">
+    <meta name="author" content="United Club Association">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:site_name" content="United Club Association">
+    <meta property="og:url" content="https://uca-bd.org">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Accessibility -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <!-- Theme color for supported browsers (Chrome, Edge, Safari) -->
+    <meta name="theme-color" content="#1C2526" />
+
+    <!-- Add Open Graph tags for better social sharing -->
+    <meta property="og:title" content="United Club Association" />
+    <meta
+      property="og:description"
+      content="A vibrant community of university clubs and activities at University Laboratory School and College"
+    />
+    <meta property="og:image" content="/images/UCA_Home_Page_Pic.jpg" />
+    <meta property="og:type" content="website" />
+    <title>
+      United Club Association | University Laboratory School and College
+    </title>
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="js/include-fonts.js" as="script" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="preload" href="css/index.css" as="style" />
+
+    <!-- Preconnect to Critical Origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Include centralized fonts -->
+    <script src="js/include-fonts.js" defer></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <link rel="apple-touch-icon" href="/images/uca_logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/uca_logo.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/uca_logo.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/images/uca_logo.png" />
+
+    <!-- PWA/Mobile Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Modern Icons -->
+    <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <!-- Progressive Enhancement - Load polyfills only if needed -->
+    <script>
+      if (!("IntersectionObserver" in window)) {
+        const script = document.createElement("script");
+        script.src =
+          "https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.0/intersection-observer.min.js";
+        document.head.appendChild(script);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <script src="js/include-navbar.js" defer></script>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-on-scroll">
+          <h1 id="hero-heading">United Club Association</h1>
+          <p class="hero-subtitle">Find Your Passion • Join Your Community • Create Your Legacy</p>
+          <div class="hero-cta">
+            
+            <a href="clubs/clubs.html" class="explore-clubs-button" aria-label="Explore all UCA clubs">
+              Explore Clubs
+              <i data-feather="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about" aria-labelledby="about-heading">
+        <div class="about-container">
+          <div class="about-content">
+            <div class="about-text animate-on-scroll">
+              <h2 id="about-heading">Discover UCA</h2>
+              <p class="about-description">
+                Join a vibrant community where passion meets purpose. At UCA, we bring together diverse interests, talents, and dreams to create an enriching student experience.
+              </p>
+              <div class="about-stats">
+                <div class="stat-item animate-on-scroll" data-delay="0.1s">
+                  <i data-feather="users" class="stat-icon"></i>
+                  <span class="stat-number" data-count="9">0</span>
+                  <span class="stat-label">Active Clubs</span>
+                </div>
+                <div class="stat-item animate-on-scroll" data-delay="0.2s">
+                  <i data-feather="user-check" class="stat-icon"></i>
+                  <span class="stat-number" data-count="100">0</span>
+                  <span class="stat-label">Members</span>
+                </div>
+                <div class="stat-item animate-on-scroll" data-delay="0.3s">
+                  <i data-feather="calendar" class="stat-icon"></i>
+                  <span class="stat-number" data-count="3">0</span>
+                  <span class="stat-label">Events</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Clubs Section -->
+      <section
+        id="featured-clubs"
+        class="clubs"
+        aria-labelledby="featured-clubs-heading"
+      >
+        <h2 id="featured-clubs-heading" class="animate-on-scroll">Featured Clubs</h2>
+        <div class="club-grid">
+          <a
+            href="clubs/sports-club.html"
+            class="club-card animate-on-scroll"
+            data-delay="0.1s"
+          >
+            <div class="wave"></div>
+            <img
+              src="images/sports-club.jpg"
+              alt="A group of students playing soccer"
+              loading="lazy"
+            />
+            <div class="club-info">
+              <h3>Sports Club</h3>
+            </div>
+          </a>
+          <a
+            href="clubs/ict-club.html"
+            class="club-card animate-on-scroll"
+            data-delay="0.2s"
+          >
+            <div class="wave"></div>
+            <img
+              src="images/ict-club.jpg"
+              alt="Students working on computers and technology projects"
+              loading="lazy"
+            />
+            <div class="club-info">
+              <h3>ICT Club</h3>
+            </div>
+          </a>
+          <a
+            href="clubs/photography-club.html"
+            class="club-card animate-on-scroll"
+            data-delay="0.3s"
+          >
+            <div class="wave"></div>
+            <img
+              src="images/photography-club.jpg"
+              alt="A student taking photos with a DSLR camera"
+              loading="lazy"
+            />
+            <div class="club-info">
+              <h3>Photography Club</h3>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Featured Events Section -->
+      <section class="events" aria-labelledby="featured-events-heading">
+        <h2 id="featured-events-heading" class="animate-on-scroll">Featured Events</h2>
+        <div class="event-grid">
+          <!-- Event Card 1: SnapFest -->
+          <article class="event-card animate-on-scroll" data-delay="0.1s">
+            <div class="event-image">
+              <img
+                src="images/Snapfest_Event_Pic.jpg"
+                alt="SnapFest: A poster of the Snapfest Event"
+                loading="lazy"
+              />
+              <h3 class="event-title">SnapFest</h3>
+            </div>
+            <div class="event-content">
+              <div class="event-date">
+                <span class="month">Nov</span>
+                <span class="day">18</span>
+                <span class="year">2024</span>
+              </div>
+              <p>
+                Hosted by University Laboratory Photography Club, featuring the
+                best pictures from the Prize Giving Ceremony at TSC.
+              </p>
+              <a href="events/snapfest.html" class="read-more">
+                Read more <span class="sr-only"> about SnapFest</span>
+                <i data-feather="arrow-right" class="icon"></i>
+              </a>
+            </div>
+          </article>
+          <!-- Event Card 2: TriQuest -->
+          <article class="event-card animate-on-scroll" data-delay="0.2s">
+            <div class="event-image">
+              <img
+                src="images/TriQuest- Battle_of_Knowledge.jpg"
+                alt="TriQuest: A quiz competition"
+                loading="lazy"
+              />
+              <h3 class="event-title">TriQuest</h3>
+            </div>
+            <div class="event-content">
+              <div class="event-date">
+                <span class="month">Dec</span>
+                <span class="day">2</span>
+                <span class="year">2024</span>
+              </div>
+              <p>
+                A quiz competition hosted by Quiz Club, Science Club, and
+                Language Club.
+              </p>
+              <a href="events/triquest.html" class="read-more">
+                Read more <span class="sr-only"> about TriQuest</span>
+                <i data-feather="arrow-right" class="icon"></i>
+              </a>
+            </div>
+          </article>
+          <!-- Event Card 3: UCA Unveiled -->
+          <article class="event-card animate-on-scroll" data-delay="0.3s">
+            <div class="event-image">
+              <img
+                src="images/uca_logo.png"
+                alt="UCA Unveiled - Introduction Ceremony"
+                loading="lazy"
+              />
+              <h3 class="event-title">UCA Unveiled</h3>
+            </div>
+            <div class="event-content">
+              <div class="event-date">
+                <span class="month">May</span>
+                <span class="day">8</span>
+                <span class="year">2025</span>
+              </div>
+              <p>
+                Join us in the Introduction as we reveal the official clubs under UCA.
+              </p>
+              <a href="events/uca-unveiled.html" class="read-more">
+                Read more <span class="sr-only"> about UCA Unveiled</span>
+                <i data-feather="arrow-right" class="icon"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <script src="js/include-footer.js" defer></script>
+
+    <!-- Initialize Feather Icons and Stats Animation -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Feather Icons
+        if (typeof feather !== "undefined") {
+          feather.replace({
+            "aria-hidden": "true",
+          });
+        }
+
+        // Animate statistics numbers with IntersectionObserver
+        const stats = document.querySelectorAll(".stat-number");
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && !prefersReducedMotion.matches) {
+                const stat = entry.target;
+                const target = parseInt(stat.getAttribute("data-count"));
+                let count = 0;
+                const duration = 2000;
+                const increment = target / (duration / 16);
+
+                const updateCount = () => {
+                  if (count < target) {
+                    count += increment;
+                    stat.textContent =
+                      Math.ceil(count) + (target >= 100 ? "+" : "");
+                    requestAnimationFrame(updateCount);
+                  } else {
+                    stat.textContent = target + (target >= 100 ? "+" : "");
+                  }
+                };
+
+                updateCount();
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        stats.forEach((stat) => observer.observe(stat));
+      });
+    </script>
+  </body>
+</html>
+
+index.html v2
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>United Club Association</title>
+    <meta
+      name="description"
+      content="United Club Association - A vibrant community of university clubs embarking on a celestial voyage of discovery, passion, and legacy."
+    />
+    <meta name="theme-color" content="#0A0B1A" />
+    <meta property="og:title" content="United Club Association | A Celestial Voyage" />
+    <meta property="og:description" content="A vibrant community of university clubs at University Laboratory School and College." />
+    <meta property="og:image" content="/images/UCA_Home_Page_Pic.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Preload & Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <link rel="preload" href="css/index.css" as="style" />
+    <link rel="preload" href="js/main.js" as="script" />
+
+    <!-- Font Library -->
+    <link rel="stylesheet" href="components/font.html">
+    <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/bricolage-grotesque" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/medio" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/avigea" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/quesha" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/livingston" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    
+    <!-- Modern Icons -->
+    <script src="https://unpkg.com/feather-icons" defer></script>
+</head>
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="constellation-bg"></div>
+        <div class="hero-content">
+          <h1 id="hero-heading" class="animate-on-scroll" data-animation="fade-up">United Club Association</h1>
+          <p class="hero-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">
+            Find Your Passion • Join Your Community • Create Your Legacy
+          </p>
+          <div class="hero-cta animate-on-scroll" data-animation="fade-up" data-delay="200">
+            <a href="clubs/clubs.html" class="button-primary" aria-label="Explore all UCA clubs">
+              <span>Explore Clubs</span>
+              <i data-feather="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <i data-feather="arrow-down"></i>
+        </div>
+      </section>
+
+      <section class="about" aria-labelledby="about-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="about-heading">Discover UCA</h2>
+            <p class="section-subtitle">
+              A vibrant community where passion meets purpose. We unite diverse interests, talents, and dreams to create an enriching student experience.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="100">
+              <i data-feather="users" class="stat-icon"></i>
+              <span class="stat-number" data-count="9">0</span>
+              <span class="stat-label">Active Clubs</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="200">
+              <i data-feather="user-check" class="stat-icon"></i>
+              <span class="stat-number" data-count="100">0</span>
+              <span class="stat-label">Members+</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="300">
+              <i data-feather="calendar" class="stat-icon"></i>
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Events Hosted</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured-clubs" class="clubs" aria-labelledby="featured-clubs-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="featured-clubs-heading">Featured Clubs</h2>
+          </div>
+          <div class="club-grid">
+            <a href="clubs/sports-club.html" class="club-card animate-on-scroll" data-animation="fade-up">
+              <div class="card-glow"></div>
+              <img src="images/sports-club.jpg" alt="A group of students playing soccer" loading="lazy" />
+              <div class="club-info">
+                <h3>Sports Club</h3>
+              </div>
+            </a>
+            <a href="clubs/ict-club.html" class="club-card animate-on-scroll" data-animation="fade-up" data-delay="100">
+              <div class="card-glow"></div>
+              <img src="images/ict-club.jpg" alt="Students working on computers" loading="lazy" />
+              <div class="club-info">
+                <h3>ICT Club</h3>
+              </div>
+            </a>
+            <a href="clubs/photography-club.html" class="club-card animate-on-scroll" data-animation="fade-up" data-delay="200">
+              <div class="card-glow"></div>
+              <img src="images/photography-club.jpg" alt="A student with a DSLR camera" loading="lazy" />
+              <div class="club-info">
+                <h3>Photography Club</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="events" aria-labelledby="featured-events-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="featured-events-heading">Featured Events</h2>
+          </div>
+          <div class="event-grid">
+            <article class="event-card animate-on-scroll" data-animation="fade-up">
+              <div class="event-image">
+                <img src="images/Snapfest_Event_Pic.jpg" alt="Poster for SnapFest Event" loading="lazy" />
+              </div>
+              <div class="event-content">
+                <div class="event-date">
+                  <span>NOV</span>
+                  <span>18</span>
+                  <span>2024</span>
+                </div>
+                <h3>SnapFest</h3>
+                <p>Hosted by University Laboratory Photography Club, featuring the best pictures from the Prize Giving Ceremony.</p>
+                <a href="events/snapfest.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+              </div>
+            </article>
+            <article class="event-card animate-on-scroll" data-animation="fade-up" data-delay="100">
+              <div class="event-image">
+                <img src="images/TriQuest- Battle_of_Knowledge.jpg" alt="Poster for TriQuest Event" loading="lazy" />
+              </div>
+              <div class="event-content">
+                <div class="event-date">
+                  <span>DEC</span>
+                  <span>02</span>
+                  <span>2024</span>
+                </div>
+                <h3>TriQuest</h3>
+                <p>A quiz competition hosted by Quiz Club, Science Club, and Language Club.</p>
+                <a href="events/triquest.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+              </div>
+            </article>
+            <article class="event-card animate-on-scroll" data-animation="fade-up" data-delay="200">
+              <div class="event-image">
+                <img src="images/uca_logo.png" alt="UCA Logo for the Unveiled event" loading="lazy" />
+              </div>
+              <div class="event-content">
+                <div class="event-date">
+                  <span>MAY</span>
+                  <span>08</span>
+                  <span>2025</span>
+                </div>
+                <h3>UCA Unveiled</h3>
+                <p>Join us in the Introduction as we reveal the official clubs under the UCA banner.</p>
+                <a href="events/uca-unveiled.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/include-navbar.js" defer></script>
+    <script src="js/include-footer.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script>
+      // Feather Icons Initialization
+      document.addEventListener("DOMContentLoaded", () => {
+        if (typeof feather !== "undefined") {
+          feather.replace({ width: '1em', height: '1em' });
+        }
+      });
+    </script>
+  </body>
+</html>
+
+navbar.html v1
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-H2YV0FNQ9X");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Navbar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <!-- Logo will be injected here by include-navbar.js -->
+
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="/index.html" class="navbar__link">
+            <i data-feather="home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="navbar__item dropdown">
+          <a href="/clubs/clubs.html" class="navbar__link">
+            <i data-feather="users"></i>
+            <span>Clubs</span>
+          </a>
+          <ul class="dropdown__menu">
+            <li><a href="/clubs/debate-club.html">Debate Club</a></li>
+            <li><a href="/clubs/photography-club.html">Photography Club</a></li>
+            <li><a href="/clubs/sports-club.html">Sports Club</a></li>
+            <li><a href="/clubs/quiz-club.html">Quiz Club</a></li>
+            <li><a href="/clubs/science-club.html">Science Club</a></li>
+            <li><a href="/clubs/language-club.html">Language Club</a></li>
+            <li><a href="/clubs/ict-club.html">ICT Club</a></li>
+            <li><a href="/clubs/literature-club.html">Literature Club</a></li>
+            <li><a href="/clubs/cultural-club.html">Cultural Club</a></li>
+          </ul>
+        </li>
+        <li class="navbar__item">
+          <a href="/events/events.html" class="navbar__link">
+            <i data-feather="calendar"></i>
+            <span>Events</span>
+          </a>
+        </li>
+        <li class="navbar__item dropdown">
+          <a href="/about/about.html" class="navbar__link">
+            <i data-feather="info"></i>
+            <span>About Us</span>
+          </a>
+          <ul class="dropdown__menu">
+            <li><a href="/about/about.html">About Us</a></li>
+            <li><a href="/about/executive-panel.html">Executive Panel</a></li>
+            <li><a href="/about/gallery.html">Gallery</a></li>
+            <li><a href="/about/achievements.html">Achievements</a></li>
+          </ul>
+        </li>
+        <li class="navbar__item">
+          <a href="/contact/contact.html" class="navbar__link">
+            <i data-feather="mail"></i>
+            <span>Contact</span>
+          </a>
+        </li>
+        <li class="navbar__item">
+          <a href="/contact/join-us.html" class="navbar__link">
+            <i data-feather="user-plus"></i>
+            <span>Join Us</span>
+          </a>
+        </li>
+      </ul>
+      <button class="navbar__toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <script src="/js/navbar.js"></script>
+    <!-- Initialize Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+  </body>
+</html>
+
+navbar.html v2
+<nav class="navbar">
+  <ul class="navbar__menu">
+    <li class="navbar__item">
+      <a href="/index.html" class="navbar__link">
+        <i data-feather="home"></i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li class="navbar__item dropdown">
+      <a href="/clubs/clubs.html" class="navbar__link">
+        <i data-feather="users"></i>
+        <span>Clubs</span>
+      </a>
+      <ul class="dropdown__menu">
+        <li><a href="/clubs/debate-club.html">Debate Club</a></li>
+        <li><a href="/clubs/photography-club.html">Photography Club</a></li>
+        <li><a href="/clubs/sports-club.html">Sports Club</a></li>
+        <li><a href="/clubs/quiz-club.html">Quiz Club</a></li>
+        <li><a href="/clubs/science-club.html">Science Club</a></li>
+        <li><a href="/clubs/language-club.html">Language Club</a></li>
+        <li><a href="/clubs/ict-club.html">ICT Club</a></li>
+        <li><a href="/clubs/literature-club.html">Literature Club</a></li>
+        <li><a href="/clubs/cultural-club.html">Cultural Club</a></li>
+      </ul>
+    </li>
+    <li class="navbar__item">
+      <a href="/events/events.html" class="navbar__link">
+        <i data-feather="calendar"></i>
+        <span>Events</span>
+      </a>
+    </li>
+    <li class="navbar__item dropdown">
+      <a href="/about/about.html" class="navbar__link">
+        <i data-feather="info"></i>
+        <span>About Us</span>
+      </a>
+      <ul class="dropdown__menu">
+        <li><a href="/about/about.html">About Us</a></li>
+        <li><a href="/about/executive-panel.html">Executive Panel</a></li>
+        <li><a href="/about/gallery.html">Gallery</a></li>
+        <li><a href="/about/achievements.html">Achievements</a></li>
+      </ul>
+    </li>
+    <li class="navbar__item">
+      <a href="/contact/contact.html" class="navbar__link">
+        <i data-feather="mail"></i>
+        <span>Contact</span>
+      </a>
+    </li>
+    <li class="navbar__item">
+      <a href="/contact/join-us.html" class="navbar__link button-join-us">
+        <i data-feather="user-plus"></i>
+        <span>Join Us</span>
+      </a>
+    </li>
+  </ul>
+  <button class="navbar__toggle" aria-label="Toggle menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+</nav>
+
+navbar.css v1
+/* Enhanced Navbar Variables */
+:root {
+  --primary: #6200ea; /* Deeper, more vibrant purple */
+  --primary-light: #9d46ff; /* Brighter purple for accents */
+  --primary-gradient: linear-gradient(135deg, #6200ea, #9d46ff);
+  --text: #ffffff; /* Pure white for better contrast */
+  --text-muted: rgba(255, 255, 255, 0.85); /* More visible muted text */
+  --background: rgba(26, 24, 38, 0.95); /* Darker, more sophisticated background */
+  --background-light: rgba(26, 24, 38, 0.92);
+  --spacer: 1rem;
+  --link-height: calc(var(--spacer) * 3.5);
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --navbar-height-desktop: 5rem;
+  --navbar-height-mobile: 4rem;
+  --dropdown-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+  --navbar-glow: 0 0 15px rgba(157, 70, 255, 0.3);
+}
+
+/* The rest of the navbar.css remains the same */
+
+/* Enhanced Navbar Base Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--background);
+  color: var(--text);
+  padding: 0 max(calc(var(--spacer) * 1.5), 4vw); /* Adjusted padding */
+  height: var(--navbar-height-desktop);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Logo Container Enhancement */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transform: translateX(0);
+  transition: var(--transition);
+  position: relative;
+}
+
+.logo-container:hover {
+  transform: translateX(5px);
+}
+
+.logo-container::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-gradient);
+  transition: width 0.3s ease;
+}
+
+.logo-container:hover::after {
+  width: 100%;
+}
+
+.logo-img {
+  height: 40px; /* Slightly smaller logo */
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo-container:hover .logo-img {
+  transform: rotate(8deg) scale(1.05);
+}
+
+/* Logo Text Styles */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-text-main {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--primary-light);
+  letter-spacing: 1px;
+}
+
+.logo-text-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* Enhanced Menu Styles */
+.navbar__menu {
+  display: flex;
+  gap: calc(var(--spacer) * 1.2); /* Reduced gap */
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar__item {
+  position: relative;
+}
+
+/* Enhanced Link Styles */
+.navbar__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.75rem var(--spacer);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar__link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-gradient);
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar__link:hover::before {
+  width: 70%;
+}
+
+.navbar__link i {
+  font-size: 1.3rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.navbar__link span {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  transition: var(--transition);
+}
+
+/* Enhanced Hover Effects */
+.navbar__link:hover {
+  color: var(--primary-light);
+}
+
+.navbar__link:hover i {
+  transform: translateY(-4px) scale(1.1); /* Adjusted hover transform */
+  color: var(--primary-light);
+  filter: drop-shadow(var(--navbar-glow));
+}
+
+.navbar__link:hover span {
+  opacity: 1;
+  transform: translateY(1px); /* Adjusted hover transform */
+}
+
+/* Enhanced Dropdown Styles */
+.dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--background);
+  min-width: 220px;
+  padding: 0.75rem 0;
+  border-radius: 12px;
+  box-shadow: var(--dropdown-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  height: auto;
+}
+
+.dropdown:hover .dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown__menu li {
+  list-style: none;
+}
+
+.dropdown__menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown__menu a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--primary-gradient);
+  transition: width 0.3s ease;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.dropdown__menu a:hover {
+  color: var(--text);
+  padding-left: 2rem;
+}
+
+.dropdown__menu a:hover::before {
+  width: 100%;
+}
+
+/* Scroll Behavior */
+.navbar.scrolled {
+  background: var(--background);
+  height: calc(var(--navbar-height-desktop) * 0.8); /* Adjusted scrolled height */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Mobile Toggle Button */
+.navbar__toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.navbar__toggle span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  margin: 6px 0;
+  background-color: var(--text);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+/* Mobile Styles */
+@media (width <= 768px) {
+  .navbar {
+    height: var(--navbar-height-mobile);
+    padding: 0 1.2rem; /* Adjusted mobile padding */
+  }
+
+  .navbar.scrolled {
+    height: calc(var(--navbar-height-mobile) * 0.85);
+  }
+
+  .navbar__toggle {
+    display: block;
+  }
+
+  .navbar__menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Start off-screen */
+    width: min(75%, 280px); /* Adjusted width */
+    height: 100vh;
+    background: var(--background);
+    flex-direction: column;
+    gap: 0;
+    padding: calc(var(--navbar-height-mobile) + 0.8rem) 1.2rem 1.5rem; /* Adjusted padding */
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth slide-in */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.25); /* Adjusted shadow */
+    z-index: 999; /* Ensure it's below the toggle */
+  }
+
+  .navbar__menu.active {
+    right: 0; /* Slide in */
+  }
+
+  .navbar__item {
+    width: 100%;
+  }
+
+  .navbar__link {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; /* Vertically center icon and text */
+    padding: 1rem 0.5rem; /* Adjusted padding */
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 1rem; /* Slightly larger font */
+    color: var(--text); /* Ensure text color */
+    transition: background-color 0.2s ease; /* Add hover feedback */
+  }
+
+  .navbar__link:hover {
+    background-color: rgba(255, 255, 255, 0.04); /* Slightly more visible hover */
+    color: var(--primary-light); /* Match desktop hover */
+  }
+
+  .navbar__link i {
+    margin-right: 0.8rem; /* Adjusted icon margin */
+    flex-shrink: 0; /* Prevent icon shrinking */
+    font-size: 1.3rem; /* Adjusted icon size */
+    transition: transform 0.2s ease;
+  }
+
+  .navbar__link:hover i {
+    transform: scale(1.1); /* Subtle icon grow on hover */
+  }
+
+  .navbar__link span {
+    opacity: 1; /* Ensure text is fully visible */
+    transform: none; /* Reset any desktop transforms */
+  }
+
+  .navbar__link::before {
+    display: none; /* No underline needed on mobile */
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  /* Style the main dropdown link */
+  .dropdown > .navbar__link {
+    display: flex; /* Use flex to align arrow */
+    justify-content: space-between; /* Push arrow to the right */
+    align-items: center;
+  }
+
+  /* Add a dropdown arrow indicator */
+  .dropdown > .navbar__link::after {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-right: 0.4rem; /* Adjusted margin */
+  }
+
+  .dropdown.active > .navbar__link::after {
+    transform: rotate(225deg); /* Point arrow up when open */
+  }
+
+  .dropdown__menu {
+    position: static; /* No absolute positioning needed */
+    transform: none;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.15); /* Slightly darker background */
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0; /* Remove margin */
+    height: 0; /* Start closed */
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition: height 0.35s ease, padding 0.35s ease; /* Smooth transition for height and padding */
+  }
+
+  .dropdown.active .dropdown__menu {
+    /* Height is set dynamically by JS */
+    padding: 0.5rem 0; /* Add padding when open */
+  }
+
+  .dropdown__menu li {
+    /* Inherit width */
+  }
+
+  .dropdown__menu a {
+    padding: 0.7rem 1rem 0.7rem 2.2rem; /* Adjusted indent */
+    border-left: none; /* Remove side border */
+    font-size: 0.9rem; /* Slightly smaller font */
+    color: var(--text-muted);
+    display: block; /* Ensure links take full width */
+    transition: padding-left 0.2s ease, color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .dropdown__menu a:hover {
+    padding-left: 2.5rem; /* Adjust hover indent */
+    color: var(--primary-light);
+    background-color: rgba(255, 255, 255, 0.04); /* Match link hover */
+  }
+
+  /* Toggle animation */
+  .navbar__toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 8px);
+  }
+
+  .navbar__toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -8px);
+  }
+
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+navbar.css v2
+/* --- A Celestial Voyage: navbar.css Overhaul V2 --- */
+
+:root {
+  /* Core variables */
+  --navbar-height: 80px;
+  --navbar-blur: 12px;
+  --link-hover-bg: rgba(139, 92, 246, 0.1);
+  --navbar-border: rgba(148, 163, 184, 0.15);
+
+  /* Refined Dark Palette */
+  --navbar-bg: rgba(12, 14, 29, 0.6);
+  --navbar-bg-scrolled: rgba(12, 14, 29, 0.85);
+  --dropdown-bg: rgba(18, 20, 40, 0.95);
+}
+
+/* Base Navbar Style */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  background-color: var(--navbar-bg);
+  -webkit-backdrop-filter: blur(var(--navbar-blur));
+  backdrop-filter: blur(var(--navbar-blur));
+  border-bottom: 1px solid var(--navbar-border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  transition: background-color 0.4s ease, height 0.4s ease;
+  overflow: hidden;
+}
+
+/* Starfield Background for Navbar */
+.navbar::before,
+.navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  z-index: -1;
+}
+
+.navbar::before {
+  box-shadow:
+    10vw 2vh 0 0px rgba(255, 255, 255, 0.8),
+    25vw 7vh 0 1px rgba(255, 255, 255, 0.7),
+    40vw 4vh 0 0px rgba(255, 255, 255, 0.9),
+    65vw 6vh 0 1px rgba(255, 255, 255, 0.6),
+    85vw 3vh 0 0px rgba(255, 255, 255, 0.8);
+}
+
+.navbar::after {
+  box-shadow:
+    5vw 5vh 0 1px rgba(255, 255, 255, 0.5),
+    33vw 1vh 0 0px rgba(255, 255, 255, 0.6),
+    50vw 8vh 0 1px rgba(255, 255, 255, 0.5),
+    78vw 2vh 0 0px rgba(255, 255, 255, 0.7),
+    95vw 6vh 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.navbar.scrolled {
+  background-color: var(--navbar-bg-scrolled);
+  height: 70px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.logo-img {
+  height: 40px;
+  transition: transform 0.4s ease;
+}
+.logo-container:hover .logo-img {
+  transform: rotate(15deg);
+}
+.logo-text-main {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: #fff;
+}
+.logo-text-sub {
+  display: none;
+}
+
+/* Menu & Links */
+.navbar__menu {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar__item {
+  position: relative; /* CRITICAL FIX: Allows dropdown to be positioned relative to this item */
+}
+.navbar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+.navbar__link:hover {
+  color: var(--color-text-primary);
+}
+
+/* New Hover Effect: Glowing Underline */
+.navbar__link::before {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 80%);
+  border-radius: 2px;
+  opacity: 0;
+  transition: width 0.4s ease, opacity 0.3s ease;
+}
+.navbar__link:hover::before {
+  width: 80%;
+  opacity: 1;
+}
+
+/* Dropdown Menu */
+.dropdown__menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  transform: translateY(10px);
+  background-color: var(--dropdown-bg);
+  -webkit-backdrop-filter: blur(var(--navbar-blur));
+  backdrop-filter: blur(var(--navbar-blur));
+  min-width: 220px;
+  padding: 0.5rem;
+  list-style: none;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--navbar-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin: 0;
+}
+.navbar__item:hover > .dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown__menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.dropdown__menu a:hover {
+  background-color: var(--link-hover-bg);
+  color: var(--color-text-primary);
+  padding-left: 1.25rem;
+}
+
+/* Join Us Button */
+.button-join-us {
+  transition: color 0.3s ease;
+}
+.button-join-us:hover {
+  color: #fff;
+}
+/* Hide the underline effect for the button */
+.button-join-us::before {
+  display: none;
+}
+
+/* Mobile Toggle */
+.navbar__toggle {
+  display: none;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  /* ... Existing responsive styles are mostly correct, keeping them ... */
+  .navbar {
+    padding: 0 1.5rem;
+    height: 70px;
+  }
+  .navbar.scrolled {
+    height: 60px;
+  }
+  .navbar__toggle {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    width: 30px;
+    height: 24px;
+    position: relative;
+  }
+  .bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .bar:nth-child(1) { top: 0; }
+  .bar:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .bar:nth-child(3) { bottom: 0; }
+
+  .navbar__toggle.active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+  .navbar__toggle.active .bar:nth-child(2) { opacity: 0; }
+  .navbar__toggle.active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
+  .navbar__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(80vw, 300px);
+    height: 100vh;
+    padding: 80px 1.5rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background-color: #0c0e1d;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+  }
+  .navbar__menu.active { right: 0; }
+  .navbar__item { width: 100%; }
+
+  .dropdown__menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+  .navbar__item.active > .dropdown__menu { /* Use .navbar__item.active */
+    max-height: 500px;
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  .navbar__item.dropdown > .navbar__link { /* Target only dropdown parents */
+    display: flex;
+    justify-content: space-between;
+  }
+  .navbar__item.dropdown > .navbar__link::after { /* Arrow for mobile dropdown */
+    content: "›";
+    font-size: 1.5rem;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+  }
+  .navbar__item.dropdown.active > .navbar__link::after {
+    transform: rotate(-90deg);
+  }
+}
+
+footer.html v1
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-H2YV0FNQ9X");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <title>UCA Footer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <img src="/images/uca_logo.png" alt="UCA Logo" />
+            <div class="footer-branding">
+              <h2>UCA</h2>
+              <p>United Club Association</p>
+            </div>
+          </div>
+          <p class="footer-tagline">Connecting and empowering student clubs since 2024</p>
+        </div>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/clubs/clubs.html">Clubs</a></li>
+              <li><a href="/events/events.html">Events</a></li>
+              <li><a href="/about/about.html">About Us</a></li>
+              <li><a href="/about/executive-panel.html">Executive Panel</a></li>
+              <li><a href="/contact/join-us.html">Join Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Our Clubs</h4>
+            <ul class="clubs-grid">
+              <li><a href="/clubs/debate-club.html">Debate Club</a></li>
+              <li><a href="/clubs/photography-club.html">Photography Club</a></li>
+              <li><a href="/clubs/sports-club.html">Sports Club</a></li>
+              <li><a href="/clubs/quiz-club.html">Quiz Club</a></li>
+              <li><a href="/clubs/science-club.html">Science Club</a></li>
+              <li><a href="/clubs/language-club.html">Language Club</a></li>
+              <li><a href="/clubs/ict-club.html">ICT Club</a></li>
+              <li><a href="/clubs/literature-club.html">Literature Club</a></li>
+              <li><a href="/clubs/cultural-club.html">Cultural Club</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Connect With Us</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://www.facebook.com/ucaofficial.fb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ><i data-feather="facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.instagram.com/uca.ulab" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                ><i data-feather="instagram"></i> Instagram</a>
+              </li>
+              <li>
+                <a
+                  href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ><i data-feather="message-circle"></i> WhatsApp</a>
+              </li>
+              <li>
+                <a 
+                  href="#" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                ><i data-feather="linkedin"></i> LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>
+                <i data-feather="mail"></i>
+                <a href="mailto:uca.official.bd@gmail.com">uca.official.bd@gmail.com</a>
+              </li>
+              <li><i data-feather="phone"></i> <a href="tel:+8801886150418">+8801886150418</a></li>
+              <li>
+                <i data-feather="map-pin"></i>
+                P9MR+837 Dhaka University, Nilkhet Road, Dhaka 1000, Bangladesh
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="social-icons">
+            <a href="https://www.facebook.com/ucaofficial.fb" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i data-feather="facebook" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/uca.ulab" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i data-feather="instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i data-feather="youtube" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:uca.official.bd@gmail.com" class="social-icon">
+              <i data-feather="mail" aria-hidden="true"></i>
+            </a>
+          </div>
+          <p>
+            &copy; 2025 UCA. All rights reserved. | Crafted with <i data-feather="heart"></i> by
+            Founding Executives
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Initialize Feather Icons
+      if (typeof feather !== 'undefined') {
+        feather.replace();
+      }
+    </script>
+  </body>
+</html>
+
+
+footer.html v2
+<footer>
+  <!-- This container will hold the static, multi-colored stars -->
+  <div class="sparkle-container">
+    <div class="stars-white"></div>
+    <div class="stars-red"></div>
+    <div class="stars-blue"></div>
+    <div class="stars-green"></div>
+    <div class="stars-black"></div>
+  </div>
+
+  <!-- All footer content is wrapped in a container to ensure it appears above the stars -->
+  <div class="footer-container">
+    <div class="footer-top">
+      <a href="/index.html" class="footer-logo" aria-label="Back to Homepage">
+        <img src="/images/uca_logo.png" alt="UCA Logo" />
+        <div class="footer-branding">
+          <h2>UCA</h2>
+          <p>United Club Association</p>
+        </div>
+      </a>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/ucaofficial.fb" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i data-feather="facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/uca.ulab" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i data-feather="instagram"></i>
+        </a>
+        <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Youtube">
+            <i data-feather="youtube"></i>
+        </a>
+        <a href="mailto:uca.official.bd@gmail.com" class="social-icon" aria-label="Email">
+          <i data-feather="mail"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/about/about.html">About Us</a></li>
+          <li><a href="/events/events.html">Events</a></li>
+          <li><a href="/contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Our Clubs</h4>
+        <ul>
+          <li><a href="/clubs/ict-club.html">ICT Club</a></li>
+          <li><a href="/clubs/photography-club.html">Photography Club</a></li>
+          <li><a href="/clubs/language-club.html">Language Club</a></li>
+          <li><a href="/clubs/sports-club.html">Sports Club</a></li>
+          <li><a href="/clubs/science-club.html">Science Club</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/about/executive-panel.html">Executive Panel</a></li>
+          <li><a href="/about/gallery.html">Gallery</a></li>
+          <li><a href="/about/achievements.html">Achievements</a></li>
+          <li><a href="/contact/join-us.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <ul class="contact-info">
+          <li>
+            <i data-feather="mail"></i>
+            <a href="mailto:uca.official.bd@gmail.com">uca.official.bd@gmail.com</a>
+          </li>
+          <li>
+            <i data-feather="phone"></i>
+            <a href="tel:+8801886150418">+880 1886 150 418</a>
+          </li>
+          <li>
+            <i data-feather="map-pin"></i>
+            <span>P9MR+837 Dhaka University, Nilkhet Road, Dhaka 1000</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="copyright-year">2025</span> UCA. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+footer.css v1
+/* footer.css - Enhanced design */
+:root {
+  --footer-bg: #1a182e;
+  --footer-text: #ffffff;
+  --footer-text-muted: #b4b7c5;
+  --footer-primary: #6200ea;
+  --footer-primary-light: #9d46ff;
+  --footer-gradient: linear-gradient(135deg, #6200ea, #9d46ff);
+  --footer-border: rgba(157, 70, 255, 0.15);
+  --footer-hover: rgba(157, 70, 255, 0.1);
+  --footer-shadow: 0 -5px 25px rgba(0, 0, 0, 0.2);
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  font-family: "Poppins", sans-serif;
+  padding: 4rem 0 2rem;
+  box-shadow: var(--footer-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Refined pattern overlay */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(var(--footer-border) 1px, transparent 1.5px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--footer-border);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-logo img {
+  height: 65px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.footer-logo:hover img {
+  transform: rotate(5deg) scale(1.05);
+}
+
+.footer-branding h2 {
+  margin: 0;
+  font-size: 2rem;
+  background: var(--footer-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.footer-branding p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--footer-text-muted);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.footer-tagline {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--footer-text-muted);
+  max-width: 300px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* Grid layout for footer content */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.footer-section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.footer-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.footer-section:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.footer-section:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.footer-section h4 {
+  color: var(--footer-primary-light);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-section h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--footer-gradient);
+  border-radius: 3px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-section li {
+  transition: transform 0.2s ease;
+}
+
+.footer-section li:hover {
+  transform: translateX(5px);
+}
+
+.footer-section a {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-section a::before {
+  content: "→";
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: var(--footer-primary-light);
+}
+
+.footer-section a:hover::before {
+  opacity: 1;
+  transform: translateX(-4px);
+}
+
+/* Clubs grid layout */
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.clubs-grid li {
+  margin-bottom: 0;
+}
+
+.clubs-grid a {
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--footer-border);
+  font-size: 0.9rem;
+  color: var(--footer-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--footer-hover);
+  color: var(--footer-primary-light);
+  transition: all 0.3s ease;
+  border: 1px solid var(--footer-border);
+}
+
+.social-icon:hover {
+  background: var(--footer-gradient);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(98, 0, 234, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-tagline {
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .footer-section h4 {
+    text-align: center;
+  }
+  
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-section ul {
+    align-items: center;
+  }
+  
+  .clubs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-section li:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .clubs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Animation for footer sections */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer.css v2
+/* --- Footer Styles V3: Stable & Static --- */
+
+:root {
+  /* Inherits primary colors from index.css */
+  /* Exclusive Footer Font Palette */
+  --font-footer-heading: 'Quesha', cursive;
+  --font-footer-body: 'Bricolage Grotesque', sans-serif;
+
+  /* Footer Theme */
+  --footer-bg: linear-gradient(to top, var(--color-bg-void) 0%, var(--color-bg-deep-space) 100%);
+  --footer-text: var(--color-text-secondary);
+  --footer-heading-color: var(--color-text-primary);
+  --footer-link-hover: #fff;
+  --footer-border: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.2), transparent);
+  --footer-social-bg: rgba(148, 163, 184, 0.1);
+  --footer-social-border: rgba(148, 163, 184, 0.2);
+  --footer-social-hover-bg: var(--color-primary-glow);
+}
+
+footer {
+  font-family: var(--font-footer-body);
+  color: var(--footer-text);
+  padding: 8rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--footer-bg);
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* 1. Static Sparkle Background
+   ========================================================================== */
+.sparkle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Base for all star layers */
+.sparkle-container > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+}
+
+/* Helper function to create a star: box-shadow: [x] [y] [blur] [size] [color] */
+.stars-white {
+  box-shadow: 
+    10vw 80vh 1px 0px rgba(255, 255, 255, 0.7),
+    30vw 20vh 1px 0px rgba(255, 255, 255, 0.7),
+    55vw 55vh 2px 0px rgba(255, 255, 255, 0.8),
+    70vw 90vh 1px 0px rgba(255, 255, 255, 0.7),
+    95vw 15vh 2px 0px rgba(255, 255, 255, 0.8);
+}
+
+.stars-red {
+  box-shadow:
+    5vw 10vh 2px 0px rgba(255, 138, 128, 0.6),
+    25vw 70vh 3px 0px rgba(239, 83, 80, 0.5),
+    45vw 30vh 2px 0px rgba(255, 138, 128, 0.6),
+    80vw 50vh 3px 0px rgba(239, 83, 80, 0.5);
+}
+
+.stars-blue {
+  box-shadow:
+    15vw 40vh 3px 0px rgba(130, 177, 255, 0.5),
+    35vw 95vh 2px 0px rgba(68, 138, 255, 0.6),
+    65vw 10vh 3px 0px rgba(130, 177, 255, 0.5),
+    90vw 65vh 2px 0px rgba(68, 138, 255, 0.6);
+}
+
+.stars-green {
+  box-shadow:
+    20vw 5vh 2px 0px rgba(105, 240, 174, 0.6),
+    50vw 85vh 3px 0px rgba(0, 200, 83, 0.5),
+    75vw 35vh 2px 0px rgba(105, 240, 174, 0.6);
+}
+
+/* For "dark black" stars, we use dark grey with a subtle lighter grey glow */
+.stars-black {
+  box-shadow:
+    8vw 50vh 3px 0px rgba(117, 117, 117, 0.4),
+    40vw 75vh 2px 0px rgba(97, 97, 97, 0.5),
+    60vw 60vh 3px 0px rgba(117, 117, 117, 0.4),
+    85vw 25vh 2px 0px rgba(97, 97, 97, 0.5);
+}
+
+
+/* 2. Footer Structure & Content
+   ========================================================================== */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative; /* Ensures content stays above the background */
+  z-index: 1;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid;
+  border-image: var(--footer-border) 1;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.footer-logo:hover {
+    transform: scale(1.03);
+}
+
+.footer-logo img { height: 50px; }
+.footer-branding h2 {
+  font-family: var(--font-footer-heading);
+  font-size: 2.5rem;
+  color: var(--footer-heading-color);
+  margin: 0;
+  line-height: 1;
+}
+.footer-branding p { margin: 0; color: var(--footer-text); }
+
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.footer-section h4 {
+  font-family: var(--font-footer-heading);
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: var(--footer-heading-color);
+  margin-bottom: 1.5rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-section a {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  position: relative;
+}
+.footer-section a:hover {
+  color: var(--footer-link-hover);
+  padding-left: 0.5rem;
+}
+.footer-section a::before {
+    content: '•';
+    position: absolute;
+    left: -0.5rem;
+    color: var(--color-primary-glow);
+    opacity: 0;
+    transition: opacity 0.3s ease, left 0.3s ease;
+}
+.footer-section a:hover::before {
+    opacity: 1;
+    left: -0.25rem;
+}
+
+
+.contact-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.contact-info i {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--color-secondary-glow);
+  transition: transform 0.3s ease;
+}
+.contact-info a:hover, .contact-info li:hover i {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid;
+  border-image: var(--footer-border) 1;
+  color: var(--footer-text);
+}
+
+
+/* 3. Social Icons
+   ========================================================================== */
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--footer-social-bg);
+  color: var(--footer-text);
+  border: 1px solid var(--footer-social-border);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.social-icon svg {
+    transition: transform 0.3s ease;
+    width: 1.25em;
+    height: 1.25em;
+    stroke-width: 1.5;
+}
+
+.social-icon:hover {
+  background-color: var(--footer-social-hover-bg);
+  border-color: var(--footer-social-hover-bg);
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+}
+
+.social-icon:hover svg {
+    transform: scale(1.1);
+}
+
+main.js v1
+document.addEventListener("DOMContentLoaded", function () {
+  // Performance monitoring
+  if (window.performance) {
+    const timing = performance.timing;
+    window.addEventListener('load', () => {
+      console.log(`Page load time: ${timing.loadEventEnd - timing.navigationStart}ms`);
+    });
+  }
+
+  // CSS animations triggered by IntersectionObserver
+  const animatedElements = document.querySelectorAll('.animate-on-scroll');
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !prefersReducedMotion.matches) {
+        entry.target.classList.add('animated');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '20px'
+  });
+
+  animatedElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+});
+
+main.js V2
+document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- 1. ANIMATE ON SCROLL ---
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    if (!prefersReducedMotion) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = parseInt(entry.target.dataset.delay) || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add("animated");
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); // Lowered threshold to trigger animation sooner
+        animatedElements.forEach(element => observer.observe(element));
+    } else {
+        animatedElements.forEach(element => element.classList.add("animated"));
+    }
+
+    // --- 2. CONSTELLATION BACKGROUND ---
+    const constellationBg = document.querySelector('.constellation-bg');
+    if (constellationBg) {
+        const starCount = 150; // Increased star count for a richer feel
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.backgroundColor = 'white';
+            star.style.borderRadius = '50%';
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.opacity = Math.random() * 0.6 + 0.1; // Varied opacity
+            const duration = Math.random() * 5 + 5;
+            star.style.animation = `twinkle ${duration}s infinite alternate`;
+            constellationBg.appendChild(star);
+        }
+    }
+
+    // Keyframes for the twinkle animation
+    if (!document.getElementById('twinkle-animation')) {
+        const styleSheet = document.createElement("style");
+        styleSheet.id = 'twinkle-animation';
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `@keyframes twinkle { 0% { opacity: 0.2; transform: scale(0.8); } 100% { opacity: 0.7; transform: scale(1.2); } }`;
+        document.head.appendChild(styleSheet);
+    }
+
+    // --- 3. 3D CARD TILT EFFECT (REMOVED) ---
+    // This effect was removed as per your feedback.
+
+    // --- 4. SMOOTH SCROLL FOR ANCHOR LINKS ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // --- 5. STATS COUNTER ANIMATION ---
+    const stats = document.querySelectorAll(".stat-number");
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !prefersReducedMotion) {
+                const stat = entry.target;
+                if(stat.classList.contains('is-counting')) return; // Prevent re-counting
+                stat.classList.add('is-counting');
+                
+                const target = parseInt(stat.getAttribute("data-count"), 10);
+                let count = 0;
+                const duration = 2000;
+                const stepTime = Math.max(16, duration / target);
+
+                const updateCount = () => {
+                    const increment = Math.ceil(target / (duration / stepTime));
+                    count += increment;
+                    if (count < target) {
+                        stat.textContent = count;
+                        setTimeout(updateCount, stepTime);
+                    } else {
+                        stat.textContent = target;
+                    }
+                };
+                updateCount();
+                statsObserver.unobserve(stat);
+            }
+        });
+    }, { threshold: 0.8 });
+    stats.forEach(stat => statsObserver.observe(stat));
+
+    // Feather Icons Initialization
+    if (typeof feather !== "undefined") {
+        feather.replace({ width: '1em', height: '1em' });
+    }
+});
+
+navbar.js v1
+// Set a flag to prevent multiple initializations
+window.navbarInitialized = true;
+
+function initializeNavbar() {
+  const navbarToggle = document.querySelector(".navbar__toggle");
+  const navbarMenu = document.querySelector(".navbar__menu");
+  const dropdowns = document.querySelectorAll(".dropdown");
+  const navbar = document.querySelector(".navbar");
+
+  if (!navbarToggle || !navbarMenu || !navbar) {
+    console.error("Navbar elements not found");
+    return;
+  }
+
+  // Toggle menu visibility with animation
+  navbarToggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    navbarMenu.classList.toggle("active");
+    navbarToggle.classList.toggle("active");
+    document.body.classList.toggle("menu-open");
+  });
+
+  // Handle dropdowns for mobile
+  dropdowns.forEach((dropdown) => {
+    const link = dropdown.querySelector(".navbar__link");
+    const menu = dropdown.querySelector(".dropdown__menu");
+
+    if (!link || !menu) return;
+
+    link.addEventListener("click", function (e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Close other dropdowns
+        dropdowns.forEach((other) => {
+          if (other !== dropdown) {
+            other.classList.remove("active");
+            const otherMenu = other.querySelector(".dropdown__menu");
+            if (otherMenu) otherMenu.style.height = "0";
+          }
+        });
+
+        // Toggle current dropdown
+        dropdown.classList.toggle("active");
+
+        // Animate height
+        if (dropdown.classList.contains("active")) {
+          menu.style.height = menu.scrollHeight + "px";
+        } else {
+          menu.style.height = "0";
+        }
+      }
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (event) {
+    const isClickInside =
+      navbarMenu.contains(event.target) || navbarToggle.contains(event.target);
+
+    if (!isClickInside && navbarMenu.classList.contains("active")) {
+      navbarMenu.classList.remove("active");
+      navbarToggle.classList.remove("active");
+      document.body.classList.remove("menu-open");
+
+      // Close all dropdowns
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("active");
+        const menu = dropdown.querySelector(".dropdown__menu");
+        if (menu) menu.style.height = "0";
+      });
+    }
+  });
+
+  // Handle window resize
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 768) {
+        navbarMenu.classList.remove("active");
+        navbarToggle.classList.remove("active");
+        document.body.classList.remove("menu-open");
+        dropdowns.forEach((dropdown) => {
+          dropdown.classList.remove("active");
+          const menu = dropdown.querySelector(".dropdown__menu");
+          if (menu) menu.style.height = "";
+        });
+      }
+    }, 250);
+  });
+
+  // Scroll behavior
+  let lastScroll = 0;
+  const scrollThreshold = 50;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > scrollThreshold) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+
+    lastScroll = currentScroll;
+  });
+}
+
+// Initialize navbar when DOM is loaded or when script is executed after DOM is already loaded
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeNavbar);
+} else {
+  initializeNavbar();
+}
+
+navbar.js v2
+const navbar = document.querySelector(".navbar");
+const navbarToggle = document.querySelector(".navbar__toggle");
+const navbarMenu = document.querySelector(".navbar__menu");
+const dropdownItems = document.querySelectorAll(".navbar__item.dropdown");
+
+// Exit if essential elements are not found
+if (!navbar || !navbarToggle || !navbarMenu) return;
+
+// Toggle mobile menu visibility
+navbarToggle.addEventListener("click", () => {
+  navbarToggle.classList.toggle("active");
+  navbarMenu.classList.toggle("active");
+});
+
+// Handle dropdowns on mobile devices
+dropdownItems.forEach((item) => {
+  const link = item.querySelector(":scope > .navbar__link"); // Direct child selector for the link
+  if (link) {
+    link.addEventListener("click", function (e) {
+      // Only prevent default behavior and toggle the dropdown in mobile view
+      if (window.innerWidth <= 768 && item.querySelector('.dropdown__menu')) {
+        e.preventDefault();
+        item.classList.toggle("active");
+      }
+    });
+  }
+});
+
+// Add a scroll effect to the navbar
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+}, { passive: true });
+
+footer.js v1
+// List of all 9 clubs
+const allClubs = [
+  { name: "Debate Club", link: "/clubs/debate-club.html" },
+  { name: "Photography Club", link: "/clubs/photography-club.html" },
+  { name: "Sports Club", link: "/clubs/sports-club.html" },
+  { name: "Quiz Club", link: "/clubs/quiz-club.html" },
+  { name: "Science Club", link: "/clubs/science-club.html" },
+  { name: "Language Club", link: "/clubs/language-club.html" },
+  { name: "ICT Club", link: "/clubs/ict-club.html" },
+  { name: "Literature Club", link: "/clubs/literature-club.html" },
+  { name: "Cultural Club", link: "/clubs/cultural-club.html" },
+];
+
+// Function to shuffle an array
+function shuffleArray(array) {
+  // Create a copy of the array to avoid modifying the original
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Function to display 6 random clubs
+function displayRandomClubs() {
+  const clubsList = document.getElementById("clubs-list");
+  if (!clubsList) return;
+
+  // Check if we already have stored clubs and they're not expired
+  const storedData = JSON.parse(localStorage.getItem("randomClubs") || "{}");
+  const now = new Date().getTime();
+
+  let shuffledClubs;
+  if (storedData.clubs && storedData.expiry > now) {
+    // Use stored clubs if they're not expired
+    shuffledClubs = storedData.clubs;
+  } else {
+    // Generate new random clubs and store them
+    shuffledClubs = shuffleArray([...allClubs]).slice(0, 6);
+    // Store with 24-hour expiry
+    localStorage.setItem(
+      "randomClubs",
+      JSON.stringify({
+        clubs: shuffledClubs,
+        expiry: now + 24 * 60 * 60 * 1000, // 24 hours
+      })
+    );
+  }
+
+  clubsList.innerHTML = ""; // Clear the list
+
+  shuffledClubs.forEach((club) => {
+    const listItem = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = club.link;
+    link.textContent = club.name;
+    listItem.appendChild(link);
+    clubsList.appendChild(listItem);
+  });
+}
+
+// Call the function when the page loads
+window.onload = displayRandomClubs;
+
+// footer.js - Simplified version
+document.addEventListener("DOMContentLoaded", function() {
+  // Initialize any interactive elements in the footer
+  const footerLinks = document.querySelectorAll("footer a");
+  
+  // Add subtle hover animation to links
+  footerLinks.forEach(link => {
+    link.addEventListener("mouseenter", function() {
+      this.style.transition = "all 0.3s ease";
+    });
+  });
+  
+  // Add current year to copyright text
+  const copyrightYear = document.querySelector(".footer-bottom p");
+  if (copyrightYear) {
+    const currentYear = new Date().getFullYear();
+    copyrightYear.innerHTML = copyrightYear.innerHTML.replace("2025", currentYear);
+  }
+});
+
+footer.js V2
+document.addEventListener("DOMContentLoaded", function() {
+
+  // --- Celestial Animation Generator ---
+  function createCelestialAnimation() {
+    const container = document.querySelector(".sparkle-container");
+    if (!container) return;
+
+    // Clear any existing stars if this function is called again
+    container.innerHTML = ''; 
+
+    const STAR_COUNT = 70; // Total number of objects to create
+    const objectTypes = [
+      { type: 'tiny-dot', probability: 0.4 },
+      { type: 'shooting-star', probability: 0.3 },
+      { type: 'gemini-sparkle', probability: 0.1 },
+      { type: 'star-shape', probability: 0.1 },
+      { type: 'meteor', probability: 0.1 }
+    ];
+    
+    const colorModifiers = ['frost-blue', 'blazing-red'];
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      const celestialObject = document.createElement('div');
+      
+      // Determine object type based on probability
+      let randomType = Math.random();
+      let cumulativeProb = 0;
+      let selectedType = objectTypes[0].type; // Default
+      for (const obj of objectTypes) {
+        cumulativeProb += obj.probability;
+        if (randomType <= cumulativeProb) {
+          selectedType = obj.type;
+          break;
+        }
+      }
+      
+      celestialObject.className = `celestial-object ${selectedType}`;
+      
+      // Add color modifiers for shooting stars and meteors
+      if (selectedType === 'shooting-star' && Math.random() > 0.6) {
+        celestialObject.classList.add(colorModifiers[Math.floor(Math.random() * colorModifiers.length)]);
+      }
+      if (selectedType === 'meteor' && Math.random() > 0.5) {
+        celestialObject.classList.add('coal-black');
+      }
+
+      // --- Randomize CSS Variables for each object ---
+      const size = Math.random() * 2 + 1; // Size from 1px to 3px
+      const angle = Math.random() * 30 + 30; // Trajectory angle from 30 to 60 degrees
+
+      celestialObject.style.setProperty('--size', `${size}px`);
+      celestialObject.style.setProperty('--angle', `${angle}deg`);
+      
+      // Random start position across the width of the screen
+      celestialObject.style.setProperty('--start-x', `${Math.random() * 100}vw`);
+      
+      // Random horizontal drift to make trajectories unique
+      celestialObject.style.setProperty('--drift', `${(Math.random() - 0.5) * 40}vw`);
+      
+      // Random duration and delay for a continuous, non-repetitive effect
+      celestialObject.style.setProperty('--duration', `${Math.random() * 10 + 8}s`); // 8s to 18s
+      celestialObject.style.setProperty('--delay', `-${Math.random() * 20}s`); // Negative delay starts animations part-way through
+      
+      container.appendChild(celestialObject);
+    }
+  }
+
+  // --- Initialize Footer Functionalities ---
+  function initFooter() {
+    // Update copyright year
+    const yearSpan = document.getElementById("copyright-year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Re-initialize Feather Icons
+    if (typeof feather !== 'undefined') {
+      feather.replace({
+        width: '1em',
+        height: '1em',
+        'stroke-width': 1.5
+      });
+    }
+    
+    // Create the celestial animation
+    createCelestialAnimation();
+  }
+
+  initFooter();
+});
+
+include-navbar.js (No versions, one final file)
+document.addEventListener("DOMContentLoaded", function () {
+  // Create a placeholder element for the navbar
+  const navbarPlaceholder = document.createElement("div");
+  navbarPlaceholder.id = "navbar-placeholder";
+  document.body.prepend(navbarPlaceholder); // Insert at the top of the body
+
+  // Fetch the navbar HTML
+  fetch("/components/navbar.html") // Use relative path
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.text();
+    })
+    .then((data) => {
+      // Insert the navbar HTML into the placeholder
+      navbarPlaceholder.innerHTML = data;
+
+      // Inject the logo and text into the navbar
+      const logoContainer = document.createElement("a");
+      logoContainer.href = "/index.html";
+      logoContainer.classList.add("logo-container");
+
+      const logoImg = document.createElement("img");
+      logoImg.src = "/images/uca_logo.png";
+      logoImg.alt = "UCA Logo";
+      logoImg.classList.add("logo-img");
+
+      const logoText = document.createElement("div");
+      logoText.classList.add("logo-text");
+
+      const logoTextMain = document.createElement("span");
+      logoTextMain.classList.add("logo-text-main");
+      logoTextMain.textContent = "UCA";
+
+      const logoTextSub = document.createElement("span");
+      logoTextSub.classList.add("logo-text-sub");
+      logoTextSub.textContent = "United Club Association";
+
+      // Append elements to the logo container
+      logoText.appendChild(logoTextMain);
+      logoText.appendChild(logoTextSub);
+      logoContainer.appendChild(logoImg);
+      logoContainer.appendChild(logoText);
+
+      // Insert the logo container into the navbar
+      const navbar = document.querySelector(".navbar");
+      if (navbar) {
+        navbar.prepend(logoContainer);
+      }
+
+      // Initialize Feather Icons
+      if (window.feather) {
+        feather.replace();
+      }
+
+      // Load and initialize navbar.js
+      if (!window.navbarInitialized) {
+        const script = document.createElement("script");
+        script.src = "/js/navbar.js";
+        script.onload = () => console.log("navbar.js loaded successfully");
+        script.onerror = () => console.error("Error loading navbar.js");
+        document.head.appendChild(script);
+      }
+    })
+    .catch((error) => {
+      console.error("Error loading navbar:", error);
+    });
+});
+
+include-footer.js (no versions, final file)
+document.addEventListener("DOMContentLoaded", function () {
+  // Create a placeholder element for the footer
+  const footerPlaceholder = document.createElement("div");
+  footerPlaceholder.id = "footer-placeholder";
+  document.body.appendChild(footerPlaceholder); // Insert at the bottom of the body
+
+  // Fetch the footer HTML
+  fetch("/components/footer.html") // Use relative path
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then((data) => {
+      // Insert the footer HTML into the placeholder
+      footerPlaceholder.innerHTML = data;
+      
+      // Initialize Feather Icons if available
+      if (typeof feather !== 'undefined') {
+        feather.replace({
+          'aria-hidden': 'true'
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error loading footer:", error);
+      
+      // Create a simple fallback footer if the main one fails to load
+      footerPlaceholder.innerHTML = `
+        <footer style="background-color: #1a1e2e; color: #e0e6ed; padding: 2rem; text-align: center;">
+          <p>&copy; 2025 UCA. All rights reserved.</p>
+        </footer>
+      `;
+    });
+});
+

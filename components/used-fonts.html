@@ -1,178 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>United Club Association (UCA) - Club Styles</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Club Association (UCA) - The Definitive Showcase</title>
 
-  <!-- Font Imports -->
-  <link href="https://fonts.cdnfonts.com/css/blanka" rel="stylesheet"> <!-- ICT -->
-  <link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet"> <!-- ICT -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> <!-- Debate -->
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet"> <!-- Debate -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- Photography -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> <!-- Photography -->
-  <!-- Impact is system default font -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> <!-- Sports -->
-  <!-- Times New Roman is system default -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"> <!-- Science -->
-  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> <!-- Science -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet"> <!-- Language -->
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet"> <!-- Language -->
-  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet"> <!-- Cultural -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> <!-- Cultural / UCA -->
-  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> <!-- Green -->
-  <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"> <!-- Green -->
-  
-  <style>
-    body {
-      background: #000000;
-      color: #ffffff;
-      font-family: 'Poppins', sans-serif;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h2 {
-      margin-top: 2rem;
-    }
-    .club {
-      margin-bottom: 2rem;
-      padding: 1rem;
-      border-left: 5px solid white;
-    }
-    .title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .fonts, .colors, .theme {
-      margin-top: 0.5rem;
-    }
-    .colors code {
-      display: inline-block;
-      margin-right: 1rem;
-    }
-  </style>
+    <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/azonix" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/neue-machina" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/made-canvas" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/libre-baskerville" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/coco-gothic" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/nfs-font" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/lexend" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/elianto" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/raleway" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/cinzel-decorative" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/eb-garamond" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/made-mirage" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/quicksand" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/existence-light" rel="stylesheet">
+
+
+    <style>
+        :root {
+            --bg-dark: #0D0D0F;
+            --card-bg: rgba(26, 27, 30, 0.65);
+            --text-light: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --transition-speed: 0.5s;
+        }
+
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(at 27% 37%, hsla(215, 98%, 62%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 52% 99%, hsla(355, 98%, 76%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 10% 29%, hsla(256, 96%, 68%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 0.1) 0px, transparent 50%);
+            background-size: 400% 400%;
+            animation: aurora 15s ease infinite;
+
+            color: var(--text-light);
+            font-family: 'Satoshi', sans-serif;
+            margin: 0;
+            padding: clamp(1rem, 5vw, 4rem);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .main-header {
+            text-align: center;
+            padding: 2rem 1rem 4rem 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .main-header h1 {
+            font-family: 'Monument Extended', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #fff;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0.5rem auto 0 auto;
+        }
+        
+        .club-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .club-card {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transform-style: preserve-3d;
+            transition: transform var(--transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1),
+                        box-shadow var(--transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1);
+            
+            /* On-Scroll Animation Initial State */
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .club-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-banner {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 180px;
+            position: relative;
+            transform: translateZ(20px);
+        }
+        
+        .card-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--banner-gradient);
+            opacity: 0.8;
+            z-index: -1;
+            transition: opacity var(--transition-speed) ease;
+        }
+        
+        .club-card:hover .card-banner::before {
+            opacity: 1;
+        }
+        
+        .card-banner h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            color: #fff;
+            font-weight: normal;
+        }
+        
+        .card-banner .theme {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin: 0;
+            font-style: italic;
+        }
+
+        .card-content {
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            transform: translateZ(40px);
+        }
+
+        .showcase-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #fff;
+            padding-bottom: 0.5rem;
+            margin: 0 0 1.5rem 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .color-swatch {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        .color-swatch:hover { transform: scale(1.1); }
+        .swatch-label {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .tooltip {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #28a745;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        
+        .color-swatch.copied .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .font-showcase .font-sample {
+            margin-bottom: 2rem;
+        }
+
+        .font-showcase .font-name {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .font-showcase .sample-text {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            line-height: 1.4;
+            color: var(--text-light);
+            background: none;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            body, .club-card, .card-banner::before {
+                animation: none;
+                transition: none;
+            }
+            .club-card {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+    </style>
 </head>
-
 <body>
 
-  <h1>United Club Association (UCA) — Club Style Guide</h1>
+    <header class="main-header">
+        <h1>United Club Association</h1>
+        <p>The Definitive Showcase</p>
+    </header>
 
-  <div class="club" style="border-color:#ffbd59;">
-    <h2 class="title" style="font-family: 'Blanka', sans-serif;">🌐 ICT Club</h2>
-    <div class="fonts" style="font-family: 'Iceberg', cursive;">Font: Blanka (Title), Iceberg (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>Text: #ffbd59</code>
-      <code>BG: #4B0082, #2E003E</code>
-      <code>Accent: #FFA500, #FF8C00</code>
-    </div>
-    <div class="theme">Theme: Neon Glow / Tech</div>
-  </div>
+    <main class="club-grid">
+        </main>
 
-  <div class="club" style="border-color:#28a745;">
-    <h2 class="title" style="font-family: 'Playfair Display', serif;">🗣️ Debate Club</h2>
-    <div class="fonts" style="font-family: 'Merriweather', serif;">Font: Playfair Display (Title), Merriweather (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>Text: #FFFFFF</code>
-      <code>Accent: #28a745</code>
-      <code>BG: #1C1C1C or Transparent</code>
-    </div>
-    <div class="theme">Theme: Intellectual / Formal Debate</div>
-  </div>
+    <template id="club-card-template">
+        <article class="club-card">
+            <div class="card-banner">
+                <h2 class="card-title"></h2>
+                <p class="theme"></p>
+            </div>
+            <div class="card-content">
+                <div class="showcase-section colors-section">
+                    <h3>Color Palette</h3>
+                    <div class="color-palette"></div>
+                </div>
+                <div class="showcase-section">
+                    <h3>Font Showcase</h3>
+                    <div class="font-showcase"></div>
+                </div>
+            </div>
+        </article>
+    </template>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const clubsData = [
+            {
+                id: 'uca',
+                name: '🌌 UCA Global',
+                theme: 'Modern, Guiding, Timeless',
+                titleFont: 'Monument Extended',
+                gradient: 'linear-gradient(45deg, #191970, #4169E1, #87CEEB)',
+                colors: [],
+                fonts: [
+                    { name: 'Monument Extended (Headings)', family: 'Monument Extended', text: 'Unity & Vision', style: 'text-transform: uppercase;' },
+                    { name: 'Satoshi (Body)', family: 'Satoshi', text: 'A foundational structure for all member clubs to thrive.', style: 'font-size: 1.2rem;' }
+                ]
+            },
+            {
+                id: 'ict',
+                name: '🌐 ICT Club',
+                theme: 'Bold, Geometric, Futuristic',
+                titleFont: 'Azonix',
+                gradient: 'radial-gradient(circle, #4B0082, #2E003E)',
+                colors: [{ hex: '#ffbd59', labelColor: '#000' }, { hex: '#FFA500', labelColor: '#000' }],
+                fonts: [
+                    { name: 'Azonix', family: 'Azonix', text: 'CYBERNETICS' },
+                    { name: 'Neue Machina', family: 'Neue Machina', text: 'Human-centric approach to machine logic.', style: 'font-size: 1.2rem;' }
+                ]
+            },
+            {
+                id: 'debate',
+                name: '🗣️ Debate Club',
+                theme: 'Intellectual, Formal, Unconventional',
+                titleFont: 'MADE Canvas',
+                gradient: 'linear-gradient(135deg, #1C1C1C, #3D3D3D)',
+                colors: [{ hex: '#FFFFFF', labelColor: '#000' }, { hex: '#28a745', labelColor: '#000' }],
+                fonts: [
+                    { name: 'MADE Canvas', family: 'MADE Canvas', text: 'The Argument' },
+                    { name: 'Libre Baskerville', family: 'Libre Baskerville', text: 'We contend that the premise is fundamentally flawed.', style: 'font-size: 1.2rem; font-family: "Libre Baskerville", serif;' }
+                ]
+            },
+            {
+                id: 'photo',
+                name: '📸 Photography Club',
+                theme: 'Minimalist, Clean, High-Fashion',
+                titleFont: 'Coco Gothic',
+                titleColor: '#111',
+                themeColor: '#444',
+                gradient: 'linear-gradient(to right, #e0e0e0, #bababa)',
+                colors: [{ hex: '#5D4037', labelColor: '#fff' }, { hex: '#000000', labelColor: '#fff' }, { hex: '#F5F5DC', labelColor: '#000' }],
+                fonts: [
+                    { name: 'Coco Gothic', family: 'Coco Gothic', text: 'FOCUS', style: 'font-weight: bold; font-size: 2rem;' },
+                    { name: 'Coco Gothic', family: 'Coco Gothic', text: 'The art of observation and capturing light.', style: 'font-size: 1.2rem;' }
+                ]
+            },
+            {
+                id: 'sports',
+                name: '🏃‍♂️ Sports Club',
+                theme: 'High-Speed, Aggressive, Competitive',
+                titleFont: 'NFS font',
+                titleColor: '#1E90FF',
+                gradient: 'linear-gradient(rgba(0,31,63,0.8), rgba(0,31,63,0.8)), url("data:image/svg+xml,%3Csvg width=\'6\' height=\'6\' viewBox=\'0 0 6 6\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%231E90FF\' fill-opacity=\'0.2\'%3E%3Cpath d=\'M5 0h1L0 6V5zM6 5v1H5z\'/%3E%3C/g%3E%3C/svg%3E")',
+                colors: [{ hex: '#1E90FF', labelColor: '#000' }, { hex: '#C0C0C0', labelColor: '#000' }],
+                fonts: [
+                    { name: 'NFS font', family: 'NFS font', text: 'FULL THROTTLE', style: 'font-size: 2.2rem; color: #1E90FF;' },
+                    { name: 'Montserrat Bold', family: 'Montserrat', text: 'Engineered for peak performance.', style: 'font-size: 1.2rem; font-weight: 700;' }
+                ]
+            },
+            {
+                id: 'quiz',
+                name: '🧠 Quiz Club',
+                theme: 'Academic, Legible, Focused',
+                titleFont: 'Lexend',
+                titleColor: '#000',
+                themeColor: '#333',
+                gradient: 'linear-gradient(45deg, #FF4136, #FFDC00)',
+                colors: [],
+                fonts: [
+                    { name: 'Lexend Bold', family: 'Lexend', text: 'Question #42', style: 'font-weight: 700; font-size: 2rem;' },
+                    { name: 'Lexend Regular', family: 'Lexend', text: 'What is the airspeed velocity of an unladen swallow?', style: 'font-size: 1.2rem;' }
+                ]
+            },
+            {
+                id: 'science',
+                name: '🔬 Science Club',
+                theme: 'Mysterious, Geometric, Universal',
+                titleFont: 'Elianto',
+                titleColor: '#C0C0C0',
+                themeColor: '#C0C0C0',
+                gradient: 'radial-gradient(circle, #000, #333)',
+                colors: [{ hex: '#C0C0C0', labelColor: '#000' }, { hex: '#FFFFFF', labelColor: '#000' }],
+                fonts: [
+                    { name: 'Elianto', family: 'Elianto', text: 'THE HYPOTHESIS' },
+                    { name: 'Raleway', family: 'Raleway', text: 'Discovering the fundamental fabric of reality.', style: 'font-size: 1.2rem;' }
+                ]
+            },
+            {
+                id: 'language',
+                name: '🗺️ Language Club',
+                theme: 'Literary, Wise, Historical',
+                titleFont: 'Cinzel Decorative',
+                titleColor: '#333',
+                themeColor: '#555',
+                gradient: 'linear-gradient(#FAF9F6, #e9e8e5)',
+                colors: [{ hex: '#0077BE', labelColor: '#fff' }],
+                fonts: [
+                    { name: 'Cinzel Decorative', family: 'Cinzel Decorative', text: 'The Written Word' },
+                    { name: 'EB Garamond', family: 'EB Garamond', text: 'In every language, a new world of stories awaits.', style: 'font-size: 1.2rem; font-family: "EB Garamond", serif;' }
+                ]
+            },
+            {
+                id: 'cultural',
+                name: '🎭 Cultural Club',
+                theme: 'Expressive, Artistic, Elegant',
+                titleFont: 'MADE Mirage',
+                gradient: 'linear-gradient(120deg, #800000, #FFD700)',
+                colors: [{ hex: '#1A4D4F', labelColor: '#fff' }, { hex: '#F5F5DC', labelColor: '#000' }],
+                fonts: [
+                    { name: 'MADE Mirage', family: 'MADE Mirage', text: 'FUSION', style: 'font-size: 2.5rem;' },
+                    { name: 'Gilroy', family: 'Gilroy-Bold', text: 'A celebration of diverse traditions and art forms.', style: 'font-size: 1.2rem; font-weight: 700;' }
+                ]
+            },
+            {
+                id: 'green',
+                name: '🌱 Green Club',
+                theme: 'Natural, Organic, Modern',
+                titleFont: 'Quicksand',
+                gradient: 'linear-gradient(to right, #2E7D32, #AEEA00)',
+                titleStyle: 'font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.4);',
+                themeStyle: 'text-shadow: 1px 1px 2px rgba(0,0,0,0.4);',
+                colors: [],
+                fonts: [
+                    { name: 'Quicksand', family: 'Quicksand', text: 'Ecosystem', style: 'font-weight: 700;' },
+                    { name: 'Existence Light', family: 'Existence Light', text: 'Protecting the delicate balance of our planet.', style: 'font-size: 1.5rem;' }
+                ]
+            },
+        ];
 
-  <div class="club" style="border-color:#5D4037;">
-    <h2 class="title" style="font-family: 'Bebas Neue', sans-serif;">📸 Photography Club</h2>
-    <div class="fonts" style="font-family: 'Montserrat', sans-serif;">Font: Bebas Neue (Title), Montserrat (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>Text: #5D4037</code>
-      <code>BG: Transparent / #000000</code>
-      <code>Accent: #F5F5DC (optional)</code>
-    </div>
-    <div class="theme">Theme: Minimalist / Focus on Imagery</div>
-  </div>
+        const grid = document.querySelector('.club-grid');
+        const template = document.getElementById('club-card-template');
 
-  <div class="club" style="border-color:#1E90FF;">
-    <h2 class="title" style="font-family: Impact;">🏃‍♂️ Sports Club</h2>
-    <div class="fonts" style="font-family: 'Open Sans', sans-serif;">Font: Impact (Title), Open Sans (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>Text: #1E90FF</code>
-      <code>Accent: #C0C0C0, #D3D3D3</code>
-      <code>BG: #001F3F</code>
-    </div>
-    <div class="theme">Theme: Energetic / Athletic</div>
-  </div>
+        clubsData.forEach(club => {
+            const card = template.content.cloneNode(true).querySelector('.club-card');
+            
+            // Set Banner content and style
+            const banner = card.querySelector('.card-banner');
+            banner.style.setProperty('--banner-gradient', club.gradient);
+            
+            const title = card.querySelector('.card-title');
+            title.textContent = club.name;
+            title.style.fontFamily = `'${club.titleFont}', sans-serif`;
+            if (club.titleColor) title.style.color = club.titleColor;
+            if (club.titleStyle) title.style.cssText += club.titleStyle;
 
-  <div class="club" style="border-color:#FF4136;">
-    <h2 class="title" style="font-family: 'Times New Roman', serif;">🧠 Quiz Club</h2>
-    <div class="fonts">Font: Times New Roman (Title & Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>Logo BG: #000000</code>
-      <code>Inside: #FF4136, #2ECC40, #FFDC00</code>
-      <code>Border: #FFFFFF</code>
-    </div>
-    <div class="theme">Theme: Academic / Educational Utility</div>
-  </div>
+            const theme = card.querySelector('.theme');
+            theme.textContent = club.theme;
+            if (club.themeColor) theme.style.color = club.themeColor;
+            if (club.themeStyle) theme.style.cssText += theme.themeStyle;
 
-  <div class="club" style="border-color:#C0C0C0;">
-    <h2 class="title" style="font-family: 'Orbitron', sans-serif;">🔬 Science Club</h2>
-    <div class="fonts" style="font-family: 'Raleway', sans-serif;">Font: Orbitron (Title), Raleway (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>BG: #000000</code>
-      <code>Logo BG: #C0C0C0</code>
-      <code>Text: #FFFFFF, #000000, #808080</code>
-    </div>
-    <div class="theme">Theme: Space / Futuristic Lab</div>
-  </div>
+            // Set Colors
+            const colorPalette = card.querySelector('.color-palette');
+            if (club.colors.length > 0) {
+                club.colors.forEach(color => {
+                    const swatch = document.createElement('div');
+                    swatch.className = 'color-swatch';
+                    swatch.style.backgroundColor = color.hex;
+                    swatch.title = `Copy ${color.hex}`;
+                    
+                    const label = document.createElement('span');
+                    label.className = 'swatch-label';
+                    label.textContent = color.hex;
+                    if(color.labelColor) label.style.color = color.labelColor;
+                    
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = 'Copied!';
 
-  <div class="club" style="border-color:#0077BE;">
-    <h2 class="title" style="font-family: 'Cinzel', serif;">🗺️ Language Club</h2>
-    <div class="fonts" style="font-family: 'EB Garamond', serif;">Font: Cinzel (Title), EB Garamond (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>BG: #FAF9F6</code>
-      <code>Text: #FFFFFF</code>
-      <code>Accent: #0077BE</code>
-    </div>
-    <div class="theme">Theme: Global Literacy / Literary</div>
-  </div>
+                    swatch.appendChild(label);
+                    swatch.appendChild(tooltip);
+                    colorPalette.appendChild(swatch);
+                });
+            } else {
+                card.querySelector('.colors-section').remove();
+            }
 
-  <div class="club" style="border-color:#800000;">
-    <h2 class="title" style="font-family: 'Yeseva One', cursive;">🎭 Cultural Club</h2>
-    <div class="fonts" style="font-family: 'Poppins', sans-serif;">Font: Yeseva One (Title), Poppins (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>Deep Maroon: #800000</code>
-      <code>Gold: #FFD700</code>
-      <code>Peacock Blue: #1A4D4F</code>
-      <code>Warm Beige: #F5F5DC</code>
-    </div>
-    <div class="theme">Theme: Artistic / Expressive / Traditional Fusion</div>
-  </div>
+            // Set Fonts
+            const fontShowcase = card.querySelector('.font-showcase');
+            club.fonts.forEach(font => {
+                const sampleContainer = document.createElement('div');
+                sampleContainer.className = 'font-sample';
+                
+                const fontName = document.createElement('span');
+                fontName.className = 'font-name';
+                fontName.textContent = font.name;
+                
+                const sampleText = document.createElement('p');
+                sampleText.className = 'sample-text';
+                sampleText.textContent = font.text;
+                sampleText.style.fontFamily = `'${font.family}', sans-serif`;
+                if (font.style) sampleText.style.cssText += font.style;
+                
+                sampleContainer.appendChild(fontName);
+                sampleContainer.appendChild(sampleText);
+                fontShowcase.appendChild(sampleContainer);
+            });
 
-  <div class="club" style="border-color:#2E7D32;">
-    <h2 class="title" style="font-family: 'Fjalla One', sans-serif;">🌱 Green Club</h2>
-    <div class="fonts" style="font-family: 'Cabin', sans-serif;">Font: Fjalla One (Title), Cabin (Body)</div>
-    <div class="colors">
-      <strong>Colors:</strong>
-      <code>Primary Green: #2E7D32</code>
-      <code>Accent: #AEEA00, #FFEB3B</code>
-      <code>BG: #E8F5E9</code>
-    </div>
-    <div class="theme">Theme: Eco-Friendly / Nature</div>
-  </div>
+            grid.appendChild(card);
+        });
 
-  <hr>
+        // --- INTERACTIVITY ---
 
-  <h2 class="title" style="font-family: 'Poppins', sans-serif;">🌌 UCA Global Theme</h2>
-  <div class="fonts">Font: Poppins (All-purpose)</div>
-  <div class="colors">
-    <strong>Theme:</strong> Starry Night (No Moon), Black & White Shades
-  </div>
+        // 3D Tilt Effect
+        grid.addEventListener('mousemove', (e) => {
+            if (!e.target.matches('.club-card')) return;
+            const card = e.target;
+            const { left, top, width, height } = card.getBoundingClientRect();
+            const x = e.clientX - left;
+            const y = e.clientY - top;
+            const rotateX = -1 * ((y - height / 2) / (height / 2)) * 8; // Max rotation 8deg
+            const rotateY = ((x - width / 2) / (width / 2)) * 8;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
 
+        grid.addEventListener('mouseleave', (e) => {
+             if (e.target.matches('.club-grid')) {
+                document.querySelectorAll('.club-card').forEach(card => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+             }
+        }, true);
+        
+        // On-Scroll Animation
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.club-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Color Swatch Copy
+        grid.addEventListener('click', e => {
+            if (!e.target.closest('.color-swatch')) return;
+            const swatch = e.target.closest('.color-swatch');
+            const color = swatch.title.replace('Copy ', '');
+            
+            navigator.clipboard.writeText(color).then(() => {
+                if (swatch.classList.contains('copied')) return; // Prevent re-triggering
+                swatch.classList.add('copied');
+                setTimeout(() => {
+                    swatch.classList.remove('copied');
+                }, 1200);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+        
+    });
+    </script>
 </body>
 </html>

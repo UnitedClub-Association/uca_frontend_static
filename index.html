@@ -2,337 +2,212 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-H2YV0FNQ9X");
     </script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="United Club Association - A vibrant community of university clubs and activities at University Laboratory School and College"
-    />
-
-    <!-- SEO Meta Tags -->
-    <meta name="keywords" content="UCA, United Club Association, university clubs, student activities, Bangladesh">
-    <meta name="author" content="United Club Association">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Social Media Meta Tags -->
-    <meta property="og:site_name" content="United Club Association">
-    <meta property="og:url" content="https://uca-bd.org">
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- Accessibility -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    
-    <!-- Theme color for supported browsers (Chrome, Edge, Safari) -->
-    <meta name="theme-color" content="#1C2526" />
-
-    <!-- Add Open Graph tags for better social sharing -->
+    <title>United Club Association</title>
+    <meta name="description" content="United Club Association - A vibrant community of university clubs embarking on a celestial voyage of discovery, passion, and legacy at University Laboratory School and College." />
+    <meta name="keywords" content="UCA, United Club Association, university clubs, student activities, Bangladesh" />
+    <meta name="author" content="United Club Association" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0A0B1A" />
+    <meta property="og:site_name" content="United Club Association" />
+    <meta property="og:url" content="https://uca-bd.org" />
     <meta property="og:title" content="United Club Association" />
-    <meta
-      property="og:description"
-      content="A vibrant community of university clubs and activities at University Laboratory School and College"
-    />
+    <meta property="og:description" content="A vibrant community of university clubs at University Laboratory School and College." />
     <meta property="og:image" content="/images/UCA_Home_Page_Pic.jpg" />
     <meta property="og:type" content="website" />
-    <title>
-      United Club Association | University Laboratory School and College
-    </title>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="js/include-fonts.js" as="script" />
-    <link rel="preconnect" href="https://unpkg.com" />
-    <link rel="preload" href="css/index.css" as="style" />
+    <!-- Preload & Preconnect -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <link rel="preload" href="/css/index.css" as="style" />
+    <link rel="preload" href="/js/main.js" as="script" />
 
-    <!-- Preconnect to Critical Origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Include centralized fonts -->
-    <script src="js/include-fonts.js" defer></script>
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/bricolage-grotesque" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/medio" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/avigea" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/quesha" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/navbar.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/index.css" />
 
-    <!-- Favicon and App Icons -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
     <link rel="apple-touch-icon" href="/images/uca_logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/uca_logo.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/uca_logo.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="/images/uca_logo.png" />
-
-    <!-- PWA/Mobile Manifest -->
-    <link rel="manifest" href="/manifest.json" />
 
     <!-- Modern Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
 
-    <!-- Progressive Enhancement - Load polyfills only if needed -->
+    <!-- Polyfill for IntersectionObserver -->
     <script>
       if (!("IntersectionObserver" in window)) {
         const script = document.createElement("script");
-        script.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.0/intersection-observer.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.0/intersection-observer.min.js";
         document.head.appendChild(script);
       }
     </script>
   </head>
   <body>
-    <!-- Navbar -->
-    <script src="js/include-navbar.js" defer></script>
+    <div id="navbar-placeholder"></div>
 
     <main id="main-content">
       <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-heading">
-        <div class="hero-overlay"></div>
-        <div class="hero-content animate-on-scroll">
-          <h1 id="hero-heading">United Club Association</h1>
-          <p class="hero-subtitle">Find Your Passion • Join Your Community • Create Your Legacy</p>
-          <div class="hero-cta">
-            
-            <a href="clubs/clubs.html" class="explore-clubs-button" aria-label="Explore all UCA clubs">
-              Explore Clubs
+        <div class="constellation-bg"></div>
+        <div class="hero-content">
+          <h1 id="hero-heading" class="animate-on-scroll" data-animation="fade-up">United Club Association</h1>
+          <p class="hero-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">
+            Find Your Passion • Join Your Community • Create Your Legacy
+          </p>
+          <div class="hero-cta animate-on-scroll" data-animation="fade-up" data-delay="200">
+            <a href="/clubs/clubs.html" class="button-primary explore-clubs-button" aria-label="Explore all UCA clubs">
+              <span>Explore Clubs</span>
               <i data-feather="arrow-right"></i>
             </a>
           </div>
+        </div>
+        <div class="scroll-indicator">
+          <i data-feather="arrow-down"></i>
         </div>
       </section>
 
       <!-- About Section -->
       <section class="about" aria-labelledby="about-heading">
-        <div class="about-container">
-          <div class="about-content">
-            <div class="about-text animate-on-scroll">
-              <h2 id="about-heading">Discover UCA</h2>
-              <p class="about-description">
-                Join a vibrant community where passion meets purpose. At UCA, we bring together diverse interests, talents, and dreams to create an enriching student experience.
-              </p>
-              <div class="about-stats">
-                <div class="stat-item animate-on-scroll" data-delay="0.1s">
-                  <i data-feather="users" class="stat-icon"></i>
-                  <span class="stat-number" data-count="9">0</span>
-                  <span class="stat-label">Active Clubs</span>
-                </div>
-                <div class="stat-item animate-on-scroll" data-delay="0.2s">
-                  <i data-feather="user-check" class="stat-icon"></i>
-                  <span class="stat-number" data-count="100">0</span>
-                  <span class="stat-label">Members</span>
-                </div>
-                <div class="stat-item animate-on-scroll" data-delay="0.3s">
-                  <i data-feather="calendar" class="stat-icon"></i>
-                  <span class="stat-number" data-count="3">0</span>
-                  <span class="stat-label">Events</span>
-                </div>
-              </div>
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="about-heading">Discover UCA</h2>
+            <p class="section-subtitle">
+              A vibrant community where passion meets purpose. We unite diverse interests, talents, and dreams to create an enriching student experience.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="100">
+              <i data-feather="users" class="stat-icon"></i>
+              <span class="stat-number" data-count="9">0</span>
+              <span class="stat-label">Active Clubs</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="200">
+              <i data-feather="user-check" class="stat-icon"></i>
+              <span class="stat-number" data-count="100">0</span>
+              <span class="stat-label">Members+</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="300">
+              <i data-feather="calendar" class="stat-icon"></i>
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Events Hosted</span>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Featured Clubs Section -->
-      <section
-        id="featured-clubs"
-        class="clubs"
-        aria-labelledby="featured-clubs-heading"
-      >
-        <h2 id="featured-clubs-heading" class="animate-on-scroll">Featured Clubs</h2>
-        <div class="club-grid">
-          <a
-            href="clubs/sports-club.html"
-            class="club-card animate-on-scroll"
-            data-delay="0.1s"
-          >
-            <div class="wave"></div>
-            <img
-              src="images/sports-club.jpg"
-              alt="A group of students playing soccer"
-              loading="lazy"
-            />
-            <div class="club-info">
-              <h3>Sports Club</h3>
-            </div>
-          </a>
-          <a
-            href="clubs/ict-club.html"
-            class="club-card animate-on-scroll"
-            data-delay="0.2s"
-          >
-            <div class="wave"></div>
-            <img
-              src="images/ict-club.jpg"
-              alt="Students working on computers and technology projects"
-              loading="lazy"
-            />
-            <div class="club-info">
-              <h3>ICT Club</h3>
-            </div>
-          </a>
-          <a
-            href="clubs/photography-club.html"
-            class="club-card animate-on-scroll"
-            data-delay="0.3s"
-          >
-            <div class="wave"></div>
-            <img
-              src="images/photography-club.jpg"
-              alt="A student taking photos with a DSLR camera"
-              loading="lazy"
-            />
-            <div class="club-info">
-              <h3>Photography Club</h3>
-            </div>
-          </a>
+      <section id="featured-clubs" class="clubs" aria-labelledby="featured-clubs-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="featured-clubs-heading">Featured Clubs</h2>
+          </div>
+          <div class="club-grid">
+  <!-- Sports Club Card -->
+  <a href="/clubs/sports-club.html" class="club-card club-card--sports animate-on-scroll" data-animation="fade-up">
+    <img src="/images/sports-club.jpg" alt="A group of students playing soccer" loading="lazy" />
+    <div class="club-info">
+      <h3>Sports Club</h3>
+      <span class="club-cta">View Details <i data-feather="arrow-right"></i></span>
+    </div>
+  </a>
+
+  <!-- ICT Club Card -->
+  <a href="/clubs/ict-club.html" class="club-card club-card--ict animate-on-scroll" data-animation="fade-up" data-delay="100">
+    <img src="/images/ict-club.jpg" alt="Students working on computers" loading="lazy" />
+    <div class="club-info">
+      <h3>ICT Club</h3>
+      <span class="club-cta">View Details <i data-feather="arrow-right"></i></span>
+    </div>
+  </a>
+
+  <!-- Photography Club Card -->
+  <a href="/clubs/photography-club.html" class="club-card club-card--photography animate-on-scroll" data-animation="fade-up" data-delay="200">
+    <img src="/images/photography-club.jpg" alt="A student with a DSLR camera" loading="lazy" />
+    <div class="club-info">
+      <h3>Photography Club</h3>
+      <span class="club-cta">View Details <i data-feather="arrow-right"></i></span>
+    </div>
+  </a>
+</div>
         </div>
       </section>
 
-      <!-- Featured Events Section -->
       <section class="events" aria-labelledby="featured-events-heading">
-        <h2 id="featured-events-heading" class="animate-on-scroll">Featured Events</h2>
-        <div class="event-grid">
-          <!-- Event Card 1: SnapFest -->
-          <article class="event-card animate-on-scroll" data-delay="0.1s">
-            <div class="event-image">
-              <img
-                src="images/Snapfest_Event_Pic.jpg"
-                alt="SnapFest: A photography event showcasing prize-winning pictures"
-                loading="lazy"
-              />
-              <h3 class="event-title">SnapFest</h3>
-            </div>
-            <div class="event-content">
-              <div class="event-date">
-                <span class="month">Nov</span>
-                <span class="day">18</span>
-                <span class="year">2024</span>
-              </div>
-              <p>
-                Hosted by University Laboratory Photography Club, featuring the
-                best pictures from the Prize Giving Ceremony at TSC.
-              </p>
-              <a href="events/snapfest.html" class="read-more">
-                Read more <span class="sr-only"> about SnapFest</span>
-                <i data-feather="arrow-right" class="icon"></i>
-              </a>
-            </div>
-          </article>
-          <!-- Event Card 2: TriQuest -->
-          <article class="event-card animate-on-scroll" data-delay="0.2s">
-            <div class="event-image">
-              <img
-                src="images/TriQuest- Battle_of_Knowledge.jpg"
-                alt="TriQuest: A quiz competition"
-                loading="lazy"
-              />
-              <h3 class="event-title">TriQuest</h3>
-            </div>
-            <div class="event-content">
-              <div class="event-date">
-                <span class="month">Dec</span>
-                <span class="day">2</span>
-                <span class="year">2024</span>
-              </div>
-              <p>
-                A quiz competition hosted by Quiz Club, Science Club, and
-                Language Club.
-              </p>
-              <a href="events/triquest.html" class="read-more">
-                Read more <span class="sr-only"> about TriQuest</span>
-                <i data-feather="arrow-right" class="icon"></i>
-              </a>
-            </div>
-          </article>
-          <!-- Event Card 3: UCA Unveiled -->
-          <article class="event-card animate-on-scroll" data-delay="0.3s">
-            <div class="event-image">
-              <img
-                src="images/uca_logo.png"
-                alt="UCA Unveiled - Introduction Ceremony"
-                loading="lazy"
-              />
-              <h3 class="event-title">UCA Unveiled</h3>
-            </div>
-            <div class="event-content">
-              <div class="event-date">
-                <span class="month">May</span>
-                <span class="day">8</span>
-                <span class="year">2025</span>
-              </div>
-              <p>
-                Join us in the Introduction as we reveal the official clubs under UCA.
-              </p>
-              <a href="events/uca-unveiled.html" class="read-more">
-                Read more <span class="sr-only"> about UCA Unveiled</span>
-                <i data-feather="arrow-right" class="icon"></i>
-              </a>
-            </div>
-          </article>
+  <div class="section-container">
+    <div class="section-header animate-on-scroll" data-animation="fade-up">
+      <h2 id="featured-events-heading">Featured Events</h2>
+    </div>
+    <div class="event-grid">
+      <article class="event-card event-card--frbd animate-on-scroll" data-animation="fade-up">
+        <div class="event-image">
+          <img src="/images/frbd_event_pic.jpg" alt="Poster for Frame of Revolution Event" loading="lazy" />
         </div>
-      </section>
+        <div class="event-content">
+          <div class="event-date">
+            <span>JULY 2024</span>
+          </div>
+          <h3>Frame Of Revolution: Bangladesh 2.0</h3>
+          <p>A visual storytelling event on the July 2024 student movement, focusing on youth resistance and the ecological impact of state repression.</p>
+          <a href="/events/frbd2.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="event-card event-card--uca animate-on-scroll" data-animation="fade-up" data-delay="100">
+        <div class="event-image">
+          <img src="/images/uca_logo.png" alt="UCA Logo for the Unveiled event" loading="lazy" />
+        </div>
+        <div class="event-content">
+          <div class="event-date">
+            <span>MAY 08 2025</span>
+          </div>
+          <h3>UCA Unveiled</h3>
+          <p>Join us in the Introduction as we reveal the official clubs under the UCA banner.</p>
+          <a href="/events/uca-unveiled.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="event-card event-card--triquest animate-on-scroll" data-animation="fade-up" data-delay="200">
+        <div class="event-image">
+          <img src="/images/TriQuest- Battle_of_Knowledge.jpg" alt="Poster for TriQuest Event" loading="lazy" />
+        </div>
+        <div class="event-content">
+          <div class="event-date">
+            <span>DEC 02 2024</span>
+          </div>
+          <h3>TriQuest</h3>
+          <p>A quiz competition hosted by Quiz Club, Science Club, and Language Club.</p>
+          <a href="/events/triquest.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
     </main>
 
-    <!-- Footer -->
-    <script src="js/include-footer.js" defer></script>
+    <div id="footer-placeholder"></div>
 
-    <!-- Initialize Feather Icons and Stats Animation -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize Feather Icons
-        if (typeof feather !== "undefined") {
-          feather.replace({
-            "aria-hidden": "true",
-          });
-        }
-
-        // Animate statistics numbers with IntersectionObserver
-        const stats = document.querySelectorAll(".stat-number");
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting && !prefersReducedMotion.matches) {
-                const stat = entry.target;
-                const target = parseInt(stat.getAttribute("data-count"));
-                let count = 0;
-                const duration = 2000;
-                const increment = target / (duration / 16);
-
-                const updateCount = () => {
-                  if (count < target) {
-                    count += increment;
-                    stat.textContent =
-                      Math.ceil(count) + (target >= 100 ? "+" : "");
-                    requestAnimationFrame(updateCount);
-                  } else {
-                    stat.textContent = target + (target >= 100 ? "+" : "");
-                  }
-                };
-
-                updateCount();
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          {
-            threshold: 0.1,
-          }
-        );
-
-        stats.forEach((stat) => observer.observe(stat));
-      });
-    </script>
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/main.js" defer></script>
   </body>
 </html>
