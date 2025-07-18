@@ -10,6 +10,15 @@
   --footer-height: 400px;
   --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+body{
+  cursor: url('/cursors/green-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/green-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/green-club-hover.png'), pointer;
+}
 
 .club-page {
   max-width: 1500px;

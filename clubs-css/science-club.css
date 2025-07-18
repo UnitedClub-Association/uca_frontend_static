@@ -43,6 +43,13 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  cursor: url('/cursors/science-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/science-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/science-club-hover.png'), pointer;
 }
 
 /* Geometric background pattern */

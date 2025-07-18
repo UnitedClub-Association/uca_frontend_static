@@ -1,7 +1,7 @@
 /*
 ================================================
 |                                              |
-|      PHOTOGRAPHY CLUB PAGE - REDESIGN V3     |
+|      PHOTOGRAPHY CLUB PAGE - REDESIGN V5     |
 |      Theme: Minimalist, Clean, High-Fashion  |
 |      Inspiration: Modern Gallery, Noir       |
 |                                              |
@@ -12,18 +12,20 @@
 ------------------------------------------------ */
 :root {
   /* Colors inspired by high-fashion and classic cameras */
-  --photo-bg-dark: #0a0a0a; /* True black for deep contrast */
+  --photo-bg-dark: #121212; /* Softer Charcoal Background */
   --photo-bg-card: #1c1c1c; /* Off-black for cards */
   --photo-text-primary: #f5f5f5; /* Soft off-white */
   --photo-text-secondary: #a1a1a1; /* Muted grey for secondary text */
   --photo-accent-brown: #5d4037; /* Rich leather brown */
   --photo-accent-beige: #f5f5dc; /* Classic beige */
   --photo-border-color: rgba(161, 161, 161, 0.2);
+  --photo-hero-border: rgba(245, 245, 245, 0.25); /* FIXED: More visible border for hero */
   --photo-border-hover: rgba(245, 245, 220, 0.5); /* Beige on hover */
 
   /* Typography */
-  --font-main: "Antipasto", "Helvetica Neue", sans-serif;
-  --font-body: "Satoshi", "Helvetica Neue", sans-serif; /* Inspired by index.css */
+  --font-title: "Baron Neue", "Helvetica Neue", sans-serif;
+  --font-main: "Luxia", "Helvetica Neue", sans-serif;
+  --font-body: "Antipasto", "Helvetica Neue", sans-serif; 
 
   /* Effects */
   --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -38,6 +40,13 @@ body.photo-theme {
   color: var(--photo-text-primary);
   font-family: var(--font-body);
   padding-top: 80px; /* Space for a fixed navbar */
+  cursor: url('/cursors/photography-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/photography-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/photography-club-hover.png'), pointer;
 }
 
 .club-page {
@@ -50,13 +59,42 @@ body.photo-theme {
 ------------------------------------------------ */
 .club-header {
   text-align: center;
-  padding: 8rem 2rem;
+  padding: 6rem 2rem; /* Adjusted padding */
   margin-bottom: 5rem;
+  position: relative;
+  border: 1px solid var(--photo-hero-border); /* FIXED: Using visible border */
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Decorative frames for hero section */
+.club-header::before,
+.club-header::after {
+  content: '';
+  position: absolute;
+  border: 1px solid var(--photo-hero-border); /* FIXED: Using visible border */
+  border-radius: 12px;
+  transition: all var(--transition-smooth);
+}
+
+.club-header::before {
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+}
+
+ .club-header::after {
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  opacity: 0.6;
 }
 
 .club-title {
-  font-family: var(--font-main);
-  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 8vw, 8rem);
   font-weight: bold;
   line-height: 1.1;
   text-transform: uppercase;
@@ -65,16 +103,33 @@ body.photo-theme {
   letter-spacing: 2px;
 }
 
+/* FIXED: Reverted to Baron Neue design, adjusted size and spacing only */
+.club-subtitle {
+  font-family: var(--font-title);
+  font-weight: bold;
+  color: var(--photo-text-primary);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  line-height: 1.2;
+  margin: 0.5rem 0 0 0;
+  padding-left: 0.3em; /* Nudge for letter-spacing */
+}
+
+
 .club-tagline {
   font-family: var(--font-body);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: var(--photo-text-secondary);
-  margin-top: 1.5rem;
+  margin-top: 2rem; /* Increased margin for better spacing */
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+  position: relative; /* Ensures text is on top of decorative elements */
+  z-index: 2;
 }
+
 
 /* 4. SPLIT LAYOUT FOR ABOUT/GALLERY
 ------------------------------------------------ */
@@ -116,10 +171,14 @@ body.photo-theme {
   margin-bottom: 1.5rem;
 }
 
+/* Mini-section for features list */
 .features-list {
   list-style: none;
-  padding: 0;
-  margin-top: 2.5rem;
+  padding: 2.5rem;
+  margin-top: 3rem;
+  background-color: var(--photo-bg-card);
+  border: 1px solid var(--photo-border-color);
+  border-radius: 12px;
 }
 
 .features-list li {
@@ -129,6 +188,10 @@ body.photo-theme {
   margin-bottom: 1.25rem;
   font-size: 1.1rem;
   font-family: var(--font-body);
+}
+
+.features-list li:last-child {
+  margin-bottom: 0;
 }
 
 .features-list i {

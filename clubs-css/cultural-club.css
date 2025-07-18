@@ -17,6 +17,13 @@ body {
   color: var(--text-dark);
   margin: 0;
   padding: 0;
+  cursor: url('/cursors/cultural-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/cultural-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/cultural-club-hover.png'), pointer;
 }
 
 /* Club Page Container */

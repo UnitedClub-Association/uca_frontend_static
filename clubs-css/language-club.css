@@ -38,6 +38,13 @@ body.language-theme {
   padding-top: 80px; /* Space for fixed navbar */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: url('/cursors/language-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/language-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/language-club-hover.png'), pointer;
 }
 
 .club-page {

@@ -28,7 +28,13 @@ body {
   background-color: var(--club-bg);
   color: var(--club-text);
   font-family: var(--font-body);
-  cursor: url('/images/cursor-default.png'), default;
+  cursor: url('/cursors/ict-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/ict-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/ict-club-hover.png'), pointer;
 }
 
 /* Club Page Layout */

@@ -34,6 +34,13 @@ body {
   font-family: var(--font-body);
   margin: 0;
   padding-top: 80px; /* For fixed navbar */
+  cursor: url('/cursors/debate-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/debate-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/debate-club-hover.png'), pointer;
 }
 
 .club-page {

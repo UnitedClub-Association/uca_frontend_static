@@ -34,6 +34,13 @@ body.sports-theme {
   color: var(--text-light);
   min-height: 100vh;
   line-height: 1.6;
+  cursor: url('/cursors/sports-club-default.png'), pointer;
+}
+a, button, [role="button"] {
+  cursor: url('/cursors/sports-club-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/sports-club-hover.png'), pointer;
 }
 
 .club-page {
