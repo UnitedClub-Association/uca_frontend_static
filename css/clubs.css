@@ -42,8 +42,14 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-sans-clean);
   padding-top: 80px; /* Space for fixed navbar */
+  cursor: url('/cursors/uca-default.png'), pointer;
 }
-
+a, button, [role="button"] {
+  cursor: url('/cursors/uca-hover.png'), pointer;
+}
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursors/uca-hover.png'), pointer;
+}
 .section-container {
   max-width: 1400px;
   margin: 0 auto;
