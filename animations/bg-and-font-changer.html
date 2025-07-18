@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Font & Background Effect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Loading a variety of Google Fonts to be used in the animation -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat&family=Comfortaa&family=Dancing+Script&family=Faster+One&family=Frijole&family=Jacquard+12&family=Jersey+10&family=Jost&family=Lato&family=Lobster&family=Montserrat&family=Nosifier&family=Oswald&family=Pacifico&family=Playfair+Display&family=Poppins&family=Raleway&family=Roboto&family=Rubik+Doodle+Shadow&family=Rubik+Glitch&family=Sixtyfour&family=Special+Elite&family=Teko&family=Ubuntu&display=swap" rel="stylesheet">
+    <style>
+        /* * Basic page reset and setup.
+         * The body is now the main container for the effect.
+         */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* Flexbox is used to center the text perfectly */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Add a smooth transition for background changes */
+            transition: background 1.5s ease-in-out;
+            background: #111; /* Initial background */
+        }
+
+        /*
+         * This is the container for our two lines of text.
+         * It uses flexbox to stack the lines vertically.
+         */
+        .main-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+             /* We set a default font to start with */
+            font-family: 'Anton', sans-serif;
+        }
+
+        /*
+         * Styling for each line of text.
+         */
+        .text-line {
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+            text-transform: uppercase;
+            text-align: center;
+            /* A strong shadow helps the text pop against any background */
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.2), 0px 0px 20px rgba(0,0,0,0.5);
+            /* This is the key property to prevent text from breaking into a new line */
+            white-space: nowrap;
+        }
+
+        /* Specific styling for the first line */
+        #line1 {
+            font-size: 8vw;
+            letter-spacing: 1px;
+        }
+
+        /* Specific styling for the second line */
+        #line2 {
+            font-size: 15vw;
+            letter-spacing: 2px;
+        }
+
+        /* A small info box to explain the effect */
+        .info {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            text-align: center;
+            text-shadow: none;
+            z-index: 10;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-text-container">
+        <span class="text-line" id="line1">FRAME OF REVOLUTION:</span>
+        <span class="text-line" id="line2">BANGLADESH 2.0</span>
+    </div>
+
+    <div class="info">
+        The font and background will randomly change.
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const textContainer = document.querySelector('.main-text-container');
+            const body = document.querySelector('body');
+
+            // --- FONT ARRAY ---
+            const fonts = [
+                'Anton', 'Bebas Neue', 'Caveat', 'Comfortaa', 'Dancing Script', 
+                'Faster One', 'Frijole', 'Jacquard 12', 'Jersey 10', 'Jost', 
+                'Lato', 'Lobster', 'Montserrat', 'Nosifier', 'Oswald', 
+                'Pacifico', 'Playfair Display', 'Poppins', 'Raleway', 'Roboto', 
+                'Rubik Doodle Shadow', 'Rubik Glitch', 'Sixtyfour', 'Special Elite', 
+                'Teko', 'Ubuntu'
+            ];
+
+            // --- BACKGROUNDS ARRAY ---
+            const backgrounds = [
+                'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)',
+                'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
+                'linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%)',
+                'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+                'linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)',
+                'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)',
+                'linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)',
+                'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)',
+                'linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)',
+                'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+                'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+                'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+                'linear-gradient(135deg, #21D4FD 0%, #B721FF 100%)',
+                'linear-gradient(135deg, #08AEEA 0%, #2AF598 100%)',
+                'linear-gradient(135deg, #FEE140 0%, #FA709A 100%)',
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'linear-gradient(135deg, #209cff 0%, #68e0cf 100%)'
+            ];
+
+            let lastFontIndex = -1;
+            let lastBgIndex = -1;
+
+            function randomizeStyles() {
+                let fontIndex;
+                let bgIndex;
+                do {
+                    fontIndex = Math.floor(Math.random() * fonts.length);
+                } while (fontIndex === lastFontIndex);
+                lastFontIndex = fontIndex;
+
+                do {
+                    bgIndex = Math.floor(Math.random() * backgrounds.length);
+                } while (bgIndex === lastBgIndex);
+                lastBgIndex = bgIndex;
+
+                // Apply the new styles
+                textContainer.style.fontFamily = `'${fonts[fontIndex]}', sans-serif`;
+                body.style.background = backgrounds[bgIndex];
+            }
+
+            const transitionInterval = 100;
+            setInterval(randomizeStyles, transitionInterval);
+            randomizeStyles();
+        });
+    </script>
+
+</body>
+</html>
