@@ -1,168 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-H2YV0FNQ9X");
     </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events - United Club Association</title>
-    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/js/include-fonts.js"></script>
+
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <link rel="preload" href="/css/events.css" as="style" />
+    <link rel="preload" href="/js/main.js" as="script" />
+
+    <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/bricolage-grotesque" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/medio" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/avigea" rel="stylesheet">
+
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/events.css" />
+
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <link rel="apple-touch-icon" href="/images/uca_logo.png" />
+
     <script src="https://unpkg.com/feather-icons" defer></script>
   </head>
   <body>
-    <script src="/js/include-navbar.js"></script>
+    <div id="navbar-placeholder"></div>
 
     <main id="main-content">
       <section class="hero" aria-labelledby="page-title">
+        <div class="constellation-bg"></div>
         <div class="hero-content">
-          <!-- Changed title from "Campus Events" to just "Events" -->
-          <h1 id="page-title">Events</h1>
-          <p>
-            Discover exciting activities, workshops, and gatherings hosted by
-            our diverse student clubs
+          <h1 id="page-title" class="animate-on-scroll" data-animation="fade-up">Our Events</h1>
+          <p class="hero-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">
+            Discover workshops, competitions, and gatherings that define our community.
           </p>
         </div>
       </section>
 
-      <section class="section featured-events">
-        <div class="section-inner">
-          <div class="section-header">
-            <h2 class="section-title">Featured Events</h2>
+      <section class="events" aria-labelledby="featured-events-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="featured-events-heading">Featured Events</h2>
           </div>
-
-          <div class="articles">
-            <article>
-              <div class="article-wrapper">
-                <figure>
-                  <div class="event-date">November 17 2024</div>
-                  <img
-                    src="/images/Snapfest_Event_Pic.jpg"
-                    alt="SnapFest Photography Exhibition"
-                  />
-                </figure>
-                <div class="article-body">
-                  <h2>SnapFest Photography Exhibition</h2>
-                  <!-- Removed location and time tags -->
-                  <p>
-                    Immerse yourself in visual storytelling at our annual
-                    photography exhibition. Featuring award-winning captures
-                    from the Prize Giving Ceremony and beyond, this event
-                    celebrates artistic expression through the lens.
-                  </p>
-                  <a href="/events/snapfest.html" class="details-btn">
-                    View Details <i data-feather="arrow-right"></i>
-                  </a>
-                </div>
+          <div class="event-grid-special">
+            <a href="/events/snapfest.html" class="event-card event-card--snapfest event-card--col-span-2 animate-on-scroll" data-animation="fade-up">
+              <div class="event-image">
+                <img src="/images/Snapfest_Event_Pic.jpg" alt="SnapFest Photography Exhibition" loading="lazy" />
               </div>
-            </article>
-
-            <article>
-              <div class="article-wrapper">
-                <figure>
-                  <div class="event-date">December 2, 2024</div>
-                  <img
-                    src="/images/TriQuest- Battle_of_Knowledge.jpg"
-                    alt="TriQuest: Battle of Knowledge"
-                  />
-                </figure>
-                <div class="article-body">
-                  <h2>TriQuest: Battle of Knowledge</h2>
-                  <!-- Removed location and time tags -->
-                  <p>
-                    Challenge your intellect in this collaborative quiz
-                    competition hosted by the Quiz Club, Science Club, and
-                    Language Club. Test your knowledge across various
-                    disciplines and compete for exciting prizes.
-                  </p>
-                  <a href="/events/triquest.html" class="details-btn">
-                    View Details <i data-feather="arrow-right"></i>
-                  </a>
-                </div>
+              <div class="event-content">
+                <div class="event-date"><span>NOVEMBER 17 2024</span></div>
+                <h3>SnapFest Photography Exhibition</h3>
+                <p>Immerse yourself in visual storytelling at our annual photography exhibition, celebrating artistic expression through the lens.</p>
+                <span class="read-more">View Details <i data-feather="arrow-right"></i></span>
               </div>
-            </article>
+            </a>
 
-            <article>
-              <div class="article-wrapper">
-                <figure>
-                  <div class="event-date">May 8, 2025</div>
-                  <img
-                    src="/images/uca_logo.png"
-                    alt="UCA Unveiled - Club Introduction Day"
-                  />
-                </figure>
-                <div class="article-body">
-                  <h2>UCA Unveiled - Club Introduction Day</h2>
-                  <p>
-                    Join us for an engaging introductory session where club presidents
-                    and advisors share their visions and future plans. The event
-                    concludes with an exciting quiz competition for all attendees.
-                  </p>
-                  <a href="/events/uca-unveiled.html" class="details-btn">
-                    View Details <i data-feather="arrow-right"></i>
-                  </a>
-                </div>
+            <a href="/events/uca-unveiled.html" class="event-card event-card--uca event-card--row-span-2 animate-on-scroll" data-animation="fade-up" data-delay="100">
+              <div class="event-image">
+                <img src="/images/uca_logo.png" alt="UCA Unveiled - Club Introduction Day" loading="lazy" />
               </div>
-            </article>
+              <div class="event-content">
+                <div class="event-date"><span>MAY 08 2025</span></div>
+                <h3>UCA Unveiled</h3>
+                <p>Join us for an engaging introductory session where club presidents and advisors share their visions and future plans. The event concludes with an exciting quiz competition for all attendees.</p>
+                <span class="read-more">View Details <i data-feather="arrow-right"></i></span>
+              </div>
+            </a>
+
+            <a href="/events/triquest.html" class="event-card event-card--triquest event-card--col-span-2 animate-on-scroll" data-animation="fade-up" data-delay="200">
+              <div class="event-image">
+                <img src="/images/TriQuest- Battle_of_Knowledge.jpg" alt="TriQuest: Battle of Knowledge" loading="lazy" />
+              </div>
+              <div class="event-content">
+                <div class="event-date"><span>DECEMBER 02 2024</span></div>
+                <h3>TriQuest: Battle of Knowledge</h3>
+                <p>Challenge your intellect in this collaborative quiz competition hosted by the Quiz Club, Science Club, and Language Club.</p>
+                <span class="read-more">View Details <i data-feather="arrow-right"></i></span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
 
-      <section class="all-events-cta">
-        <div class="cta-content">
-          <h2>Explore Our Complete Event Calendar</h2>
-          <p>
-            Discover all upcoming and past events organized by our diverse clubs
-            and associations throughout the academic year
-          </p>
-          <a href="/events/all-events.html" class="cta-button">
-            View All Events <i data-feather="arrow-right"></i>
-          </a>
-        </div>
+      <section class="cta-section" aria-labelledby="cta-heading-1">
+          <div class="section-container cta-content">
+              <h2 id="cta-heading-1">Explore Our Complete Event Calendar</h2>
+              <p>Discover all upcoming and past events organized by our diverse clubs throughout the academic year.</p>
+              <a href="/events/all-events.html" class="button-primary">
+                  <span>View All Events</span>
+                  <i data-feather="arrow-right"></i>
+              </a>
+          </div>
       </section>
 
-      <section class="join-club-cta">
-        <div class="cta-content">
-          <h2>Be Part of Something Extraordinary</h2>
-          <p>
-            Join one of our student clubs to participate in exciting events,
-            develop new skills, and connect with like-minded peers
-          </p>
-          <a href="/contact/join-us.html" class="cta-button">
-            Join a Club <i data-feather="user-plus"></i>
-          </a>
-        </div>
+      <section class="cta-section" aria-labelledby="cta-heading-2">
+          <div class="section-container cta-content">
+              <h2 id="cta-heading-2">Be Part of Something Extraordinary</h2>
+              <p>Join one of our student clubs to participate in exciting events, develop new skills, and connect with like-minded peers.</p>
+              <a href="/contact/join-us.html" class="button-primary">
+                  <span>Join a Club</span>
+                  <i data-feather="user-plus"></i>
+              </a>
+          </div>
       </section>
     </main>
 
-    <script src="/js/include-footer.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof feather !== "undefined") {
-          feather.replace({
-            "stroke-width": 2,
-            color: "currentColor",
-            size: 18,
-          });
-        }
-      });
-    </script>
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/main.js" defer></script>
   </body>
 </html>
