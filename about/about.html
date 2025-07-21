@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-H2YV0FNQ9X");
     </script>
@@ -17,148 +12,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About - United Club Association</title>
 
-    <!-- Meta tags for SEO -->
-    <meta
-      name="description"
-      content="Learn about the United Club Association (UCA), our mission, values, and the collaborative community we're building at University Laboratory School and College."
-    />
-    <meta
-      name="keywords"
-      content="UCA, United Club Association, university clubs, student organizations"
-    />
+    <meta name="description" content="Learn about the United Club Association (UCA), our mission, values, and the collaborative community we're building at University Laboratory School and College." />
+    <meta name="keywords" content="UCA, United Club Association, university clubs, student organizations" />
+    <meta name="author" content="United Club Association" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0A0B1A" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <link rel="apple-touch-icon" href="/images/uca_logo.png" />
 
-    <!-- Include centralized fonts -->
-    <script src="/js/include-fonts.js" defer></script>
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <link rel="preload" href="/css/about.css" as="style" />
+    <link rel="preload" href="/js/main.js" as="script" />
 
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/about.css" />
 
-    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <script>
+      if (!("IntersectionObserver" in window)) {
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.0/intersection-observer.min.js";
+        document.head.appendChild(script);
+      }
+    </script>
   </head>
   <body>
-    <!-- Removed skip link -->
-
-    <!-- Navbar will be inserted here by include-navbar.js -->
-    <script src="/js/include-navbar.js" defer></script>
+    <div id="navbar-placeholder"></div>
 
     <main id="main-content">
-      <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-heading">
+        <div class="constellation-bg"></div>
         <div class="hero-content">
-          <h1 id="hero-heading">About UCA</h1>
-          <p class="hero-subtitle">
-            United Club Association: Established October 10, 2024
+          <h1 id="hero-heading" class="animate-on-scroll" data-animation="fade-up">About UCA</h1>
+          <p class="hero-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">
+            Established October 10, 2024
           </p>
         </div>
       </section>
 
-      <!-- About Section -->
-      <section class="about-section" aria-labelledby="about-heading">
-        <div class="container">
-          <h2 id="about-heading">Our Mission</h2>
-          <div class="section-description">
+      <section class="mission" aria-labelledby="mission-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="mission-heading">Our Mission</h2>
+          </div>
+          <div class="mission-content animate-on-scroll" data-animation="fade-up" data-delay="100">
             <p>
-              The United Club Association (UCA) is dedicated to fostering a vibrant
-              community of clubs at University Laboratory School and College. We aim
-              to empower students by providing resources, guidance, and a platform
-              for collaboration among clubs.
+              The United Club Association (UCA) is dedicated to fostering a vibrant community of clubs at University Laboratory School and College. We aim to empower students by providing resources, guidance, and a platform for collaboration among clubs.
             </p>
             <p>
-              Through our efforts, we strive to create an environment where students
-              can explore their interests, develop leadership skills, and contribute
-              to the school's culture.
+              Through our efforts, we strive to create an environment where students can explore their interests, develop leadership skills, and contribute to the school's culture.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Values Section -->
-      <section class="values-section" aria-labelledby="values-heading">
-        <div class="container">
-          <h2 id="values-heading">Our Core Values</h2>
+      <section class="values" aria-labelledby="values-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="values-heading">Our Core Values</h2>
+          </div>
           <div class="values-grid">
-            <div class="value-card">
-              <div class="value-icon">
-                <i data-feather="users"></i>
-              </div>
+            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="100">
+              <i data-feather="users" class="value-icon"></i>
               <h3>Community</h3>
               <p>
-                We believe in building a strong sense of community among students,
-                faculty, and staff through collaborative events and initiatives.
+                Building a strong sense of community among students, faculty, and staff through collaborative events and initiatives.
               </p>
             </div>
-            <div class="value-card">
-              <div class="value-icon">
-                <i data-feather="award"></i>
-              </div>
+            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="200">
+              <i data-feather="award" class="value-icon"></i>
               <h3>Excellence</h3>
               <p>
-                We encourage excellence in all activities and initiatives undertaken
-                by our clubs, supporting high standards in every endeavor.
+                Encouraging excellence in all activities and initiatives, supporting high standards in every endeavor.
               </p>
             </div>
-            <div class="value-card">
-              <div class="value-icon">
-                <i data-feather="heart"></i>
-              </div>
+            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="300">
+              <i data-feather="heart" class="value-icon"></i>
               <h3>Inclusivity</h3>
               <p>
-                We are committed to creating an inclusive environment for all
-                students, regardless of background or interests.
+                Creating an inclusive environment for all students, regardless of background or interests.
               </p>
             </div>
-            <div class="value-card">
-              <div class="value-icon">
-                <i data-feather="compass"></i>
-              </div>
+            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="400">
+              <i data-feather="compass" class="value-icon"></i>
               <h3>Innovation</h3>
               <p>
-                We foster innovation and creative thinking, encouraging clubs to
-                explore new ideas and approaches to student activities.
+                Fostering innovation and creative thinking, encouraging new ideas and approaches to student activities.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Structure Section -->
-      <section class="structure-section" aria-labelledby="structure-heading">
-        <div class="container">
-          <h2 id="structure-heading">Our Structure</h2>
-          <div class="section-description">
+      <section class="structure" aria-labelledby="structure-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="structure-heading">Our Structure</h2>
+          </div>
+          <div class="structure-content animate-on-scroll" data-animation="fade-up" data-delay="100">
             <p>
-              The UCA is led by the presidents of all member clubs, with the ICT Club President
-              serving as the lead for online activities. This collaborative leadership model ensures
-              that all clubs have equal representation and voice in the association's decisions.
+              The UCA is led by the presidents of all member clubs, with the ICT Club President serving as the lead for online activities. This collaborative leadership model ensures that all clubs have equal representation and voice in the association's decisions.
             </p>
           </div>
-          <div class="cta-container">
-            <a href="/about/executive-panel.html" class="cta-button">Meet Our Executive Panel</a>
+          <div class="structure-cta animate-on-scroll" data-animation="fade-up" data-delay="200">
+            <a href="/about/executive-panel.html" class="button-primary" aria-label="Meet Our Executive Panel">
+              <span>Meet Our Executive Panel</span>
+              <i data-feather="arrow-right"></i>
+            </a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer will be inserted here by include-footer.js -->
-    <script src="/js/include-footer.js" defer></script>
+    <div id="footer-placeholder"></div>
 
-    <!-- Initialize Feather Icons -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        if (typeof feather !== "undefined") {
-          feather.replace({
-            'stroke-width': 2,
-            'color': 'currentColor',
-            'size': 24
-          });
-        }
-      });
-    </script>
+    <script src="/js/include-fonts.js" defer></script>
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/main.js" defer></script>
   </body>
 </html>

@@ -1,47 +1,117 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const clubTypeFilter = document.querySelector("#club-type-filter");
-  const clubFilter = document.querySelector("#club-filter");
-  const collabFilter = document.querySelector("#collab-filter");
-  const eventCards = document.querySelectorAll(".event-card");
+document.addEventListener("DOMContentLoaded", () => {
+  // DOM element references
+  const eventsGrid = document.getElementById("events-grid");
+  const noResultsMessage = document.getElementById("no-results");
+  
+  // Filter and sort controls
+  const sortFilter = document.getElementById("sort-filter");
+  const clubTypeFilter = document.getElementById("club-type-filter");
+  const clubFilter = document.getElementById("club-filter");
+  const collabFilter = document.getElementById("collab-filter");
 
-  function applyFilters() {
-    const clubType = clubTypeFilter.value;
-    const club = clubFilter.value;
-    const collab = collabFilter.value;
-    let visibleIndex = 0;
+  let allEvents = []; // To store the master list of events
 
-    eventCards.forEach((card) => {
-      const cardType = card.getAttribute("data-type");
-      const cardClubs = card.getAttribute("data-club").split(" ");
-      const cardCollab = card.getAttribute("data-collab");
-
-      const matchesType = clubType === "all" || cardType === clubType;
-      const matchesClub = club === "all" || cardClubs.includes(club);
-      const matchesCollab = collab === "all" || cardCollab === collab;
-
-      if (matchesType && matchesClub && matchesCollab) {
-        card.style.display = "block";
-        card.style.opacity = "0";
-        card.style.transform = "translateY(15px)";
-        setTimeout(() => {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
-        }, 50 * visibleIndex);
-        visibleIndex++;
-      } else {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(15px)";
-        setTimeout(() => {
-          card.style.display = "none";
-        }, 200);
+  /**
+   * Fetches event data from the JSON file.
+   */
+  async function fetchEvents() {
+    try {
+      const response = await fetch('/json/all-events.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    });
+      allEvents = await response.json();
+      // Initial render of events
+      applyFiltersAndSort();
+    } catch (error) {
+      console.error("Could not fetch events:", error);
+      eventsGrid.innerHTML = "<p>Error loading events. Please try again later.</p>";
+    }
   }
 
-  clubTypeFilter.addEventListener("change", applyFilters);
-  clubFilter.addEventListener("change", applyFilters);
-  collabFilter.addEventListener("change", applyFilters);
+  /**
+   * Renders a list of event cards to the grid.
+   * @param {Array} eventsToRender - The filtered and sorted list of events to display.
+   */
+  function renderEvents(eventsToRender) {
+    // Clear the grid before rendering new cards
+    eventsGrid.innerHTML = "";
 
-  // Initial filter application
-  applyFilters();
+    if (eventsToRender.length === 0) {
+      noResultsMessage.style.display = "block";
+    } else {
+      noResultsMessage.style.display = "none";
+    }
+
+    // Create and append a card for each event
+    eventsToRender.forEach(event => {
+      const card = document.createElement("a");
+      card.href = event.href;
+      card.className = `event-card ${event.cardClass}`;
+      
+      card.innerHTML = `
+        <div class="event-image">
+          <img src="${event.imgSrc}" alt="${event.imgAlt}" loading="lazy" />
+        </div>
+        <div class="event-content">
+          <div class="event-date">${event.displayDate}</div>
+          <h3>${event.title}</h3>
+          <p>${event.description}</p>
+          <span class="read-more">View Details <i data-feather="arrow-right"></i></span>
+        </div>
+      `;
+      eventsGrid.appendChild(card);
+    });
+
+    // Re-apply Feather icons
+    if (typeof feather !== 'undefined') {
+      feather.replace();
+    }
+  }
+
+  /**
+   * Filters and sorts the master event list based on current filter values.
+   */
+  function applyFiltersAndSort() {
+    let filteredEvents = [...allEvents];
+
+    // Get current filter values
+    const type = clubTypeFilter.value;
+    const club = clubFilter.value;
+    const collab = collabFilter.value;
+    const sortOrder = sortFilter.value;
+
+    // Apply filters
+    // 1. Club Type Filter
+    if (type !== "all") {
+      filteredEvents = filteredEvents.filter(event => event.type.includes(type));
+    }
+    // 2. Club Filter
+    if (club !== "all") {
+      filteredEvents = filteredEvents.filter(event => event.clubs.includes(club));
+    }
+    // 3. Collaboration Filter
+    if (collab !== "all") {
+      filteredEvents = filteredEvents.filter(event => event.collab === collab);
+    }
+
+    // Apply sorting
+    filteredEvents.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return sortOrder === 'latest' ? dateB - dateA : dateA - dateB;
+    });
+
+    // Render the final list of events
+    renderEvents(filteredEvents);
+  }
+
+  // Add event listeners to all filter controls
+  sortFilter.addEventListener("change", applyFiltersAndSort);
+  clubTypeFilter.addEventListener("change", applyFiltersAndSort);
+  clubFilter.addEventListener("change", applyFiltersAndSort);
+  collabFilter.addEventListener("change", applyFiltersAndSort);
+
+  // Initial fetch of events when the page loads
+  fetchEvents();
 });

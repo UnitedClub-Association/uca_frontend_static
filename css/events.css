@@ -110,14 +110,15 @@ a, button, [role="button"] {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 2.5rem;
+  min-height: 800px; /* Give the grid a defined height */
 }
 .event-card--col-span-2 { grid-column: span 2; }
 .event-card--row-span-2 { grid-row: span 2; }
 
-/* 5. EVENT CARD STYLING (matches homepage event cards) */
+/* 5. EVENT CARD STYLING */
 .event-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Default: horizontal layout (image left, content right) */
   background-color: var(--color-bg-night-sky);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
@@ -130,8 +131,8 @@ a, button, [role="button"] {
   box-shadow: var(--hover-shadow);
 }
 .event-image {
+  flex-basis: 50%; /* Image takes 50% of the width */
   flex-shrink: 0;
-  aspect-ratio: 16/9;
   overflow: hidden;
   position: relative;
 }
@@ -144,16 +145,27 @@ a, button, [role="button"] {
 .event-card:hover .event-image img {
   transform: scale(1.1);
 }
-/* Tall card (row-span-2) needs a different aspect ratio */
-.event-card--row-span-2 .event-image {
-  aspect-ratio: 4/3;
-}
 .event-content {
+  flex-basis: 50%; /* Content takes 50% of the width */
   padding: 2rem 2.5rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allows content to fill space */
+  justify-content: center; /* Vertically center content */
 }
+
+/* Specific styling for the tall/portrait card */
+.event-card--row-span-2 {
+  flex-direction: column; /* Override to vertical layout */
+}
+.event-card--row-span-2 .event-image {
+  flex-basis: 50%; /* Image takes top 50% of the height */
+  height: 50%;
+}
+.event-card--row-span-2 .event-content {
+  flex-basis: 50%; /* Content takes bottom 50% of the height */
+  height: 50%;
+}
+
 .event-date {
   color: var(--color-text-secondary);
   font-weight: 600;
@@ -170,7 +182,7 @@ a, button, [role="button"] {
 }
 .event-content p {
   color: var(--color-text-secondary);
-  flex-grow: 1;
+  flex-grow: 1; /* Allows content to fill space before the button */
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -186,16 +198,15 @@ a, button, [role="button"] {
 .read-more:hover { gap: 0.75rem; }
 
 /* --- Event-Specific Color Themes --- */
-
-/* Card 1: SnapFest */
-.event-card--snapfest:hover {
-  border-color: #c0c0c0; /* Silver */
-  box-shadow: 0 0 25px -8px #c0c0c0;
+/* This theme is for "Frame of Revolution" */
+.event-card--frbd:hover {
+  border-color: #a0a0a0;
+  box-shadow: 0 0 25px -8px #a0a0a0;
 }
-.event-card--snapfest .read-more { color: #c0c0c0; }
-.event-card--snapfest .read-more:hover { color: #ffffff; }
+.event-card--frbd .read-more { color: #a0a0a0; }
+.event-card--frbd .read-more:hover { color: #ffffff; }
 
-/* Card 2: UCA Unveiled */
+/* This theme is for "UCA Unveiled" */
 .event-card--uca:hover {
   border-color: var(--color-secondary-glow);
   box-shadow: 0 0 25px -8px var(--color-secondary-glow);
@@ -203,7 +214,7 @@ a, button, [role="button"] {
 .event-card--uca .read-more { color: var(--color-secondary-glow); }
 .event-card--uca .read-more:hover { color: var(--color-text-primary); }
 
-/* Card 3: TriQuest */
+/* This theme is for "TriQuest" */
 .event-card--triquest {
   background: linear-gradient(var(--color-bg-night-sky), var(--color-bg-night-sky)) padding-box,
               linear-gradient(135deg, #8B0000, #000080) border-box;
@@ -238,7 +249,6 @@ a, button, [role="button"] {
   max-width: 600px;
   margin: 0 auto 2.5rem auto;
 }
-/* Reusing the button style from index.css */
 .button-primary {
   font-family: var(--font-sans-clean);
   font-weight: 600;
@@ -269,14 +279,21 @@ a, button, [role="button"] {
   .event-grid-special {
     grid-template-columns: 1fr; /* Stack all cards on top of each other */
     grid-template-rows: auto;
+    min-height: unset; /* Unset the minimum height */
   }
   .event-card--col-span-2,
   .event-card--row-span-2 {
     grid-column: auto; /* Reset spans */
     grid-row: auto;
   }
-  .event-card--row-span-2 .event-image {
-    aspect-ratio: 16/9; /* Reset aspect ratio for consistency in single column */
+  /* On smaller screens, all cards should be horizontal for consistency */
+  .event-card--row-span-2 {
+    flex-direction: row;
+  }
+  .event-card--row-span-2 .event-image,
+  .event-card--row-span-2 .event-content {
+      flex-basis: 50%;
+      height: auto;
   }
 }
 
@@ -287,6 +304,19 @@ a, button, [role="button"] {
   .hero-subtitle { font-size: 1.1rem; }
   .events, .cta-section { padding: 4rem 0; }
   .section-container { padding: 0 1rem; }
+  
+  /* Stack image and content on the smallest screens */
+  .event-card,
+  .event-card--row-span-2 {
+      flex-direction: column;
+  }
+  .event-card .event-image,
+  .event-card .event-content {
+      flex-basis: auto; /* Reset basis */
+  }
+  .event-image {
+    aspect-ratio: 16/9; /* Give images a consistent aspect ratio when stacked */
+  }
 }
 
 /* 8. ANIMATIONS */

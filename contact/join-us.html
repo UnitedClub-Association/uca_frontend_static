@@ -4,88 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join UCA - United Club Association</title>
-    <meta name="description" content="Join the United Club Association (UCA) in Dhaka, Bangladesh, and become part of our vibrant student community." />
+    <meta name="description" content="Join the United Club Association (UCA) in Dhaka, Bangladesh, and become part of our vibrant student community. Find out how to register and connect with us." />
     <meta name="keywords" content="UCA, United Club Association, join club, membership, student clubs, Dhaka, Bangladesh" />
-    <script src="/js/include-fonts.js" defer></script>
+
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/join-us.css" />
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
     <script src="https://unpkg.com/feather-icons" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
+
+    <script src="/js/include-fonts.js" defer></script>
     <script src="/js/include-navbar.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
-    <script type="module" src="/js/join-us.js"></script>
+    <script src="/js/join-us.js" defer></script>
   </head>
   <body>
-    <main class="main-content">
-      <section class="hero-section">
-        <div class="container">
-          <h1>Join UCA</h1>
-          <p>Be part of our vibrant student community</p>
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-content">
+      <section class="join-hero">
+        <div class="hero-content">
+          <div class="hero-icon"><i data-feather="star"></i></div>
+          <h1>Become a Part of UCA</h1>
+          <p class="hero-subtitle">
+            Your journey into a vibrant community of creators, thinkers, and leaders starts here. Follow the steps below to join the United Club Association.
+          </p>
         </div>
       </section>
-      <section class="join-section">
-        <div class="container">
-          <div class="join-content">
-            <h2>How to Join UCA</h2>
+
+      <section class="join-process">
+        <div class="section-container">
+          <div class="process-card">
+            <div class="section-header">
+              <h2>Your Path to Membership</h2>
+            </div>
+            
             <div class="join-steps">
               <div class="step">
-                <div class="step-icon"><i data-feather="mail"></i></div>
-                <h3>1. Get the Form</h3>
-                <p>Contact a club executive to obtain the official UCA registration form.</p>
+                <div class="step-icon"><i data-feather="file-text"></i></div>
+                <h3>1. Obtain the Form</h3>
+                <p>Reach out to any club executive or contact us directly to get the official UCA registration form.</p>
                 <div class="contact-info">
-                  <a href="mailto:uca.official.bd@gmail.com">uca.official.bd@gmail.com</a>
-                  <a href="tel:+8801886150418"><i data-feather="phone"></i> +880 1886 150418</a>
+                  <a href="mailto:uca.official.bd@gmail.com" class="contact-link"><i data-feather="mail"></i><span>uca.official.bd@gmail.com</span></a>
+                  <a href="tel:+8801886150418" class="contact-link"><i data-feather="phone"></i><span>+880 1886-150418</span></a>
                 </div>
               </div>
               <div class="step">
                 <div class="step-icon"><i data-feather="edit"></i></div>
-                <h3>2. Submit Application</h3>
-                <p>Complete and submit the registration form with a 20 Taka fee per club (max 3 clubs).</p>
+                <h3>2. Submit Your Application</h3>
+                <p>Complete the form and submit it with a ৳20 BDT fee for each club you wish to join (maximum of 3 clubs).</p>
               </div>
               <div class="step">
                 <div class="step-icon"><i data-feather="user-check"></i></div>
-                <h3>3. Become a Member</h3>
-                <p>Once approved, you’re part of UCA! For executive roles, apply with a 50 Taka fee.</p>
-              </div>
-            </div>
-            <div class="social-connect">
-              <h3>Connect With Us</h3>
-              <div class="social-links">
-                <a href="https://www.facebook.com/ucaofficial2023" class="social-link facebook">
-                  <div class="social-icon"><i data-feather="facebook"></i></div>
-                  <span>Facebook</span>
-                  <p>Follow our updates</p>
-                </a>
-                <a href="https://www.instagram.com/uca.ulab" class="social-link instagram">
-                  <div class="social-icon"><i data-feather="instagram"></i></div>
-                  <span>Instagram</span>
-                  <p>View our photos</p>
-                </a>
-                <a href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV" class="social-link whatsapp">
-                  <div class="social-icon"><i data-feather="message-circle"></i></div>
-                  <span>WhatsApp</span>
-                  <p>Join our group</p>
-                </a>
-                <a href="#" class="social-link discord">
-                  <div class="social-icon"><i data-feather="message-square"></i></div>
-                  <span>Discord</span>
-                  <p>Chat with us</p>
-                </a>
+                <h3>3. Welcome to the Community</h3>
+                <p>Once your application is approved, you're an official member! Interested in leadership? Apply for an executive role with a ৳50 BDT fee.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <section class="social-connect">
+        <div class="section-container">
+          <div class="section-header">
+            <h2>Connect With Us</h2>
+            <p class="section-subtitle">Stay updated and engage with the community through our social channels.</p>
+          </div>
+          <div class="social-grid">
+            <a href="https://www.facebook.com/ucaofficial2023" target="_blank" rel="noopener noreferrer" class="social-card" data-platform="facebook">
+              <i data-feather="facebook" class="social-icon"></i>
+              <h3>Facebook</h3>
+              <p>Follow our page for the latest news and event announcements.</p>
+            </a>
+            <a href="https://www.instagram.com/uca.ulab" target="_blank" rel="noopener noreferrer" class="social-card" data-platform="instagram">
+              <i data-feather="instagram" class="social-icon"></i>
+              <h3>Instagram</h3>
+              <p>Explore the visual stories and highlights from our community.</p>
+            </a>
+            <a href="https://chat.whatsapp.com/C6Z1lB4RVhnFunBdml0eAV" target="_blank" rel="noopener noreferrer" class="social-card" data-platform="whatsapp">
+              <i data-feather="message-circle" class="social-icon"></i>
+              <h3>WhatsApp</h3>
+              <p>Join our official announcement group for direct updates.</p>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-card" data-platform="discord">
+              <i data-feather="message-square" class="social-icon"></i>
+              <h3>Discord</h3>
+              <p>Chat with members and participate in online activities. (Coming Soon)</p>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        if (typeof feather !== 'undefined') {
-          feather.replace();
-        }
-      });
-    </script>
+
+    <div id="footer-placeholder"></div>
   </body>
 </html>

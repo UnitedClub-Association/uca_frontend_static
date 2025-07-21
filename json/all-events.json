@@ -1,0 +1,72 @@
+[
+  {
+    "id": "frbd2",
+    "href": "/events/frbd2.html",
+    "imgSrc": "/images/frbd_event_pic.jpg",
+    "imgAlt": "Poster for Frame of Revolution Event",
+    "date": "2025-07-01",
+    "displayDate": "JULY 2025",
+    "title": "Frame Of Revolution: Bangladesh 2.0",
+    "description": "A visual storytelling event on the July 2024 student movement, focusing on youth resistance and ecological impact.",
+    "cardClass": "event-card--frbd",
+    "type": "academic cultural",
+    "clubs": ["photography", "language"],
+    "collab": "collab"
+  },
+  {
+    "id": "uca-unveiled",
+    "href": "/events/uca-unveiled.html",
+    "imgSrc": "/images/uca_logo.png",
+    "imgAlt": "UCA Unveiled - Club Introduction Day",
+    "date": "2025-05-08",
+    "displayDate": "MAY 08 2025",
+    "title": "UCA Unveiled",
+    "description": "Join us for an engaging introductory session where club presidents and advisors share their visions and future plans.",
+    "cardClass": "event-card--uca",
+    "type": "academic",
+    "clubs": ["uca"],
+    "collab": "single"
+  },
+  {
+    "id": "potm-june",
+    "href": "/events/photographer-month-june.html",
+    "imgSrc": "/images/uca_logo.png",
+    "imgAlt": "Photographer of the Month: June",
+    "date": "2025-06-21",
+    "displayDate": "JUNE 21 2025",
+    "title": "Photographer of the Month: June",
+    "description": "Celebrate the talent of our Photography Club with this month's spotlight, showcasing outstanding captures.",
+    "cardClass": "event-card--potm",
+    "type": "cultural",
+    "clubs": ["photography"],
+    "collab": "single"
+  },
+  {
+    "id": "triquest",
+    "href": "/events/triquest.html",
+    "imgSrc": "/images/TriQuest- Battle_of_Knowledge.jpg",
+    "imgAlt": "TriQuest: Battle of Knowledge",
+    "date": "2024-12-02",
+    "displayDate": "DECEMBER 02 2024",
+    "title": "TriQuest: Battle of Knowledge",
+    "description": "Challenge your intellect in this collaborative quiz competition by the Quiz, Science, and Language clubs.",
+    "cardClass": "event-card--triquest",
+    "type": "academic",
+    "clubs": ["quiz", "science", "language"],
+    "collab": "collab"
+  },
+  {
+    "id": "snapfest",
+    "href": "/events/snapfest.html",
+    "imgSrc": "/images/Snapfest_Event_Pic.jpg",
+    "imgAlt": "SnapFest Photography Exhibition",
+    "date": "2024-11-17",
+    "displayDate": "NOVEMBER 17 2024",
+    "title": "SnapFest Exhibition",
+    "description": "Immerse yourself in visual storytelling at our annual photography exhibition. A monochrome showcase of talent.",
+    "cardClass": "event-card--snapfest",
+    "type": "cultural",
+    "clubs": ["photography"],
+    "collab": "single"
+  }
+]

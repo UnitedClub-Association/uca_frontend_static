@@ -1,181 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gallery - United Club Association</title>
-
-    <!-- Meta tags for SEO -->
-    <meta
-      name="description"
-      content="Explore the visual journey of UCA events, activities, and achievements through our curated gallery of memorable moments."
-    />
-    <meta
-      name="keywords"
-      content="UCA gallery, club photos, student activities, university events, campus life"
-    />
-
-    <!-- Stylesheets -->
+    <meta name="description" content="Explore the visual journey of UCA events, activities, and achievements through our curated gallery of memorable moments." />
+    <meta name="keywords" content="UCA gallery, club photos, student activities, university events, campus life" />
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/gallery.css" />
-
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
-
-    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <!-- Include centralized fonts and components -->
     <script src="/js/include-fonts.js" defer></script>
     <script src="/js/include-navbar.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
   </head>
   <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
-
     <main id="main-content">
-      <section class="coming-soon-container">
-        <div class="coming-soon-content">
-          <div class="coming-soon-header">
-            <div class="icon-container">
-              <i data-feather="image"></i>
-            </div>
-            <h1>Gallery Coming Soon</h1>
+      <section class="gallery-hero">
+        <div class="hero-content">
+          <div class="hero-icon">
+            <i data-feather="image"></i>
           </div>
-          
-          <p class="coming-soon-description">
-            We're curating a stunning collection of photographs from all our club events, 
-            activities, and memorable moments. Our team is working diligently to bring you 
-            a visual journey through the vibrant life of UCA.
+          <h1>Gallery Coming Soon</h1>
+          <p class="hero-subtitle">
+            We are curating a stunning visual journey through the vibrant life of the United Club Association. This space will soon be filled with memories from our events, activities, and achievements.
           </p>
-          
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-icon">
-                <i data-feather="camera"></i>
-              </div>
-              <div class="timeline-content">
-                <h3>Photo Collection</h3>
-                <p>Gathering high-quality images from all club events and activities</p>
-              </div>
-            </div>
-            
-            <div class="timeline-item">
-              <div class="timeline-icon">
-                <i data-feather="edit-2"></i>
-              </div>
-              <div class="timeline-content">
-                <h3>Curation Process</h3>
-                <p>Selecting and organizing the best moments to showcase our community</p>
-              </div>
-            </div>
-            
-            <div class="timeline-item">
-              <div class="timeline-icon">
-                <i data-feather="layout"></i>
-              </div>
-              <div class="timeline-content">
-                <h3>Gallery Design</h3>
-                <p>Creating an immersive and interactive gallery experience</p>
-              </div>
-            </div>
+          <div class="placeholder-grid">
+            <div class="placeholder-card"></div>
+            <div class="placeholder-card"></div>
+            <div class="placeholder-card"></div>
+            <div class="placeholder-card"></div>
           </div>
-          
-          <div class="placeholder-gallery">
-            <div class="placeholder-image">
-              <div class="placeholder-icon">
-                <i data-feather="image"></i>
-              </div>
-            </div>
-            <div class="placeholder-image">
-              <div class="placeholder-icon">
-                <i data-feather="camera"></i>
-              </div>
-            </div>
-            <div class="placeholder-image">
-              <div class="placeholder-icon">
-                <i data-feather="film"></i>
-              </div>
-            </div>
-            <div class="placeholder-image">
-              <div class="placeholder-icon">
-                <i data-feather="video"></i>
-              </div>
-            </div>
-          </div>
-          
-          <div class="notification-box">
-            <div class="notification-icon">
-              <i data-feather="bell"></i>
-            </div>
-            <div class="notification-content">
-              <h3>Get Notified</h3>
-              <p>
-                Want to know when our gallery launches? Follow us on social media for updates!
-              </p>
-              <div class="social-links">
-                <a href="#" class="social-link" aria-label="Facebook">
-                  <i data-feather="facebook"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Instagram">
-                  <i data-feather="instagram"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Twitter">
-                  <i data-feather="twitter"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          
           <a href="/index.html" class="back-home-btn">
-            <i data-feather="arrow-left"></i> Back to Home
+            <i data-feather="arrow-left"></i>
+            <span>Return Home</span>
           </a>
         </div>
       </section>
     </main>
-
-    <!-- Footer will be inserted here by include-footer.js -->
-
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Feather icons
-        if (typeof feather !== 'undefined') {
-          feather.replace({
-            'stroke-width': 2,
-            'color': 'currentColor',
-            'size': 24
-          });
-        }
-        
-        // Animate timeline items
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        timelineItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.add('animate');
-          }, 300 * (index + 1));
-        });
-        
-        // Animate placeholder images
-        const placeholderImages = document.querySelectorAll('.placeholder-image');
-        placeholderImages.forEach((image, index) => {
-          setTimeout(() => {
-            image.classList.add('animate');
-          }, 200 * (index + 1));
-        });
-      });
+      document.addEventListener('DOMContentLoaded', () => feather.replace());
     </script>
   </body>
 </html>

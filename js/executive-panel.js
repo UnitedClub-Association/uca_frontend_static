@@ -1,133 +1,76 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize Feather Icons
   if (typeof feather !== 'undefined') {
     feather.replace({
       'stroke-width': 1.5,
-      'color': 'currentColor',
-      'width': 20,
-      'height': 20
+      color: 'currentColor'
     });
   }
-  
-  initializeFiltering();
-  animateExecutiveCards();
-  addCardHoverEffects();
-});
 
-function initializeFiltering() {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const executiveCards = document.querySelectorAll('.executive-card');
+  const filterContainer = document.querySelector('.executives-filter');
+  const executiveGrid = document.querySelector('.executives-grid');
   
-  if (!filterButtons.length || !executiveCards.length) return;
-  
-  executiveCards.forEach(card => {
-    card.style.display = 'flex';
-    card.style.opacity = '1';
-    card.style.transform = 'translateY(0)';
-  });
-  
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-      const filterValue = button.getAttribute('data-filter');
-      let visibleIndex = 0;
-      
-      executiveCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        if (filterValue === 'all' || cardCategory === filterValue) {
-          card.style.display = 'flex';
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(15px)';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 50 * visibleIndex);
-          visibleIndex++;
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(15px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 200);
-        }
-      });
-    });
-  });
-}
+  if (!filterContainer || !executiveGrid) return;
 
-function animateExecutiveCards() {
-  const executiveCards = document.querySelectorAll('.executive-card');
-  if (!executiveCards.length) return;
+  const filterButtons = filterContainer.querySelectorAll('.filter-btn');
+  const executiveCards = Array.from(executiveGrid.querySelectorAll('.executive-card'));
 
+  // Initial load animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const index = Array.from(executiveCards).indexOf(entry.target);
-        const club = entry.target.getAttribute('data-club');
-        let animationName = '';
-        
-        switch(club) {
-          case 'ict': animationName = 'pulse-ict'; break;
-          case 'debate': animationName = 'slide-debate'; break;
-          case 'photography': animationName = 'zoom-photo'; break;
-          case 'sports': animationName = 'bounce-sports'; break;
-          case 'quiz': animationName = 'rotate-quiz'; break;
-          case 'science': animationName = 'glow-science'; break;
-          case 'language': animationName = 'fade-language'; break;
-          case 'cultural': animationName = 'spin-cultural'; break;
-          case 'green': animationName = 'grow-green'; break;
-          case 'design': animationName = 'shine-design'; break;
-        }
-
-        entry.target.style.animation = `${animationName} 0.6s ease-out forwards`;
+        const delay = entry.target.dataset.index * 80;
         setTimeout(() => {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
-          entry.target.style.animation = 'none';
-        }, 80 * (index % 10));
+        }, delay);
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.2,
-    rootMargin: '0px 0px -30px 0px'
-  });
-  
-  executiveCards.forEach(card => {
+  }, { threshold: 0.1 });
+
+  executiveCards.forEach((card, index) => {
     card.style.opacity = '0';
-    card.style.transform = 'translateY(15px)';
-    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    card.dataset.index = index; // Store index for staggered animation
     observer.observe(card);
   });
-}
+  
+  // Filter logic
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Update active button state
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      const filterValue = button.getAttribute('data-filter');
+      
+      // Fade out all cards first
+      executiveCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.95)';
+      });
 
-function addCardHoverEffects() {
-  const cards = document.querySelectorAll('.executive-card, .structure-card');
-  cards.forEach(card => {
-    const club = card.getAttribute('data-club');
-    let animationName = '';
-    
-    switch(club) {
-      case 'ict': animationName = 'pulse-ict'; break;
-      case 'debate': animationName = 'slide-debate'; break;
-      case 'photography': animationName = 'zoom-photo'; break;
-      case 'sports': animationName = 'bounce-sports'; break;
-      case 'quiz': animationName = 'rotate-quiz'; break;
-      case 'science': animationName = 'glow-science'; break;
-      case 'language': animationName = 'fade-language'; break;
-      case 'cultural': animationName = 'spin-cultural'; break;
-      case 'green': animationName = 'grow-green'; break;
-      case 'design': animationName = 'shine-design'; break;
-      default: animationName = 'pulse-ict';
-    }
+      // After fade out, filter and fade in
+      setTimeout(() => {
+        let visibleIndex = 0;
+        executiveCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          const shouldShow = (filterValue === 'all' || cardCategory === filterValue);
 
-    card.addEventListener('mouseenter', () => {
-      card.style.boxShadow = `0 12px 35px rgba(255, 189, 89, 0.3), 0 0 20px rgba(255, 255, 255, 0.1)`;
-      card.style.animation = `${animationName} 0.6s ease-out`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.boxShadow = `0 8px 25px rgba(0, 0, 0, 0.4)`;
-      card.style.animation = 'none';
+          if (shouldShow) {
+            card.style.display = 'block'; // Or 'flex', 'grid' etc. depending on card layout
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            }, 100 * visibleIndex);
+            visibleIndex++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }, 400); // Wait for fade-out transition to complete
     });
   });
-}
+});

@@ -1,222 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-H2YV0FNQ9X");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Achievements - United Club Association</title>
-
-    <!-- Meta tags for SEO -->
-    <meta
-      name="description"
-      content="Discover the remarkable achievements and milestones of UCA clubs and members across competitions, events, and community initiatives."
-    />
-    <meta
-      name="keywords"
-      content="UCA achievements, club awards, student accomplishments, university competitions, academic excellence"
-    />
-
-    <!-- Stylesheets -->
+    <meta name="description" content="Discover the remarkable achievements and milestones of UCA clubs and members across competitions, events, and community initiatives." />
+    <meta name="keywords" content="UCA achievements, club awards, student accomplishments, university competitions, academic excellence" />
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/achievements.css" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/uca_Logo.ico" />
-
-    <!-- Feather Icons -->
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
     <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <!-- Include centralized fonts and components -->
     <script src="/js/include-fonts.js" defer></script>
     <script src="/js/include-navbar.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
   </head>
   <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
-
     <main id="main-content">
-      <section class="coming-soon-container">
-        <div class="coming-soon-content">
-          <div class="coming-soon-header">
-            <div class="icon-container">
-              <i data-feather="award"></i>
-            </div>
-            <h1>Achievements Coming Soon</h1>
-          </div>
-          
-          <p class="coming-soon-description">
-            We're compiling a comprehensive showcase of the remarkable achievements 
-            of our clubs and members. From competition victories to community impact, 
-            we're excited to celebrate the excellence within UCA.
+      <section class="achievements-hero">
+        <div class="hero-content">
+          <div class="hero-icon"><i data-feather="award"></i></div>
+          <h1>Achievements Unveiling Soon</h1>
+          <p class="hero-subtitle">
+            We are currently compiling the outstanding accomplishments of our clubs and members. This section will soon celebrate the victories, innovations, and community impact driven by the UCA family.
           </p>
-          
-          <div class="achievement-categories">
-            <div class="category-card">
-              <div class="category-icon">
-                <i data-feather="trophy"></i>
-              </div>
-              <h3>Competitions</h3>
-              <p>National and international contest victories</p>
-            </div>
-            
-            <div class="category-card">
-              <div class="category-icon">
-                <i data-feather="star"></i>
-              </div>
-              <h3>Recognition</h3>
-              <p>Awards and honors received by our clubs</p>
-            </div>
-            
-            <div class="category-card">
-              <div class="category-icon">
-                <i data-feather="heart"></i>
-              </div>
-              <h3>Community Impact</h3>
-              <p>Positive changes created through our initiatives</p>
-            </div>
-            
-            <div class="category-card">
-              <div class="category-icon">
-                <i data-feather="trending-up"></i>
-              </div>
-              <h3>Growth Milestones</h3>
-              <p>Key moments in our clubs' development</p>
-            </div>
-          </div>
-          
           <div class="progress-section">
-            <h3>Our Progress</h3>
-            <div class="progress-container">
-              <div class="progress-item">
-                <div class="progress-label">
-                  <span>Data Collection</span>
-                  <span>75%</span>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 75%"></div>
-                </div>
-              </div>
-              
-              <div class="progress-item">
-                <div class="progress-label">
-                  <span>Verification</span>
-                  <span>60%</span>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 60%"></div>
-                </div>
-              </div>
-              
-              <div class="progress-item">
-                <div class="progress-label">
-                  <span>Content Creation</span>
-                  <span>40%</span>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 40%"></div>
-                </div>
-              </div>
-              
-              <div class="progress-item">
-                <div class="progress-label">
-                  <span>Design Implementation</span>
-                  <span>25%</span>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 25%"></div>
-                </div>
-              </div>
+            <div class="progress-item">
+              <span class="progress-label">Data Collection</span>
+              <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+            </div>
+            <div class="progress-item">
+              <span class="progress-label">Verification & Curation</span>
+              <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
             </div>
           </div>
-          
-          <div class="notification-box">
-            <div class="notification-icon">
-              <i data-feather="bell"></i>
-            </div>
-            <div class="notification-content">
-              <h3>Stay Updated</h3>
-              <p>
-                We're working hard to document all achievements. Follow our social media 
-                for the latest updates on our progress!
-              </p>
-              <div class="social-links">
-                <a href="#" class="social-link" aria-label="Facebook">
-                  <i data-feather="facebook"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Instagram">
-                  <i data-feather="instagram"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Twitter">
-                  <i data-feather="twitter"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="contribute-box">
-            <div class="contribute-icon">
-              <i data-feather="share-2"></i>
-            </div>
+           <div class="contribute-box">
+            <div class="contribute-icon"><i data-feather="share-2"></i></div>
             <div class="contribute-content">
-              <h3>Have Achievements to Share?</h3>
-              <p>
-                If your club has achievements that should be featured, please let us know!
-              </p>
-              <a href="/contact/join-us.html" class="contribute-btn">
-                Contact Us <i data-feather="arrow-right"></i>
-              </a>
+              <h3>Have an Achievement to Share?</h3>
+              <p>Help us celebrate every success. Contact us to feature a club or member achievement.</p>
+              <a href="/contact/join-us.html" class="contribute-btn">Submit Now</a>
             </div>
           </div>
-          
-          <a href="/index.html" class="back-home-btn">
-            <i data-feather="arrow-left"></i> Back to Home
-          </a>
         </div>
       </section>
     </main>
-
-    <!-- Footer will be inserted here by include-footer.js -->
-
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Feather icons
-        if (typeof feather !== 'undefined') {
-          feather.replace({
-            'stroke-width': 2,
-            'color': 'currentColor',
-            'size': 24
-          });
-        }
-        
-        // Animate category cards
-        const categoryCards = document.querySelectorAll('.category-card');
-        categoryCards.forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.add('animate');
-          }, 200 * (index + 1));
-        });
-        
-        // Animate progress bars
-        const progressBars = document.querySelectorAll('.progress-fill');
-        setTimeout(() => {
-          progressBars.forEach(bar => {
-            bar.style.width = bar.style.width;
-            bar.classList.add('animate');
-          });
-        }, 500);
-      });
+      document.addEventListener('DOMContentLoaded', () => feather.replace());
     </script>
   </body>
 </html>
