@@ -1,215 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In Memoriam | United Club Association</title>
-    
-    <!-- Font Imports from CDN -->
-    <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/medio" rel="stylesheet">
-
-    <style>
-        /* * Base Styling & Theming 
-         * Theme: Black, Red, and White Shades
-         */
-        :root {
-            --color-background: #050505;
-            --color-text-primary: #cccccc;
-            --color-text-secondary: #888888;
-            --color-accent-red: #9a1e1e;
-            --font-display: 'Monument Extended', sans-serif;
-            --font-body: 'Satoshi', sans-serif;
-            --font-signature: 'Medio', serif;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Hide scrollbars */
-        }
-
-        body {
-            background-color: var(--color-background);
-            color: var(--color-text-primary);
-            font-family: var(--font-body);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* * Canvas for background effect 
-         */
-        #particle-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        /* * Main Content Container 
-         */
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-            border-top: 2px solid var(--color-accent-red);
-            background: rgba(0, 0, 0, 0.2);
-            animation: fadeIn 3s ease-in-out;
-        }
-
-        /* * Typography 
-         */
-        h1 {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin: 0 0 1.5rem 0;
-            text-shadow: 0 0 10px rgba(154, 30, 30, 0.5);
-        }
-
-        p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            line-height: 1.8;
-            margin: 0 0 2rem 0;
-            color: var(--color-text-primary);
-        }
-        
-        .highlight {
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        .signature {
-            font-family: var(--font-signature);
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            color: var(--color-text-secondary);
-            margin-top: 3rem;
-            font-style: italic;
-        }
-
-        /* * Animations 
-         */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Canvas for subtle background particle effect -->
-    <canvas id="particle-canvas"></canvas>
-
-    <!-- Main content -->
-    <main class="container">
-        <h1>United Club Association</h1>
-        <p>
-            With the heaviest of hearts, we acknowledge the devastating tragedy that occurred at Milestone School and College. Our deepest condolences go out to the families who have lost loved ones, and our thoughts are with all those injured and affected by this heartbreaking event.
-        </p>
-        <p>
-            In a period of mourning and out of respect for the victims and their families, the <span class="highlight">United Club Association website and all online activities will be suspended on July 21st and 22nd, 2025.</span>
-        </p>
-        <p>
-            We will resume our usual activities on July 23rd, 2025. We thank you for your understanding during this time of profound grief.
-        </p>
-        <p class="signature">
-            - The Executive Panel
-        </p>
-    </main>
-
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
-        /**
-         * A simple, subtle particle animation for the background to create a somber atmosphere.
-         * Particles resemble slowly rising embers or dust motes.
-         */
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('particle-canvas');
-            const ctx = canvas.getContext('2d');
-
-            let width = canvas.width = window.innerWidth;
-            let height = canvas.height = window.innerHeight;
-
-            window.addEventListener('resize', () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            });
-
-            const particles = [];
-            const particleCount = 40;
-
-            // Create particle objects
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 0.1, // Very slow horizontal movement
-                    vy: (Math.random() * -1 - 0.2) * 0.2, // Very slow upward movement
-                    radius: Math.random() * 1.5 + 0.5,
-                    color: Math.random() > 0.3 ? 'rgba(204, 204, 204, 0.3)' : 'rgba(154, 30, 30, 0.4)'
-                });
-            }
-
-            function draw() {
-                // Clear the canvas
-                ctx.clearRect(0, 0, width, height);
-
-                // Draw each particle
-                ctx.beginPath();
-                particles.forEach(p => {
-                    ctx.fillStyle = p.color;
-                    ctx.moveTo(p.x, p.y);
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2, false);
-                });
-                ctx.fill();
-
-                update();
-            }
-
-            function update() {
-                particles.forEach(p => {
-                    // Update position
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    // Reset particle if it goes off screen
-                    if (p.y < -10) {
-                        p.y = height + 10;
-                        p.x = Math.random() * width;
-                    }
-                    if (p.x < -10) {
-                        p.x = width + 10;
-                    }
-                    if (p.x > width + 10) {
-                        p.x = -10;
-                    }
-                });
-            }
-
-            // Animation loop
-            function animate() {
-                draw();
-                requestAnimationFrame(animate);
-            }
-
-            animate();
-        });
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-H2YV0FNQ9X");
     </script>
 
-</body>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>United Club Association</title>
+    <meta name="description" content="United Club Association - A vibrant community of university clubs embarking on a celestial voyage of discovery, passion, and legacy at University Laboratory School and College." />
+    <meta name="keywords" content="UCA, United Club Association, university clubs, student activities, Bangladesh" />
+    <meta name="author" content="United Club Association" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0A0B1A" />
+    <meta property="og:site_name" content="United Club Association" />
+    <meta property="og:url" content="https://uca-bd.org" />
+    <meta property="og:title" content="United Club Association" />
+    <meta property="og:description" content="A vibrant community of university clubs at University Laboratory School and College." />
+    <meta property="og:image" content="/images/UCA_Home_Page_Pic.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- Preload & Preconnect -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <link rel="preload" href="/css/index.css" as="style" />
+    <link rel="preload" href="/js/main.js" as="script" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <link rel="apple-touch-icon" href="/images/uca_logo.png" />
+
+    <!-- Modern Icons -->
+    <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <!-- Polyfill for IntersectionObserver -->
+    <script>
+      if (!("IntersectionObserver" in window)) {
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.0/intersection-observer.min.js";
+        document.head.appendChild(script);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="constellation-bg"></div>
+        <div class="hero-content">
+          <h1 id="hero-heading" class="animate-on-scroll" data-animation="fade-up">United Club Association</h1>
+          <p class="hero-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">
+            Find Your Passion • Join Your Community • Create Your Legacy
+          </p>
+          <div class="hero-cta animate-on-scroll" data-animation="fade-up" data-delay="200">
+            <a href="/clubs/clubs.html" class="button-primary explore-clubs-button" aria-label="Explore all UCA clubs">
+              <span>Explore Clubs</span>
+              <i data-feather="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <i data-feather="arrow-down"></i>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about" aria-labelledby="about-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="about-heading">Discover UCA</h2>
+            <p class="section-subtitle">
+              A vibrant community where passion meets purpose. We unite diverse interests, talents, and dreams to create an enriching student experience.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="100">
+              <i data-feather="users" class="stat-icon"></i>
+              <span class="stat-number" data-count="9">0</span>
+              <span class="stat-label">Active Clubs</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="200">
+              <i data-feather="user-check" class="stat-icon"></i>
+              <span class="stat-number" data-count="100">0</span>
+              <span class="stat-label">Members+</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="zoom-in" data-delay="300">
+              <i data-feather="calendar" class="stat-icon"></i>
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Events Hosted</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Clubs Section -->
+      <section id="featured-clubs" class="clubs" aria-labelledby="featured-clubs-heading">
+        <div class="section-container">
+          <div class="section-header animate-on-scroll" data-animation="fade-up">
+            <h2 id="featured-clubs-heading">Featured Clubs</h2>
+          </div>
+          <div class="club-grid">
+  <!-- Sports Club Card -->
+  <a href="/clubs/sports-club.html" class="club-card club-card--sports animate-on-scroll" data-animation="fade-up">
+    <img src="/images/sports-club.jpg" alt="A group of students playing soccer" loading="lazy" />
+    <div class="club-info">
+      <h3>Sports Club</h3>
+      <span class="club-cta">View Details <i data-feather="arrow-right"></i></span>
+    </div>
+  </a>
+
+  <!-- ICT Club Card -->
+  <a href="/clubs/ict-club.html" class="club-card club-card--ict animate-on-scroll" data-animation="fade-up" data-delay="100">
+    <img src="/images/ict-club.jpg" alt="Students working on computers" loading="lazy" />
+    <div class="club-info">
+      <h3>ICT Club</h3>
+      <span class="club-cta">View Details <i data-feather="arrow-right"></i></span>
+    </div>
+  </a>
+
+  <!-- Photography Club Card -->
+  <a href="/clubs/photography-club.html" class="club-card club-card--photography animate-on-scroll" data-animation="fade-up" data-delay="200">
+    <img src="/images/photography-club.jpg" alt="A student with a DSLR camera" loading="lazy" />
+    <div class="club-info">
+      <h3>Photography Club</h3>
+      <span class="club-cta">View Details <i data-feather="arrow-right"></i></span>
+    </div>
+  </a>
+</div>
+        </div>
+      </section>
+
+      <section class="events" aria-labelledby="featured-events-heading">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll" data-animation="fade-up">
+      <h2 id="featured-events-heading">Featured Events</h2>
+    </div>
+    <div class="event-grid">
+      <article class="event-card event-card--frbd animate-on-scroll" data-animation="fade-up">
+        <div class="event-image">
+          <img src="/images/frbd_event_pic.jpg" alt="Poster for Frame of Revolution Event" loading="lazy" />
+        </div>
+        <div class="event-content">
+          <div class="event-date">
+            <span>JULY 2024</span>
+          </div>
+          <h3>Frame Of Revolution: Bangladesh 2.0</h3>
+          <p>A visual storytelling event on the July 2024 student movement, focusing on youth resistance and the ecological impact of state repression.</p>
+          <a href="/events/frbd2.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="event-card event-card--uca animate-on-scroll" data-animation="fade-up" data-delay="100">
+        <div class="event-image">
+          <img src="/images/uca_logo.png" alt="UCA Logo for the Unveiled event" loading="lazy" />
+        </div>
+        <div class="event-content">
+          <div class="event-date">
+            <span>MAY 08 2025</span>
+          </div>
+          <h3>UCA Unveiled</h3>
+          <p>Join us in the Introduction as we reveal the official clubs under the UCA banner.</p>
+          <a href="/events/uca-unveiled.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="event-card event-card--triquest animate-on-scroll" data-animation="fade-up" data-delay="200">
+        <div class="event-image">
+          <img src="/images/TriQuest- Battle_of_Knowledge.jpg" alt="Poster for TriQuest Event" loading="lazy" />
+        </div>
+        <div class="event-content">
+          <div class="event-date">
+            <span>DEC 02 2024</span>
+          </div>
+          <h3>TriQuest</h3>
+          <p>A quiz competition hosted by Quiz Club, Science Club, and Language Club.</p>
+          <a href="/events/triquest.html" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/include-fonts.js" defer></script>
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/main.js" defer></script>
+  </body>
 </html>
