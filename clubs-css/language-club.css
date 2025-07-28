@@ -1,9 +1,9 @@
 /*
 ================================================
 |                                              |
-|        LANGUAGE CLUB PAGE - REDESIGN V3      |
-|      Theme: Literary, Wise, Historical       |
-|   Inspiration: Old Libraries, Parchment      |
+|        LANGUAGE CLUB PAGE - REDESIGN V4      |
+|      Theme: The Scholar's Scroll             |
+|   Inspiration: Illuminated Manuscripts       |
 |                                              |
 ================================================
 */
@@ -16,17 +16,18 @@
   --font-body: 'EB Garamond', serif;
 
   /* Colors */
-  --color-bg: linear-gradient(180deg, #FAF9F6, #e9e8e5); /* Off-white Parchment */
-  --color-text-primary: #333333; /* Dark Charcoal */
+  --color-bg: linear-gradient(180deg, #FAF9F6, #e9e8e5);
+  --color-text-primary: #333333;
   --color-text-secondary: #555555;
   --color-border: rgba(51, 51, 51, 0.15);
-  --color-accent: #0077BE; /* A distinguished blue */
-  --color-card-bg: #ffffff;
+  --color-accent: #0077BE;
+  --color-card-bg: rgba(255, 255, 255, 0.5);
+  --color-glow: rgba(180, 150, 110, 0.15); /* Warm parchment glow */
 
-  /* Effects */
+  /* Effects & Variables */
   --transition-smooth: 350ms cubic-bezier(0.25, 0.8, 0.25, 1);
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.05);
-  --card-hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.07), 0 20px 30px rgba(0, 0, 0, 0.07);
+  --glow-y: 50%; /* For JS-powered background glow */
 }
 
 /* 2. GENERAL PAGE SETUP
@@ -35,7 +36,8 @@ body.language-theme {
   background: var(--color-bg);
   color: var(--color-text-primary);
   font-family: var(--font-body);
-  padding-top: 80px; /* Space for fixed navbar */
+  padding-top: 80px;
+  position: relative; /* Needed for pseudo-element */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: url('/cursors/language-club-default.png'), pointer;
@@ -43,12 +45,26 @@ body.language-theme {
 a, button, [role="button"] {
   cursor: url('/cursors/language-club-hover.png'), pointer;
 }
-a:hover, button:hover, [role="button"]:hover {
-  cursor: url('/cursors/language-club-hover.png'), pointer;
+
+/* New background glow effect */
+body.language-theme::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(
+    circle 80vmax at 50% var(--glow-y),
+    var(--color-glow),
+    transparent 70%
+  );
+  transition: background 0.8s ease-out;
 }
 
 .club-page {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem 2rem 4rem;
 }
@@ -57,144 +73,163 @@ a:hover, button:hover, [role="button"]:hover {
 ------------------------------------------------ */
 .club-header {
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 5rem 2rem 6rem;
   margin-bottom: 4rem;
+  position: relative;
+}
+
+.header-ornament {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 700px;
+  transform: translate(-50%, -50%) scale(1.1);
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  fill: none;
+  opacity: 0.3;
 }
 
 .club-title {
   font-family: var(--font-title);
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 700;
   color: var(--color-text-primary);
   margin: 0 0 1rem 0;
-  letter-spacing: 2px;
 }
 
 .club-tagline {
   font-family: var(--font-body);
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
   color: var(--color-text-secondary);
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   line-height: 1.6;
   font-style: italic;
 }
 
-/* 4. CONTENT GRID & CARDS
+/* 4. NEW SINGLE-COLUMN LAYOUT
 ------------------------------------------------ */
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-}
-
-@media (min-width: 992px) {
-  .content-grid {
-    grid-template-columns: 2fr 1fr;
-    align-items: flex-start;
-  }
-}
-
-.section-card {
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-  overflow: hidden;
-}
-
-.section-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--card-hover-shadow);
-}
-
-.card-header {
-  padding: 1.5rem 2rem;
+.manuscript-section {
+  padding: 3rem 0;
   border-bottom: 1px solid var(--color-border);
+}
+.manuscript-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.card-header h2 {
-  font-family: var(--font-title);
-  font-size: 1.8rem;
-  margin: 0;
-  color: var(--color-text-primary);
-}
-
-.card-header i {
-  color: var(--color-accent);
-  stroke-width: 1.5;
-}
-
-.card-content {
-  padding: 2rem;
-}
-
-.card-content p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--color-text-secondary);
-  margin-bottom: 1.5rem;
-}
-.card-content p:last-child {
-  margin-bottom: 0;
-}
-
-/* 5. FEATURES & LANGUAGE LISTS
------------------------------------------------- */
-.features-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: center;
   gap: 1.5rem;
 }
-
-.features-list li {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.1rem;
+.section-title::before,
+.section-title::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: var(--color-border);
 }
 
-.features-list i {
+.section-content p {
+  font-size: 1.2rem;
+  line-height: 2;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Decorative Drop Cap (targets the new span) */
+.drop-cap {
+  font-family: var(--font-title);
+  font-size: 4rem;
   color: var(--color-accent);
-  flex-shrink: 0;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* 5. NEW "LANGUAGES" SECTION
+------------------------------------------------ */
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+.language-item {
+  position: relative;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+.language-item:hover {
+  background: var(--color-card-bg);
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+}
+.language-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+}
+.language-info {
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: var(--color-text-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-smooth);
+}
+.language-item:hover .language-info {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* 6. JOIN BUTTON
 ------------------------------------------------ */
+.join-section {
+  text-align: center;
+}
 .button-primary {
   display: inline-block;
-  font-family: var(--font-body);
+  font-family: var(--font-title);
   font-weight: 600;
   font-size: 1.1rem;
   text-decoration: none;
-  padding: 0.8rem 2rem;
+  padding: 1rem 2.5rem;
   border-radius: 6px;
   background-color: var(--color-accent);
   color: #fff;
   border: 2px solid var(--color-accent);
-  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+  transition: var(--transition-smooth);
   margin-top: 1rem;
 }
-
 .button-primary:hover {
   background-color: transparent;
   color: var(--color-accent);
+  transform: scale(1.05);
 }
 
-/* 7. RESPONSIVE ADJUSTMENTS
------------------------------------------------- */
-@media (max-width: 767px) {
-  .club-page {
-    padding: 1rem 1rem 2rem;
-  }
-  .club-header {
-    padding: 4rem 1rem;
-  }
+/* Helper class for animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
 }

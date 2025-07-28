@@ -23,10 +23,13 @@
     <script src="/js/include-club-navbar.js" defer></script>
     <script src="/js/include-club-footer.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="/clubs-js/science-club.js" defer></script>
   </head>
   <body>
-    <nav aria-label="Main Navigation">
-      </nav>
+    <div id="navbar-placeholder"></div>
 
     <main class="club-page" id="main-content">
       <header class="club-header" role="banner">
@@ -102,5 +105,17 @@
         </div>
       </div>
     </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkFeather = setInterval(() => {
+          if (typeof feather !== "undefined") {
+            feather.replace();
+            clearInterval(checkFeather);
+          }
+        }, 100);
+      });
+    </script>
   </body>
 </html>

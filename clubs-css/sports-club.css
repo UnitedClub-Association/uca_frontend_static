@@ -2,8 +2,8 @@
 ================================================
 |                                              |
 |          SPORTS CLUB PAGE - REDESIGN         |
-|      Theme: High-Speed, Aggressive,          |
-|      Competitive                             |
+|      Theme: High-Contrast, Aggressive,       |
+|      Monochrome (Enhanced)                   |
 |                                              |
 ================================================
 */
@@ -11,17 +11,16 @@
 /* 2. ROOT & THEME VARIABLES
 ------------------------------------------------ */
 :root {
-  --club-primary: #1E90FF; /* Dodger Blue */
-  --club-secondary: #C0C0C0; /* Silver */
-  --background-dark: #001f3f; /* Deep Navy to complement the gradient */
-  --text-light: #ffffff;
+  /* NEW THEME: Glowy White & Black */
+  --club-primary: #FFFFFF; /* White for glow effects */
+  --club-secondary: #BDBDBD; /* Muted grey for secondary text */
+  --background-dark: #000000; /* Pure Black background */
+  --text-light: #FFFFFF;
   --transition-fast: all 0.3s ease-in-out;
+  --card-background: rgba(25, 25, 25, 0.5); /* Semi-transparent dark grey for cards */
 
-  /* Gradient from user prompt */
-  --background-gradient: linear-gradient(rgba(0,31,63,0.8), rgba(0,31,63,0.8)), url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231E90FF' fill-opacity='0.2'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-
-  /* Fonts from user prompt */
-  --font-title: 'NFS font', sans-serif;
+  /* NEW FONT */
+  --font-title: 'SF Sports Night', sans-serif;
   --font-body: 'Montserrat', sans-serif;
 }
 
@@ -39,18 +38,15 @@ body.sports-theme {
 a, button, [role="button"] {
   cursor: url('/cursors/sports-club-hover.png'), pointer;
 }
-a:hover, button:hover, [role="button"]:hover {
-  cursor: url('/cursors/sports-club-hover.png'), pointer;
-}
 
 .club-page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   display: flex;
-  flex-direction: column; /* Allow content to flow vertically */
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align content to the top */
+  justify-content: flex-start;
   min-height: 100vh;
   text-align: center;
 }
@@ -64,14 +60,13 @@ a:hover, button:hover, [role="button"]:hover {
 .club-header {
   width: 100%;
   padding: 4rem 2rem;
-  background: var(--background-gradient);
+  background: transparent; /* Cleaner look, no gradient */
   border: 1px solid var(--club-primary);
   border-radius: 16px;
-  box-shadow: 0 0 30px rgba(30, 144, 255, 0.3);
-  margin-bottom: 2rem; /* Add space between header and content */
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
 }
 
-/* Logo is the only image */
 .club-logo-container {
   width: 150px;
   height: 150px;
@@ -88,19 +83,18 @@ a:hover, button:hover, [role="button"]:hover {
 
 .club-logo-container:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.5), 0 0 25px var(--club-primary);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.5), 0 0 35px var(--club-primary);
 }
 
 .club-logo {
     width: 100%;
     height: 100%;
-    background-image: url("/images/sports-club-favicon.jpg"); /* Path to your logo */
+    background-image: url("/images/sports-club-favicon.jpg");
     background-size: cover;
     background-position: center;
     border-radius: 50%;
 }
 
-/* Title using 'NFS font' */
 .club-title {
   font-family: var(--font-title);
   font-size: clamp(2.5rem, 8vw, 5rem);
@@ -108,17 +102,16 @@ a:hover, button:hover, [role="button"]:hover {
   text-transform: uppercase;
   letter-spacing: 3px;
   margin: 0 0 1rem 0;
-  text-shadow: 0 0 5px var(--club-primary), 0 0 15px rgba(30, 144, 255, 0.5);
+  text-shadow: 0 0 8px var(--club-primary), 0 0 25px rgba(255, 255, 255, 0.5);
 }
 
-/* Subtitle using 'Montserrat Bold' */
 .club-subtitle {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(1rem, 4vw, 1.5rem); /* Increased size slightly */
+  font-size: clamp(1rem, 4vw, 1.5rem);
   color: var(--club-secondary);
-  letter-spacing: 2px; /* Increased spacing */
-  text-transform: uppercase; /* Make it punchier */
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -133,11 +126,14 @@ a:hover, button:hover, [role="button"]:hover {
 }
 
 .content-card {
-    background: rgba(0, 31, 63, 0.5); /* Semi-transparent navy */
+    background: var(--card-background);
     border: 1px solid var(--club-primary);
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    /* Prepare for animations */
+    opacity: 0;
+    transform: translateY(40px);
 }
 
 .content-card h2 {
@@ -157,7 +153,6 @@ a:hover, button:hover, [role="button"]:hover {
     margin-bottom: 1rem;
     color: var(--club-secondary);
 }
-
 .content-card p:last-child {
     margin-bottom: 0;
 }
@@ -182,47 +177,28 @@ a:hover, button:hover, [role="button"]:hover {
 }
 
 .feature-list li:hover {
-    background-color: rgba(30, 144, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
 }
 
-/* Feather Icons */
 .content-card i.feather {
     width: 24px;
     height: 24px;
     color: var(--club-primary);
     margin-right: 1rem;
-    flex-shrink: 0; /* Prevent icon from shrinking */
+    flex-shrink: 0;
 }
 
 /* 6. RESPONSIVE ADJUSTMENTS
 ------------------------------------------------ */
 @media (max-width: 768px) {
-  .club-page {
-    padding: 1rem;
-  }
-
-  .club-header {
-    padding: 3rem 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .club-logo-container {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .content-card {
-      padding: 1.5rem;
-      text-align: center; /* Center text on small screens */
-  }
-  
-  .content-card h2 {
-      justify-content: center; /* Center heading and icon */
-  }
-  
+  .club-page { padding: 1rem; }
+  .club-header { padding: 3rem 1.5rem; margin-bottom: 1.5rem; }
+  .club-logo-container { width: 120px; height: 120px; }
+  .content-card { padding: 1.5rem; text-align: center; }
+  .content-card h2 { justify-content: center; }
   .feature-list li {
-      justify-content: center; /* Center list items */
+      justify-content: center;
       text-align: center;
       border-left: none;
       border-top: 3px solid var(--club-primary);

@@ -2,6 +2,7 @@
 ================================================
 |                                              |
 |      CLUB-SPECIFIC FOOTER STYLES - UCA       |
+|      -- ENHANCED --                          |
 |                                              |
 ================================================
 */
@@ -16,6 +17,7 @@
   --footer-link-hover: #FFFFFF;
   --footer-social-hover: #8B5CF6;
   --font-footer: 'Bricolage Grotesque', sans-serif;
+  --footer-social-hover-text: var(--footer-heading); /* Add hover text color */
 }
 
 /* 2. CLUB-SPECIFIC THEMES
@@ -54,26 +56,28 @@ body.theme-photo {
   --font-footer: 'Antipasto', sans-serif;
 }
 
-/* --- Sports Club --- */
+/* --- Sports Club (UPDATED) --- */
 body.theme-sports {
-  --footer-bg: linear-gradient(#001F3F, #001021);
-  --footer-border: #1E90FF;
-  --footer-text: #C0C0C0;
+  --footer-bg: linear-gradient(#141414, #050505);
+  --footer-border: rgba(255, 255, 255, 0.3);
+  --footer-text: #E0E0E0;
   --footer-heading: #FFFFFF;
-  --footer-link-hover: #1E90FF;
-  --footer-social-hover: #1E90FF;
-  --font-footer: 'NFS font', sans-serif;
+  --footer-link-hover: #FFFFFF;
+  --footer-social-hover: #FFFFFF;
+  --font-footer: 'Montserrat', sans-serif;
+  --footer-social-hover-text: #000000;
 }
 
-/* --- Quiz Club --- */
+/* --- Quiz Club (UPDATED) --- */
 body.theme-quiz {
-  --footer-bg: linear-gradient(45deg, #FF4136, #FFDC00);
-  --footer-border: #FFFFFF;
-  --footer-text: #000;
-  --footer-heading: #000;
-  --footer-link-hover: #000;
-  --footer-social-hover: #FF4136;
+  --footer-bg: linear-gradient(to top, #0D1117, #161b22); /* Dark navy to match page */
+  --footer-border: rgba(139, 148, 158, 0.3);
+  --footer-text: #8b949e;
+  --footer-heading: #e6edf3;
+  --footer-link-hover: #22d3ee; /* Cyan accent */
+  --footer-social-hover: #22d3ee;
   --font-footer: 'Lexend', sans-serif;
+  --footer-social-hover-text: #0D1117; /* Dark text for contrast on cyan bg */
 }
 
 /* --- Science Club --- */
@@ -96,6 +100,7 @@ body.theme-language {
   --footer-link-hover: #0077BE;
   --footer-social-hover: #0077BE;
   --font-footer: 'Cinzel Decorative', serif;
+  --footer-social-hover-text: #FFFFFF;
 }
 
 /* --- Cultural Club --- */
@@ -107,6 +112,7 @@ body.theme-cultural {
   --footer-link-hover: #FFFFFF;
   --footer-social-hover: #F5F5DC;
   --font-footer: 'Gilroy-Bold', sans-serif;
+  --footer-social-hover-text: #800000;
 }
 
 /* --- Green Club --- */
@@ -118,6 +124,7 @@ body.theme-green {
   --footer-link-hover: #000;
   --footer-social-hover: #2E7D32;
   --font-footer: 'Quicksand', sans-serif;
+  --footer-social-hover-text: #FFFFFF;
 }
 
 /* --- Literature Club (Suspended) --- */
@@ -129,6 +136,7 @@ body.theme-literature {
   --footer-link-hover: #fff;
   --footer-social-hover: #ccc;
   --font-footer: 'EB Garamond', serif;
+  --footer-social-hover-text: #333;
 }
 
 
@@ -139,6 +147,7 @@ footer {
   background: var(--footer-bg);
   color: var(--footer-text);
   border-top: 1px solid var(--footer-border);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .footer-branding h2,
@@ -148,10 +157,12 @@ footer {
 
 .footer-section a {
   color: var(--footer-text);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-section a:hover {
   color: var(--footer-link-hover);
+  transform: translateX(4px);
 }
 
 .footer-bottom {
@@ -163,10 +174,13 @@ footer {
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--footer-text);
     border: 1px solid var(--footer-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-icon:hover {
   background-color: var(--footer-social-hover);
   border-color: var(--footer-social-hover);
-  color: var(--footer-heading);
+  color: var(--footer-social-hover-text);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }

@@ -1,41 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-H2YV0FNQ9X");
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cultural Club - United Club Association</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/uca_Logo.ico" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/js/include-fonts.js"></script>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
     <link rel="stylesheet" href="/clubs-css/cultural-club.css" />
-    <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <script src="/js/include-fonts.js" defer></script>
+    <script src="/js/include-club-navbar.js" defer></script>
+    <script src="/js/include-club-footer.js" defer></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="/clubs-js/cultural-club.js" defer></script>
   </head>
   <body>
-    <!-- Navbar will be inserted here by include-navbar.js -->
-    <script src="/js/include-navbar.js"></script>
+    <div id="navbar-placeholder"></div>
 
     <main class="club-page" id="main-content">
       <header class="club-header" role="banner">
@@ -46,20 +32,17 @@
         />
         <h1 class="club-title">Cultural Club</h1>
         <p class="club-description">
-          <strong>CELEBRATE • CREATE • CONNECT</strong>
-          Celebrating diversity through art, music, and cultural performances.
-          Experience the richness of different traditions and express your
-          creativity.
+          <strong>FUSION</strong>
+          A celebration of diverse traditions and art forms.
         </p>
       </header>
 
       <section class="club-content">
-        <div class="about-section">
-          <!-- Added card-header -->
+        <article class="about-section">
           <div class="card-header">
-            <h2><i data-feather="music"></i> About Our Club</h2>
+            <i data-feather="feather"></i>
+            <h2>Our Canvas</h2>
           </div>
-          <!-- Added card-content -->
           <div class="card-content">
             <p>
               The Cultural Club celebrates and preserves the rich heritage of Bengali arts
@@ -71,48 +54,40 @@
               As the eighth club to join UCA in October 2024, we've become the heart of
               cultural celebration and artistic expression in our university community.
             </p>
-            <!-- Renamed class to feature-list for consistency -->
             <ul class="feature-list">
-              <!-- Updated list items to match feature-list structure -->
               <li><i data-feather="music"></i> Classical Music Sessions</li>
-              <li><i data-feather="play"></i> Theater Productions</li>
+              <li><i data-feather="film"></i> Theater Productions</li>
               <li><i data-feather="users"></i> Dance Performances</li>
               <li><i data-feather="calendar"></i> Cultural Festivals</li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="connect-section">
-          <!-- Added card-header -->
+        <aside class="connect-section">
           <div class="card-header">
-            <h2><i data-feather="link"></i> Join Our Cultural Family</h2>
+            <i data-feather="link"></i>
+            <h2>Join Our Family</h2>
           </div>
-          <!-- Added card-content -->
           <div class="card-content">
             <p>
               Express yourself through art and be part of our vibrant cultural community.
             </p>
-             <p> <!-- Added standard join text -->
+             <p>
                Want to celebrate diversity with us? All clubs are part of the United Club Association (UCA).
                Visit the main UCA page to learn how to become a member and get involved!
              </p>
-             <!-- Optional placeholder for animation/graphic -->
-             <!-- <div class="cultural-animation"></div> -->
           </div>
-        </div>
+        </aside>
       </section>
     </main>
 
-    <!-- Footer will be inserted here by include-footer.js -->
-    <script src="/js/include-footer.js"></script>
+    <div id="footer-placeholder"></div>
 
-    <!-- Initialize Icons -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         if (typeof feather !== "undefined") {
           feather.replace({
             "stroke-width": 2,
-            color: "#8e44ad",
           });
         }
       });

@@ -2,59 +2,38 @@
 ================================================
 |                                              |
 |          CLUBS PAGE STYLES - UCA             |
+|          (V3 - COMPACT & FIXED)              |
 |                                              |
 ================================================
 */
 
 /* 1. ROOT & GENERAL STYLES
 ------------------------------------------------ */
-/* Inherit root variables from the main theme */
 :root {
-  /* Fonts */
   --font-display-impact: 'Monument Extended', sans-serif;
   --font-sans-clean: 'Satoshi', sans-serif;
   --font-sans-quirky: 'Bricolage Grotesque', sans-serif;
-  --font-serif-elegant: 'Medio', serif;
-  --font-serif-display: 'Avigea', serif;
-
-  /* Starry Night Palette */
   --color-bg-deep-space: #0A0B1A;
   --color-bg-night-sky: #11132a;
   --color-bg-void: #02020C;
   --color-primary-glow: #8B5CF6;
   --color-secondary-glow: #38BDF8;
-  --color-accent-star: #FDE047;
   --color-text-primary: #E2E8F0;
   --color-text-secondary: #94A3B8;
   --color-border: rgba(148, 163, 184, 0.2);
-  --color-border-hover: rgba(139, 92, 246, 0.5);
-
-  /* Effects & Transitions */
-  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
   --border-radius-md: 12px;
   --border-radius-lg: 16px;
-  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 body {
   background-color: var(--color-bg-deep-space);
   color: var(--color-text-primary);
   font-family: var(--font-sans-clean);
-  padding-top: 80px; /* Space for fixed navbar */
+  padding-top: 80px;
   cursor: url('/cursors/uca-default.png'), pointer;
 }
-a, button, [role="button"] {
-  cursor: url('/cursors/uca-hover.png'), pointer;
-}
-a:hover, button:hover, [role="button"]:hover {
-  cursor: url('/cursors/uca-hover.png'), pointer;
-}
-.section-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+a, button, [role="button"] { cursor: url('/cursors/uca-hover.png'), pointer; }
+.section-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
 
 /* 2. HERO SECTION
 ------------------------------------------------ */
@@ -62,262 +41,173 @@ a:hover, button:hover, [role="button"]:hover {
   padding: 8rem 2rem;
   text-align: center;
   background: linear-gradient(180deg, var(--color-bg-deep-space) 0%, var(--color-bg-night-sky) 100%);
-  position: relative;
-  overflow: hidden;
 }
-
-.clubs-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 30%), radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.1) 0%, transparent 30%);
-  opacity: 0.5;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
-
 .hero-content h1 {
   font-family: var(--font-display-impact);
   font-size: clamp(3rem, 6vw, 5rem);
-  color: var(--color-text-primary);
   text-shadow: 0 0 15px var(--color-primary-glow);
   margin-bottom: 1rem;
 }
-
 .hero-content p {
   font-family: var(--font-sans-quirky);
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--color-text-secondary);
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.6;
 }
 
-/* 3. CLUBS SECTION & FILTER
+/* 3. COMPACT FILTER CONTROLS
 ------------------------------------------------ */
-.clubs-section {
-  padding: 6rem 0;
-  background-color: var(--color-bg-void);
-}
+.clubs-section { padding: 6rem 0; background-color: var(--color-bg-void); }
 
-.clubs-filter {
+.filter-controls {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 4rem;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-bg-night-sky);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 4rem;
 }
+.filter-controls-left, .filter-controls-right { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.filter-group { display: flex; align-items: center; gap: 0.5rem; }
 
-.filter-btn {
+.filter-btn, .detail-btn {
   font-family: var(--font-sans-clean);
   font-weight: 600;
   background: transparent;
   color: var(--color-text-secondary);
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border: 1px solid var(--color-border);
   border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
-
-.filter-btn:hover {
-  color: var(--color-text-primary);
+.filter-btn.active, .detail-btn.active {
+  color: var(--color-bg-deep-space);
+  background-color: var(--color-secondary-glow);
   border-color: var(--color-secondary-glow);
 }
+.view-btn { padding: 0.6rem; }
+.view-btn i { vertical-align: middle; }
 
-.filter-btn.active {
-  color: var(--color-text-primary);
-  background-color: var(--color-primary-glow);
-  border-color: var(--color-primary-glow);
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+.detail-toggle-group {
+    display: flex;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 50px;
+    padding: 4px;
+    border: 1px solid var(--color-border);
 }
+.detail-btn { border: none; padding: 0.4rem 1rem; }
+.detail-btn.active { background-color: var(--color-primary-glow); }
 
-.club-card.is-hidden {
-    transform: scale(0.9);
-    opacity: 0;
-    pointer-events: none;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    border: none;
-    transition: opacity 0.4s ease, transform 0.4s ease, height 0.4s 0.2s, padding 0.4s 0.2s, margin 0.4s 0.2s, border 0.4s 0.2s;
-  }
-  
-  .clubs-grid {
-    transition: all 0.4s ease;
-  }
 
-/* 4. CLUB CARD GRID & BASE STYLES
+/* 4. CLUB GRID & CARD STYLES
 ------------------------------------------------ */
-.clubs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+.clubs-grid-wrapper {
+    perspective: 2000px;
 }
+/* THIS IS NEW: Hides the overflowing content when carousel is active */
+.clubs-grid-wrapper.is-carouselling {
+    overflow: hidden;
+}
+
+.clubs-grid { display: grid; gap: 2rem; }
+.clubs-grid.view-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.clubs-grid.view-list { grid-template-columns: 1fr; gap: 1.5rem; }
+
+
+/* CRITICAL FIX FOR CAROUSEL LAYOUT */
+.clubs-grid.view-carousel {
+    display: flex;
+    /* overflow-x: hidden; <-- REMOVED from here */
+    width: max-content; /* <-- ADDED to allow the grid to expand */
+    padding-bottom: 2rem;
+    gap: 2rem;
+}
+.clubs-grid.view-carousel > * {
+    flex: 0 0 80%; /* Base width for cards on small screens */
+}
+@media (min-width: 768px) { .clubs-grid.view-carousel > * { flex-basis: 40%; } }
+@media (min-width: 1200px) { .clubs-grid.view-carousel > * { flex-basis: 30%; } }
 
 .club-card {
-  aspect-ratio: 5 / 4;
   border-radius: var(--border-radius-lg);
   position: relative;
   overflow: hidden;
   border: 1px solid var(--color-border);
-  transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s ease, border-color 0.4s ease;
   text-decoration: none;
   color: var(--color-text-primary);
   display: block;
+  visibility: hidden;
+  background-color: var(--color-bg-night-sky);
 }
+.view-grid .club-card, .view-carousel .club-card { aspect-ratio: 5 / 4; }
+.view-list .club-card { display: flex; aspect-ratio: auto; height: 180px; align-items: center; }
 
 .club-card .card-bg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.6s var(--transition-smooth);
+  width: 100%; height: 100%; background-size: cover; background-position: center; position: absolute; z-index: 1;
 }
+.view-list .card-bg { width: 35%; position: relative; }
 
 .club-card .card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(10, 11, 26, 0.9) 10%, rgba(10, 11, 26, 0.7) 50%, transparent 100%);
-  display: flex;
-  align-items: flex-end;
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem;
+  background: linear-gradient(to top, rgba(10, 11, 26, 0.95) 10%, rgba(10, 11, 26, 0.7) 50%, transparent 100%);
+  z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; height: 100%;
 }
-
-.club-card h3 {
-  font-size: 1.75rem;
-  line-height: 1.2;
+.view-list .card-content {
+  position: relative; background: none; width: 65%; height: auto; justify-content: center; align-items: flex-start;
 }
+.club-card h3 { font-size: 1.75rem; margin-bottom: 0; }
+.view-list .club-card h3 { font-size: 1.5rem; }
 
-/* Hover effects */
-.club-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px -5px var(--card-glow, var(--color-primary-glow));
-  border-color: var(--card-border, var(--color-border-hover));
-}
-
-.club-card:hover .card-bg {
-  transform: scale(1.1);
-}
-
-/* 5. INDIVIDUAL CLUB THEMES
------------------------------------------------- */
-
-/* -- Debate Club -- */
-.club-card--debate { --card-glow: #e2e8f0; --card-border: #e2e8f0; }
-.club-card--debate h3 { font-family: 'MADE Canvas', serif; }
-
-/* -- Photography Club -- */
-.club-card--photography { --card-glow: #8B4513; --card-border: #8B4513; }
-.club-card--photography h3 { font-family: 'Coco Gothic', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
-
-/* -- Sports Club -- */
-.club-card--sports { --card-glow: #1E90FF; --card-border: #C0C0C0; }
-.club-card--sports h3 { font-family: 'NFS Font', sans-serif; }
-
-/* -- Quiz Club -- */
-.club-card--quiz { --card-glow: #FFDC00; --card-border: #FFDC00; }
-.club-card--quiz h3 { font-family: 'Lexend', sans-serif; font-weight: 700; }
-
-/* -- Science Club -- */
-.club-card--science { --card-glow: #38BDF8; --card-border: #38BDF8; }
-.club-card--science h3 { font-family: 'Elianto', sans-serif; }
-
-/* -- ICT Club -- */
-.club-card--ict { --card-glow: #ffbd59; --card-border: #ffbd59; }
-.club-card--ict h3 { font-family: 'Azonix', sans-serif; }
-
-/* -- Literature Club (Suspended) -- */
-.club-card--literature {
-  --card-glow: #94A3B8;
-  --card-border: #94A3B8;
-  cursor: not-allowed;
-}
-.club-card--literature .card-bg { filter: grayscale(100%); }
-.club-card--literature .card-content {
-    flex-direction: column;
-    align-items: flex-start;
-}
-.club-card--literature h3 { font-family: var(--font-serif-elegant); }
-.suspended-badge {
-    background-color: var(--color-accent-star);
-    color: var(--color-bg-void);
-    font-family: var(--font-sans-clean);
-    font-weight: 700;
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-}
-
-/* -- Cultural Club -- */
-.club-card--cultural { --card-glow: #FFD700; --card-border: #800000; }
-.club-card--cultural h3 { font-family: 'MADE Mirage', serif; }
-
-/* -- Language Club -- */
-.club-card--language { --card-glow: #0077BE; --card-border: #0077BE; }
-.club-card--language h3 { font-family: 'Cinzel Decorative', serif; }
-
-/* -- Green Club -- */
-.club-card--green { --card-glow: #AEEA00; --card-border: #2E7D32; }
-.club-card--green h3 { font-family: 'Quicksand', sans-serif; font-weight: 700; }
-
-
-/* 6. JOIN CTA SECTION
------------------------------------------------- */
-.join-cta {
-  padding: 6rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, var(--color-bg-night-sky), var(--color-bg-deep-space));
-}
-.cta-content h2 {
-  font-family: var(--font-serif-display);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  margin-bottom: 1rem;
-}
-.cta-content p {
+/* Detailed View Styles */
+.card-details { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.5s ease; }
+.view-detailed .card-details { max-height: 100px; opacity: 1; }
+.card-details p {
+  font-family: var(--font-sans-quirky);
   color: var(--color-text-secondary);
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.5rem 0 0.75rem;
 }
-.button-primary {
-  font-family: var(--font-sans-clean);
+.card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  background-color: rgba(139, 92, 246, 0.2);
+  color: var(--color-primary-glow);
+  font-size: 0.75rem;
   font-weight: 600;
-  font-size: 1rem;
-  color: var(--color-text-primary);
-  text-decoration: none;
-  padding: 1rem 2.5rem;
-  background-color: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.button-primary:hover {
-  border-color: var(--color-primary-glow);
-  box-shadow: 0 0 15px 0px var(--color-primary-glow);
+  padding: 0.25rem 0.6rem;
+  border-radius: 50px;
 }
 
-/* 7. RESPONSIVE DESIGN
+/* 5. INDIVIDUAL CLUB THEMES & UPDATES
 ------------------------------------------------ */
-@media (min-width: 1200px) {
-  .clubs-grid {
-    /* Enforce 5 columns on large screens */
-    grid-template-columns: repeat(5, 1fr);
-  }
+.club-card--debate { --card-glow: #e2e8f0; --card-border: #e2e8f0; }
+.club-card--photography { --card-glow: #38BDF8; --card-border: #8B5CF6; }
+.club-card--sports { --card-glow: #FFFFFF; --card-border: #333333; }
+.club-card--quiz { --card-glow: #FFDC00; --card-border: #FFDC00; }
+.club-card--science { --card-glow: #38BDF8; --card-border: #38BDF8; }
+.club-card--ict { --card-glow: #ffbd59; --card-border: #ffbd59; }
+.club-card--cultural { --card-glow: #FFD700; --card-border: #800000; }
+.club-card--language { --card-glow: #0077BE; --card-border: #0077BE; }
+.club-card--green { --card-glow: #AEEA00; --card-border: #2E7D32; }
+
+/* 6. CTA & RESPONSIVE
+------------------------------------------------ */
+.join-cta { padding: 6rem 2rem; text-align: center; }
+.cta-content h2 { font-family: var(--font-serif-display, serif); font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+.cta-content p { color: var(--color-text-secondary); max-width: 600px; margin: 0 auto 2.5rem; }
+.button-primary {
+  font-weight: 600; font-size: 1rem; color: var(--color-text-primary); text-decoration: none; padding: 1rem 2.5rem;
+  border: 1px solid var(--color-border); border-radius: var(--border-radius-md); display: inline-flex; align-items: center; gap: 0.5rem;
 }
 
 @media (max-width: 768px) {
   .section-container { padding: 0 1rem; }
   .clubs-hero { padding: 6rem 1rem; }
   .clubs-section { padding: 4rem 0; }
-  .clubs-grid { gap: 1.5rem; }
+  .filter-controls { flex-direction: column; align-items: stretch; }
+  .filter-controls-left, .filter-controls-right { justify-content: center; }
 }

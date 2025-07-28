@@ -23,72 +23,85 @@
     <script src="/js/include-club-navbar.js" defer></script>
     <script src="/js/include-club-footer.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="/clubs-js/language-club.js" defer></script>
   </head>
   <body class="language-theme">
     <div id="navbar-placeholder"></div>
 
     <main class="club-page" id="main-content">
       <header class="club-header">
+        <svg class="header-ornament" viewBox="0 0 400 150" preserveAspectRatio="none">
+          <path d="M10 10 H 390 V 140 H 10 Z" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+        </svg>
         <h1 class="club-title">Language Club</h1>
         <p class="club-tagline">
           In every language, a new world of stories awaits.
         </p>
       </header>
 
-      <div class="content-grid">
-        <article class="section-card about-section">
-          <div class="card-header">
-            <i data-feather="book-open"></i>
-            <h2>Our Philosophy</h2>
-          </div>
-          <div class="card-content">
-            <p>
-              The Language Club is dedicated to promoting linguistic diversity
-              and cultural understanding through the power of words. We focus on
-              developing communication skills in various languages while
-              exploring the rich history and cultures associated with them.
-            </p>
-            <p>
-              Founded in February 2024, we foster a community where members can
-              confidently explore new languages, share their heritage, and forge
-              connections that transcend borders.
-            </p>
-            <ul class="features-list">
-              <li>
-                <i data-feather="message-circle"></i> Immersive Conversation
-                Practice
-              </li>
-              <li><i data-feather="book"></i> Collaborative Language Exchange</li>
-              <li>
-                <i data-feather="film"></i> Cultural & Film Discussions
-              </li>
-              <li>
-                <i data-feather="globe"></i> International Heritage Events
-              </li>
-            </ul>
-          </div>
-        </article>
+      <section class="manuscript-section fade-in-section">
+        <h2 class="section-title">Our Philosophy</h2>
+        <div class="section-content">
+          <p class="first-paragraph">
+            <span class="drop-cap">T</span>he Language Club is dedicated to promoting linguistic diversity
+            and cultural understanding through the power of words. We focus on
+            developing communication skills in various languages while
+            exploring the rich history and cultures associated with them.
+          </p>
+          <p>
+            Founded in February 2024, we foster a community where members can
+            confidently explore new languages, share their heritage, and forge
+            connections that transcend borders.
+          </p>
+        </div>
+      </section>
 
-        <aside class="section-card connect-section">
-          <div class="card-header">
-            <i data-feather="user-plus"></i>
-            <h2>Join Our Story</h2>
+      <section class="manuscript-section fade-in-section">
+        <h2 class="section-title">Languages We Explore</h2>
+        <div class="section-content languages-grid">
+          <div class="language-item">
+            <span class="language-name">English</span>
+            <div class="language-info">"Hello, World!"</div>
           </div>
-          <div class="card-content">
-            <p>
-              Expand your horizons and connect with a global community of
-              learners. New voices and perspectives are always welcome.
-            </p>
-            <p>
-              Visit the main UCA page to learn how to become a member and get
-              involved!
-            </p>
-            <a href="/contact/join-us.html" class="button-primary"
+           <div class="language-item">
+            <span class="language-name">Bangla</span>
+            <div class="language-info">"ওহে বিশ্ব!"</div>
+          </div>
+           <div class="language-item">
+            <span class="language-name">Arabic</span>
+            <div class="language-info">"مرحبا بالعالم"</div>
+          </div>
+           <div class="language-item">
+            <span class="language-name">Chinese</span>
+            <div class="language-info">"你好, 世界"</div>
+          </div>
+           <div class="language-item">
+            <span class="language-name">Japanese</span>
+             <div class="language-info">"こんにちは世界"</div>
+          </div>
+           <div class="language-item">
+            <span class="language-name">Russian</span>
+            <div class="language-info">"Привет, мир!"</div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="manuscript-section fade-in-section join-section">
+        <h2 class="section-title">Join Our Story</h2>
+        <div class="section-content">
+          <p>
+            Expand your horizons and connect with a global community of
+            learners. New voices and perspectives are always welcome.
+          </p>
+           <a href="/contact/join-us.html" class="button-primary"
               >Become a Member</a
             >
-          </div>
-        </aside>
-      </div>
+        </div>
+      </section>
+
     </main>
 
     <div id="footer-placeholder"></div>

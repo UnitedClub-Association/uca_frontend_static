@@ -29,15 +29,19 @@
   --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   --glow-effect: 0 0 15px rgba(192, 192, 192, 0.3),
     0 0 20px rgba(192, 192, 192, 0.2);
+  
+  /* For JS-powered background */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
 
-/* 2. BASE & BODY STYLES */
+/* 2. BASE & BODY STYLES (Layout Bug Fixed) */
 body {
   background-color: var(--club-primary-bg);
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.7;
-  max-width: 1600px;
+  /* REMOVED max-width from body */
   margin: 0 auto;
   padding: 0;
   min-height: 100vh;
@@ -48,11 +52,8 @@ body {
 a, button, [role="button"] {
   cursor: url('/cursors/science-club-hover.png'), pointer;
 }
-a:hover, button:hover, [role="button"]:hover {
-  cursor: url('/cursors/science-club-hover.png'), pointer;
-}
 
-/* Geometric background pattern */
+/* Interactive background pattern */
 body::before {
   content: "";
   position: fixed;
@@ -60,14 +61,19 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 25%, #1a1a2e 0%, transparent 40%),
+  /* Using CSS variables for JS interaction */
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), #1a1a2e 0%, transparent 40%),
+    radial-gradient(circle at 20% 25%, #1a1a2e 0%, transparent 40%),
     radial-gradient(circle at 80% 75%, #1a1a2e 0%, transparent 40%);
   background-color: var(--club-primary-bg);
   z-index: -1;
+  transition: background 0.5s ease-out;
 }
 
-/* 3. MAIN CONTENT & LAYOUT */
+/* 3. MAIN CONTENT & LAYOUT (Width now controlled here) */
 .club-page {
+  max-width: 1600px;
+  margin: 0 auto;
   padding: 80px 2rem 2rem;
 }
 
@@ -82,7 +88,6 @@ body::before {
   box-shadow: var(--card-shadow);
   border: 1px solid var(--club-border-color);
 }
-
 .header-title {
   font-family: var(--font-title);
   font-size: clamp(3rem, 8vw, 6rem);
@@ -93,20 +98,18 @@ body::before {
   letter-spacing: 4px;
   text-transform: uppercase;
 }
-
 .club-description {
   font-size: 1.25rem;
   max-width: 700px;
   margin: 1.5rem auto 0;
   color: var(--text-accent);
 }
-
 .club-description strong {
   color: var(--text-primary);
   font-weight: 600;
 }
 
-/* 5. LAB CARD STYLES (for About & Join sections) */
+/* 5. LAB CARD STYLES */
 .lab-card {
   background-color: var(--club-card-bg);
   backdrop-filter: blur(10px);
@@ -116,14 +119,11 @@ body::before {
   margin-bottom: 3rem;
   overflow: hidden;
   box-shadow: var(--card-shadow);
-  transition: transform var(--transition-smooth),
-    box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+  /* Let GSAP handle transitions for smoother control */
+  transition: border-color var(--transition-smooth);
 }
-
 .lab-card:hover {
-  transform: translateY(-8px);
   border-color: var(--club-border-hover);
-  box-shadow: var(--glow-effect);
 }
 
 .card-header {
@@ -133,7 +133,6 @@ body::before {
   align-items: center;
   gap: 1rem;
 }
-
 .card-header h2 {
   font-family: var(--font-title);
   color: var(--text-secondary);
@@ -141,7 +140,6 @@ body::before {
   margin: 0;
   letter-spacing: 2px;
 }
-
 .card-header i {
   color: var(--text-secondary);
   stroke-width: 1.5;
@@ -150,19 +148,15 @@ body::before {
 .card-content {
   padding: 2.5rem;
 }
-
 .card-content p {
   font-size: 1.1rem;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   max-width: 900px;
 }
+.card-content p:last-child { margin-bottom: 0; }
 
-.card-content p:last-child {
-  margin-bottom: 0;
-}
-
-/* 6. EXPERIMENT LIST (within About card) */
+/* 6. EXPERIMENT LIST */
 .experiment-list {
   list-style: none;
   padding: 0;
@@ -171,7 +165,6 @@ body::before {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
-
 .experiment-list li {
   background-color: rgba(13, 13, 26, 0.7);
   border: 1px solid var(--club-border-color);
@@ -183,18 +176,16 @@ body::before {
   transition: background-color var(--transition-smooth),
     transform var(--transition-smooth);
 }
-
 .experiment-list li:hover {
   background-color: var(--club-secondary-bg);
   transform: translateX(5px);
 }
-
 .experiment-list i {
   color: var(--text-secondary);
   flex-shrink: 0;
 }
 
-/* 7. CONNECT SECTION (Join the Experiment card) */
+/* 7. CONNECT SECTION */
 .join-link {
   display: inline-block;
   margin-top: 1.5rem;
@@ -208,7 +199,6 @@ body::before {
   transition: background-color var(--transition-smooth),
     color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
-
 .join-link:hover {
   background-color: var(--text-secondary);
   color: var(--club-primary-bg);
@@ -217,38 +207,14 @@ body::before {
 
 /* 8. RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-  .club-page {
-    padding: 60px 1rem 1rem;
-  }
-
-  .club-header {
-    padding: 4rem 1rem;
-  }
-
-  .header-title {
-    font-size: 2.5rem;
-  }
-
-  .card-header h2 {
-    font-size: 1.8rem;
-  }
-
-  .card-content {
-    padding: 2rem;
-  }
+  .club-page { padding: 60px 1rem 1rem; }
+  .club-header { padding: 4rem 1rem; }
+  .header-title { font-size: 2.5rem; }
+  .card-header h2 { font-size: 1.8rem; }
+  .card-content { padding: 2rem; }
 }
-
 @media (max-width: 480px) {
-  .experiment-list {
-    grid-template-columns: 1fr;
-  }
-
-  .card-content {
-    padding: 1.5rem;
-  }
-
-  .header-title {
-    font-size: 2rem;
-    letter-spacing: 2px;
-  }
+  .experiment-list { grid-template-columns: 1fr; }
+  .card-content { padding: 1.5rem; }
+  .header-title { font-size: 2rem; letter-spacing: 2px; }
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,31 +14,24 @@
     <meta name="description" content="Discover and join our diverse range of student clubs at United Club Association - from academic pursuits to cultural activities and sports." />
     <title>Clubs - United Club Association</title>
     
-    <!-- Centralized Font Loader -->
     <script src="/js/include-fonts.js" defer></script>
     
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/clubs.css" />
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
     <link rel="apple-touch-icon" href="/images/uca_logo.png" />
 
-    <!-- Modern Icons -->
     <script src="https://unpkg.com/feather-icons" defer></script>
 
-    <!-- Preload critical assets -->
     <link rel="preload" href="/css/clubs.css" as="style" />
     <link rel="preload" href="/js/clubs.js" as="script" />
   </head>
   <body>
-    <!-- Navbar Placeholder -->
     <div id="navbar-placeholder"></div>
 
     <main>
-      <!-- Hero Section -->
       <section class="clubs-hero" aria-labelledby="hero-heading">
         <div class="hero-content">
           <h1 id="hero-heading">Our Communities</h1>
@@ -47,85 +39,138 @@
         </div>
       </section>
 
-      <!-- Clubs Section -->
       <section class="clubs-section" aria-labelledby="clubs-heading">
         <div class="section-container">
           <h2 id="clubs-heading" class="sr-only">Browse All Clubs</h2>
-          <div class="clubs-filter" role="tablist" aria-label="Filter clubs by category">
-            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Clubs</button>
-            <button class="filter-btn" data-filter="academic" role="tab" aria-selected="false">Academic</button>
-            <button class="filter-btn" data-filter="cultural" role="tab" aria-selected="false">Cultural</button>
-            <button class="filter-btn" data-filter="sports" role="tab" aria-selected="false">Sports</button>
-          </div>
 
-          <div class="clubs-grid">
-            <!-- Card: Debate Club -->
-            <a href="/clubs/debate-club.html" class="club-card club-card--debate" data-category="academic">
-              <div class="card-bg" style="background-image: url('/images/debate-club.jpeg')"></div>
-              <div class="card-content"><h3>Debate Club</h3></div>
-            </a>
-            
-            <!-- Card: Photography Club -->
-            <a href="/clubs/photography-club.html" class="club-card club-card--photography" data-category="cultural">
-              <div class="card-bg" style="background-image: url('/images/photography-club.jpg')"></div>
-              <div class="card-content"><h3>Photography Club</h3></div>
-            </a>
-
-            <!-- Card: Sports Club -->
-            <a href="/clubs/sports-club.html" class="club-card club-card--sports" data-category="sports">
-              <div class="card-bg" style="background-image: url('/images/sports-club.jpg')"></div>
-              <div class="card-content"><h3>Sports Club</h3></div>
-            </a>
-
-            <!-- Card: Quiz Club -->
-            <a href="/clubs/quiz-club.html" class="club-card club-card--quiz" data-category="academic">
-              <div class="card-bg" style="background-image: url('/images/quiz-club.jpg')"></div>
-              <div class="card-content"><h3>Quiz Club</h3></div>
-            </a>
-
-            <!-- Card: Science Club -->
-            <a href="/clubs/science-club.html" class="club-card club-card--science" data-category="academic">
-              <div class="card-bg" style="background-image: url('/images/science-club.jpg')"></div>
-              <div class="card-content"><h3>Science Club</h3></div>
-            </a>
-
-            <!-- Card: ICT Club -->
-            <a href="/clubs/ict-club.html" class="club-card club-card--ict" data-category="academic">
-              <div class="card-bg" style="background-image: url('/images/ict-club.jpg')"></div>
-              <div class="card-content"><h3>ICT Club</h3></div>
-            </a>
-
-            <!-- Card: Literature Club (Suspended) -->
-            <div class="club-card club-card--literature is-suspended" data-category="cultural">
-              <div class="card-bg" style="background-image: url('/images/literature-club.jpg')"></div>
-              <div class="card-content">
-                  <h3>Literature Club</h3>
-                  <span class="suspended-badge">Suspended</span>
+          <div class="filter-controls">
+            <div class="filter-controls-left">
+              <div class="filter-group" id="club-filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
+                <button class="filter-btn" data-filter="cultural">Cultural</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+              </div>
+              <div class="detail-toggle-group">
+                  <button class="detail-btn active" data-detail="simple" title="Simple View">Simple</button>
+                  <button class="detail-btn" data-detail="detailed" title="Detailed View">Detailed</button>
               </div>
             </div>
 
-            <!-- Card: Cultural Club -->
-            <a href="/clubs/cultural-club.html" class="club-card club-card--cultural" data-category="cultural">
-              <div class="card-bg" style="background-image: url('/images/cultural-club.jpg')"></div>
-              <div class="card-content"><h3>Cultural Club</h3></div>
-            </a>
+            <div class="filter-controls-right">
+              <div class="filter-group" id="view-filter-buttons">
+                  <button class="filter-btn view-btn active" data-view="grid" title="Grid View"><i data-feather="grid"></i></button>
+                  <button class="filter-btn view-btn" data-view="list" title="List View"><i data-feather="list"></i></button>
+                  <button class="filter-btn view-btn" data-view="carousel" title="Carousel View"><i data-feather="film"></i></button>
+              </div>
+            </div>
+          </div>
 
-            <!-- Card: Language Club -->
-            <a href="/clubs/language-club.html" class="club-card club-card--language" data-category="academic">
-              <div class="card-bg" style="background-image: url('/images/language-club.jpg')"></div>
-              <div class="card-content"><h3>Language Club</h3></div>
-            </a>
+          <div class="clubs-grid-wrapper">
+            <div id="clubs-grid" class="clubs-grid">
+              <a href="/clubs/debate-club.html" class="club-card club-card--debate" data-category="academic">
+                <div class="card-bg" style="background-image: url('/images/debate-club.jpeg')"></div>
+                <div class="card-content">
+                  <h3>Debate Club</h3>
+                  <div class="card-details">
+                    <p>Engage in intellectual discourse and sharpen your argumentative skills.</p>
+                    <div class="card-tags"><span class="tag">Public Speaking</span><span class="tag">Critical Thinking</span></div>
+                  </div>
+                </div>
+              </a>
+              
+              <a href="/clubs/photography-club.html" class="club-card club-card--photography" data-category="cultural">
+                <div class="card-bg" style="background-image: url('/images/photography-club.jpg')"></div>
+                <div class="card-content">
+                  <h3>Photography Club</h3>
+                   <div class="card-details">
+                    <p>Capture moments, tell stories, and explore the art of visual expression.</p>
+                    <div class="card-tags"><span class="tag">Visual Arts</span><span class="tag">Creative</span></div>
+                  </div>
+                </div>
+              </a>
 
-            <!-- Card: Green Club -->
-            <a href="/clubs/green-club.html" class="club-card club-card--green" data-category="academic">
-              <div class="card-bg" style="background-image: url('/images/green-club.png')"></div>
-              <div class="card-content"><h3>Green Club</h3></div>
-            </a>
+              <a href="/clubs/sports-club.html" class="club-card club-card--sports" data-category="sports">
+                <div class="card-bg" style="background-image: url('/images/sports-club.jpg')"></div>
+                <div class="card-content">
+                  <h3>Sports Club</h3>
+                   <div class="card-details">
+                    <p>Join a team, stay active, and compete in various athletic disciplines.</p>
+                    <div class="card-tags"><span class="tag">Athletics</span><span class="tag">Teamwork</span></div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="/clubs/quiz-club.html" class="club-card club-card--quiz" data-category="academic">
+                <div class="card-bg" style="background-image: url('/images/quiz-club.jpg')"></div>
+                <div class="card-content">
+                  <h3>Quiz Club</h3>
+                   <div class="card-details">
+                    <p>Test your knowledge on a wide range of topics and trivia.</p>
+                    <div class="card-tags"><span class="tag">Trivia</span><span class="tag">Knowledge</span></div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="/clubs/science-club.html" class="club-card club-card--science" data-category="academic">
+                <div class="card-bg" style="background-image: url('/images/science-club.jpg')"></div>
+                <div class="card-content">
+                  <h3>Science Club</h3>
+                   <div class="card-details">
+                    <p>Explore the wonders of science through experiments and discovery.</p>
+                    <div class="card-tags"><span class="tag">STEM</span><span class="tag">Research</span></div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="/clubs/ict-club.html" class="club-card club-card--ict" data-category="academic">
+                <div class="card-bg" style="background-image: url('/images/ict-club.jpg')"></div>
+                <div class="card-content">
+                  <h3>ICT Club</h3>
+                   <div class="card-details">
+                    <p>Dive into the world of technology, coding, and digital innovation.</p>
+                    <div class="card-tags"><span class="tag">Technology</span><span class="tag">Programming</span></div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="/clubs/cultural-club.html" class="club-card club-card--cultural" data-category="cultural">
+                <div class="card-bg" style="background-image: url('/images/cultural-club.jpg')"></div>
+                <div class="card-content">
+                  <h3>Cultural Club</h3>
+                   <div class="card-details">
+                    <p>Celebrate diversity, traditions, and the arts from around the world.</p>
+                    <div class="card-tags"><span class="tag">Diversity</span><span class="tag">Arts</span></div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="/clubs/language-club.html" class="club-card club-card--language" data-category="academic">
+                <div class="card-bg" style="background-image: url('/images/language-club.jpg')"></div>
+                <div class="card-content">
+                  <h3>Language Club</h3>
+                   <div class="card-details">
+                    <p>Learn new languages and connect with different cultures.</p>
+                    <div class="card-tags"><span class="tag">Languages</span><span class="tag">Communication</span></div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="/clubs/green-club.html" class="club-card club-card--green" data-category="academic">
+                <div class="card-bg" style="background-image: url('/images/green-club.png')"></div>
+                <div class="card-content">
+                  <h3>Green Club</h3>
+                   <div class="card-details">
+                    <p>Promote environmental awareness and sustainability on campus.</p>
+                    <div class="card-tags"><span class="tag">Environment</span><span class="tag">Sustainability</span></div>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- CTA Section -->
       <section class="join-cta" aria-labelledby="cta-heading">
         <div class="cta-content">
           <h2 id="cta-heading">Find Your Community</h2>
@@ -138,10 +183,13 @@
       </section>
     </main>
     
-    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
     <script src="/js/include-navbar.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
     <script src="/js/clubs.js" defer></script>

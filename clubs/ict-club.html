@@ -8,67 +8,93 @@
     <script src="https://unpkg.com/feather-icons"></script>    
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
     <link rel="stylesheet" href="/clubs-css/ict-club.css" />
 
     <script src="/js/include-fonts.js" defer></script>
     <script src="/js/include-club-navbar.js" defer></script>
     <script src="/js/include-club-footer.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="/clubs-js/ict-club.js" defer></script>
 </head>
 <body>
+    <div id="navbar-placeholder"></div>
+    <div class="deco-bg-text">GRID</div>
+
     <main class="club-page" id="main-content">
         <header class="club-header">
             <h1 class="club-title">ICT Club</h1>
             <p class="club-subtitle">Human-centric approach to machine logic.</p>
         </header>
 
-        <section class="club-content-grid">
-            <article class="info-card">
-                <div class="card-header">
-                    <i data-feather="terminal"></i>
-                    <h2>About The Club</h2>
-                </div>
-                <p>
-                    The ICT Club is at the forefront of digital innovation and technological advancement in our university. We bridge the gap between theory and practical application, providing hands-on experience in programming, web development, cybersecurity, and emerging technologies.
-                </p>
-                <p>
-                    As the sixth club to found in October 2024 and joining UCA in January 2025, we've taken charge of the association's digital infrastructure and online presence.
-                </p>
-                <ul class="feature-list">
-                    <li><i data-feather="code"></i> Web Development</li>
-                    <li><i data-feather="shield"></i> Cybersecurity</li>
-                    <li><i data-feather="smartphone"></i> Mobile Apps</li>
-                    <li><i data-feather="cpu"></i> Hardware Projects</li>
-                </ul>
-            </article>
+        <section class="ui-panel">
+            <h2 class="panel-header"><i data-feather="terminal"></i>About The Club</h2>
+            <p>
+                The ICT Club is at the forefront of digital innovation and technological advancement in our university. We bridge the gap between theory and practical application, providing hands-on experience in programming, web development, cybersecurity, and emerging technologies.
+            </p>
+            <p>
+                As the sixth club to found in October 2024 and joining UCA in January 2025, we've taken charge of the association's digital infrastructure and online presence.
+            </p>
 
-            <article class="info-card">
-                <div class="card-header">
-                    <i data-feather="link"></i>
-                    <h2>Join the Grid</h2>
+            <h3 class="subsection-title">Key Contributions</h3>
+            <div class="contribution-grid">
+                <div class="contribution-list">
+                    <h4>Done</h4>
+                    <ul>
+                        <li><i data-feather="check-circle"></i> UCA Website</li>
+                        <li><i data-feather="check-circle"></i> UCA Web App</li>
+                    </ul>
                 </div>
-                <p>
-                    Dive into the world of technology and be part of the digital revolution shaping our future. Whether you're a beginner or an expert, there's a place for you in our network.
-                </p>
-                <p>
-                    Explore our projects, join workshops, and connect with fellow tech enthusiasts.
-                </p>
-                <div class="action-links">
-                    <a href="https://www.facebook.com/ulic.fb" target="_blank" class="action-link">
-                        <i data-feather="facebook"></i> Facebook
-                    </a>
-                    <a href="https://ulic.netlify.app" target="_blank" class="action-link">
-                        <i data-feather="globe"></i> Website
-                    </a>
-                    <a href="https://www.youtube.com/@ulic.technology" target="_blank" class="action-link">
-                        <i data-feather="youtube"></i> YouTube
-                    </a>
+                <div class="contribution-list">
+                    <h4>Ongoing</h4>
+                    <ul>
+                        <li><i data-feather="loader"></i> UCA Desktop App</li>
+                        <li><i data-feather="loader"></i> UCA Mobile App</li>
+                    </ul>
                 </div>
-            </article>
+            </div>
+
+            <h3 class="subsection-title">Core Areas</h3>
+            <ul class="feature-list">
+                <li><i data-feather="code"></i> Web Development</li>
+                <li><i data-feather="shield"></i> Cybersecurity</li>
+                <li><i data-feather="smartphone"></i> Mobile Apps</li>
+                <li><i data-feather="cpu"></i> Hardware Projects</li>
+            </ul>
+        </section>
+
+        <section class="ui-panel">
+            <h2 class="panel-header"><i data-feather="link"></i>Join the Grid</h2>
+            <p>
+                Dive into the world of technology and be part of the digital revolution shaping our future. Whether you're a beginner or an expert, there's a place for you in our network.
+            </p>
+            <div class="action-links">
+                <a href="https://www.facebook.com/ulic.fb" target="_blank" rel="noopener noreferrer" class="action-link">
+                    <i data-feather="facebook"></i> Facebook
+                </a>
+                <a href="https://ulic.netlify.app" target="_blank" rel="noopener noreferrer" class="action-link">
+                    <i data-feather="globe"></i> Website
+                </a>
+                <a href="https://www.youtube.com/@ulic.technology" target="_blank" rel="noopener noreferrer" class="action-link">
+                    <i data-feather="youtube"></i> YouTube
+                </a>
+            </div>
         </section>
     </main>
+    <div id="footer-placeholder"></div>
 
     <script>
-      feather.replace();
+      document.addEventListener("DOMContentLoaded", function () {
+          const checkFeather = setInterval(() => {
+              if (typeof feather !== 'undefined') {
+                  feather.replace();
+                  clearInterval(checkFeather);
+              }
+          }, 100);
+      });
     </script>
 </body>
 </html>

@@ -23,10 +23,17 @@
     <script src="/js/include-club-navbar.js" defer></script>
     <script src="/js/include-club-footer.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="/clubs-js/sports-club.js" defer></script>
+    
     <script>
-        // Call feather icons
         document.addEventListener('DOMContentLoaded', () => {
-            feather.replace();
+            // Check if feather is loaded before replacing icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
         });
     </script>
   </head>

@@ -192,7 +192,7 @@
   .navbar__menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -100%; /* Changed from right: -100% for GSAP control */
     width: min(80vw, 300px);
     height: 100vh;
     padding: 80px 1.5rem 2rem;
@@ -200,7 +200,7 @@
     align-items: flex-start;
     gap: 0.5rem;
     background-color: var(--dropdown-bg);
-    transition: right 0.4s ease;
+    transition: right 0.4s ease; /* Fallback if JS fails */
     box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
   }
@@ -217,11 +217,7 @@
     padding: 0 0 0 1rem;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-  }
-  .navbar__item.active > .dropdown__menu {
-    max-height: 500px;
-    padding: 0.5rem 0 0.5rem 1rem;
+    /* transition is now handled by GSAP in navbar.js */
   }
   .navbar__item.dropdown > .navbar__link {
     display: flex;

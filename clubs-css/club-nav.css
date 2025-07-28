@@ -2,6 +2,7 @@
 ================================================
 |                                              |
 |      CLUB-SPECIFIC NAVBAR STYLES - UCA       |
+|      -- ENHANCED --                          |
 |                                              |
 ================================================
 */
@@ -18,6 +19,7 @@
   --nav-link-highlight: #8B5CF6;
   --nav-dropdown-bg: rgba(18, 20, 40, 0.95);
   --font-nav: 'Satoshi', sans-serif;
+  --nav-text-hover-shadow: none; /* Add shadow variable */
 }
 
 /* 2. CLUB-SPECIFIC THEMES
@@ -59,28 +61,30 @@ body.theme-photo {
   --font-nav: 'Antipasto', sans-serif;
 }
 
-/* --- Sports Club --- */
+/* --- Sports Club (UPDATED) --- */
 body.theme-sports {
-  --nav-bg: linear-gradient(rgba(0,31,63,0.95), rgba(0,31,63,0.95));
-  --nav-border: #1E90FF;
-  --nav-text: #C0C0C0;
+  --nav-bg: linear-gradient(rgba(20, 20, 20, 0.95), rgba(5, 5, 5, 0.95));
+  --nav-border: rgba(255, 255, 255, 0.3);
+  --nav-text: #E0E0E0;
   --nav-text-hover: #FFFFFF;
-  --nav-logo-text: #1E90FF;
-  --nav-link-highlight: #1E90FF;
-  --nav-dropdown-bg: #001F3F;
-  --font-nav: 'NFS font', sans-serif;
+  --nav-logo-text: #FFFFFF;
+  --nav-link-highlight: #FFFFFF;
+  --nav-dropdown-bg: #0A0A0A;
+  --font-nav: 'Montserrat', sans-serif;
+  --nav-text-hover-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-/* --- Quiz Club --- */
+/* --- Quiz Club (UPDATED) --- */
 body.theme-quiz {
-  --nav-bg: linear-gradient(45deg, #FF4136, #FFDC00);
-  --nav-border: #FFFFFF;
-  --nav-text: #000;
-  --nav-text-hover: #000;
-  --nav-logo-text: #000;
-  --nav-link-highlight: #FF4136;
-  --nav-dropdown-bg: #FFDC00;
+  --nav-bg: rgba(22, 27, 34, 0.75); /* Glassmorphism background */
+  --nav-border: rgba(139, 148, 158, 0.3);
+  --nav-text: #8b949e;
+  --nav-text-hover: #e6edf3;
+  --nav-logo-text: #e6edf3;
+  --nav-link-highlight: #22d3ee; /* Cyan accent */
+  --nav-dropdown-bg: rgba(22, 27, 34, 0.95);
   --font-nav: 'Lexend', sans-serif;
+  --nav-text-hover-shadow: 0 0 8px rgba(34, 211, 238, 0.5); /* Cyan glow */
 }
 
 /* --- Science Club --- */
@@ -151,19 +155,26 @@ body.theme-literature {
   background: var(--nav-bg);
   border-bottom: 1px solid var(--nav-border);
   color: var(--nav-text);
+  /* Added for glassmorphism effect on certain themes */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .navbar .logo-text-main,
 .navbar .logo-text-sub {
   color: var(--nav-logo-text);
+  transition: color 0.3s ease;
 }
 
 .navbar__link {
   color: var(--nav-text);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .navbar__link:hover {
   color: var(--nav-text-hover);
+  text-shadow: var(--nav-text-hover-shadow);
 }
 
 .navbar__link::before {
@@ -173,15 +184,18 @@ body.theme-literature {
 .dropdown__menu {
   background-color: var(--nav-dropdown-bg);
   border: 1px solid var(--nav-border);
+  /* Smoother animation is handled by main navbar JS/CSS */
 }
 
 .dropdown__menu a {
   color: var(--nav-text);
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown__menu a:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--nav-text-hover);
+  transform: translateX(4px);
 }
 
 .bar {
