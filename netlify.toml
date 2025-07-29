@@ -1,6 +1,3 @@
-[[headers]]
-  for = "/*"
-  [headers.values]
-    # Updated CSP removing hCaptcha
-    Content-Security-Policy = "script-src 'self' https://www.googletagmanager.com https://unpkg.com https://cdn.jsdelivr.net/npm/ 'unsafe-inline'; object-src 'none'; base-uri 'self'; connect-src 'self' https://uzgxluiqyovpkyjpqles.supabase.co; frame-src 'self';"
-    # Add other directives like style-src, img-src, font-src etc. as needed based on browser console errors
+[[edge_functions]]
+  path = "/*"
+  function = "csp-header"
