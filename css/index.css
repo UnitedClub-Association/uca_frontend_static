@@ -64,7 +64,7 @@ a:hover, button:hover, [role="button"]:hover {
   margin: 0 auto;
 }
 
-/* 3. HERO SECTION ... (updated) */
+/* 3. HERO SECTION ... (no changes) */
 .hero {
   height: 100vh;
   display: flex;
@@ -215,7 +215,7 @@ a:hover, button:hover, [role="button"]:hover {
   letter-spacing: 2px;
 }
 
-/* === 5. CLUBS SECTION (REDESIGNED) === */
+/* === 5. CLUBS SECTION (REDESIGNED FOR MOBILE) === */
 .clubs {
   padding: 8rem 0;
   background: linear-gradient(180deg, var(--color-bg-night-sky), var(--color-bg-void));
@@ -239,11 +239,6 @@ a:hover, button:hover, [role="button"]:hover {
   flex-direction: column;
   justify-content: flex-end;
 }
-.club-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: var(--hover-shadow);
-  border-color: var(--color-border-hover);
-}
 .club-card img {
   position: absolute;
   top: 0;
@@ -254,21 +249,15 @@ a:hover, button:hover, [role="button"]:hover {
   transition: transform 0.6s var(--transition-smooth), filter 0.4s ease;
   z-index: 1;
 }
-.club-card:hover img {
-  transform: scale(1.1);
-  filter: brightness(0.7);
-}
 .club-info {
   position: relative;
   z-index: 2;
   padding: 1.5rem;
   color: var(--color-text-primary);
   background: linear-gradient(to top, rgba(10, 11, 26, 0.95) 20%, rgba(10, 11, 26, 0.5) 70%, transparent 100%);
-  transform: translateY(30%);
-  transition: transform 0.4s var(--transition-smooth);
-}
-.club-card:hover .club-info {
+  /* MOBILE FIX: Info is visible by default */
   transform: translateY(0);
+  transition: transform 0.4s var(--transition-smooth);
 }
 .club-info h3 {
   font-family: var(--font-serif-elegant);
@@ -282,45 +271,17 @@ a:hover, button:hover, [role="button"]:hover {
   font-family: var(--font-sans-clean);
   font-weight: 600;
   font-size: 1rem;
-  opacity: 0;
-  transition: opacity 0.4s ease 0.1s;
-}
-.club-card:hover .club-cta {
+  /* MOBILE FIX: CTA is visible by default */
   opacity: 1;
+  transition: opacity 0.4s ease 0.1s;
 }
 .club-cta i {
   width: 18px;
   height: 18px;
   transition: transform 0.3s ease;
 }
-.club-card:hover .club-cta i {
-  transform: translateX(5px);
-}
 
-/* --- Club-Specific Color Themes --- */
-/* Sports Club: Glowy White & Black (NEW) */
-.club-card--sports:hover {
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.7);
-}
-.club-card--sports:hover img {
-  filter: brightness(0.5) grayscale(0.8);
-}
-.club-card--sports .club-cta { color: #E2E8F0; }
-
-/* ICT Club: Indigo & Gold */
-.club-card--ict { --club-color-overlay: rgba(75, 0, 130, 0.3); }
-.club-card--ict .club-info { background: linear-gradient(to top, rgba(10, 11, 26, 0.95) 20%, var(--club-color-overlay) 70%, transparent 100%); }
-.club-card--ict:hover { border-color: #ffbd59; box-shadow: 0 0 25px -5px #4b0082; }
-.club-card--ict .club-cta { color: #ffbd59; }
-
-/* Photography Club: Black & Brown */
-.club-card--photography { --club-color-overlay: rgba(139, 69, 19, 0.2); }
-.club-card--photography .club-info { background: linear-gradient(to top, rgba(5, 5, 5, 0.95) 20%, var(--club-color-overlay) 70%, transparent 100%); }
-.club-card--photography:hover { border-color: #8B4513; box-shadow: 0 0 25px -5px #8B4513; }
-.club-card--photography .club-cta { color: #D2B48C; }
-
-/* === 6. EVENTS SECTION ... (no changes) === */
+/* === 6. EVENTS SECTION ... (no major changes) === */
 .events {
   padding: 8rem 0;
   background: linear-gradient(180deg, var(--color-bg-void), var(--color-bg-deep-space));
@@ -350,10 +311,6 @@ a:hover, button:hover, [role="button"]:hover {
   transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth), border-color 0.4s var(--transition-smooth);
   min-height: 320px;
 }
-.event-card:hover {
-  transform: scale(1.02);
-  box-shadow: var(--hover-shadow);
-}
 .event-image {
   flex-basis: 40%;
   overflow: hidden;
@@ -364,9 +321,6 @@ a:hover, button:hover, [role="button"]:hover {
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s var(--transition-smooth);
-}
-.event-card:hover .event-image img {
-  transform: scale(1.1);
 }
 .event-content {
   flex-basis: 60%;
@@ -408,42 +362,140 @@ a:hover, button:hover, [role="button"]:hover {
   gap: 0.75rem;
   color: var(--color-text-primary);
 }
-.event-card--frbd {
-  background-color: #1C2526;
-}
-.event-card--frbd:hover {
-  border-color: #a0a0a0;
-  box-shadow: 0 0 25px -8px #a0a0a0;
-}
+
+/* Event Card Specifics (no changes) */
+.event-card--frbd { background-color: #1C2526; }
+.event-card--frbd:hover { border-color: #a0a0a0; box-shadow: 0 0 25px -8px #a0a0a0; }
 .event-card--frbd .read-more { color: #a0a0a0; }
 .event-card--frbd .read-more:hover { color: #ffffff; }
 .event-card--frbd .event-date { color: #8f8f8f; }
-.event-card--uca:hover {
-  border-color: var(--color-secondary-glow);
-  box-shadow: 0 0 25px -8px var(--color-secondary-glow);
-}
+.event-card--uca:hover { border-color: var(--color-secondary-glow); box-shadow: 0 0 25px -8px var(--color-secondary-glow); }
 .event-card--uca .read-more { color: var(--color-secondary-glow); }
 .event-card--uca .read-more:hover { color: var(--color-text-primary); }
-.event-card--triquest {
-  background: linear-gradient(var(--color-bg-night-sky), var(--color-bg-night-sky)) padding-box,
-              linear-gradient(135deg, #8B0000, #000080) border-box;
-  border: 1px solid transparent;
-}
-.event-card--triquest:hover {
-  box-shadow: 0 0 25px -8px #8B0000;
-}
+.event-card--triquest { background: linear-gradient(var(--color-bg-night-sky), var(--color-bg-night-sky)) padding-box, linear-gradient(135deg, #8B0000, #000080) border-box; border: 1px solid transparent; }
+.event-card--triquest:hover { box-shadow: 0 0 25px -8px #8B0000; }
 .event-card--triquest .read-more { color: #B22222; }
 .event-card--triquest .read-more:hover { color: #6495ED; }
 
-/* 7. ANIMATIONS & RESPONSIVE */
+/* ======================================================= */
+/* 7. DESKTOP-ONLY STYLES (HOVER EFFECTS)                  */
+/* Media query to apply these styles only on screens      */
+/* wide enough to be desktops, with hover capability.     */
+/* ======================================================= */
+@media (min-width: 769px) {
+  .event-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--hover-shadow);
+  }
+  .event-card:hover .event-image img {
+    transform: scale(1.1);
+  }
+  .club-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--color-border-hover);
+  }
+  .club-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+  }
+  .club-info {
+    /* DESKTOP ONLY: Hide info initially */
+    transform: translateY(30%);
+  }
+  .club-card:hover .club-info {
+    /* DESKTOP ONLY: Reveal info on hover */
+    transform: translateY(0);
+  }
+  .club-cta {
+    /* DESKTOP ONLY: Hide cta initially */
+    opacity: 0;
+  }
+  .club-card:hover .club-cta {
+    /* DESKTOP ONLY: Reveal cta on hover */
+    opacity: 1;
+  }
+  .club-card:hover .club-cta i {
+    transform: translateX(5px);
+  }
+  /* Club Specific Hovers */
+  .club-card--sports:hover { border-color: rgba(255, 255, 255, 0.8); box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.7); }
+  .club-card--sports:hover img { filter: brightness(0.5) grayscale(0.8); }
+  .club-card--sports .club-cta { color: #E2E8F0; }
+  .club-card--ict:hover { border-color: #ffbd59; box-shadow: 0 0 25px -5px #4b0082; }
+  .club-card--ict .club-cta { color: #ffbd59; }
+  .club-card--photography:hover { border-color: #8B4513; box-shadow: 0 0 25px -5px #8B4513; }
+  .club-card--photography .club-cta { color: #D2B48C; }
+}
+
+
+/* ======================================================= */
+/* 8. MOBILE & TABLET RESPONSIVE STYLES                    */
+/* ======================================================= */
 @media (max-width: 768px) {
-  body { padding-top: 70px; }
-  .hero { height: 80vh; }
-  .hero-content h1 { font-size: 3.5rem; }
-  .hero-subtitle { font-size: 1.3rem; }
-  .about, .clubs, .events { padding: 4rem 0; }
-  .section-container { padding: 0 1rem; }
-  .club-grid, .event-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .event-card { flex-direction: column; }
-  .event-image { flex-basis: 250px; }
+  body { 
+    padding-top: 70px; 
+    cursor: default; /* Remove custom cursor on mobile */
+  }
+  a, button, [role="button"], a:hover, button:hover, [role="button"]:hover {
+    cursor: pointer; /* Use default pointer on mobile */
+  }
+  .section-container { 
+    padding: 0 1rem; 
+  }
+  .about, .clubs, .events { 
+    padding: 4rem 0; 
+  }
+
+  /* Hero */
+  .hero { 
+    height: 90vh; /* A bit taller for mobile */
+  }
+  .hero-content {
+    padding: 0 1rem;
+  }
+  .hero-content h1 { 
+    font-size: clamp(2.5rem, 10vw, 3.5rem); 
+  }
+  .hero-subtitle { 
+    font-size: clamp(1rem, 4vw, 1.2rem); 
+  }
+  .button-primary {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Sections */
+  .section-header { 
+    margin-bottom: 2.5rem; 
+  }
+  .section-header h2 {
+    font-size: clamp(2.2rem, 9vw, 2.8rem);
+  }
+
+  /* Club & Event Grids */
+  .club-grid, .event-grid { 
+    grid-template-columns: 1fr; 
+    gap: 2rem; 
+  }
+  .club-card, .event-card {
+    box-shadow: var(--card-shadow); /* Add shadow by default on mobile */
+  }
+
+  /* Event Card Mobile Layout */
+  .event-card { 
+    flex-direction: column; 
+  }
+  .event-image { 
+    flex-basis: 220px; /* Fixed height for image area */
+  }
+  .event-content {
+    padding: 1.5rem;
+  }
+  .event-content h3 {
+    font-size: 1.5rem;
+  }
+  .event-content p {
+    font-size: 0.95rem;
+  }
 }
