@@ -1,0 +1,188 @@
+/*
+================================================
+|                                              |
+|      FRBD2 PAGE - REVAMPED STYLES V2         |
+|      Structure: potm-june                    |
+|      Theme: about-the-event                  |
+|                                              |
+================================================
+*/
+
+/* 1. THEME & ROOT VARIABLES from about-the-event.css
+------------------------------------------------ */
+:root {
+    --bg-color: #1C2526;
+    --text-color: #E0E0E0;
+    --primary-accent: #A0A0A0;
+    --highlight-color: #FFFFFF;
+    --overlay-color: rgba(28, 37, 38, 0.85);
+    --card-bg: rgba(0, 0, 0, 0.2);
+    --card-bg-hover: rgba(0, 0, 0, 0.4);
+    --card-border: rgba(160, 160, 160, 0.2);
+    --font-heading: 'Crimson Pro', serif;
+    --font-body: 'Folks-Light', sans-serif;
+    --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. GENERAL PAGE SETUP
+------------------------------------------------ */
+body.frbd-theme {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    padding-top: 80px; /* Space for sticky navbar */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+    background-color: rgba(28, 37, 38, 0.6); /* Semi-transparent overlay */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+/* 3. HERO HEADER SECTION (Structured like potm-june)
+------------------------------------------------ */
+.event-header {
+    text-align: center;
+    padding: 5rem 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
+    background-color: var(--card-bg);
+}
+.event-header::before, .event-header::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+}
+.event-header::before { top: 20px; left: 20px; right: 20px; bottom: 20px; opacity: 0.8; }
+.event-header::after { top: 40px; left: 40px; right: 40px; bottom: 40px; opacity: 0.6; }
+
+.event-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--highlight-color);
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+.event-subtitle {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--primary-accent);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+/* 4. EVENT DESCRIPTION & SEGMENTS
+------------------------------------------------ */
+.event-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 6rem auto;
+}
+.event-description p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.segments-showcase {
+    margin-bottom: 6rem;
+}
+.segments-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+@media (min-width: 992px) {
+    .segments-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.column-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--highlight-color);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 2rem;
+}
+.segment-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid transparent;
+    border-left: 2px solid var(--primary-accent);
+    transition: var(--transition-smooth);
+}
+.segment-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-bg-hover);
+    border-color: var(--card-border);
+}
+.segment-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 0.75rem 0;
+}
+.segment-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--primary-accent);
+    margin: 0;
+}
+.btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-accent);
+    background-color: transparent;
+    border: 1px solid var(--primary-accent);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+.btn:hover {
+    background-color: var(--primary-accent);
+    color: var(--bg-color);
+    border-color: var(--primary-accent);
+}
+
+/* 5. EVENT TIMELINE
+------------------------------------------------ */
+.event-timeline {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--card-border);
+    background-color: var(--card-bg);
+    border-radius: 12px;
+}
+.event-timeline p {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--primary-accent);
+    margin: 0.25rem 0;
+    line-height: 1.7;
+}
+.event-timeline strong {
+    color: var(--text-color);
+}

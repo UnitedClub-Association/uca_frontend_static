@@ -74,7 +74,7 @@ a, button, [role="button"] {
   border-radius: 50%;
   border: 3px solid var(--club-primary);
   background-color: var(--background-dark);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.4);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0,0,0,0.4);
   display: flex;
   align-items: center;
   justify-content: center;

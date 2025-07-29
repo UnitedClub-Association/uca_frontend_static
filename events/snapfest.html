@@ -1,87 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-H2YV0FNQ9X");
-    </script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snapfest 2024 - ULPC Photography Contest</title>
+    <title>Snapfest 2024 Revamped - ULPC Photography Contest</title>
+
+    <script src="/js/include-fonts.js" defer></script>
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script src="/js/include-fonts.js"></script>
+    <link rel="stylesheet" href="/event-css/snapfest.css" />
+
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/event-css/snapfest.css" />
-    <script src="https://unpkg.com/feather-icons" defer></script>
-  </head>
-  <body>
-    <script src="/js/include-navbar.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js" defer></script>
+
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/events-js/snapfest.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+</head>
+<body>
 
     <main class="snapfest-main">
-      <section class="hero-section" aria-labelledby="snapfest-title">
-        <div class="hero-overlay">
-          <h1 id="snapfest-title">Snapfest 2024</h1>
-          <p class="event-date">November 17, 2024 | TSC Auditorium, University of Dhaka</p>
-          <p class="hero-description">
-            Snapfest 2024, originally launched as "Freeze the Moment," was an exhilarating photography contest hosted by the University Laboratory Photography Club. Students captured the essence of the award ceremony, with Ishrak, founder of Noksha Visuals, judging the finest shots.
-          </p>
-          </div>
-      </section>
-
-      <section class="content-section" aria-labelledby="content-heading">
-        <div class="container">
-          <h2 id="content-heading">Event Highlights</h2>
-
-          <h2>Meet Our Esteemed Judge</h2>
-          <div class="judge-card">
-            <img src="/images/snapfest_judge_poster.jpg" alt="Ishrak, Judge of Snapfest 2024" loading="lazy">
-            <div class="judge-info">
-              <h3>Ishrak</h3>
-              <p>Founder of Noksha Visuals<br>Daffodil International University</p>
-              <p class="judge-quote">
-                Ishrak brought unparalleled expertise to select the winning entry that truly captured the spirit of the moment.
-              </p>
+        <section class="hero-section" aria-labelledby="snapfest-title">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1 id="snapfest-title" data-animate="hero-title">Snapfest 2024</h1>
+                <p class="event-date" data-animate="hero-subtitle">November 17, 2024 | TSC Auditorium, DU</p>
+                <p class="hero-description" data-animate="hero-text">
+                    An exhilarating photography contest to capture the soul of the ceremony, judged by Ishrak, founder of Noksha Visuals.
+                </p>
             </div>
-          </div>
+            <div class="scroll-indicator" data-animate="hero-scroll">
+                <span>SCROLL</span>
+            </div>
+        </section>
 
-          <h2>Winner Spotlight</h2>
-          <div class="winner-card">
-            <div class="winner-images">
-              <img src="/images/snapfest_winner_poster.jpeg" alt="Sajidul Islam's Winner Poster" loading="lazy">
-              <img src="/images/snapfest_winning_pic.jpeg" alt="Sajidul Islam's Winning Photo" loading="lazy">
-            </div>
-            <div class="winner-info">
-              <h3>Sajidul Islam</h3>
-              <p>University Laboratory School and College - XII(A)</p>
-              <p class="winner-quote">
-                "This photo portrays a silent force whose music resonates louder than their presence—a backstage hero orchestrating harmony from the shadows."
-              </p>
-            </div>
-          </div>
+        <section class="timeline-section" aria-label="Event Timeline">
+            <div class="container">
+                <div class="timeline-line"></div>
 
-          <div class="cta-section">
-            <h2>Stay Connected</h2>
-            <p>Results announced on November 20, 2024. Follow ULPC on social media for the latest updates!</p>
-            <div class="social-links">
-              <a href="https://facebook.com/ulpc.fb" class="social-link" aria-label="Follow ULPC on Facebook">
-                <i data-feather="facebook"></i> Facebook
-              </a>
-              <a href="https://instagram.com/ulpc.ig" class="social-link" aria-label="Follow ULPC on Instagram">
-                <i data-feather="instagram"></i> Instagram
-              </a>
+                <div class="timeline-item">
+                    <div class="timeline-card" data-animate="timeline-card">
+                        <div class="card-image-wrapper">
+                            <img src="/images/snapfest_judge_poster.jpg" alt="Ishrak, Judge of Snapfest 2024">
+                        </div>
+                        <div class="card-content">
+                            <h2 class="card-title">The Arbiter</h2>
+                            <h3 class="card-subtitle">Ishrak</h3>
+                            <p class="card-description">Founder of Noksha Visuals, Ishrak brought unparalleled expertise to select the winning entry that truly captured the spirit of the moment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card winner-card" data-animate="timeline-card">
+                        <div class="card-image-wrapper">
+                            <img src="/images/snapfest_winning_pic.jpeg" alt="Sajidul Islam's Winning Photo">
+                        </div>
+                        <div class="card-content">
+                            <h2 class="card-title">The Victorious Picture</h2>
+                            <h3 class="card-subtitle">Man in shadows</h3>
+                            <p class="card-description winner-quote">
+                                "This photo portrays a silent force whose music resonates louder than their presence—a backstage hero orchestrating harmony from the shadows."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card winner-card" data-animate="timeline-card">
+                        <div class="card-image-wrapper">
+                            <img src="/images/snapfest_winner_poster.jpeg" alt="Sajidul Islam's Winning Photo">
+                        </div>
+                        <div class="card-content">
+                            <h2 class="card-title">The Victor</h2>
+                            <h3 class="card-subtitle">Sajidul Islam</h3>
+                            <p class="card-description winner-quote">
+                                "Winner Of the Contest"
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="gallery-section" aria-labelledby="gallery-title">
+            <div class="container">
+                <h2 id="gallery-title" data-animate="gallery-title">Event Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-animate="gallery-item">
+                        <img src="/images/snapfest_winner_poster.jpeg" alt="Sajidul Islam's Winner Poster">
+                    </div>
+                    <div class="gallery-item" data-animate="gallery-item">
+                        <img src="/images/snapfest_winning_pic.jpeg" alt="Winning Photo Detail">
+                    </div>
+                    <div class="gallery-item" data-animate="gallery-item">
+                        <img src="/images/snapfest_judge_poster.jpg" alt="Judge Poster">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-labelledby="cta-title">
+            <div class="container" data-animate="cta-content">
+                <h2 id="cta-title">Stay Connected</h2>
+                <p>Follow the University Laboratory Photography Club for future events and announcements.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/ulpc.fb" class="social-link" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://instagram.com/ulpc.ig" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
+            </div>
+        </section>
     </main>
-    <script src="/js/include-footer.js"></script>
-  </body>
+
+</body>
 </html>

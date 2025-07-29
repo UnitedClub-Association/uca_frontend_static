@@ -4,23 +4,13 @@
   },
   "bitoAI.codeCompletion.enableAutoCompletion": false,
   "deno.enablePaths": [
-    "supabase/functions"
+    "supabase/functions",
+    "netlify/edge-functions"
   ],
   "deno.lint": true,
-  "deno.unstable": [
-    "bare-node-builtins",
-    "byonm",
-    "sloppy-imports",
-    "unsafe-proto",
-    "webgpu",
-    "broadcast-channel",
-    "worker-options",
-    "cron",
-    "kv",
-    "ffi",
-    "fs",
-    "http",
-    "net"
-  ],
-  "liveServer.settings.port": 5501
+  "deno.unstable": true,
+  "liveServer.settings.port": 5501,
+  "deno.enable": true,
+  "deno.importMap": ".netlify/edge-functions-import-map.json",
+  "deno.path": "C:\\Users\\anisur\\AppData\\Roaming\\netlify\\Config\\deno-cli\\deno.exe"
 }

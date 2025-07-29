@@ -1,109 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-H2YV0FNQ9X");
-    </script>
-
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TriQuest: Battle of Knowledge - United Club Association</title>
 
-    <meta name="description" content="TriQuest: Battle of Knowledge - A collaborative quiz competition by Quiz, Science, and Language Clubs at UCA, covering science, history, and literature." />
+    <meta name="description" content="A redesigned showcase of TriQuest: Battle of Knowledge, a collaborative quiz competition by the Quiz, Science, and Language Clubs at UCA." />
     <meta name="keywords" content="TriQuest, UCA events, quiz competition, science quiz, language quiz, July Revolution, The Luncheon, The Gift of the Magi" />
 
     <script src="/js/include-fonts.js" defer></script>
-
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/event-css/triquest.css" />
-
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://unpkg.com/feather-icons" defer></script>
-  </head>
-  <body>
+
     <script src="/js/include-navbar.js" defer></script>
-
-    <main id="main-content">
-      <section class="hero">
-        <div class="hero-content">
-          <h1>TriQuest: Battle of Knowledge</h1>
-          <p class="event-date">December 2, 2024</p>
-          <div class="event-badges">
-            <span class="badge quiz">🧠 Quiz Club</span>
-            <span class="badge science">🔬 Science Club</span>
-            <span class="badge language">🌍 Language Club</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="event-details">
-        <div class="container">
-          <h2>Top Performers</h2>
-          <div class="winners-grid">
-            <div class="winner-card first">
-              <div class="position">1st</div>
-              <div class="trophy"><i data-feather="award"></i></div>
-              <h3>Tamim Iqbal</h3>
-            </div>
-            <div class="winner-card second">
-              <div class="position">2nd</div>
-              <div class="trophy"><i data-feather="award"></i></div>
-              <h3>Taaha</h3>
-            </div>
-            <div class="winner-card third">
-              <div class="position">3rd</div>
-              <div class="trophy"><i data-feather="award"></i></div>
-              <h3>Tanvir Ahmed</h3>
-            </div>
-          </div>
-
-          <div class="event-summary">
-            <h2>Event Details</h2>
-            <p class="event-description">
-              TriQuest: Battle of Knowledge united the Quiz, Science, and Language Clubs in a dynamic quiz competition. Participants showcased their expertise in Basic Science, the July Revolution 2024 in Bangladesh, Somerset Maugham’s "The Luncheon," and O. Henry’s "The Gift of the Magi."
-            </p>
-
-            <div class="stats-grid">
-              <div class="stat-card">
-                <i data-feather="users"></i>
-                <h4>Participants</h4>
-                <p>40</p>
-              </div>
-              <div class="stat-card">
-                <i data-feather="clock"></i>
-                <h4>Duration</h4>
-                <p>1 Hour</p>
-              </div>
-              <div class="stat-card">
-                <i data-feather="file-text"></i>
-                <h4>Format</h4>
-                <p>Written Exam</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
+    <script src="/events-js/triquest.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof feather !== "undefined") {
-          feather.replace({
-            "stroke-width": 2,
-            color: "currentColor",
-            size: 18,
-          });
-        }
-      });
-    </script>
-  </body>
+</head>
+<body>
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 data-animate="hero-title">TriQuest</h1>
+                <p class="hero-subtitle" data-animate="hero-subtitle">A Battle of Knowledge</p>
+                <p class="event-date" data-animate="hero-date">December 2, 2024</p>
+            </div>
+            <div class="hosted-by" data-animate="hero-hosts">
+                <h2 class="hosted-by-title">Hosted By</h2>
+                <div class="host-logos">
+                    <img src="/images/quiz-club.jpg" alt="Quiz Club Logo" class="host-logo" />
+                    <img src="/images/science-club.jpg" alt="Science Club Logo" class="host-logo" />
+                    <img src="/images/language-club.jpg" alt="Language Club Logo" class="host-logo" />
+                </div>
+            </div>
+        </section>
+
+        <section class="event-details">
+            <div class="container">
+                <div class="event-summary" data-animate="details">
+                    <h2>Event Details</h2>
+                    <p class="event-description">
+                        TriQuest: Battle of Knowledge united the Quiz, Science, and Language Clubs in a dynamic quiz competition. Participants showcased their expertise in Basic Science, the July Revolution 2024 in Bangladesh, Somerset Maugham’s "The Luncheon," and O. Henry’s "The Gift of the Magi."
+                    </p>
+                </div>
+
+                <div class="winners-section">
+                    <h2 data-animate="winners-title">Top Performers</h2>
+                    <div class="winners-grid">
+                        <div class="winner-card second" data-animate="winner-card">
+                            <div class="position">2nd</div>
+                            <div class="trophy"><i data-feather="award"></i></div>
+                            <h3>Taaha</h3>
+                        </div>
+                        <div class="winner-card first" data-animate="winner-card">
+                            <div class="position">1st</div>
+                            <div class="trophy"><i data-feather="award"></i></div>
+                            <h3>Tamim Iqbal</h3>
+                        </div>
+                        <div class="winner-card third" data-animate="winner-card">
+                            <div class="position">3rd</div>
+                            <div class="trophy"><i data-feather="award"></i></div>
+                            <h3>Tanvir Ahmed</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid" data-animate="stats">
+                    <div class="stat-card">
+                        <i data-feather="users"></i>
+                        <h4>Participants</h4>
+                        <p>40</p>
+                    </div>
+                    <div class="stat-card">
+                        <i data-feather="clock"></i>
+                        <h4>Duration</h4>
+                        <p>1 Hour</p>
+                    </div>
+                    <div class="stat-card">
+                        <i data-feather="file-text"></i>
+                        <h4>Format</h4>
+                        <p>Written Exam</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
 </html>

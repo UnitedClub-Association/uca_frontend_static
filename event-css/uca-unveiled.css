@@ -1,297 +1,231 @@
-:root {
-    --uca-bg-primary: #000000; /* Black */
-    --uca-bg-secondary: #FFFFFF; /* White */
-    --uca-text-primary: #FFFFFF; /* White */
-    --uca-text-secondary: #000000; /* Black */
-    --uca-accent-primary: #ffbd59; /* Gold */
-    --uca-accent-secondary: #4B0082; /* Purple */
-    --border-radius: 1rem;
-    --shadow-card: 0 6px 15px rgba(0, 0, 0, 0.4);
-    --shadow-card-hover: 0 10px 20px rgba(255, 189, 89, 0.3); /* Gold */
-    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+/*
+================================================
+|                                              |
+|       UCA UNVEILED PAGE STYLES - REVAMPED      |
+|                                              |
+================================================
+*/
 
-    /* Club Fonts (using Photography Club fonts as base) */
-    --photo-font-title: 'Bebas Neue', sans-serif;
-    --font-body: 'Montserrat', sans-serif;
+/* 1. ROOT & GENERAL STYLES (ADOPTED FROM CLUBS THEME)
+------------------------------------------------ */
+:root {
+  --font-display-impact: 'Monument Extended', sans-serif;
+  --font-sans-clean: 'Satoshi', sans-serif;
+  --font-sans-quirky: 'Bricolage Grotesque', sans-serif;
+  --color-bg-deep-space: #0A0B1A;
+  --color-bg-night-sky: #11132a;
+  --color-bg-void: #02020C;
+  --color-primary-glow: #8B5CF6; /* Purple */
+  --color-secondary-glow: #38BDF8; /* Blue */
+  --color-text-primary: #E2E8F0;
+  --color-text-secondary: #94A3B8;
+  --color-border: rgba(148, 163, 184, 0.2);
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 body {
-    font-family: var(--font-body);
-    margin: 0;
-    padding: 0;
-    background-color: var(--uca-bg-primary);
-    color: var(--uca-text-primary);
-    line-height: 1.7;
+  background-color: var(--color-bg-deep-space);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans-clean);
+  line-height: 1.7;
+  cursor: url('/cursors/uca-default.png'), auto;
 }
+a, button, [role="button"] { cursor: url('/cursors/uca-hover.png'), pointer; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
 
+/* 2. HERO SECTION
+------------------------------------------------ */
 .hero {
-    background: linear-gradient(135deg, #000000, #FFFFFF);
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    animation: fadeShift 15s infinite ease-in-out;
+  padding: 8rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--color-bg-deep-space) 0%, var(--color-bg-night-sky) 100%);
 }
-
-@keyframes fadeShift {
-    0% { background: linear-gradient(135deg, #000000, #FFFFFF); }
-    50% { background: linear-gradient(135deg, #FFFFFF, #000000); }
-    100% { background: linear-gradient(135deg, #000000, #FFFFFF); }
+.hero-content h1 {
+  font-family: var(--font-display-impact);
+  font-size: clamp(3rem, 6vw, 5rem);
+  text-shadow: 0 0 20px var(--color-primary-glow);
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
 }
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-    animation: fadeIn 1s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.hero h1 {
-    font-family: var(--photo-font-title);
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 800;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    color: var(--uca-accent-primary);
-    text-shadow: 0 0 10px rgba(255, 189, 89, 0.5);
-}
-
 .event-date {
-    font-family: var(--font-body);
-    font-size: 1.5rem;
-    color: var(--uca-text-secondary);
-    margin-bottom: 1.5rem;
+  font-family: var(--font-sans-quirky);
+  font-size: 1.25rem;
+  color: var(--color-secondary-glow);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
 }
-
 .description {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--uca-text-secondary);
-    max-width: 800px;
-    margin: 0 auto 2rem;
+  font-family: var(--font-sans-clean);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--color-text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
 }
 
+/* 3. EVENT DETAILS & CONTENT SECTIONS
+------------------------------------------------ */
 .event-details {
-    background: var(--uca-bg-secondary);
-    padding: 4rem 1rem;
+  background-color: var(--color-bg-void);
+  padding: 6rem 1rem;
 }
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
 .event-details h2 {
-    font-family: var(--photo-font-title);
-    font-size: 2.5rem;
-    color: var(--uca-text-primary);
-    text-align: center;
-    margin-bottom: 2rem;
-    position: relative;
-    font-weight: 700;
+  font-family: var(--font-display-impact);
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
 }
-
 .event-details h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: var(--uca-accent-primary);
-    border-radius: 2px;
+  content: '';
+  position: absolute;
+  bottom: -15px; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 3px;
+  background: linear-gradient(90deg, var(--color-primary-glow), var(--color-secondary-glow));
+  border-radius: 3px;
 }
 
+/* 4. STATS & CLUB CARDS
+------------------------------------------------ */
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 4rem;
-    padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 6rem;
 }
-
 .stat-card {
-    background: var(--uca-bg-primary);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    box-shadow: var(--shadow-card);
-    transition: var(--transition);
-    margin: 1rem;
+  background-color: var(--color-bg-night-sky);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
 }
-
 .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-card-hover);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px -10px var(--color-primary-glow);
+  border-color: var(--color-primary-glow);
 }
-
 .stat-card svg {
-    width: 36px;
-    height: 36px;
-    color: var(--uca-accent-secondary);
-    margin-bottom: 1rem;
+  width: 32px; height: 32px;
+  color: var(--color-secondary-glow);
+  margin-bottom: 1rem;
 }
-
 .stat-card h3 {
-    font-family: var(--font-body);
-    font-size: 1.25rem;
-    color: var(--uca-text-primary);
-    margin-bottom: 0.5rem;
+  font-family: var(--font-sans-quirky);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
-
 .stat-card p {
-    font-family: var(--font-body);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--uca-accent-primary);
+  font-family: var(--font-sans-clean);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
 }
 
 .clubs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-    padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 6rem;
 }
-
 .club-card {
-    background: var(--uca-bg-primary);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-card);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    margin: 1rem;
+  background: var(--color-bg-night-sky);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow, border-color; /* Performance hint for JS animation */
 }
-
 .club-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--uca-accent-primary);
-    transition: var(--transition);
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--card-glow, var(--color-primary-glow));
 }
-
-.club-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-card-hover);
-}
-
 .club-card h3 {
-    font-family: var(--photo-font-title);
-    font-size: 1.5rem;
-    color: var(--uca-text-primary);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
+  font-family: var(--font-display-impact);
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
 }
-
 .club-card p {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--uca-text-secondary);
-    margin: 0.5rem 0;
+  font-family: var(--font-sans-clean);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0.5rem 0;
+}
+.club-card p strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
 }
 
+/* Individual Club Card Themes */
+[data-club="sports"] { --card-glow: #F87171; } /* Red */
+[data-club="quiz"] { --card-glow: #FBBF24; } /* Amber */
+[data-club="ict"] { --card-glow: #38BDF8; } /* Light Blue */
+[data-club="photography"] { --card-glow: #A78BFA; } /* Violet */
+[data-club="debate"] { --card-glow: #E2E8F0; } /* Slate */
+[data-club="science"] { --card-glow: #6EE7B7; } /* Emerald */
+[data-club="language"] { --card-glow: #F472B6; } /* Pink */
+[data-club="cultural"] { --card-glow: #EC4899; } /* Fuchsia */
+[data-club="green"] { --card-glow: #4ADE80; } /* Green */
+
+/* 5. CTA SECTION
+------------------------------------------------ */
 .cta-section {
-    text-align: center;
-    padding: 2rem;
-    background: var(--uca-bg-primary);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-card);
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--color-bg-night-sky);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
 }
-
 .cta-section h2 {
-    font-family: var(--photo-font-title);
-    font-size: 2rem;
-    color: var(--uca-text-primary);
-    margin-bottom: 1rem;
+  font-family: var(--font-display-impact);
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
-
 .cta-section p {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    color: var(--uca-text-secondary);
-    margin-bottom: 2rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
 }
-
 .cta-button {
-    background: var(--uca-accent-primary);
-    color: var(--uca-text-primary);
-    padding: 1rem 2rem;
-    border-radius: 9999px;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: var(--transition);
+  font-family: var(--font-sans-clean);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-primary-glow);
+  transition: var(--transition);
 }
-
 .cta-button:hover {
-    transform: translateY(-3px);
-    background: var(--uca-accent-secondary);
-    box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px var(--color-primary-glow);
+}
+.cta-button i {
+  transition: transform 0.3s ease;
+}
+.cta-button:hover i {
+  transform: translateX(4px);
 }
 
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: clamp(2.5rem, 7vw, 4rem);
-    }
-
-    .event-date {
-        font-size: 1.25rem;
-    }
-
-    .stats-grid {
+    .stats-grid, .clubs-grid {
         grid-template-columns: 1fr;
     }
-
-    .clubs-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .event-details h2 {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        min-height: 50vh;
-    }
-
-    .hero-content {
-        padding: 1.5rem;
-    }
-
-    .description {
-        font-size: 1rem;
-    }
-
-    .cta-section {
-        padding: 1.5rem;
-    }
-}
-
-.feather {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2;
 }

@@ -15,7 +15,6 @@
     <title>All Events - United Club Association</title>
     
     <link rel="preload" href="/css/all-events.css" as="style" />
-    <link rel="preload" href="/js/main.js" as="script" />
     <link rel="preload" href="/js/all-events.js" as="script" />
 
     <link rel="preconnect" href="https://fonts.cdnfonts.com" />
@@ -28,6 +27,8 @@
     <link rel="apple-touch-icon" href="/images/uca_logo.png" />
 
     <script src="https://unpkg.com/feather-icons" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   </head>
   <body>
     <div id="navbar-placeholder"></div>
@@ -35,9 +36,9 @@
     <main id="main-content">
       <section class="hero" aria-labelledby="page-title">
         <div class="constellation-bg"></div>
-        <div class="hero-content">
-          <h1 id="page-title" class="animate-on-scroll" data-animation="fade-up">All Our Events</h1>
-          <p class="hero-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">
+        <div class="hero-content" data-animate-group>
+          <h1 id="page-title" class="gsap-animate">All Our Events</h1>
+          <p class="hero-subtitle gsap-animate">
             Explore the full calendar of events hosted by UCA and its vibrant student clubs.
           </p>
         </div>
@@ -45,78 +46,88 @@
 
       <section class="events-section" aria-labelledby="all-events-heading">
         <div class="section-container">
-          <div class="section-header animate-on-scroll" data-animation="fade-up">
-            <h2 id="all-events-heading">Event Archive</h2>
-            <p class="section-subtitle">A complete collection of our past, present, and future engagements.</p>
+          <div class="section-header" data-animate-group>
+            <h2 id="all-events-heading" class="gsap-animate">Event Archive</h2>
+            <p class="section-subtitle gsap-animate">A complete collection of our past, present, and future engagements.</p>
           </div>
 
-          <!-- Filter Section -->
-          <section class="events-filter animate-on-scroll" data-animation="fade-up">
-            <div class="filter-container">
-              <div class="filter-group">
-                <label for="sort-filter">Sort By:</label>
-                <select id="sort-filter" class="filter-dropdown">
-                  <option value="latest">Latest to Oldest</option>
-                  <option value="oldest">Oldest to Latest</option>
-                </select>
-              </div>
-              <div class="filter-group">
-                <label for="club-type-filter">Club Type:</label>
-                <select id="club-type-filter" class="filter-dropdown">
-                  <option value="all">All Types</option>
-                  <option value="academic">Academic</option>
-                  <option value="cultural">Cultural</option>
-                  <option value="sports">Sports</option>
-                  <option value="environment">Environment</option>
-                </select>
-              </div>
-              <div class="filter-group">
-                <label for="club-filter">Clubs:</label>
-                <select id="club-filter" class="filter-dropdown">
-                  <option value="all">All Clubs</option>
-                  <option value="uca">UCA</option>
-                  <option value="debate">Debate Club</option>
-                  <option value="photography">Photography Club</option>
-                  <option value="sports">Sports Club</option>
-                  <option value="quiz">Quiz Club</option>
-                  <option value="science">Science Club</option>
-                  <option value="language">Language Club</option>
-                  <option value="cultural">Cultural Club</option>
-                  <option value="green">Green Club</option>
-                </select>
-              </div>
-              <div class="filter-group">
-                <label for="collab-filter">Collaboration:</label>
-                <select id="collab-filter" class="filter-dropdown">
-                  <option value="all">All</option>
-                  <option value="single">Single</option>
-                  <option value="collab">Collab</option>
-                </select>
+          <section class="events-filter" data-animate-group>
+            <div class="filter-container gsap-animate">
+              <h3 class="filter-title">Filter & View Options</h3>
+              <div class="filter-controls">
+                <div class="filter-group main-filters">
+                  <div class="filter-item">
+                    <label for="sort-filter">Sort By</label>
+                    <select id="sort-filter" class="filter-dropdown">
+                      <option value="latest">Latest</option>
+                      <option value="oldest">Oldest</option>
+                    </select>
+                  </div>
+                  <div class="filter-item">
+                    <label for="club-type-filter">Type</label>
+                    <select id="club-type-filter" class="filter-dropdown">
+                      <option value="all">All Types</option>
+                      <option value="academic">Academic</option>
+                      <option value="cultural">Cultural</option>
+                      <option value="tech">Technology</option>
+                      <option value="sports">Sports</option>
+                    </select>
+                  </div>
+                  <div class="filter-item">
+                    <label for="club-filter">Club</label>
+                    <select id="club-filter" class="filter-dropdown">
+                      <option value="all">All Clubs</option>
+                      <option value="uca">UCA</option>
+                      <option value="debate">Debate Club</option>
+                      <option value="photography">Photography Club</option>
+                      <option value="sports">Sports Club</option>
+                      <option value="quiz">Quiz Club</option>
+                      <option value="science">Science Club</option>
+                      <option value="ict">ICT Club</option>
+                      <option value="language">Language Club</option>
+                      <option value="cultural">Cultural Club</option>
+                      <option value="green">Green Club</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="filter-separator"></div>
+                <div class="filter-group view-filters">
+                  <div class="filter-item">
+                    <label for="detail-level-filter">Detail</label>
+                    <select id="detail-level-filter" class="filter-dropdown">
+                      <option value="detailed">Detailed</option>
+                      <option value="simple">Simple</option>
+                    </select>
+                  </div>
+                  <div class="filter-item">
+                    <label for="view-mode-filter">View</label>
+                    <select id="view-mode-filter" class="filter-dropdown">
+                      <option value="grid">Grid</option>
+                      <option value="list">List</option>
+                      <option value="slider">Slider</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
           
-          <!-- Event cards will be dynamically inserted here by all-events.js -->
-          <div class="events-grid" id="events-grid"></div>
+          <div class="events-view-wrapper">
+              <div class="events-grid" id="events-grid"></div>
+              <div class="slider-nav" id="slider-nav">
+                  <button id="slider-prev" class="slider-btn" aria-label="Previous event"><i data-feather="arrow-left"></i></button>
+                  <button id="slider-next" class="slider-btn" aria-label="Next event"><i data-feather="arrow-right"></i></button>
+              </div>
+          </div>
           
           <div id="no-results" class="no-results-message" style="display: none;">
+              <div class="no-results-icon"><i data-feather="moon"></i></div>
               <h3>No Events Found</h3>
-              <p>Try adjusting your filters to find what you're looking for.</p>
+              <p>The cosmos is quiet here. Try adjusting your filters.</p>
           </div>
-
         </div>
       </section>
 
-      <section class="cta-section" aria-labelledby="cta-heading">
-          <div class="section-container cta-content">
-              <h2 id="cta-heading">Be Part of Something Extraordinary</h2>
-              <p>Join one of our student clubs to participate in exciting events, develop new skills, and connect with like-minded peers.</p>
-              <a href="/contact/join-us.html" class="button-primary">
-                  <span>Join a Club</span>
-                  <i data-feather="user-plus"></i>
-              </a>
-          </div>
-      </section>
     </main>
 
     <div id="footer-placeholder"></div>
@@ -124,7 +135,6 @@
     <script src="/js/include-fonts.js" defer></script>
     <script src="/js/include-navbar.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
-    <script src="/js/main.js" defer></script>
     <script src="/js/all-events.js" defer></script>
   </body>
 </html>

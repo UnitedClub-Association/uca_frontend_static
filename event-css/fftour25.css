@@ -1,0 +1,199 @@
+/*
+================================================
+|                                              |
+|    FFTOUR25 EVENT PAGE - REVAMPED STYLES     |
+|    Theme: Glowy White & Black                |
+|                                              |
+================================================
+*/
+
+/* 1. THEME & ROOT VARIABLES
+------------------------------------------------ */
+:root {
+  /* Colors */
+  --club-primary: #FFFFFF;
+  --club-secondary: #BDBDBD;
+  --background-dark: #000000;
+  --text-light: #FFFFFF;
+  --card-background: rgba(25, 25, 25, 0.5);
+  --border-color: rgba(255, 255, 255, 0.15);
+  
+  /* Typography */
+  --font-title: 'SF Sports Night', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  /* Effects */
+  --transition-fast: all 0.3s ease-in-out;
+  --glow-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  --glow-shadow-hover: 0 0 35px rgba(255, 255, 255, 0.5);
+}
+
+/* 2. GENERAL PAGE SETUP
+------------------------------------------------ */
+body.ff-theme {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  padding-top: 80px; /* Adjust if navbar height changes */
+  overflow-x: hidden;
+}
+
+.content-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+.container {
+  padding: 0 1rem;
+}
+
+/* 3. HERO SECTION
+------------------------------------------------ */
+.event-hero {
+  position: relative;
+  text-align: center;
+  padding: 10rem 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/fftour25.jpeg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+  transform: scale(1.05);
+  z-index: -1;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+.event-title {
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 8vw, 6rem);
+  text-transform: uppercase;
+  color: var(--club-primary);
+  text-shadow: var(--glow-shadow);
+  margin: 0;
+}
+.event-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--club-secondary);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* 4. EVENT DETAILS & CONTENT
+------------------------------------------------ */
+.event-details {
+  padding: 4rem 0;
+}
+.detail-section {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: var(--club-primary);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+.section-description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--club-secondary);
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+.detail-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: var(--transition-fast);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.detail-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: var(--glow-shadow);
+}
+.detail-card i {
+  color: var(--club-primary);
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.5;
+  margin-bottom: 1rem;
+}
+.detail-card h3 {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: var(--club-secondary);
+  margin: 0 0 0.5rem 0;
+}
+.detail-card p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Lists */
+.schedule-list, .rules-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+.schedule-list li, .rules-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.1rem;
+  color: var(--club-secondary);
+}
+.schedule-list li strong, .rules-list li strong {
+  color: var(--text-light);
+  margin-right: 1rem;
+}
+
+/* 5. CTA BUTTON
+------------------------------------------------ */
+.cta-section {
+  text-align: center;
+  margin-top: 4rem;
+}
+.cta-button {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--background-dark);
+  background-color: var(--club-primary);
+  padding: 1.2rem 3rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  box-shadow: var(--glow-shadow);
+}
+.cta-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: var(--glow-shadow-hover);
+  background-color: #fff;
+}

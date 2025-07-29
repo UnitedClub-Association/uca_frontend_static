@@ -1,5 +1,19 @@
 [
   {
+    "id": "fftour25",
+    "href": "/events/fftour25.html",
+    "imgSrc": "/images/fftour25.jpeg",
+    "imgAlt": "Poster for Free Fire Esports Tournament",
+    "date": "2025-08-01",
+    "displayDate": "August 01 2025",
+    "title": "Esports Tournament: Free Fire",
+    "description": "First Ever Esports Tournament hosted by ULSpC",
+    "cardClass": "event-card--fftour25",
+    "type": "sports tech",
+    "clubs": ["sports"],
+    "collab": "single"
+  },
+  {
     "id": "frbd2",
     "href": "/events/frbd2.html",
     "imgSrc": "/images/frbd_event_pic.jpg",

@@ -1,13 +1,11 @@
-/* 1. ROOT VARIABLES (Mirrors index.css for consistency) */
+/* 1. ROOT VARIABLES */
 :root {
-  /* Fonts */
+  /* ... (no changes) ... */
   --font-display-impact: 'Monument Extended', sans-serif;
   --font-sans-clean: 'Satoshi', sans-serif;
   --font-sans-quirky: 'Bricolage Grotesque', sans-serif;
   --font-serif-elegant: 'Medio', serif;
   --font-serif-display: 'Avigea', serif;
-
-  /* Starry Night Palette */
   --color-bg-deep-space: #0A0B1A;
   --color-bg-night-sky: #11132a;
   --color-bg-void: #02020C;
@@ -18,26 +16,22 @@
   --color-text-secondary: #94A3B8;
   --color-border: rgba(148, 163, 184, 0.2);
   --color-border-hover: rgba(139, 92, 246, 0.5);
-
-  /* Effects & Transitions */
-  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 500ms cubic-bezier(0.16, 1, 0.3, 1);
   --border-radius-md: 12px;
   --border-radius-lg: 16px;
-  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* 2. GENERAL STYLES & RESETS */
+/* 2. GENERAL STYLES */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-sans-clean);
   color: var(--color-text-primary);
   background-color: var(--color-bg-deep-space);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   padding-top: 80px;
-  cursor: url('/cursors/uca-default.png'), pointer;
+  cursor: url('/cursors/uca-default.png'), auto;
 }
 a, button, [role="button"] {
   cursor: url('/cursors/uca-hover.png'), pointer;
@@ -50,9 +44,7 @@ a, button, [role="button"] {
   font-size: clamp(2.8rem, 5vw, 4rem);
   margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--color-text-primary), var(--color-text-secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  background-clip: text; color: transparent;
 }
 .section-header .section-subtitle {
   font-family: var(--font-sans-quirky);
@@ -62,9 +54,9 @@ a, button, [role="button"] {
   margin: 0 auto;
 }
 
-/* 3. HERO SECTION */
+/* 3. HERO SECTION - UPDATED FOR PARALLAX */
 .hero {
-  height: 80vh; /* Slightly shorter than homepage for content pages */
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,21 +67,34 @@ a, button, [role="button"] {
 }
 .constellation-bg {
   position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 30%),
-    radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.1) 0%, transparent 30%);
+  inset: -100px; 
   z-index: 0;
+}
+.constellation-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.layer-1 {
+  background-image: radial-gradient(circle, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+  background-size: 200px 200px;
+}
+.layer-2 {
+  background-image: radial-gradient(circle, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+.layer-3 {
+  background-image: radial-gradient(circle, rgba(226, 232, 240, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 .hero-content { position: relative; z-index: 1; max-width: 900px; padding: 0 2rem; }
 .hero-content h1 {
   font-family: var(--font-display-impact);
   font-size: clamp(3.5rem, 8vw, 6.5rem);
   text-transform: uppercase;
-  letter-spacing: -0.01em;
   margin-bottom: 1rem;
   color: var(--color-text-primary);
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  text-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
 }
 .hero-subtitle {
   font-family: var(--font-sans-quirky);
@@ -110,28 +115,31 @@ a, button, [role="button"] {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 2.5rem;
-  min-height: 800px; /* Give the grid a defined height */
+  min-height: 800px;
+  perspective: 2000px;
 }
 .event-card--col-span-2 { grid-column: span 2; }
 .event-card--row-span-2 { grid-row: span 2; }
 
-/* 5. EVENT CARD STYLING */
+/* 5. EVENT CARD STYLING - UPDATED FOR 3D */
 .event-card {
   display: flex;
-  flex-direction: row; /* Default: horizontal layout (image left, content right) */
+  flex-direction: row;
   background-color: var(--color-bg-night-sky);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
   box-shadow: var(--card-shadow);
-  transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth), border-color 0.4s var(--transition-smooth);
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
 }
 .event-card:hover {
-  transform: scale(1.02) translateY(-5px);
   box-shadow: var(--hover-shadow);
+  border-color: var(--color-border-hover);
 }
 .event-image {
-  flex-basis: 50%; /* Image takes 50% of the width */
+  flex-basis: 50%;
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
@@ -142,35 +150,21 @@ a, button, [role="button"] {
   object-fit: cover;
   transition: transform 0.6s var(--transition-smooth);
 }
-.event-card:hover .event-image img {
-  transform: scale(1.1);
-}
+.event-card:hover .event-image img { transform: scale(1.08); }
 .event-content {
-  flex-basis: 50%; /* Content takes 50% of the width */
+  flex-basis: 50%;
   padding: 2rem 2.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically center content */
+  justify-content: center;
 }
-
-/* Specific styling for the tall/portrait card */
-.event-card--row-span-2 {
-  flex-direction: column; /* Override to vertical layout */
-}
-.event-card--row-span-2 .event-image {
-  flex-basis: 50%; /* Image takes top 50% of the height */
-  height: 50%;
-}
-.event-card--row-span-2 .event-content {
-  flex-basis: 50%; /* Content takes bottom 50% of the height */
-  height: 50%;
-}
-
+.event-card--row-span-2 { flex-direction: column; }
+.event-card--row-span-2 .event-image { flex-basis: 50%; height: 50%; }
+.event-card--row-span-2 .event-content { flex-basis: 50%; height: 50%; }
 .event-date {
   color: var(--color-text-secondary);
   font-weight: 600;
   text-transform: uppercase;
-  font-family: var(--font-sans-clean);
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
 }
@@ -182,7 +176,7 @@ a, button, [role="button"] {
 }
 .event-content p {
   color: var(--color-text-secondary);
-  flex-grow: 1; /* Allows content to fill space before the button */
+  flex-grow: 1;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -192,49 +186,75 @@ a, button, [role="button"] {
   gap: 0.5rem;
   font-weight: 600;
   text-decoration: none;
-  transition: gap 0.3s ease, color 0.3s ease;
   align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: gap 0.4s ease, color 0.4s ease;
+  margin-left: -1rem;
 }
-.read-more:hover { gap: 0.75rem; }
+.read-more span, .read-more i { position: relative; z-index: 2; transition: transform 0.3s ease; }
+.read-more::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: var(--color-primary-glow);
+  z-index: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 99px;
+}
+.read-more:hover::before { transform: scaleX(1); }
+.read-more:hover { gap: 0.8rem; }
+.read-more:hover span { color: var(--color-bg-deep-space); }
+.read-more:hover i { transform: translateX(4px); color: var(--color-bg-deep-space); }
 
 /* --- Event-Specific Color Themes --- */
-/* This theme is for "Frame of Revolution" */
-.event-card--frbd:hover {
-  border-color: #a0a0a0;
-  box-shadow: 0 0 25px -8px #a0a0a0;
-}
+.event-card--frbd:hover { border-color: #c7c7c7; box-shadow: 0 0 30px -5px #c7c7c7; }
 .event-card--frbd .read-more { color: #a0a0a0; }
-.event-card--frbd .read-more:hover { color: #ffffff; }
-
-/* This theme is for "UCA Unveiled" */
-.event-card--uca:hover {
-  border-color: var(--color-secondary-glow);
-  box-shadow: 0 0 25px -8px var(--color-secondary-glow);
-}
+.event-card--frbd .read-more:hover span, .event-card--frbd .read-more:hover i { color: #fff; }
+.event-card--frbd .read-more::before { background-color: #555; }
+.event-card--uca:hover { border-color: var(--color-secondary-glow); box-shadow: 0 0 30px -5px var(--color-secondary-glow); }
 .event-card--uca .read-more { color: var(--color-secondary-glow); }
-.event-card--uca .read-more:hover { color: var(--color-text-primary); }
-
-/* This theme is for "TriQuest" */
+.event-card--uca .read-more::before { background-color: var(--color-secondary-glow); }
 .event-card--triquest {
   background: linear-gradient(var(--color-bg-night-sky), var(--color-bg-night-sky)) padding-box,
               linear-gradient(135deg, #8B0000, #000080) border-box;
   border: 1px solid transparent;
 }
-.event-card--triquest:hover {
-  box-shadow: 0 0 25px -8px #8B0000;
-}
-.event-card--triquest .read-more { color: #B22222; } /* Firebrick red */
-.event-card--triquest .read-more:hover { color: #6495ED; } /* Cornflower blue */
+.event-card--triquest:hover { box-shadow: 0 0 30px -5px #D24D57; }
+.event-card--triquest .read-more { color: #B22222; }
+.event-card--triquest .read-more::before { background-color: #B22222; }
+.event-card--triquest .read-more:hover { color: #6495ED; }
+.event-card--triquest .read-more:hover span { color: white; }
 
-/* 6. CTA SECTIONS */
+/* 6. CTA SECTIONS - ENHANCED */
 .cta-section {
   padding: 6rem 0;
   text-align: center;
   background-color: var(--color-bg-void);
   position: relative;
+  overflow: hidden; /* Contains the pseudo-element */
 }
 .cta-section:nth-of-type(odd) {
    background: linear-gradient(180deg, var(--color-bg-night-sky), var(--color-bg-void));
+}
+/* ENHANCEMENT: Add a background glow animated on scroll by JS */
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15), transparent 70%);
+  opacity: var(--glow-opacity, 0); /* Controlled by GSAP */
+  transform: scale(var(--glow-scale, 0.5)); /* Controlled by GSAP */
+  z-index: 0;
+}
+.cta-content {
+  position: relative;
+  z-index: 1; /* Ensure content is above the glow */
 }
 .cta-content h2 {
   font-family: var(--font-serif-display);
@@ -249,11 +269,14 @@ a, button, [role="button"] {
   max-width: 600px;
   margin: 0 auto 2.5rem auto;
 }
+
+/* ENHANCEMENT: Replaced button style with a more interactive one */
 .button-primary {
   font-family: var(--font-sans-clean);
   font-weight: 600;
   font-size: 1rem;
   color: var(--color-text-primary);
+  text-decoration: none;
   padding: 1rem 2.5rem;
   background-color: transparent;
   border: 1px solid var(--color-border);
@@ -263,66 +286,67 @@ a, button, [role="button"] {
   align-items: center;
   gap: 0.5rem;
   z-index: 1;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  transition: color 0.4s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.button-primary span, .button-primary i {
+  z-index: 2;
+  position: relative;
+  transition: color 0.4s ease;
+}
+.button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary-glow);
+  transform: translateX(-101%);
+  transition: transform 0.5s var(--transition-smooth);
+  z-index: 1;
 }
 .button-primary:hover {
   border-color: var(--color-primary-glow);
-  box-shadow: 0 0 15px 0px var(--color-primary-glow);
+  color: var(--color-bg-deep-space);
+  box-shadow: 0 0 20px 0px var(--color-primary-glow);
+}
+.button-primary:hover::before {
+  transform: translateX(0);
+}
+.button-primary:hover span, .button-primary:hover i {
+  color: var(--color-bg-deep-space);
 }
 .button-primary:active {
   transform: scale(0.98);
-  box-shadow: 0 0 8px 0px var(--color-primary-glow);
+  box-shadow: 0 0 10px 0px var(--color-primary-glow);
 }
 
 /* 7. RESPONSIVE DESIGN */
 @media (max-width: 992px) {
-  .event-grid-special {
-    grid-template-columns: 1fr; /* Stack all cards on top of each other */
-    grid-template-rows: auto;
-    min-height: unset; /* Unset the minimum height */
-  }
-  .event-card--col-span-2,
-  .event-card--row-span-2 {
-    grid-column: auto; /* Reset spans */
-    grid-row: auto;
-  }
-  /* On smaller screens, all cards should be horizontal for consistency */
-  .event-card--row-span-2 {
-    flex-direction: row;
-  }
-  .event-card--row-span-2 .event-image,
-  .event-card--row-span-2 .event-content {
-      flex-basis: 50%;
-      height: auto;
-  }
+  .event-grid-special { grid-template-columns: 1fr; grid-template-rows: auto; min-height: unset; }
+  .event-card--col-span-2, .event-card--row-span-2 { grid-column: auto; grid-row: auto; }
+  .event-card--row-span-2 { flex-direction: row; }
+  .event-card--row-span-2 .event-image, .event-card--row-span-2 .event-content { flex-basis: 50%; height: auto; }
 }
-
 @media (max-width: 768px) {
-  body { padding-top: 70px; }
+  body { padding-top: 70px; cursor: auto; }
+  a, button, [role="button"] { cursor: pointer; }
   .hero { height: 70vh; }
   .hero-content h1 { font-size: 3rem; }
   .hero-subtitle { font-size: 1.1rem; }
   .events, .cta-section { padding: 4rem 0; }
   .section-container { padding: 0 1rem; }
-  
-  /* Stack image and content on the smallest screens */
-  .event-card,
-  .event-card--row-span-2 {
-      flex-direction: column;
-  }
-  .event-card .event-image,
-  .event-card .event-content {
-      flex-basis: auto; /* Reset basis */
-  }
-  .event-image {
-    aspect-ratio: 16/9; /* Give images a consistent aspect ratio when stacked */
-  }
+  .event-card, .event-card--row-span-2 { flex-direction: column; }
+  .event-card .event-image, .event-card .event-content { flex-basis: auto; }
+  .event-image { aspect-ratio: 16/9; }
 }
 
-/* 8. ANIMATIONS */
-.animate-on-scroll {
-  opacity: 0;
-  transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+/* 8. ANIMATION HELPERS */
+/* This rule correctly sets the initial state for elements that will fade up on scroll */
+.event-grid-special.simple-grid-for-flip {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: auto;
+  grid-auto-flow: dense;
 }
-.animate-on-scroll[data-animation="fade-up"] { transform: translateY(50px); }
-.animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+.event-grid-special.simple-grid-for-flip .event-card { grid-column: auto !important; grid-row: auto !important; }

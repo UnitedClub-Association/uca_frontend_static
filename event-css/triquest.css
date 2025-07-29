@@ -1,352 +1,234 @@
+/* --- Root Variables: Redesigned TriQuest Theme --- */
 :root {
-  --quiz-color-bg: #000000;
-  --quiz-color-accent1: #FF4136; /* Red */
-  --quiz-color-accent2: #2ECC40; /* Green */
-  --quiz-color-accent3: #FFDC00; /* Yellow */
-  --quiz-font-title: 'Times New Roman', serif;
-  --quiz-font-body: 'Times New Roman', serif;
-  --science-color-bg: #000000;
-  --science-color-text1: #FFFFFF;
-  --science-color-text2: #808080;
-  --science-font-title: 'Orbitron', sans-serif;
-  --science-font-body: 'Raleway', sans-serif;
-  --lang-color-bg: #1C2526;
-  --lang-color-accent: #0077BE;
-  --lang-font-title: 'Cinzel', serif;
-  --lang-font-body: 'EB Garamond', serif;
-  --card-bg: rgba(28, 37, 38, 0.7); /* Language Club BG inspired */
-  --card-border-color: #0077BE; /* Language Club Blue */
+  --color-bg: #120c18; /* Deep Purple/Blue */
+  --color-primary: #8E2D56; /* Wine Red */
+  --color-secondary: #4A1E6C; /* Purple */
+  --color-accent: #0D47A1; /* Deep Blue */
+  --color-gold: #FFC107;
+  --color-silver: #C0C0C0;
+  --color-bronze: #CD7F32;
   --text-primary: #FFFFFF;
-  --text-secondary: #D0D0D5;
-  --accent-primary: #FF4136; /* Quiz Club Red */
-  --accent-secondary: #2ECC40; /* Quiz Club Green */
-  --border-radius-main: 16px;
-  --border-radius-card: 12px;
-  --shadow-card: 0 8px 25px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 12px 35px rgba(0, 119, 190, 0.3); /* Language Club Blue */
-  --transition-main: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --text-secondary: #E0E0E0;
+  --font-title: 'Cinzel Decorative', serif; /* Language Club Font for Titles */
+  --font-subtitle: 'Elianto', sans-serif; /* Science Club Font for Subtitles/Accents */
+  --font-body: 'Lexend', sans-serif; /* Quiz Club Font for Body Text */
+  --border-radius: 12px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* --- Base & Body Styles --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: var(--lang-font-body);
-  background-color: var(--lang-color-bg);
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
   color: var(--text-primary);
-  line-height: 1.7;
+  line-height: 1.6;
   overflow-x: hidden;
 }
-
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(-45deg, var(--lang-color-bg), var(--science-color-bg), #2e1a47, var(--quiz-color-bg)), url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30v4h4v2h-4v4h-2v-4h-4v-2h4v-4h2zM6 34v4h4v2H6v4H4v-4H0v-2h4v-4h2zM6 4v4H4v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-  background-size: 400% 400%, 60px 60px;
-  animation: gradientBG 25s ease infinite;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at top left, var(--color-primary), transparent 40%),
+              radial-gradient(circle at bottom right, var(--color-accent), transparent 40%),
+              var(--color-bg);
   z-index: -1;
-  opacity: 0.8;
+  animation: bg-pan 30s linear infinite alternate;
+}
+@keyframes bg-pan {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
+/* --- Hero Section --- */
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('/images/TriQuest- Battle_of_Knowledge.jpg') center/cover no-repeat;
-  min-height: 70vh;
+  min-height: 85vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 4rem 1rem;
   position: relative;
   overflow: hidden;
-  border-bottom: 3px solid var(--lang-color-accent);
+  border-bottom: 2px solid rgba(142, 45, 86, 0.3);
 }
-
 .hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 2rem;
+  margin-bottom: 4rem;
 }
-
 .hero h1 {
-  font-family: var(--quiz-font-title);
-  font-size: clamp(3.5rem, 9vw, 6rem);
-  color: var(--quiz-color-accent1);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(255, 65, 54, 0.5);
-}
-
-.event-date {
-  font-family: var(--science-font-body);
-  font-size: 1.75rem;
-  color: var(--science-color-text1);
-  margin-bottom: 1.5rem;
-  opacity: 0.85;
-}
-
-.event-badges {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.badge {
-  padding: 0.75rem 1.25rem;
-  border-radius: 50px;
-  font-family: var(--lang-font-body);
+  font-family: var(--font-title);
+  font-size: clamp(3.5rem, 10vw, 7rem);
   font-weight: 700;
-  font-size: 1rem;
-  transition: var(--transition-main);
+  color: var(--text-primary);
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
-
-.badge:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(0, 119, 190, 0.4);
-}
-
-.badge.quiz {
-  background-color: var(--quiz-color-bg);
-  color: var(--quiz-color-accent1);
-  border: 1px solid var(--quiz-color-accent1);
-}
-
-.badge.science {
-  background-color: var(--science-color-bg);
-  color: var(--science-color-text1);
-  border: 1px solid var(--science-color-text1);
-}
-
-.badge.language {
-  background-color: var(--lang-color-bg);
-  color: var(--lang-color-accent);
-  border: 1px solid var(--lang-color-accent);
-}
-
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
-}
-
-.event-details {
-  background: linear-gradient(to bottom, var(--lang-color-bg), var(--science-color-bg));
-  padding: 3rem 0;
-}
-
-.event-details h2 {
-  font-family: var(--science-font-title);
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  color: var(--science-color-text1);
-  text-align: center;
-  margin-bottom: 2rem;
+.hero-subtitle {
+  font-family: var(--font-subtitle);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--color-gold);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  position: relative;
+  letter-spacing: 4px;
+  margin-top: -1rem;
+}
+.event-date {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-top: 1.5rem;
+  opacity: 0.8;
 }
 
-.event-details h2::after {
-  content: '';
-  position: absolute;
-  bottom: -0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--quiz-color-accent1), var(--lang-color-accent));
-  border-radius: 2px;
+/* --- Hosted By Section --- */
+.hosted-by-title {
+  font-family: var(--font-subtitle);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+}
+.host-logos {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.host-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+  filter: grayscale(80%);
+}
+.host-logo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px var(--color-primary);
 }
 
-.event-description {
-  font-family: var(--lang-font-body);
+/* --- Event Details Section --- */
+.event-details {
+  padding: 6rem 0;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.event-details h2 {
+  font-family: var(--font-subtitle);
+  font-size: clamp(2rem, 5vw, 2.8rem);
   text-align: center;
-  max-width: 900px;
-  margin: 0 auto 2rem;
-  font-size: 1.2rem;
-  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.event-description {
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
   color: var(--text-secondary);
 }
+.winners-section {
+  margin-bottom: 4rem;
+}
 
+/* --- Winners Grid --- */
 .winners-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
   align-items: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
-
 .winner-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border-color);
-  padding: 1.5rem;
-  border-radius: var(--border-radius-card);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 1.5rem;
+  border-radius: var(--border-radius);
   text-align: center;
+  width: 280px;
+  transition: var(--transition);
   position: relative;
-  transition: var(--transition-main);
-  box-shadow: var(--shadow-card);
-  backdrop-filter: blur(8px);
 }
-
 .winner-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-10px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%);
 }
-
 .winner-card.first {
-  background: linear-gradient(to bottom, #FFD700, var(--card-bg)); /* Gold */
   order: 2;
+  width: 300px;
+  padding-top: 3rem;
+  border-top: 3px solid var(--color-gold);
 }
-
-.winner-card.second {
-  background: linear-gradient(to bottom, #C0C0C0, var(--card-bg)); /* Silver */
-  order: 1;
-}
-
-.winner-card.third {
-  background: linear-gradient(to bottom, #CD7F32, var(--card-bg)); /* Bronze */
-  order: 3;
-}
-
+.winner-card.second { order: 1; border-top: 3px solid var(--color-silver); }
+.winner-card.third { order: 3; border-top: 3px solid var(--color-bronze); }
 .position {
-  font-family: var(--quiz-font-title);
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-family: var(--font-subtitle);
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-primary);
 }
-
+.first .position { color: var(--color-gold); }
+.second .position { color: var(--color-silver); }
+.third .position { color: var(--color-bronze); }
 .trophy svg {
-  width: 56px;
-  height: 56px;
-  transition: transform 0.3s ease;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
 }
-
-.winner-card:hover .trophy svg {
-  transform: rotate(10deg) scale(1.1);
-}
-
-.winner-card.first .trophy svg {
-  color: #FFD700;
-  width: 72px;
-  height: 72px;
-}
-
-.winner-card.second .trophy svg {
-  color: #C0C0C0;
-}
-
-.winner-card.third .trophy svg {
-  color: #CD7F32;
-}
-
 .winner-card h3 {
-  font-family: var(--lang-font-title);
+  font-family: var(--font-title);
   color: var(--text-primary);
-  font-size: 1.75rem;
-  margin-bottom: 0;
+  font-size: 1.5rem;
 }
 
+/* --- Stats Grid --- */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
-
 .stat-card {
-  background: var(--card-bg);
+  background: rgba(0, 0, 0, 0.2);
   padding: 1.5rem;
-  border-radius: var(--border-radius-card);
+  border-radius: var(--border-radius);
   text-align: center;
-  transition: var(--transition-main);
-  border: 1px solid var(--card-border-color);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-.stat-card:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-card-hover);
-}
-
 .stat-card svg {
-  color: var(--accent-primary);
-  width: 36px;
-  height: 36px;
-  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.75rem;
 }
-
 .stat-card h4 {
-  font-family: var(--science-font-body);
-  color: var(--text-primary);
+  font-family: var(--font-subtitle);
+  color: var(--text-secondary);
   margin-bottom: 0.25rem;
+  letter-spacing: 1px;
 }
-
 .stat-card p {
-  font-family: var(--quiz-font-body);
-  font-size: 1.75rem;
+  font-family: var(--font-body);
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--accent-secondary);
+  color: var(--text-primary);
 }
 
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: clamp(2.5rem, 7vw, 4rem);
-  }
-
-  .event-date {
-    font-size: 1.25rem;
-  }
-
-  .winners-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .winner-card.first,
-  .winner-card.second,
-  .winner-card.third {
+  .winners-grid { flex-direction: column; align-items: center; }
+  .winner-card, .winner-card.first {
     order: initial;
+    width: 100%;
+    max-width: 320px;
   }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .event-details h2 {
-    font-size: clamp(1.8rem, 4vw, 2.2rem);
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 50vh;
-  }
-
-  .badge {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .winner-card {
-    padding: 1rem;
-  }
-}
-
-.feather {
-  width: 20px;
-  height: 20px;
-  stroke-width: 2;
 }

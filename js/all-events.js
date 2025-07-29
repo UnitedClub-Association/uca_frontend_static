@@ -1,15 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // DOM element references
+  // --- DOM element references ---
   const eventsGrid = document.getElementById("events-grid");
   const noResultsMessage = document.getElementById("no-results");
   
-  // Filter and sort controls
   const sortFilter = document.getElementById("sort-filter");
   const clubTypeFilter = document.getElementById("club-type-filter");
   const clubFilter = document.getElementById("club-filter");
-  const collabFilter = document.getElementById("collab-filter");
+  
+  const detailLevelFilter = document.getElementById("detail-level-filter");
+  const viewModeFilter = document.getElementById("view-mode-filter");
 
-  let allEvents = []; // To store the master list of events
+  const sliderNav = document.getElementById("slider-nav");
+  const prevButton = document.getElementById("slider-prev");
+  const nextButton = document.getElementById("slider-next");
+
+  // --- State ---
+  let allEvents = [];
+  let sliderState = {
+    initialized: false,
+    currentIndex: 0,
+    tween: null,
+    events: []
+  };
+
+  /**
+   * Main function to fetch data and initialize the page
+   */
+  async function init() {
+    await fetchEvents();
+    setupEventListeners();
+    updateEventView(); 
+    setupAnimations(); // Run animations after initial render
+  }
 
   /**
    * Fetches event data from the JSON file.
@@ -17,38 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchEvents() {
     try {
       const response = await fetch('/json/all-events.json');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       allEvents = await response.json();
-      // Initial render of events
-      applyFiltersAndSort();
     } catch (error) {
       console.error("Could not fetch events:", error);
-      eventsGrid.innerHTML = "<p>Error loading events. Please try again later.</p>";
+      noResultsMessage.style.display = 'block';
+      noResultsMessage.querySelector('p').textContent = 'Error loading events. Please try again later.';
     }
+  }
+  
+  /**
+   * Sets up all event listeners for the filter controls.
+   */
+  function setupEventListeners() {
+    const filters = [sortFilter, clubTypeFilter, clubFilter, detailLevelFilter, viewModeFilter];
+    filters.forEach(filter => filter.addEventListener("change", updateEventView));
   }
 
   /**
    * Renders a list of event cards to the grid.
-   * @param {Array} eventsToRender - The filtered and sorted list of events to display.
+   * @param {Array} eventsToRender - The filtered list of events.
    */
   function renderEvents(eventsToRender) {
-    // Clear the grid before rendering new cards
     eventsGrid.innerHTML = "";
+    noResultsMessage.style.display = eventsToRender.length === 0 ? "block" : "none";
 
-    if (eventsToRender.length === 0) {
-      noResultsMessage.style.display = "block";
-    } else {
-      noResultsMessage.style.display = "none";
-    }
-
-    // Create and append a card for each event
     eventsToRender.forEach(event => {
       const card = document.createElement("a");
       card.href = event.href;
-      card.className = `event-card ${event.cardClass}`;
-      
+      card.className = `event-card gsap-animate ${event.cardClass || ''}`; // Add animation hook
       card.innerHTML = `
         <div class="event-image">
           <img src="${event.imgSrc}" alt="${event.imgAlt}" loading="lazy" />
@@ -57,61 +76,152 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="event-date">${event.displayDate}</div>
           <h3>${event.title}</h3>
           <p>${event.description}</p>
-          <span class="read-more">View Details <i data-feather="arrow-right"></i></span>
+          <span class="read-more"><span>View Details</span><i data-feather="arrow-right"></i></span>
         </div>
       `;
       eventsGrid.appendChild(card);
     });
 
-    // Re-apply Feather icons
-    if (typeof feather !== 'undefined') {
-      feather.replace();
-    }
+    if (typeof feather !== 'undefined') feather.replace();
   }
 
   /**
-   * Filters and sorts the master event list based on current filter values.
+   * The main controller function. Applies filters, sorting, and view modes.
    */
-  function applyFiltersAndSort() {
+  function updateEventView() {
+    // Kill any ongoing animations to prevent conflicts
+    if (sliderState.tween) sliderState.tween.kill();
+    gsap.killTweensOf(".gsap-animate");
+
     let filteredEvents = [...allEvents];
 
-    // Get current filter values
+    // --- Filtering ---
     const type = clubTypeFilter.value;
     const club = clubFilter.value;
-    const collab = collabFilter.value;
-    const sortOrder = sortFilter.value;
+    if (type !== "all") filteredEvents = filteredEvents.filter(e => e.type.includes(type));
+    if (club !== "all") filteredEvents = filteredEvents.filter(e => e.clubs.includes(club));
 
-    // Apply filters
-    // 1. Club Type Filter
-    if (type !== "all") {
-      filteredEvents = filteredEvents.filter(event => event.type.includes(type));
-    }
-    // 2. Club Filter
-    if (club !== "all") {
-      filteredEvents = filteredEvents.filter(event => event.clubs.includes(club));
-    }
-    // 3. Collaboration Filter
-    if (collab !== "all") {
-      filteredEvents = filteredEvents.filter(event => event.collab === collab);
-    }
-
-    // Apply sorting
+    // --- Sorting ---
     filteredEvents.sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return sortOrder === 'latest' ? dateB - dateA : dateA - dateB;
+      return sortFilter.value === 'latest' ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date);
     });
 
-    // Render the final list of events
+    // --- Render the cards ---
     renderEvents(filteredEvents);
+
+    // --- View & Detail Level ---
+    const detailLevel = detailLevelFilter.value;
+    const viewMode = viewModeFilter.value;
+    
+    eventsGrid.className = 'events-grid'; // Reset classes
+    eventsGrid.classList.add(`view-${viewMode}`, `view-${detailLevel}`);
+    
+    // --- Slider Handling ---
+    if (viewMode === 'slider' && filteredEvents.length > 0) {
+        initSlider(filteredEvents);
+    } else {
+        destroySlider();
+    }
+
+    // --- Animate new cards into view ---
+    gsap.fromTo(".event-card.gsap-animate", 
+      { opacity: 0, y: 30 }, 
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1 }
+    );
   }
 
-  // Add event listeners to all filter controls
-  sortFilter.addEventListener("change", applyFiltersAndSort);
-  clubTypeFilter.addEventListener("change", applyFiltersAndSort);
-  clubFilter.addEventListener("change", applyFiltersAndSort);
-  collabFilter.addEventListener("change", applyFiltersAndSort);
+  /**
+   * Initializes and manages the slider view.
+   */
+  function initSlider(events) {
+    sliderNav.style.display = 'flex';
+    sliderState.initialized = true;
+    sliderState.currentIndex = 0;
+    sliderState.events = events;
 
-  // Initial fetch of events when the page loads
-  fetchEvents();
+    const cards = Array.from(eventsGrid.querySelectorAll('.event-card'));
+    if (cards.length === 0) return;
+    
+    const containerWidth = eventsGrid.offsetWidth;
+    const cardWidth = cards[0].offsetWidth;
+    const gap = parseInt(window.getComputedStyle(eventsGrid).gap, 10);
+    const centeringOffset = (containerWidth - cardWidth) / 2;
+
+    const updateSlider = (instant = false) => {
+      const newX = -(sliderState.currentIndex * (cardWidth + gap)) + centeringOffset;
+      
+      if (sliderState.tween) sliderState.tween.kill();
+
+      sliderState.tween = gsap.to(eventsGrid, { 
+          x: newX,
+          duration: instant ? 0 : 0.7,
+          ease: 'power3.inOut'
+      });
+
+      cards.forEach((card, index) => {
+          card.classList.toggle('is-active', index === sliderState.currentIndex);
+      });
+      
+      prevButton.disabled = sliderState.currentIndex === 0;
+      nextButton.disabled = sliderState.currentIndex === cards.length - 1;
+    }
+    
+    nextButton.onclick = () => {
+      if (sliderState.currentIndex < cards.length - 1) {
+        sliderState.currentIndex++;
+        updateSlider();
+      }
+    };
+
+    prevButton.onclick = () => {
+      if (sliderState.currentIndex > 0) {
+        sliderState.currentIndex--;
+        updateSlider();
+      }
+    };
+    
+    // Recalculate on window resize
+    window.onresize = () => updateSlider(true);
+    
+    updateSlider(true); // Initial state
+  }
+  
+  /**
+   * Cleans up slider styles and event listeners.
+   */
+  function destroySlider() {
+    if (!sliderState.initialized) return;
+    sliderNav.style.display = 'none';
+    gsap.set(eventsGrid, { x: 0 }); // Reset position
+    eventsGrid.querySelectorAll('.event-card').forEach(c => c.classList.remove('is-active'));
+    window.onresize = null; // Remove resize listener
+    sliderState.initialized = false;
+  }
+
+  /**
+   * Sets up smooth, staggered, scroll-triggered animations for static content.
+   */
+  function setupAnimations() {
+    gsap.utils.toArray('[data-animate-group]').forEach((group, i) => {
+      const elems = group.querySelectorAll('.gsap-animate');
+      gsap.fromTo(elems, 
+        { opacity: 0, y: 40 },
+        { 
+          opacity: 1, 
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: group,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+  }
+  
+  // --- Start the application ---
+  init();
 });
