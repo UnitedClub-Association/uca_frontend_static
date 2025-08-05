@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Results - Free Fire - ULSpC</title>
+    
+    <meta name="description" content="Results for the first-ever Esports Tournament hosted by ULSpC, featuring Free Fire.">
+    <meta name="keywords" content="Esports, Free Fire, Tournament, Results, ULSpC, Gaming, Competition">
+    
+    <script src="/js/include-fonts.js" defer></script>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/event-css/fftour25.css" />
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+
+    <style>
+        /* Table Styles to match the FFTOUR25 Theme */
+        .results-table {
+            width: 100%;
+            margin: 2.5rem auto;
+            border-collapse: collapse;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden; /* Ensures border-radius is respected */
+            font-size: 1.1rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: var(--glow-shadow);
+        }
+        
+        .results-table th, .results-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .results-table thead th {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--club-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .results-table tbody tr {
+            transition: var(--transition-fast);
+        }
+
+        .results-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.01);
+        }
+
+        .results-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .results-table td {
+            color: var(--club-secondary);
+        }
+        
+        .results-table td:first-child {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--text-light);
+            text-align: center;
+            width: 100px;
+        }
+        
+        .results-table td strong {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Highlighting Top Ranks */
+        .rank-1 td:first-child { color: #FFD700; } /* Gold */
+        .rank-2 td:first-child { color: #C0C0C0; } /* Silver */
+        .rank-3 td:first-child { color: #CD7F32; } /* Bronze */
+
+        /* Sub-headings for match breakdowns */
+        .match-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            text-transform: uppercase;
+            margin-top: 5rem;
+            margin-bottom: 1.5rem;
+            color: var(--club-secondary);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+    </style>
+    
+    <script src="https://unpkg.com/feather-icons" defer></script>
+</head>
+<body class="ff-theme">
+    <div id="navbar-placeholder"></div>
+
+    <main class="content-wrapper">
+        <header class="event-hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="event-title">Tournament Results</h1>
+                <p class="event-subtitle">Overall Standings & Match Breakdowns</p>
+            </div>
+        </header>
+
+        <section class="event-details" id="results">
+            <div class="container">
+                
+                <div class="detail-section">
+                    <h2 class="section-title">Overall Standings</h2>
+                    <p class="section-description">
+                        The leaderboard combining points from all matches. The squad with the most points claims victory.
+                    </p>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team Name</th>
+                                <th>Total Kills</th>
+                                <th>Total Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="rank-1"><td>1</td><td><strong>Team Redox</strong></td><td>9</td><td><strong>24</strong></td></tr>
+                            <tr class="rank-2"><td>2</td><td><strong>Team Dominator</strong></td><td>11</td><td><strong>21</strong></td></tr>
+                            <tr class="rank-2"><td>2</td><td><strong>Team Blue Lock</strong></td><td>9</td><td><strong>21</strong></td></tr>
+                            <tr class="rank-3"><td>4</td><td><strong>Team Echo</strong></td><td>6</td><td><strong>6</strong></td></tr>
+                            <tr><td>5</td><td>Team BFD</td><td>2</td><td>2</td></tr>
+                            <tr><td>6</td><td>Unbeatable Boyzz</td><td>1</td><td>1</td></tr>
+                            <tr><td>7</td><td>Team SHK</td><td>0</td><td>0</td></tr>
+                            <tr><td>7</td><td>Team Toxic</td><td>0</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="detail-section">
+                    <h2 class="section-title">Match Breakdowns</h2>
+                    
+                    <h3 class="match-title">First Match</h3>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Team Name</th>
+                                <th>Placement Pts</th>
+                                <th>Kill Pts</th>
+                                <th>Total Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="rank-1"><td>1</td><td><strong>Team Redox</strong></td><td>15</td><td>9</td><td><strong>24</strong></td></tr>
+                            <tr class="rank-2"><td>2</td><td><strong>Team Blue Lock</strong></td><td>12</td><td>9</td><td><strong>21</strong></td></tr>
+                            <tr class="rank-3"><td>3</td><td><strong>Team Dominator</strong></td><td>10</td><td>11</td><td><strong>21</strong></td></tr>
+                            <tr><td>4</td><td>Team BFD</td><td>0</td><td>2</td><td>2</td></tr>
+                            <tr><td>5</td><td>Team Echo</td><td>0</td><td>6</td><td>6</td></tr>
+                            <tr><td>6</td><td>Team Toxic</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>7</td><td>Unbeatable Boyzz</td><td>0</td><td>1</td><td>1</td></tr>
+                            <tr><td>8</td><td>Team SHK</td><td>0</td><td>0</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="match-title">Second Match</h3>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Team Name</th>
+                                <th>Placement Pts</th>
+                                <th>Kill Pts</th>
+                                <th>Total Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>-</td><td>Team Redox</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Blue Lock</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Dominator</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team BFD</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Echo</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Toxic</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Unbeatable Boyzz</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team SHK</td><td>0</td><td>0</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="match-title">Third Match</h3>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Team Name</th>
+                                <th>Placement Pts</th>
+                                <th>Kill Pts</th>
+                                <th>Total Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>-</td><td>Team Redox</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Blue Lock</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Dominator</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team BFD</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Echo</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team Toxic</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Unbeatable Boyzz</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>-</td><td>Team SHK</td><td>0</td><td>0</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+</body>
+</html>
