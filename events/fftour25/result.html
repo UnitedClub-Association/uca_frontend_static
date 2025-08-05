@@ -92,6 +92,15 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 1rem;
         }
+		
+		.disqualified td {
+    color: #ff5555 !important;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+.disqualified td strong {
+    text-decoration: line-through;
+}
     </style>
     
     <script src="https://unpkg.com/feather-icons" defer></script>
@@ -165,27 +174,75 @@
                     </table>
 
                     <h3 class="match-title">Second Match</h3>
-                    <table class="results-table">
-                        <thead>
-                            <tr>
-                                <th>Position</th>
-                                <th>Team Name</th>
-                                <th>Placement Pts</th>
-                                <th>Kill Pts</th>
-                                <th>Total Pts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>-</td><td>Team Redox</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr><td>-</td><td>Team Blue Lock</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr><td>-</td><td>Team Dominator</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr><td>-</td><td>Team BFD</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr><td>-</td><td>Team Echo</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr><td>-</td><td>Team Toxic</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr><td>-</td><td>Unbeatable Boyzz</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr><td>-</td><td>Team SHK</td><td>0</td><td>0</td><td>0</td></tr>
-                        </tbody>
-                    </table>
+<table class="results-table">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Team Name</th>
+            <th>Placement Pts</th>
+            <th>Kill Pts</th>
+            <th>Total Pts</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="rank-1">
+            <td>1</td>
+            <td><strong>Team Toxic</strong></td>
+            <td>15</td>
+            <td>8</td>
+            <td><strong>23</strong></td>
+        </tr>
+        <tr class="rank-3">
+            <td>3</td>
+            <td><strong>Team Echo</strong></td>
+            <td>10</td>
+            <td>11</td>
+            <td><strong>21</strong></td>
+        </tr>
+        <tr class="rank-2">
+            <td>2</td>
+            <td><strong>Team Dominator</strong></td>
+            <td>12</td>
+            <td>4</td>
+            <td><strong>16</strong></td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Team SHK</td>
+            <td>0</td>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Team Redox</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Team BFD</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Unbeatable Boyzz</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr class="disqualified">
+            <td>DQ</td>
+            <td><strong>Team Blue Lock</strong></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
 
                     <h3 class="match-title">Third Match</h3>
                     <table class="results-table">
