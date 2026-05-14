@@ -1,76 +1,94 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize Feather Icons
-  if (typeof feather !== 'undefined') {
-    feather.replace({
-      'stroke-width': 1.5,
-      color: 'currentColor'
+document.addEventListener("DOMContentLoaded", () => {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  // --- 1. Robust Feather Icons Initialization ---
+  const initIcons = () => {
+    if (typeof feather !== "undefined") {
+      feather.replace();
+    } else {
+      setTimeout(initIcons, 50);
+    }
+  };
+  initIcons();
+
+  // --- 2. Deep Starry Night Background (Command Center Variant) ---
+  const initStarfield = () => {
+    if (prefersReducedMotion || typeof anime === "undefined") return; 
+
+    const starBg = document.querySelector(".constellation-bg");
+    if (!starBg) return;
+
+    // Density adjusted for the hero height
+    const numStars = isDesktop ? 150 : 60;
+
+    for (let i = 0; i < numStars; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        
+        let size = Math.random() < 0.85 ? (Math.random() * 1.5 + 0.5) : (Math.random() * 2.5 + 1);
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        star.style.opacity = Math.random() * 0.7 + 0.1;
+        starBg.appendChild(star);
+    }
+    
+    // Smooth twinkle
+    anime({
+        targets: '.star',
+        opacity: [
+            { value: () => anime.random(0.1, 0.3), duration: () => anime.random(4000, 7000) },
+            { value: () => anime.random(0.6, 1), duration: () => anime.random(4000, 7000) }
+        ],
+        scale: [
+            { value: 1, duration: () => anime.random(4000, 7000) },
+            { value: () => anime.random(1.1, 1.4), duration: () => anime.random(4000, 7000) }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutSine',
+        delay: anime.stagger(25),
     });
-  }
+  };
 
-  const filterContainer = document.querySelector('.executives-filter');
-  const executiveGrid = document.querySelector('.executives-grid');
-  
-  if (!filterContainer || !executiveGrid) return;
+  // --- 3. Buttery Smooth GSAP Reveals ---
+  const initGsapAnimations = () => {
+    if (prefersReducedMotion || typeof gsap === "undefined") return;
+    
+    gsap.registerPlugin(ScrollTrigger);
 
-  const filterButtons = filterContainer.querySelectorAll('.filter-btn');
-  const executiveCards = Array.from(executiveGrid.querySelectorAll('.executive-card'));
-
-  // Initial load animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const delay = entry.target.dataset.index * 80;
-        setTimeout(() => {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }, delay);
-        observer.unobserve(entry.target);
-      }
+    // Initial states for smooth slide-ups
+    gsap.set(".gsap-fade-up, .gsap-stagger-item, .gsap-hero-item", {
+      opacity: 0,
+      y: 35
     });
-  }, { threshold: 0.1 });
 
-  executiveCards.forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    card.dataset.index = index; // Store index for staggered animation
-    observer.observe(card);
-  });
-  
-  // Filter logic
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Update active button state
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
+    // Hero timeline entry
+    gsap.timeline({ defaults: { ease: "power2.out", duration: 1.8 }})
+      .to(".gsap-hero-item", { opacity: 1, y: 0, stagger: 0.25, delay: 0.2 });
       
-      const filterValue = button.getAttribute('data-filter');
-      
-      // Fade out all cards first
-      executiveCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'scale(0.95)';
+    // Standard section fades
+    gsap.utils.toArray(".gsap-fade-up").forEach(elem => {
+      gsap.to(elem, {
+        scrollTrigger: { trigger: elem, start: "top 85%", toggleActions: "play none none none" },
+        opacity: 1, y: 0, duration: 1.5, ease: "power2.out"
       });
-
-      // After fade out, filter and fade in
-      setTimeout(() => {
-        let visibleIndex = 0;
-        executiveCards.forEach(card => {
-          const cardCategory = card.getAttribute('data-category');
-          const shouldShow = (filterValue === 'all' || cardCategory === filterValue);
-
-          if (shouldShow) {
-            card.style.display = 'block'; // Or 'flex', 'grid' etc. depending on card layout
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'scale(1)';
-            }, 100 * visibleIndex);
-            visibleIndex++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      }, 400); // Wait for fade-out transition to complete
     });
-  });
+
+    // Staggered grids (Roster panels)
+    gsap.utils.toArray(".roster-grid").forEach(container => {
+        gsap.to(container.querySelectorAll(".gsap-stagger-item"), {
+            scrollTrigger: { trigger: container, start: "top 85%", toggleActions: "play none none none" },
+            opacity: 1, y: 0, stagger: 0.2, duration: 1.2, ease: "power2.out"
+        });
+    });
+  };
+
+  // Ensure DOM is ready, then initialize
+  initStarfield();
+  initGsapAnimations();
+  
 });

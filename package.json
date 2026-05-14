@@ -1,0 +1,24 @@
+{
+  "name": "uca_frontend_static",
+  "version": "1.0.0",
+  "description": "This is the official website for the United Club Association of University Laboratory School and College.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UnitedClub-Association/uca_frontend_static.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/UnitedClub-Association/uca_frontend_static/issues"
+  },
+  "homepage": "https://github.com/UnitedClub-Association/uca_frontend_static#readme",
+  "dependencies": {
+    "pg": "^8.20.0"
+  }
+}

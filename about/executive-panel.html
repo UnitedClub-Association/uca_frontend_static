@@ -1,156 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag("js", new Date());
-      gtag("config", "G-H2YV0FNQ9X");
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Executive Panel - United Club Association</title>
-    <meta name="description" content="Meet the executive team behind UCA - the presidents of all clubs who collaborate to create a vibrant club culture at our university." />
-    <meta name="keywords" content="UCA, United Club Association, executive panel, club presidents, student leadership" />
+    <title>Command & Structure - United Club Association</title>
 
+    <!-- Highly Optimized SEO Meta Tags -->
+    <meta name="description" content="Meet the leadership behind the United Club Association. Discover our founder, our structure, and how you can step up to lead a national movement." />
+    <meta name="keywords" content="UCA, United Club Association, executive panel, Sazidur Rahman, student leadership, Bangladesh" />
+    <meta name="author" content="United Club Association" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0A0B1A" />
+    
+    <meta property="og:site_name" content="United Club Association" />
+    <meta property="og:title" content="Command & Structure | UCA" />
+    <meta property="og:description" content="The architects of the United Club Association." />
+    <meta property="og:url" content="https://uca-bd.org/about/executive-panel.html" />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
+    <link rel="apple-touch-icon" href="/images/uca_logo.png" />
+
+    <!-- External Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+
+    <!-- Master CSS & Page CSS -->
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/executive-panel.css" />
-    <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
-    <script src="https://unpkg.com/feather-icons" defer></script>
 
-    <script src="/js/include-fonts.js" defer></script>
-    <script src="/js/include-navbar.js" defer></script>
-    <script src="/js/include-footer.js" defer></script>
-    <script src="/js/executive-panel.js" defer></script>
+    <!-- Core Libraries -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
   </head>
   <body>
+    <!-- Master Navbar -->
     <div id="navbar-placeholder"></div>
 
     <main id="main-content">
-      <section class="executives-hero">
+      
+      <!-- 1. HERO SECTION -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="constellation-bg"></div>
         <div class="hero-content">
-          <h1>UCA Executive Panel</h1>
-          <p class="section-description">
-            Meet the dynamic leaders steering the United Club Association. Our Executive Panel comprises the dedicated presidents of each club, working collaboratively to foster a vibrant, inclusive, and engaging campus culture.
+          <h1 id="hero-heading" class="gsap-hero-item cosmic-title">COMMAND & STRUCTURE</h1>
+          <p class="hero-subtitle gsap-hero-item">
+            The architects of the United Club Association.
           </p>
         </div>
       </section>
 
-      <section class="executives">
+      <!-- 2. THE FOUNDER (Editorial Spotlight) -->
+      <section class="founder-spotlight" aria-labelledby="founder-heading">
         <div class="section-container">
-          <div class="section-header">
-            <h2>Current Council (2024-2025)</h2>
-            <p class="section-subtitle">
-              Our inaugural council is a collective of visionary founding club presidents. They are the architects of UCA's collaborative spirit, laying a robust foundation for an enriching club ecosystem.
-            </p>
+          <div class="section-header gsap-fade-up">
+            <h2 id="founder-heading">The Vanguard</h2>
+            <p class="section-subtitle">Spearheading the unification of institutional clubs.</p>
           </div>
-
-          <div class="executives-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="academic">Academic</button>
-            <button class="filter-btn" data-filter="cultural">Cultural</button>
-            <button class="filter-btn" data-filter="sports">Sports</button>
-            <button class="filter-btn" data-filter="environmental">Environmental</button>
-            <button class="filter-btn" data-filter="special">Special Team</button>
-          </div>
-
-          <div class="council-structure">
-            <div class="structure-card">
-              <div class="structure-icon"><i data-feather="shield"></i></div>
-              <h3>Governance Framework</h3>
-              <ul class="structure-list">
-                <li><strong>Digital & Tech Initiatives:</strong> Spearheaded by the <strong>ICT Club President</strong>, driving UCA's online presence and tech infrastructure.</li>
-                <li><strong>Campus Engagement & Activities:</strong> A collaborative leadership effort by <strong>all Club Presidents</strong> to ensure diverse and vibrant events.</li>
-                <li><strong>Strategic & Administrative Oversight:</strong> Guided by a <strong>collective body</strong> to ensure smooth operations and inter-club synergy.</li>
-              </ul>
+          
+          <div class="editorial-showcase gsap-fade-up">
+            <div class="editorial-image">
+              <!-- Replace with actual image of founder if available, otherwise acts as a sleek placeholder -->
+              <img src="/images/founder_placeholder.jpg" alt="Sazidur Rahman" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><rect width=\'100%\' height=\'100%\' fill=\'%230A0B1A\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'20\' fill=\'%2338BDF8\' text-anchor=\'middle\' dominant-baseline=\'middle\'>UCA LEADERSHIP</text></svg>'" loading="lazy" />
+              <div class="image-corner top-left"></div>
+              <div class="image-corner bottom-right"></div>
             </div>
-          </div>
-
-          <div class="executives-grid">
-            <div class="executive-card" data-category="academic" data-club="ict">
-              <div class="card-image"><img src="/images/uca-exec-poster-ict.jpg" alt="ICT Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Md. Sazidur Rahman</h3>
-                <span class="club-tag">ICT Club 🌐</span>
-                <p>A founding executive leading UCA's digital frontier, merging technical prowess with strategic foresight to elevate our online ecosystem and digital capabilities.</p>
+            
+            <div class="editorial-info">
+              <div class="editorial-meta">
+                <i data-feather="terminal" class="meta-icon secondary-glow"></i>
+                <span class="role-acronym">FOUNDER & LEAD EXECUTIVE</span>
               </div>
-            </div>
-            <div class="executive-card" data-category="academic" data-club="debate">
-              <div class="card-image"><img src="/images/uca-exec-poster-debate.jpg" alt="Debate Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>JH Samir</h3>
-                <span class="club-tag">Debate Club 🗣️</span>
-                <p>An executive skilled in strategic communication and governance, ensuring UCA's administrative framework robustly supports collaboration across all member clubs.</p>
-              </div>
-            </div>
-            <div class="executive-card" data-category="cultural" data-club="photography">
-              <div class="card-image"><img src="/images/uca-exec-poster-photography.jpg" alt="Photography Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Mahidul Islam Ahnaf</h3>
-                <span class="club-tag">Photography Club 📸</span>
-                <p>A founding executive cultivating visual storytelling, documenting UCA's journey, and empowering creative expression through the captivating lenses of photography and film.</p>
-              </div>
-            </div>
-            <div class="executive-card" data-category="sports" data-club="sports">
-              <div class="card-image"><img src="/images/uca-exec-poster-sports.jpg" alt="Sports Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Arafat Azim Antu</h3>
-                <span class="club-tag">Sports Club 🏃‍♂️</span>
-                <p>Championing physical wellness and team spirit, this founding executive orchestrates dynamic sporting events, fostering a culture of healthy competition and camaraderie.</p>
-              </div>
-            </div>
-            <div class="executive-card" data-category="academic" data-club="quiz">
-              <div class="card-image"><img src="/images/uca-exec-poster-quiz.jpg" alt="Quiz Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Kazi Yasir Abdullah Anas</h3>
-                <span class="club-tag">Quiz Club 🧠</span>
-                <p>Fostering intellectual curiosity and academic distinction, this executive builds dynamic platforms for engaging cross-disciplinary student interaction and knowledge sharing.</p>
-              </div>
-            </div>
-            <div class="executive-card" data-category="academic" data-club="science">
-              <div class="card-image"><img src="/images/uca-exec-poster-science.jpg" alt="Science Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>MD. Rumman</h3>
-                <span class="club-tag">Science Club 🔬</span>
-                <p>Promoting scientific inquiry and innovation, this founding executive creates avenues for students to delve into STEM fields via hands-on research and collaborative projects.</p>
-              </div>
-            </div>
-            <div class="executive-card" data-category="academic" data-club="language">
-              <div class="card-image"><img src="/images/uca-exec-poster-language.jpg" alt="Language Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Rafiuddin Rafiu</h3>
-                <span class="club-tag">Language Club 🌍</span>
-                <p>Championing linguistic diversity and cultural appreciation, this executive crafts inclusive spaces for students to explore and celebrate our rich heritage through language.</p>
-              </div>
-            </div>
-            <div class="executive-card" data-category="cultural" data-club="cultural">
-              <div class="card-image"><img src="/images/uca-exec-poster-cultural.jpg" alt="Cultural Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Nisa Mahjabin</h3>
-                <span class="club-tag">Cultural Club 🎭</span>
-                <p>Celebrating our diverse cultural tapestry, this executive curates immersive experiences that illuminate artistry, heritage, and tradition within our university community.</p>
-              </div>
-            </div>
-            <div class="executive-card" data-category="environmental" data-club="green">
-              <div class="card-image"><img src="/images/green-club.png" alt="Green Club President" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Aria</h3>
-                <span class="club-tag">Green Club 🌱</span>
-                <p>Championing environmental sustainability, this executive spearheads initiatives for a greener campus and elevates ecological awareness among students.</p>
-              </div>
-            </div>
-            <div class="executive-card design-team" data-category="special" data-club="design">
-              <div class="card-image"><img src="/images/uca-designing-team.jpeg" alt="UCA Designing Team" loading="lazy"/></div>
-              <div class="card-content">
-                <h3>Designing Team</h3>
-                <span class="club-tag">Special Team 🎨</span>
-                <p>A collaborative unit of visual innovators responsible for crafting the aesthetic identity of UCA across digital and print media.</p>
-                <div class="team-members">
-                    <span><strong>Samiul Ahammad Sami</strong> | Graphics Designer</span>
-                    <span><strong>Nusrat Jahan Anisha</strong> | Graphics Designer</span>
-                    <span><strong>Chinmoy Kumar Podder</strong> | Graphics Designer</span>
+              <h3>Sazidur Rahman</h3>
+              <p class="founder-desc">
+                Currently an HSC 2026 examinee at University Laboratory School and College, Sazidur engineered the foundation of UCA. From establishing the digital infrastructure to bridging the gap between isolated clubs, his vision laid the groundwork for a nationwide student network.
+              </p>
+              <div class="founder-stats">
+                <div class="stat-node">
+                  <span class="stat-val primary-glow">2024</span>
+                  <span class="stat-lbl">Established UCO</span>
+                </div>
+                <div class="stat-node">
+                  <span class="stat-val secondary-glow">2025</span>
+                  <span class="stat-lbl">Rebranded to UCA</span>
                 </div>
               </div>
             </div>
@@ -158,15 +92,79 @@
         </div>
       </section>
 
-      <section class="join-cta">
+      <!-- 3. NATIONWIDE SEARCH (Recruitment Roster) -->
+      <section class="nationwide-search" aria-labelledby="search-heading">
         <div class="section-container">
-          <h2>Become a Part of the Legacy</h2>
-          <p>Elevate your university experience! Join one of our dynamic clubs to cultivate valuable skills, forge meaningful connections, and actively contribute to our vibrant campus community.</p>
-          <a href="/contact/join-us.html" class="button-primary">Explore Membership</a>
+          <div class="section-header gsap-fade-up">
+            <h2 id="search-heading">A Nationwide Vision</h2>
+            <p class="section-subtitle">
+              A national platform requires national talent. We are actively searching for visionaries worthy of leading the association into its next era.
+            </p>
+          </div>
+          
+          <div class="roster-grid">
+            <!-- Strategic Leadership -->
+            <div class="roster-panel gsap-stagger-item">
+              <div class="roster-icon-box">
+                <i data-feather="crosshair" class="primary-glow"></i>
+              </div>
+              <h4>Strategic Directors</h4>
+              <p>Masterminds capable of organizing national events, securing high-tier sponsorships, and expanding our network of institutional clubs.</p>
+            </div>
+            
+            <!-- Digital Innovators -->
+            <div class="roster-panel gsap-stagger-item">
+              <div class="roster-icon-box">
+                <i data-feather="cpu" class="secondary-glow"></i>
+              </div>
+              <h4>Digital Infrastructure Leads</h4>
+              <p>Tech-savvy innovators to scale our web presence, manage club databases, and develop new tools for our member organizations.</p>
+            </div>
+
+            <!-- Campus Ambassadors -->
+            <div class="roster-panel gsap-stagger-item">
+              <div class="roster-icon-box">
+                <i data-feather="globe" class="accent-glow"></i>
+              </div>
+              <h4>Campus Ambassadors</h4>
+              <p>The voices of UCA on the ground. Connect your school, college, or university to our central hub and serve as our direct liaison.</p>
+            </div>
+          </div>
         </div>
       </section>
+
+      <!-- 4. DUAL CALL TO ACTION -->
+      <section class="executive-cta" aria-labelledby="cta-heading">
+        <div class="section-container">
+          <div class="cta-box gsap-fade-up">
+            <h2 id="cta-heading">Step Up to the Console</h2>
+            <p>
+              Whether you want to apply for an executive position, register your club as a member, or partner with us as a sponsor, the gateway is open.
+            </p>
+            
+            <div class="cta-button-group">
+              <a href="/contact/join-us.html" class="btn-elegant line-left highlight-btn">
+                <span>Join The Panel</span>
+                <i data-feather="user-plus"></i>
+              </a>
+              <a href="/contact/contact.html" class="btn-elegant line-left">
+                <span>Contact Operations</span>
+                <i data-feather="message-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
     </main>
 
+    <!-- Master Footer -->
     <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/include-fonts.js" defer></script>
+    <script src="/js/include-navbar.js" defer></script>
+    <script src="/js/include-footer.js" defer></script>
+    <script src="/js/executive-panel.js" defer></script>
   </body>
 </html>

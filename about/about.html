@@ -1,137 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2YV0FNQ9X"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag("js", new Date());
-      gtag("config", "G-H2YV0FNQ9X");
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About - United Club Association</title>
+    <title>About Us - United Club Association</title>
 
-    <meta name="description" content="Learn about the United Club Association (UCA), our mission, values, and the collaborative community we're building at University Laboratory School and College." />
-    <meta name="keywords" content="UCA, United Club Association, university clubs, student organizations" />
+    <!-- Highly Optimized SEO Meta Tags -->
+    <meta name="description" content="Discover the history, purpose, and trajectory of the United Club Association (UCA). Unifying institutional clubs across Bangladesh." />
+    <meta name="keywords" content="UCA, United Club Association, UCO, institutional clubs, student organizations, Bangladesh, Sazidur Rahman" />
     <meta name="author" content="United Club Association" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0A0B1A" />
+    
+    <meta property="og:site_name" content="United Club Association" />
+    <meta property="og:title" content="About UCA | Our Origins & Vision" />
+    <meta property="og:description" content="Unifying institutional clubs across Bangladesh into a single, cohesive network." />
+    <meta property="og:url" content="https://uca-bd.org/about/about.html" />
+    <meta property="og:type" content="website" />
 
+    <!-- External Fonts -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    
     <link rel="icon" type="image/x-icon" href="/images/uca_logo.ico" />
     <link rel="apple-touch-icon" href="/images/uca_logo.png" />
 
-    <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+    <!-- Master CSS & Page CSS -->
     <link rel="preload" href="/css/about.css" as="style" />
-    <link rel="preload" href="/js/index.js" as="script" />
-
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/about.css" />
 
-    <script src="https://unpkg.com/feather-icons" defer></script>
-
-    <script>
-      if (!("IntersectionObserver" in window)) {
-        const script = document.createElement("script");
-        script.src = "https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.0/intersection-observer.min.js";
-        document.head.appendChild(script);
-      }
-    </script>
+    <!-- Core Libraries -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
   </head>
   <body>
+    <!-- Master Navbar -->
     <div id="navbar-placeholder"></div>
 
     <main id="main-content">
+      
+      <!-- 1. HERO SECTION -->
       <section class="hero" aria-labelledby="hero-heading">
         <div class="constellation-bg"></div>
         <div class="hero-content">
-          <h1 id="hero-heading" class="animate-on-scroll" data-animation="fade-up">About UCA</h1>
-          <p class="hero-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">
-            Established October 10, 2024
+          <h1 id="hero-heading" class="gsap-hero-item cosmic-title">OUR ORIGINS</h1>
+          <p class="hero-subtitle gsap-hero-item">
+            Tracing the constellation of our journey from a single campus to a nationwide network.
           </p>
         </div>
       </section>
 
-      <section class="mission" aria-labelledby="mission-heading">
+      <!-- 2. THE STORY (CONSTELLATION TIMELINE) -->
+      <section class="our-story" aria-labelledby="story-heading">
         <div class="section-container">
-          <div class="section-header animate-on-scroll" data-animation="fade-up">
-            <h2 id="mission-heading">Our Mission</h2>
+          <div class="section-header gsap-fade-up">
+            <h2 id="story-heading">The UCA Legacy</h2>
+            <p class="section-subtitle">
+              How a vision to unite student leaders evolved into an independent national association.
+            </p>
           </div>
-          <div class="mission-content animate-on-scroll" data-animation="fade-up" data-delay="100">
-            <p>
-              The United Club Association (UCA) is dedicated to fostering a vibrant community of clubs at University Laboratory School and College. We aim to empower students by providing resources, guidance, and a platform for collaboration among clubs.
-            </p>
-            <p>
-              Through our efforts, we strive to create an environment where students can explore their interests, develop leadership skills, and contribute to the school's culture.
-            </p>
+          
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <!-- Timeline Node 1 -->
+            <div class="timeline-node gsap-stagger-item">
+              <div class="node-marker primary-glow"></div>
+              <div class="node-content">
+                <span class="node-date">Mid-November 2024</span>
+                <h3 class="node-title">The Foundation (UCO)</h3>
+                <p class="node-desc">
+                  We began our journey as the United Club Organization (UCO). Our initial mandate was focused but vital: to serve as a unified, central organization maintaining and supporting all clubs within University Laboratory School and College.
+                </p>
+              </div>
+            </div>
+
+            <!-- Timeline Node 2 -->
+            <div class="timeline-node gsap-stagger-item">
+              <div class="node-marker secondary-glow"></div>
+              <div class="node-content">
+                <span class="node-date">January 2025</span>
+                <h3 class="node-title">The Rebirth (UCA)</h3>
+                <p class="node-desc">
+                  Recognizing the need for a more dynamic identity, UCO was officially rebranded as the United Club Association (UCA). While remaining true to our core mission, our founder, Sazidur Rahman, architected and launched our comprehensive online infrastructure, marking the dawn of our digital era.
+                </p>
+              </div>
+            </div>
+
+            <!-- Timeline Node 3 -->
+            <div class="timeline-node gsap-stagger-item">
+              <div class="node-marker accent-glow"></div>
+              <div class="node-content">
+                <span class="node-date">August 2025</span>
+                <h3 class="node-title">The Nationwide Expansion</h3>
+                <p class="node-desc">
+                  Driven by our ultimate goal to unify the student landscape, UCA began preparations to operate as an independent association. We shifted our trajectory from a single-campus entity to a nationwide platform, striving to connect and elevate every institutional club across Bangladesh.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="values" aria-labelledby="values-heading">
+      <!-- 3. PURPOSE & TRAJECTORY -->
+      <section class="purpose-trajectory" aria-labelledby="purpose-heading">
         <div class="section-container">
-          <div class="section-header animate-on-scroll" data-animation="fade-up">
-            <h2 id="values-heading">Our Core Values</h2>
+          <div class="section-header gsap-fade-up">
+            <h2 id="purpose-heading">Purpose & Trajectory</h2>
+            <p class="section-subtitle">
+              Redefining the ecosystem for institutional organizations.
+            </p>
           </div>
-          <div class="values-grid">
-            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="100">
-              <i data-feather="users" class="value-icon"></i>
-              <h3>Community</h3>
+          
+          <div class="editorial-grid">
+            <div class="editorial-panel panel-left gsap-stagger-item">
+              <div class="panel-icon-box">
+                <i data-feather="globe" class="primary-glow"></i>
+              </div>
+              <h3>Institutional Unity</h3>
               <p>
-                Building a strong sense of community among students, faculty, and staff through collaborative events and initiatives.
+                Our purpose transcends a single university. We are building a unified platform exclusively for <strong>institutional clubs</strong>—encompassing schools, colleges, and universities. We provide the architecture for these organizations to exist under one collaborative network.
               </p>
             </div>
-            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="200">
-              <i data-feather="award" class="value-icon"></i>
-              <h3>Excellence</h3>
+            
+            <div class="editorial-panel panel-right gsap-stagger-item">
+              <div class="panel-icon-box">
+                <i data-feather="link" class="secondary-glow"></i>
+              </div>
+              <h3>Strategic Bridging</h3>
               <p>
-                Encouraging excellence in all activities and initiatives, supporting high standards in every endeavor.
-              </p>
-            </div>
-            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="300">
-              <i data-feather="heart" class="value-icon"></i>
-              <h3>Inclusivity</h3>
-              <p>
-                Creating an inclusive environment for all students, regardless of background or interests.
-              </p>
-            </div>
-            <div class="value-card animate-on-scroll" data-animation="zoom-in" data-delay="400">
-              <i data-feather="compass" class="value-icon"></i>
-              <h3>Innovation</h3>
-              <p>
-                Fostering innovation and creative thinking, encouraging new ideas and approaches to student activities.
+                UCA enables direct, seamless communication between clubs, making it vastly easier to co-host massive fests and national events. Furthermore, we act as a bridge for <strong>sponsors</strong> to discover high-potential clubs, while helping clubs secure the funding they deserve.
               </p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- 4. CORE VALUES SECTION -->
+      <section class="core-values" aria-labelledby="values-heading">
+        <div class="section-container">
+          <div class="section-header gsap-fade-up">
+            <h2 id="values-heading">Core Values</h2>
+            <p class="section-subtitle">The fundamental principles that guide our association's growth.</p>
+          </div>
+          
+          <div class="catalog-grid">
+            <div class="catalog-item gsap-stagger-item">
+              <i data-feather="users" class="catalog-icon primary-glow"></i>
+              <h4 class="value-title">Collaboration</h4>
+              <p class="value-desc">Breaking down institutional barriers to foster cross-campus partnerships and shared success.</p>
+            </div>
+            <div class="catalog-item gsap-stagger-item">
+              <i data-feather="trending-up" class="catalog-icon secondary-glow"></i>
+              <h4 class="value-title">Empowerment</h4>
+              <p class="value-desc">Providing young leaders with the digital tools, networks, and sponsorships required to scale their visions.</p>
+            </div>
+            <div class="catalog-item gsap-stagger-item">
+              <i data-feather="star" class="catalog-icon accent-glow"></i>
+              <h4 class="value-title">Excellence</h4>
+              <p class="value-desc">Establishing a premium benchmark for how institutional clubs operate, organize, and execute national events.</p>
+            </div>
+            <div class="catalog-item gsap-stagger-item catalog-item--last">
+              <i data-feather="compass" class="catalog-icon primary-glow"></i>
+              <h4 class="value-title">Integrity</h4>
+              <p class="value-desc">Maintaining transparency and trust in all our operations, sponsor relations, and community engagements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. STRUCTURE & LEADERSHIP -->
       <section class="structure" aria-labelledby="structure-heading">
         <div class="section-container">
-          <div class="section-header animate-on-scroll" data-animation="fade-up">
-            <h2 id="structure-heading">Our Structure</h2>
-          </div>
-          <div class="structure-content animate-on-scroll" data-animation="fade-up" data-delay="100">
-            <p>
-              The UCA is led by the presidents of all member clubs, with the ICT Club President serving as the lead for online activities. This collaborative leadership model ensures that all clubs have equal representation and voice in the association's decisions.
-            </p>
-          </div>
-          <div class="structure-cta animate-on-scroll" data-animation="fade-up" data-delay="200">
-            <a href="/about/executive-panel.html" class="button-primary" aria-label="Meet Our Executive Panel">
-              <span>Meet Our Executive Panel</span>
-              <i data-feather="arrow-right"></i>
-            </a>
+          <div class="structure-showcase gsap-fade-up">
+            <div class="structure-info">
+              <h2 id="structure-heading">Command & Structure</h2>
+              <p class="structure-desc">
+                Currently, the United Club Association is spearheaded by our founder, <strong>Sazidur Rahman</strong>, an HSC 2026 examinee studying at University Laboratory School and College. However, a nationwide vision requires nationwide talent.
+                <br><br>
+                As we expand, we are actively searching for individuals worthy of leading UCA. If you believe you have the strategic mindset, dedication, and leadership required to govern on a national scale, we will welcome you as a core executive, member, or partner.
+              </p>
+              <div class="structure-cta">
+                <a href="/contact/join-us.html" class="btn-elegant line-center">
+                  <span>Step Up to Lead UCA</span>
+                  <i data-feather="arrow-right"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+      
     </main>
 
+    <!-- Master Footer -->
     <div id="footer-placeholder"></div>
 
+    <!-- Scripts -->
     <script src="/js/include-fonts.js" defer></script>
     <script src="/js/include-navbar.js" defer></script>
     <script src="/js/include-footer.js" defer></script>
-    <script src="/js/index.js" defer></script>
+    <script src="/js/about.js" defer></script>
   </body>
 </html>
