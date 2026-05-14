@@ -1,15 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const clubThemes = {
-        'debate-club': 'theme-debate',
-        'photography-club': 'theme-photo',
-        'sports-club': 'theme-sports',
-        'quiz-club': 'theme-quiz',
-        'science-club': 'theme-science',
-        'ict-club': 'theme-ict',
-        'language-club': 'theme-language',
-        'cultural-club': 'theme-cultural',
-        'green-club': 'theme-green',
-        'literature-club': 'theme-literature'
+        'ulic-club': 'theme-ict'
     };
 
     const currentPath = window.location.pathname;
@@ -22,17 +13,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // This script assumes the theme class is already on the body
-    // from the navbar include script. If not, uncomment the next block.
-    /*
+    // Apply theme directly to the body if found
     if (activeTheme && !document.body.classList.contains(activeTheme)) {
         document.body.classList.add(activeTheme);
     }
-    */
 
     // Create a placeholder element for the footer
-    const footerPlaceholder = document.getElementById("footer-placeholder") || document.createElement("div");
-    if (!footerPlaceholder.id) {
+    let footerPlaceholder = document.getElementById("footer-placeholder");
+    if (!footerPlaceholder) {
+        footerPlaceholder = document.createElement("div");
         footerPlaceholder.id = "footer-placeholder";
         document.body.appendChild(footerPlaceholder);
     }
@@ -46,9 +35,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
             footerPlaceholder.innerHTML = data;
 
+            // GUARANTEED execution to set the year the exact moment HTML is injected
+            const yearSpan = document.getElementById("copyright-year");
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
             // Initialize Feather Icons if available
             if (typeof feather !== 'undefined') {
-                feather.replace({ 'aria-hidden': 'true' });
+                feather.replace();
             }
         })
         .catch((error) => console.error("Error loading themed footer:", error));

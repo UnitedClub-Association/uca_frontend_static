@@ -1,99 +1,94 @@
-document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
+(function() {
+  'use strict';
 
-  const navbar = document.querySelector(".navbar");
-  const navbarToggle = document.querySelector(".navbar__toggle");
-  const navbarMenu = document.querySelector(".navbar__menu");
-  const dropdownItems = document.querySelectorAll(".navbar__item.dropdown");
+  if (window.enhancedNavbarScriptInitialized) return;
+  window.enhancedNavbarScriptInitialized = true;
 
-  if (!navbar || !navbarToggle || !navbarMenu) return;
-
-  // GSAP timeline for mobile menu animation
-  const menuItems = gsap.utils.toArray(".navbar__item");
-  const menuTl = gsap.timeline({ paused: true, reversed: true });
-
-  menuTl.to(navbarMenu, { right: 0, duration: 0.4, ease: "power2.inOut" })
-        .fromTo(menuItems, {
-            opacity: 0,
-            x: 30
-        }, {
-            opacity: 1,
-            x: 0,
-            duration: 0.3,
-            ease: "power2.out",
-            stagger: 0.05
-        }, "-=0.2");
-
-  // Toggle mobile menu
-  navbarToggle.addEventListener("click", () => {
-    navbarToggle.classList.toggle("active");
-    document.body.classList.toggle("menu-open");
-    menuTl.reversed() ? menuTl.play() : menuTl.reverse();
-  });
-
-  // Handle dropdowns on mobile
-  dropdownItems.forEach((item) => {
-    const link = item.querySelector(":scope > .navbar__link");
-    if (link) {
-      link.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          const wasActive = item.classList.contains("active");
-
-          // Close other dropdowns
-          dropdownItems.forEach((other) => {
-            if (other !== item) {
-              other.classList.remove("active");
-              const otherMenu = other.querySelector(".dropdown__menu");
-              if (otherMenu) gsap.to(otherMenu, { maxHeight: 0, duration: 0.3, ease: "power1.inOut" });
-            }
-          });
-
-          // Toggle current dropdown
-          item.classList.toggle("active");
-          const menu = item.querySelector(".dropdown__menu");
-          if (menu) {
-            const newMaxHeight = !wasActive ? menu.scrollHeight : 0;
-            gsap.to(menu, { maxHeight: newMaxHeight, duration: 0.4, ease: "power2.inOut" });
-          }
-        }
-      });
-    }
-  });
-
-  // Close menu on outside click
-  document.addEventListener("click", (e) => {
-    if (!navbarMenu.contains(e.target) && !navbarToggle.contains(e.target) && !menuTl.reversed()) {
-      navbarToggle.classList.remove("active");
-      document.body.classList.remove("menu-open");
-      menuTl.reverse();
-    }
-  });
-
-  // Handle window resize
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      document.body.classList.remove("menu-open");
-      navbarToggle.classList.remove("active");
-      if (!menuTl.reversed()) {
-        menuTl.reverse().then(() => menuTl.seek(0)); // Reverse and reset
+  const initializeNavbar = () => {
+      const header = document.querySelector('.navbar-header');
+      
+      // 1. Scroll Effect
+      if (header) {
+          window.addEventListener("scroll", () => {
+             if (window.scrollY > 50) header.classList.add('scrolled');
+             else header.classList.remove('scrolled');
+          }, { passive: true });
       }
-      dropdownItems.forEach((item) => {
-        item.classList.remove("active");
-        const menu = item.querySelector(".dropdown__menu");
-        if (menu) gsap.set(menu, { clearProps: "maxHeight" });
-      });
-    }
-  });
 
-  // Scroll effect using GSAP for smoothness
-  ScrollTrigger.create({
-    start: "top top-=" + (navbar.offsetHeight + 1),
-    onUpdate: self => {
-      navbar.classList.toggle("scrolled", self.direction === 1);
-    },
-    onLeaveBack: () => {
-      navbar.classList.remove("scrolled");
-    }
-  });
-});
+      // 2. Immersive Mobile Menu Overlay
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileMenuClose = document.querySelector('.mobile-menu-close');
+      const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+      const sidebarItems = document.querySelectorAll('.sidebar-item-anim');
+
+      const toggleSidebar = (forceClose = false) => {
+          const isOpen = forceClose ? false : !sidebarWrapper.classList.contains('is-open');
+          
+          if (isOpen) {
+              sidebarWrapper.classList.add('is-open');
+              document.body.style.overflow = 'hidden'; // Lock scroll
+              
+              // Staggered Animation
+              sidebarItems.forEach((item, index) => {
+                  item.style.opacity = '0';
+                  item.style.transform = 'translateY(20px)';
+                  item.style.transition = 'none';
+                  
+                  void item.offsetWidth; // Trigger reflow
+                  
+                  setTimeout(() => {
+                      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                      item.style.opacity = '1';
+                      item.style.transform = 'translateY(0)';
+                  }, 100 + (index * 60));
+              });
+          } else {
+              sidebarWrapper.classList.remove('is-open');
+              document.body.style.overflow = ''; // Unlock scroll
+              
+              // Reset items
+              sidebarItems.forEach(item => {
+                  item.style.opacity = '0';
+                  item.style.transform = 'translateY(20px)';
+              });
+          }
+      };
+      
+      if (mobileMenuToggle && sidebarWrapper) {
+          mobileMenuToggle.addEventListener('click', () => toggleSidebar(false));
+      }
+      if (mobileMenuClose) {
+          mobileMenuClose.addEventListener('click', () => toggleSidebar(true));
+      }
+
+      // 3. Mobile Accordion Logic
+      const dropdowns = document.querySelectorAll('.sidebar-dropdown');
+      dropdowns.forEach(dropdown => {
+          const link = dropdown.querySelector('.sidebar-link');
+          if (link) {
+              link.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  // Close others
+                  dropdowns.forEach(d => {
+                      if (d !== dropdown) d.classList.remove('is-open');
+                  });
+                  // Toggle clicked
+                  dropdown.classList.toggle('is-open');
+              });
+          }
+      });
+
+      // 4. Reset on Resize
+      window.addEventListener("resize", () => {
+          if (window.innerWidth > 900 && sidebarWrapper && sidebarWrapper.classList.contains('is-open')) {
+              toggleSidebar(true);
+          }
+      });
+  };
+
+  if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeNavbar);
+  } else {
+      initializeNavbar();
+  }
+})();

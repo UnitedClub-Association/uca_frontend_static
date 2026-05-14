@@ -6,79 +6,138 @@
     <title>UCA Font Library</title>
     
     <!-- 
-      This file centralizes all font imports for the UCA website.
-      Fonts are sourced from cdnfonts.com and categorized by brand.
+      ====================================================================== 
+      1. UCA GLOBAL BRANDING FONTS                                              
+      Usage: The core typography for the main UCA website.
+      ====================================================================== 
     -->
-
-    <!-- ====================================================================== -->
-    <!-- UCA GLOBAL BRANDING FONTS                                              -->
-    <!-- ====================================================================== -->
+    <!-- Monument Extended: Best for main hero titles, massive bold headers, and logo texts -->
     <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet">
+    
+    <!-- Satoshi: Best for ultra-clean, readable body paragraphs and UI text -->
     <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+    
+    <!-- Bricolage Grotesque: Best for quirky, modern sub-headings and taglines -->
     <link href="https://fonts.cdnfonts.com/css/bricolage-grotesque" rel="stylesheet">
+    
+    <!-- Medio: Best for elegant, serif-based architectural titles (like Featured Club) -->
     <link href="https://fonts.cdnfonts.com/css/medio" rel="stylesheet">
+    
+    <!-- Avigea: Best for massive display numbers, stats, and highly artistic serif headers -->
     <link href="https://fonts.cdnfonts.com/css/avigea" rel="stylesheet">
+    
+    <!-- Quesha: Best for small, elegant serif titles (h3, h4) like in footers -->
     <link href="https://fonts.cdnfonts.com/css/quesha" rel="stylesheet">
+    
+    <!-- Livingston: Best for luxury, premium accents or formal documents -->
     <link href="https://fonts.cdnfonts.com/css/livingston" rel="stylesheet">
 
 
-    <!-- ====================================================================== -->
-    <!-- CLUB-EXCLUSIVE FONTS                                                   -->
-    <!-- ====================================================================== -->
+    <!-- 
+      ====================================================================== 
+      2. ULIC FONTS (Local)                                                 
+      Usage: Exclusively dedicated to the University Laboratory ICT Club.
+      ====================================================================== 
+    -->
+    <style>
+        /* Qood: Best for large, modern tech titles, primary ICT headings, and cyber-aesthetic display */
+        @font-face {
+            font-family: 'Qood';
+            src: url('/fonts/Qood.ttf') format('truetype');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
 
-    <!-- Debate Club -->
-    <link href="https://fonts.cdnfonts.com/css/made-canvas" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/libre-baskerville" rel="stylesheet">
+        /* Raligo: Best for ICT sub-headings, section titles, and elegant tech accents */
+        @font-face {
+            font-family: 'Raligo';
+            src: url('/fonts/RaligoDEMO.otf') format('opentype');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
 
-    <!-- Photography Club -->
-    <link href="https://fonts.cdnfonts.com/css/coco-gothic" rel="stylesheet"> 
-    <!--Coco gothic looks good, but can't be used for numbers-->
-    <link href="https://fonts.cdnfonts.com/css/antipasto" rel="stylesheet">
-    <!--Antipasto However, Is a jack of all trades-->
-    <link href="https://fonts.cdnfonts.com/css/one-day" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/london-2" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/abyssopelagic" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/luxiachy" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/luxia" rel="stylesheet">
+        /* Strenx: Best for readable tech-body text, monospaced data, code snippets, and HUD elements */
+        @font-face {
+            font-family: 'Strenx';
+            src: url('/fonts/Strenx-Regular.otf') format('opentype');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+    </style>
+
+
+    <!-- 
+      ====================================================================== 
+      3. CUSTOM LOCAL FONTS                                                 
+      Usage: Downloaded font files hosted locally for specific event themes.
+      ====================================================================== 
+    -->
+    <style>
+        /* AlienRavager: Aggressive, sharp sci-fi. Best for gaming tournaments or intense tech events. */
+        @font-face { font-family: 'AlienRavager'; src: url('/fonts/AlienRavager.ttf') format('truetype'); font-display: swap; }
+
+        /* Corptic: Clean, geometric futuristic sans. Great for modern tech body text or secondary headers. */
+        @font-face { font-family: 'Corptic'; src: url('/fonts/CorpticDEMO-Regular.otf') format('opentype'); font-display: swap; }
+
+        /* Critical Mass LDR: Heavy, blocky, and industrial. Best for bold esports scores or alert banners. */
+        @font-face { font-family: 'Critical Mass LDR'; src: url('/fonts/critical-mass-ldr.ttf') format('truetype'); font-display: swap; }
+
+        /* Eurosteal: Wide, cinematic, and sleek. Excellent for movie-poster style event banners. */
+        @font-face { font-family: 'Eurosteal'; src: url('/fonts/Eurosteal.ttf') format('truetype'); font-display: swap; }
+
+        /* Forenight: Smooth, modern tech sans. Good for futuristic narratives or UI elements. */
+        @font-face { font-family: 'Forenight'; src: url('/fonts/Forenight_Regular.woff') format('woff'); font-display: swap; }
+
+        /* Merkur: Retro-futuristic display font. Great for 80s/90s synthwave themed events. */
+        @font-face { font-family: 'Merkur'; src: url('/fonts/Merkur.otf') format('opentype'); font-display: swap; }
+
+        /* Officer X: Rugged, stencil-like display font. Perfect for Sports Club or boot-camp events. */
+        @font-face { font-family: 'Officer X'; src: url('/fonts/Officer X.otf') format('opentype'); font-display: swap; }
+
+        /* OriginTech: Circuit-board inspired display font. Ideal for hackathons and coding club branding. */
+        @font-face { font-family: 'OriginTech'; src: url('/fonts/OriginTech.ttf') format('truetype'); font-display: swap; }
+
+        /* Bengali Font 1: Li Mahfuz Himadri - Elegant Bengali typography. Best for regional event titles. */
+        @font-face { font-family: 'Li Mahfuz Himadri'; src: url('/fonts/Li Mahfuz Himadri Unicode.woff2') format('woff2'); font-display: swap; }
+
+        /* Bengali Font 2: Li Padmasetu - Clean and highly readable. Best for Bengali body paragraphs and details. */
+        @font-face { font-family: 'Li Padmasetu'; src: url('/fonts/Li Padmasetu Unicode.woff2') format('woff2'); font-display: swap; }
+    </style>
+
+
+    <!-- 
+      ====================================================================== 
+      4. STANDBY / EXCLUSIVE FONTS (CDN)                                             
+      Usage: Reorganized and kept on standby for specific club identities.
+      ====================================================================== 
+    -->
+
+    <!-- SPACE & SCI-FI: Great for futuristic, space-themed posters or astronomy clubs -->
     <link href="https://fonts.cdnfonts.com/css/baron-neue" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/astroz" rel="stylesheet">
-                
-    <!-- Sports Club -->
-    <link href="https://fonts.cdnfonts.com/css/nfs-font" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/sf-sports-night" rel="stylesheet">
-                
-
-    <!-- Quiz Club -->
-    <link href="https://fonts.cdnfonts.com/css/lexend" rel="stylesheet">
     
-    <!-- Science Club -->
-    <link href="https://fonts.cdnfonts.com/css/elianto" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/raleway" rel="stylesheet">
-
-    <!-- ICT Club -->
+    <!-- CYBERPUNK & ICT: Heavy, sharp, geometric tech fonts -->
     <link href="https://fonts.cdnfonts.com/css/azonix" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/yuruy" rel="stylesheet">
 
-    
+    <!-- ACTION & SPORTS: Fast-paced, dynamic fonts for Sports Club or racing events -->
+    <link href="https://fonts.cdnfonts.com/css/nfs-font" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sf-sports-night" rel="stylesheet">
+
+    <!-- CLEAN UI/UX: Extremely clean, geometric fonts for minimalist app designs -->
+    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/lexend" rel="stylesheet">
+
+    <!-- ARTISTIC & ABSTRACT: Highly stylized fonts for Art/Design clubs -->
+    <link href="https://fonts.cdnfonts.com/css/elianto" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sweet-bread" rel="stylesheet"> <!-- Playful, creative -->
+
+    <!-- EDGY & GLITCHY: Raw, intense fonts for underground tech or edgy design -->
     <link href="https://fonts.cdnfonts.com/css/blanka" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/canavar" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/sweet-bread" rel="stylesheet">
 
-    <!-- Language Club -->
+    <!-- ELEGANT & FANTASY: Perfect for Literature Club, Debate Club, or formal invitations -->
     <link href="https://fonts.cdnfonts.com/css/cinzel-decorative" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/eb-garamond" rel="stylesheet">
-    
-    <!-- Cultural Club -->
-    <link href="https://fonts.cdnfonts.com/css/made-mirage" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
-
-    <!-- Green Club -->
-    <link href="https://fonts.cdnfonts.com/css/quicksand" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/existence-light" rel="stylesheet">
 
 </head>
 <body>
-  <!-- This file is for font imports only and should not contain visible content. -->
+    <!-- Font Library Loaded Successfully -->
 </body>
 </html>

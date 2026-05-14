@@ -1,62 +1,114 @@
-<nav class="navbar">
-  <ul class="navbar__menu">
-    <li class="navbar__item">
-      <a href="/index.html" class="navbar__link">
-        <i data-feather="home"></i>
-        <span>Home</span>
-      </a>
-    </li>
-    <li class="navbar__item dropdown">
-      <a href="/clubs/clubs.html" class="navbar__link">
-        <i data-feather="users"></i>
-        <span>Clubs</span>
-      </a>
-      <ul class="dropdown__menu">
-        <li><a href="/clubs/debate-club.html">Debate Club</a></li>
-        <li><a href="/clubs/photography-club.html">Photography Club</a></li>
-        <li><a href="/clubs/sports-club.html">Sports Club</a></li>
-        <li><a href="/clubs/quiz-club.html">Quiz Club</a></li>
-        <li><a href="/clubs/science-club.html">Science Club</a></li>
-        <li><a href="/clubs/language-club.html">Language Club</a></li>
-        <li><a href="/clubs/ict-club.html">ICT Club</a></li>
-        <li><a href="/clubs/literature-club.html">Literature Club</a></li>
-        <li><a href="/clubs/cultural-club.html">Cultural Club</a></li>
-      </ul>
-    </li>
-    <li class="navbar__item">
-      <a href="/events/events.html" class="navbar__link">
-        <i data-feather="calendar"></i>
-        <span>Events</span>
-      </a>
-    </li>
-    <li class="navbar__item dropdown">
-      <a href="/about/about.html" class="navbar__link">
-        <i data-feather="info"></i>
-        <span>About Us</span>
-      </a>
-      <ul class="dropdown__menu">
-        <li><a href="/about/about.html">About Us</a></li>
-        <li><a href="/about/executive-panel.html">Executive Panel</a></li>
-        <li><a href="/about/gallery.html">Gallery</a></li>
-        <li><a href="/about/achievements.html">Achievements</a></li>
-      </ul>
-    </li>
-    <li class="navbar__item">
-      <a href="/contact/contact.html" class="navbar__link">
-        <i data-feather="mail"></i>
-        <span>Contact</span>
-      </a>
-    </li>
-    <li class="navbar__item">
-      <a href="/contact/join-us.html" class="navbar__link button-join-us">
-        <i data-feather="user-plus"></i>
-        <span>Join Us</span>
-      </a>
-    </li>
+<header class="navbar-header">
+  <nav class="navbar-container">
+      
+      <!-- Logo Structure -->
+      <div class="navbar-brand">
+          <a class="logo-container" href="/index.html">
+              <img src="/images/uca_logo.png" alt="UCA Logo" class="logo-img" />
+              <div class="logo-text-group">
+                  <span class="logo-text-main">UCA</span>
+                  <span class="logo-text-sub">United Club Association</span>
+              </div>
+          </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="nav-menu-desktop">
+          <a href="/index.html" class="nav-link">
+              <i data-feather="home" class="nav-icon"></i>
+              <span>Home</span>
+          </a>
+
+          <!-- Clubs Dropdown -->
+          <div class="nav-item-group">
+              <button class="nav-link dropdown-trigger">
+                  <i data-feather="users" class="nav-icon"></i>
+                  <span>Clubs</span>
+                  <i data-feather="chevron-down" class="dropdown-arrow"></i>
+              </button>
+              <div class="dropdown-menu">
+                  <a href="/clubs/ulic-club.html" class="dropdown-link">University Laboratory ICT Club</a>
+              </div>
+          </div>
+
+          <!-- About Dropdown -->
+          <div class="nav-item-group">
+              <button class="nav-link dropdown-trigger">
+                  <i data-feather="info" class="nav-icon"></i>
+                  <span>About</span>
+                  <i data-feather="chevron-down" class="dropdown-arrow"></i>
+              </button>
+              <div class="dropdown-menu">
+                  <a href="/about/about.html" class="dropdown-link">About Us</a>
+                  <a href="/about/executive-panel.html" class="dropdown-link">Executive Panel</a>
+              </div>
+          </div>
+
+          <a href="/contact/contact.html" class="nav-link">
+              <i data-feather="mail" class="nav-icon"></i>
+              <span>Contact</span>
+          </a>
+          
+          <a href="/contact/join-us.html" class="nav-link highlight-link">
+              <i data-feather="user-plus" class="nav-icon"></i>
+              <span>Join Us</span>
+          </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <div class="nav-actions">
+          <button class="mobile-menu-toggle" aria-label="Open menu">
+              <i data-feather="menu" class="menu-toggle-icon"></i>
+          </button>
+      </div>
+  </nav>
+</header>
+
+<!-- FULL SCREEN IMMERSIVE OVERLAY (Mobile) -->
+<div class="sidebar-wrapper">
+  <div class="sidebar-header">
+      <button class="mobile-menu-close" aria-label="Close menu">
+          <i data-feather="x" class="menu-close-icon"></i>
+      </button>
+  </div>
+  <ul class="sidebar-menu">
+      <li class="sidebar-item-anim">
+          <a href="/index.html" class="sidebar-link">
+              <div class="link-content">Home</div>
+          </a>
+      </li>
+      
+      <li class="sidebar-dropdown sidebar-item-anim">
+          <a href="#" class="sidebar-link">
+              <div class="link-content">Clubs</div>
+              <i data-feather="chevron-down" class="dropdown-icon"></i>
+          </a>
+          <ul class="sidebar-dropdown-menu">
+              <li><a href="/clubs/ulic-club.html">University Laboratory ICT Club</a></li>
+          </ul>
+      </li>
+
+      <li class="sidebar-dropdown sidebar-item-anim">
+          <a href="#" class="sidebar-link">
+              <div class="link-content">About</div>
+              <i data-feather="chevron-down" class="dropdown-icon"></i>
+          </a>
+          <ul class="sidebar-dropdown-menu">
+              <li><a href="/about/about.html">About Us</a></li>
+              <li><a href="/about/executive-panel.html">Executive Panel</a></li>
+          </ul>
+      </li>
+
+      <li class="sidebar-item-anim">
+          <a href="/contact/contact.html" class="sidebar-link">
+              <div class="link-content">Contact</div>
+          </a>
+      </li>
+      
+      <li class="sidebar-item-anim">
+          <a href="/contact/join-us.html" class="sidebar-link highlight-sidebar-link">
+              <div class="link-content">Join Us</div>
+          </a>
+      </li>
   </ul>
-  <button class="navbar__toggle" aria-label="Toggle menu">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
-</nav>
+</div>

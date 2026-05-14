@@ -1,36 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Create a placeholder element for the footer
-  const footerPlaceholder = document.createElement("div");
-  footerPlaceholder.id = "footer-placeholder";
-  document.body.appendChild(footerPlaceholder); // Insert at the bottom of the body
+  let footerPlaceholder = document.getElementById("footer-placeholder");
+  if (!footerPlaceholder) {
+    footerPlaceholder = document.createElement("div");
+    footerPlaceholder.id = "footer-placeholder";
+    document.body.appendChild(footerPlaceholder);
+  }
 
-  // Fetch the footer HTML
-  fetch("/components/footer.html") // Use relative path
+  fetch("/components/footer.html")
     .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-      }
+      if (!response.ok) throw new Error("Network response was not ok");
       return response.text();
     })
     .then((data) => {
-      // Insert the footer HTML into the placeholder
       footerPlaceholder.innerHTML = data;
       
-      // Initialize Feather Icons if available
+      // GUARANTEED execution to set the year the exact moment HTML is injected
+      const yearSpan = document.getElementById("copyright-year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+      
       if (typeof feather !== 'undefined') {
-        feather.replace({
-          'aria-hidden': 'true'
-        });
+        feather.replace();
       }
     })
-    .catch((error) => {
-      console.error("Error loading footer:", error);
-      
-      // Create a simple fallback footer if the main one fails to load
-      footerPlaceholder.innerHTML = `
-        <footer style="background-color: #1a1e2e; color: #e0e6ed; padding: 2rem; text-align: center;">
-          <p>&copy; 2025 UCA. All rights reserved.</p>
-        </footer>
-      `;
-    });
+    .catch((error) => console.error("Error loading footer:", error));
 });

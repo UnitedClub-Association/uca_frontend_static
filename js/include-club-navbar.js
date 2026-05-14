@@ -1,15 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const clubThemes = {
-    'debate-club': 'theme-debate',
-    'photography-club': 'theme-photo',
-    'sports-club': 'theme-sports',
-    'quiz-club': 'theme-quiz',
-    'science-club': 'theme-science',
-    'ict-club': 'theme-ict',
-    'language-club': 'theme-language',
-    'cultural-club': 'theme-cultural',
-    'green-club': 'theme-green',
-    'literature-club': 'theme-literature'
+    'ulic-club': 'theme-ict'
   };
 
   const currentPath = window.location.pathname;

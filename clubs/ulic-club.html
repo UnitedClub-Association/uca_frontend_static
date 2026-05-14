@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Laboratory ICT Club - ULIC | UCA</title>
+    
+    <meta name="description" content="University Laboratory ICT Club - ULIC - A vibrant community of ICT enthusiasts at University Laboratory School and College" />
+    <meta name="keywords" content="ULIC, University Laboratory ICT Club, ICT, technology, Bangladesh">
+    
+    <link rel="icon" type="image/x-icon" href="/images/ulic-logo.ico" />
+    <link rel="apple-touch-icon" href="/images/ulic-logo.jpg" />
+
+    <!-- External Fonts for ULIC Theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- UCA Master CSS & Club Overrides -->
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/clubs-css/club-nav.css" />
+    <link rel="stylesheet" href="/clubs-css/club-footer.css" />
+    
+    <!-- Specific ULIC CSS -->
+    <link rel="stylesheet" href="/css/banner.css" />
+    <link rel="stylesheet" href="/clubs-css/ulic-club.css" />
+
+    <!-- Core Libraries -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body class="theme-ict"> <!-- Enforces dynamic navbar/footer colors -->
+    
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-content">
+        <!-- HERO SECTION -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-visuals" id="hero-grid">
+                <!-- Grid elements injected via JS -->
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-badge anim-hero-entry">
+                    <span class="status-dot"></span> Welcome to the Grid
+                </div>
+                <h1 class="hero-title anim-hero-entry">University Laboratory<br>ICT Club</h1>
+                <p class="hero-tagline anim-hero-entry">A nexus for innovators, creators, and pioneers dedicated to shaping the future of technology.</p>
+                <div class="hero-actions anim-hero-entry">
+                    <a href="https://ulic.netlify.app" target="_blank" class="btn btn-primary">Visit Official Site</a>
+                    <a href="#explore-heading" class="btn btn-secondary">Explore Operations</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPLORE SECTION -->
+        <section class="explore-ulic" aria-labelledby="explore-heading">
+            <div class="container">
+                <div class="section-header anim-fade-in">
+                    <h2 id="explore-heading">Explore ULIC</h2>
+                    <p class="section-subtitle">Innovate, Collaborate, and push the boundaries of what's possible.</p>
+                </div>
+                <div class="explore-content">
+                    <div class="explore-card anim-slide-up">
+                        <div class="explore-icon-wrapper">
+                            <i data-feather="cpu"></i>
+                        </div>
+                        <p>Dive into a world of innovation with ULIC. We bring together passionate tech enthusiasts to collaborate, learn, and create amazing things in the digital realm.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUOTE SECTION -->
+        <section class="philosophy-section">
+            <div class="container">
+                <div class="quote-container">
+                    <span class="quote-decoration quote-top"></span>
+                    <blockquote>Code is not just syntax; it's the architecture of ideas and the language of creation.</blockquote>
+                    <span class="quote-decoration quote-bottom"></span>
+                    <div class="quote-author">- The ULIC Manifesto</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CONNECT WITH ULIC -->
+        <section class="connect-section" style="padding: 4rem 0; border-top: 1px solid var(--border-color); text-align: center;">
+            <div class="container" style="padding: 0;">
+                <div class="section-header anim-fade-in" style="margin-bottom: 3rem;">
+                    <h2>Connect With The Grid</h2>
+                    <p class="section-subtitle">Join ULIC network across the digital expanse.</p>
+                </div>
+                <div class="action-links anim-slide-up" style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                    <a href="https://www.facebook.com/ulic.fb" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i data-feather="facebook"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/ulic.ig" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i data-feather="instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@ulic.technology" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i data-feather="youtube"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Script Loads -->
+    <script src="/js/include-fonts.js" defer></script>
+    <script src="/js/include-club-navbar.js" defer></script>
+    <script src="/js/include-club-footer.js" defer></script>
+    <script src="/clubs-js/ulic-club.js" defer></script>
+</body>
+</html>
