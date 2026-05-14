@@ -15,14 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   tabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      // Remove active class from all buttons and forms
       tabBtns.forEach(b => b.classList.remove("active"));
       forms.forEach(f => f.classList.remove("active"));
-
-      // Add active class to clicked button
       btn.classList.add("active");
-
-      // Show corresponding form
       const targetId = btn.getAttribute("data-target") + "-form";
       const targetForm = document.getElementById(targetId);
       if (targetForm) {
@@ -31,7 +26,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 3. Form Submission Handling connected to Netlify Function
+  // Helper function: strict validation check
+  const validateForm = (formData, formType) => {
+    // Check Bengali fields
+    const bengaliRegex = /^[\u0980-\u09FF\s\.\-]+$/;
+    for (let [key, value] of formData.entries()) {
+      if (key.endsWith('_bn') && value.trim() !== '') {
+        if (!bengaliRegex.test(value)) {
+          return { isValid: false, message: "Please use strictly Bengali characters for Bengali name fields." };
+        }
+      }
+    }
+
+    // Check individual phone format strictly
+    if (formType === 'individual') {
+      const phone = formData.get('ind_phone');
+      const phoneRegex = /^\+8801[3-9][0-9]{8}$/;
+      if (!phoneRegex.test(phone)) {
+        return { isValid: false, message: "Phone must be +8801 followed by 9 digits with no spaces." };
+      }
+    }
+
+    // Check email sanity
+    const emailKeys = ['ind_email', 'club_email', 'corp_email'];
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    for (let key of emailKeys) {
+      if (formData.has(key)) {
+        if (!emailRegex.test(formData.get(key))) {
+          return { isValid: false, message: "Please provide a valid email address." };
+        }
+      }
+    }
+
+    return { isValid: true };
+  };
+
+  // 3. Form Submission Handling
   forms.forEach(form => {
     form.addEventListener("submit", async function (e) {
       e.preventDefault(); 
@@ -39,25 +69,30 @@ document.addEventListener("DOMContentLoaded", function () {
       const submitBtn = this.querySelector('.btn-submit');
       const originalText = submitBtn.innerHTML;
       
+      // Gather data
+      const formData = new FormData(this);
+      const formType = this.id.split('-')[0]; 
+      
+      // Run custom strict validation
+      const validation = validateForm(formData, formType);
+      
+      if (!validation.isValid) {
+        alert(validation.message); // Simple alert to stop garbage data
+        return;
+      }
+
       // Visual loading state
       submitBtn.innerHTML = `<span>Processing...</span> <i data-feather="loader" class="spin"></i>`;
       if(typeof feather !== 'undefined') feather.replace();
       submitBtn.disabled = true;
 
-      // Gather data
-      const formData = new FormData(this);
       const dataObj = {};
-      
       formData.forEach((value, key) => {
         dataObj[key] = value;
       });
-
-      // Extract the form type (individual, club, or corporate) and add it to the payload
-      const formType = this.id.split('-')[0]; 
       dataObj['registration_type'] = formType;
 
       try {
-        // Send data to Netlify serverless function
         const response = await fetch('/.netlify/functions/submit-form', {
           method: 'POST',
           headers: {
@@ -78,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.style.background = "#25D366"; 
         if(typeof feather !== 'undefined') feather.replace();
 
-        // Reset the form after 3 seconds
         setTimeout(() => {
           this.reset();
           submitBtn.innerHTML = originalText;

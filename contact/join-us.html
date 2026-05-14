@@ -36,7 +36,6 @@
         <div class="section-container">
           <div class="form-wrapper">
             
-            <!-- Form Tabs -->
             <div class="form-tabs">
               <button class="tab-btn active" data-target="individual">
                 <i data-feather="user"></i> Individual Member
@@ -51,7 +50,6 @@
 
             <div class="forms-container">
               
-              <!-- 1. INDIVIDUAL FORM -->
               <form id="individual-form" class="uca-form active">
                 <div class="form-header">
                   <h3>Individual Registration</h3>
@@ -65,7 +63,7 @@
                   </div>
                   <div class="form-group">
                     <label>Full Name (Bengali) *</label>
-                    <input type="text" name="ind_name_bn" required placeholder="আপনার নাম" />
+                    <input type="text" name="ind_name_bn" required placeholder="আপনার নাম" pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
 
@@ -76,7 +74,7 @@
                   </div>
                   <div class="form-group">
                     <label>Father's Name (Bengali) *</label>
-                    <input type="text" name="ind_father_bn" required />
+                    <input type="text" name="ind_father_bn" required pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
 
@@ -87,14 +85,14 @@
                   </div>
                   <div class="form-group">
                     <label>Mother's Name (Bengali) *</label>
-                    <input type="text" name="ind_mother_bn" required />
+                    <input type="text" name="ind_mother_bn" required pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
                     <label>Mobile Number *</label>
-                    <input type="tel" name="ind_phone" required placeholder="+880 1XXX-XXXXXX" />
+                    <input type="tel" name="ind_phone" required placeholder="+8801XXXXXXXXX" pattern="^\+8801[3-9][0-9]{8}$" title="Format must be strictly +8801 followed by 9 digits (no spaces)" />
                   </div>
                   <div class="form-group">
                     <label>Email Address *</label>
@@ -148,7 +146,6 @@
                 </button>
               </form>
 
-              <!-- 2. CLUB FORM -->
               <form id="club-form" class="uca-form">
                 <div class="form-header">
                   <h3>Club Affiliation Request</h3>
@@ -162,24 +159,29 @@
                   </div>
                   <div class="form-group">
                     <label>Club Name (Bengali) *</label>
-                    <input type="text" name="club_name_bn" required placeholder="ক্লাবের নাম" />
+                    <input type="text" name="club_name_bn" required placeholder="ক্লাবের নাম" pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
+                    <label>Acronym / Short Form (Optional)</label>
+                    <input type="text" name="club_acronym" placeholder="e.g., UCASC" />
+                  </div>
+                  <div class="form-group">
                     <label>Institute Name *</label>
                     <input type="text" name="club_institute" required />
                   </div>
-                  <div class="form-group">
-                    <label>Institute's Highest Level *</label>
-                    <select name="club_level" required>
-                      <option value="" disabled selected>Select level</option>
-                      <option value="School">School</option>
-                      <option value="College">College</option>
-                      <option value="University">University</option>
-                    </select>
-                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label>Institute's Highest Level *</label>
+                  <select name="club_level" required>
+                    <option value="" disabled selected>Select level</option>
+                    <option value="School">School</option>
+                    <option value="College">College</option>
+                    <option value="University">University</option>
+                  </select>
                 </div>
 
                 <h4 class="sub-section-title">Executive Representatives (Max 3)</h4>
@@ -191,7 +193,7 @@
                   </div>
                   <div class="form-group">
                     <label>Executive 1 Name (Bengali) *</label>
-                    <input type="text" name="club_exec1_bn" required />
+                    <input type="text" name="club_exec1_bn" required pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
                 
@@ -202,7 +204,7 @@
                   </div>
                   <div class="form-group">
                     <label>Executive 2 Name (Bengali) - Optional</label>
-                    <input type="text" name="club_exec2_bn" />
+                    <input type="text" name="club_exec2_bn" pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
 
@@ -213,7 +215,7 @@
                   </div>
                   <div class="form-group">
                     <label>Executive 3 Name (Bengali) - Optional</label>
-                    <input type="text" name="club_exec3_bn" />
+                    <input type="text" name="club_exec3_bn" pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
 
@@ -256,7 +258,6 @@
                 </button>
               </form>
 
-              <!-- 3. CORPORATE FORM -->
               <form id="corporate-form" class="uca-form">
                 <div class="form-header">
                   <h3>Corporate & Sponsorship</h3>
@@ -270,11 +271,15 @@
                   </div>
                   <div class="form-group">
                     <label>Organization Name (Bengali) *</label>
-                    <input type="text" name="corp_name_bn" required />
+                    <input type="text" name="corp_name_bn" required pattern="^[\u0980-\u09FF\s\.\-]+$" title="Please use only Bengali characters" />
                   </div>
                 </div>
 
                 <div class="form-row">
+                  <div class="form-group">
+                    <label>Acronym / Short Form (Optional)</label>
+                    <input type="text" name="corp_acronym" placeholder="e.g., GP" />
+                  </div>
                   <div class="form-group">
                     <label>Industry Type *</label>
                     <select name="corp_type" required>
@@ -289,21 +294,22 @@
                       <option value="Other">Other</option>
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label>Company Website / Portfolio *</label>
-                    <input type="url" name="corp_website" required placeholder="https://www.example.com" />
-                  </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
+                    <label>Company Website / Portfolio *</label>
+                    <input type="url" name="corp_website" required placeholder="https://www.example.com" />
+                  </div>
+                  <div class="form-group">
                     <label>Contact Email *</label>
                     <input type="email" name="corp_email" required />
                   </div>
-                  <div class="form-group">
-                    <label>Contact Number(s) *</label>
-                    <input type="text" name="corp_phone" required placeholder="Primary phone in case email fails" />
-                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label>Contact Number(s) *</label>
+                  <input type="text" name="corp_phone" required placeholder="Primary phone in case email fails" />
                 </div>
 
                 <div class="form-group">
@@ -326,7 +332,6 @@
         </div>
       </section>
 
-      <!-- SOCIAL CONNECT -->
       <section class="social-connect">
         <div class="section-container">
           <div class="section-header">
