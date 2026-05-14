@@ -1,25 +1,81 @@
-# United Club Association (UCA) Website
+🌟 About UCA
 
-This is the official website for the United Club Association of University Laboratory School and College.
+The United Club Association (UCA) is a vibrant, national network of creators, thinkers, and student leaders based in Dhaka, Bangladesh. We bridge the gap between individual students, active school/college clubs, and corporate sponsors to foster growth, leadership, and community development.
 
-## License
+This repository contains the official, production-ready codebase powering the UCA website.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+🏗️ Architecture & Tech Stack
 
-## Contact
+Our platform is built for speed, accessibility, and dynamic scalability, utilizing a modern serverless architecture.
 
-For inquiries about the UCA website, please contact the ICT Club President who manages online activities.
+Component
 
-## Development
+Technology
 
-This website is built with HTML, CSS, and JavaScript. It uses Netlify for hosting and serverless functions.
+Description
 
-### Setup
+Frontend Framework
 
-1. Clone the repository
-2. Install dependencies for Netlify functions if needed
-3. Run a local server to test the website
+Vanilla HTML5, CSS3, JS (ES6+)
 
-### Contributing
+No heavy frameworks, ensuring lightning-fast load times.
 
-Contributions are welcome. Please make sure to follow the code style guidelines.
+Styling
+
+Custom Modular CSS
+
+CSS Variables for consistent theming (Starry Night Palette).
+
+Backend / API
+
+Netlify Serverless Functions
+
+Node.js endpoints to handle dynamic requests.
+
+Database
+
+Neon Serverless PostgreSQL
+
+Scalable cloud database using the pg module.
+
+Typography & Icons
+
+Embedded Fonts & Feather Icons
+
+Custom iconography and web-safe performance.
+
+Hosting & CI/CD
+
+Netlify
+
+Automated deployments and scalable edge delivery.
+
+📂 Directory Structure Overview
+
+The codebase is organized modularly to separate concerns across styling, scripts, and static pages:
+
+📁 / (Root): Core landing page (index.html), configuration files (package.json, netlify.toml), and SEO setups (robots.txt, sitemap.xml).
+
+📁 /about/: Organizational information, including our history and the Executive Panel details.
+
+📁 /clubs/: Individual sub-pages and portfolios for affiliated clubs (e.g., ULIC).
+
+📁 /contact/: User engagement pages including the dynamic registration portal (join-us.html), FAQ, and general contact forms.
+
+⚙️ /netlify/functions/: Serverless backend endpoints connecting our forms securely to the Neon database.
+
+🎨 /css/ & /clubs-css/: Modular stylesheets for global themes, components (navbar/footer), and specific pages.
+
+📜 /js/ & /clubs-js/: Component loaders and page-specific interactive logic.
+
+🖼️ /images/ & /cursors/: Static graphical assets, custom cursors, and organizational branding.
+
+🚀 Key Features
+
+✨ Dynamic Registration Portal: A multi-tab, strictly validated registration form handling Individuals, Affiliated Clubs, and Corporate Sponsors.
+
+⚡ Custom Serverless Integration: Direct-to-database form processing using Netlify Functions, bypassing the need for a dedicated traditional backend server.
+
+🧩 Modular Component Loading: Custom JavaScript functions to inject Navbars and Footers globally, keeping the HTML codebase DRY (Don't Repeat Yourself).
+
+🌌 Responsive & Immersive UI: Features a deep-space aesthetic with custom interactive cursors tailored to different club categories.
